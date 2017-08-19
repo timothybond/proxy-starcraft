@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 using SC2APIProtocol;
@@ -10,78 +11,71 @@ namespace Sandbox
 {
     class Program
     {
+        private const string MARINE_MICRO_MAP_PATH = "D:/Program Files (x86)/StarCraft II/maps/Example/MarineMicro.SC2Map";
+
         private static bool socketOpened = false;
+        private static bool exit = false;
 
         static void Main(string[] args)
         {
-            using (WebSocket webSocket = new WebSocket("ws://127.0.0.1:5000/sc2api"))
+            using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
             {
-                webSocket.DataReceived += HandleReceivedData;
-                webSocket.MessageReceived += HandleReceivedMessage;
-                webSocket.Opened += WebSocket_Opened;
-                webSocket.Error += WebSocket_Error;
-                webSocket.Closed += WebSocket_Closed;
+                var pingResponse = client.Call(new Request { Ping = new RequestPing() });
 
-                webSocket.Open();
+                var availableMapsResponse = client.Call(new Request { AvailableMaps = new RequestAvailableMaps() });
 
-                while (!socketOpened)
+                var createGameRequest = new Request
                 {
-                    Thread.Sleep(50);
-                }
-
-                using (var mem = new MemoryStream())
-                {
-                    using (var stream = new Google.Protobuf.CodedOutputStream(mem))
+                    CreateGame = new RequestCreateGame
                     {
-                        var request = new Request() { Ping = new RequestPing() };
-                        request.WriteTo(stream);
+                        LocalMap = new LocalMap { MapPath = MARINE_MICRO_MAP_PATH }
+                    }
+                };
+
+                createGameRequest.CreateGame.PlayerSetup.Add(new PlayerSetup
+                {
+                    Type = PlayerType.Participant,
+                    Race = Race.Terran
+                });
+                
+                var createGameResponse = client.Call(createGameRequest);
+
+                var joinGameResponse = client.Call(
+                    new Request
+                    {
+                        JoinGame = new RequestJoinGame
+                        {
+                            Race = Race.Terran,
+                            Options = new InterfaceOptions {  Raw = true }
+                        }
+                    });
+
+                var observationResponse = client.Call(new Request { Observation = new RequestObservation() });
+
+                while (observationResponse.Status != Status.Ended)
+                {
+                    if (exit)
+                    {
+                        client.Call(new Request { LeaveGame = new RequestLeaveGame() });
+                        break;
+                    }
+                    else
+                    {
+                        client.Call(new Request { Step = new RequestStep { Count = 1 } });
+                        observationResponse = client.Call(new Request { Observation = new RequestObservation() });
                     }
 
-                    var data = mem.ToArray();
-
-                    webSocket.Send(data, 0, data.Length);
+                    if (observationResponse.Observation.Observation.RawData.Units.All(unit => unit.Alliance == Alliance.Enemy))
+                    {
+                        exit = true;
+                    }
                 }
 
-                while (true)
+                while (!exit)
                 {
                     Thread.Sleep(200);
                 }
             }
         }
-
-        private static void WebSocket_Closed(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void WebSocket_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
-        {
-            Console.WriteLine(e.Exception.ToString());
-        }
-
-        private static void WebSocket_Opened(object sender, EventArgs e)
-        {
-            socketOpened = true;
-        }
-
-        private static void HandleReceivedData(object sender, DataReceivedEventArgs e)
-        {
-            var response = Response.Parser.ParseFrom(e.Data);
-            Console.WriteLine(response);
-        }
-
-        private static void HandleReceivedMessage(object sender, MessageReceivedEventArgs e)
-        {
-            var response = Response.Parser.ParseFrom(System.Text.Encoding.Default.GetBytes(e.Message));
-
-            Console.WriteLine(response);
-        }
-
-        //private static void HandleWebSocketMessage(object sender, MessageEventArgs e)
-        //{
-        //    var response = Response.Parser.ParseFrom(e.RawData);
-
-        //    Console.WriteLine(response);
-        //}
     }
 }
