@@ -26,6 +26,7 @@ namespace Sandbox
                     }
 
                     var observation = client.GetRawObservation();
+                    var gameInfo = client.GetGameInfo();
 
                     while (true)
                     {
@@ -38,9 +39,10 @@ namespace Sandbox
                         {
                             client.Step();
                             observation = client.GetRawObservation();
+                            gameInfo = client.GetGameInfo();
                         }
 
-                        if (observation.Units.All(unit => unit.Alliance == Alliance.Enemy))
+                        if (observation.RawData.Units.All(unit => unit.Alliance == Alliance.Enemy))
                         {
                             exit = true;
                         }

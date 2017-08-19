@@ -35,10 +35,16 @@ namespace Sandbox
             webSocket.Error += OnSocketError;
         }
 
-        public ObservationRaw GetRawObservation()
+        public Observation GetRawObservation()
         {
             var response = Call(new Request { Observation = new RequestObservation() });
-            return response.Observation.Observation.RawData;
+            return response.Observation.Observation;
+        }
+
+        public ResponseGameInfo GetGameInfo()
+        {
+            var response = Call(new Request { GameInfo = new RequestGameInfo() });
+            return response.GameInfo;
         }
 
         public void Step()
