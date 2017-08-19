@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Diagnostics;
+using System.Linq;
 
 using SC2APIProtocol;
 
@@ -7,68 +7,44 @@ namespace Sandbox
 {
     class Program
     {
+        private const string GAME_EXECUTABLE_PATH = "D:/Program Files (x86)/StarCraft II/Support64/SC2Switcher_x64.exe";
+        private const string GAME_EXECUTABLE_ARGS = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -port 5000";
+
         private const string MARINE_MICRO_MAP_PATH = "D:/Program Files (x86)/StarCraft II/maps/Example/MarineMicro.SC2Map";
         
         private static bool exit = false;
 
         static void Main(string[] args)
         {
-            using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
+            using (Process gameProcess = Process.Start(GAME_EXECUTABLE_PATH, GAME_EXECUTABLE_ARGS))
             {
-                var pingResponse = client.Call(new Request { Ping = new RequestPing() });
-
-                var availableMapsResponse = client.Call(new Request { AvailableMaps = new RequestAvailableMaps() });
-
-                var createGameRequest = new Request
+                using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
                 {
-                    CreateGame = new RequestCreateGame
+                    if (!client.InitiateSinglePlayerGame(MARINE_MICRO_MAP_PATH, Race.Terran))
                     {
-                        LocalMap = new LocalMap { MapPath = MARINE_MICRO_MAP_PATH }
+                        return;
                     }
-                };
 
-                createGameRequest.CreateGame.PlayerSetup.Add(new PlayerSetup
-                {
-                    Type = PlayerType.Participant,
-                    Race = Race.Terran
-                });
-                
-                var createGameResponse = client.Call(createGameRequest);
+                    var observation = client.GetRawObservation();
 
-                var joinGameResponse = client.Call(
-                    new Request
+                    while (true)
                     {
-                        JoinGame = new RequestJoinGame
+                        if (exit)
                         {
-                            Race = Race.Terran,
-                            Options = new InterfaceOptions {  Raw = true }
+                            client.LeaveGame();
+                            break;
                         }
-                    });
+                        else
+                        {
+                            client.Step();
+                            observation = client.GetRawObservation();
+                        }
 
-                var observationResponse = client.Call(new Request { Observation = new RequestObservation() });
-
-                while (observationResponse.Status != Status.Ended)
-                {
-                    if (exit)
-                    {
-                        client.Call(new Request { LeaveGame = new RequestLeaveGame() });
-                        break;
+                        if (observation.Units.All(unit => unit.Alliance == Alliance.Enemy))
+                        {
+                            exit = true;
+                        }
                     }
-                    else
-                    {
-                        client.Call(new Request { Step = new RequestStep { Count = 1 } });
-                        observationResponse = client.Call(new Request { Observation = new RequestObservation() });
-                    }
-
-                    if (observationResponse.Observation.Observation.RawData.Units.All(unit => unit.Alliance == Alliance.Enemy))
-                    {
-                        exit = true;
-                    }
-                }
-
-                while (!exit)
-                {
-                    Thread.Sleep(200);
                 }
             }
         }

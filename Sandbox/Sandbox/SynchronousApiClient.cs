@@ -21,6 +21,7 @@ namespace Sandbox
 
         private bool connected = false;
         private bool waiting = false;
+        private int connectionRetries = 4;
 
         private Response socketResponse;
 
@@ -32,6 +33,64 @@ namespace Sandbox
             webSocket.MessageReceived += OnReceivedMessage;
             webSocket.Opened += OnSocketOpened;
             webSocket.Error += OnSocketError;
+        }
+
+        public ObservationRaw GetRawObservation()
+        {
+            var response = Call(new Request { Observation = new RequestObservation() });
+            return response.Observation.Observation.RawData;
+        }
+
+        public void Step()
+        {
+            Step(1);
+        }
+
+        public void Step(uint stepCount)
+        {
+            Call(new Request { Step = new RequestStep { Count = stepCount } });
+        }
+
+        public void LeaveGame()
+        {
+            Call(new Request { LeaveGame = new RequestLeaveGame() });
+        }
+
+        public bool InitiateSinglePlayerGame(string map, Race race)
+        {
+            var createGameRequest = new Request
+            {
+                CreateGame = new RequestCreateGame
+                {
+                    LocalMap = new LocalMap { MapPath = map }
+                }
+            };
+
+            createGameRequest.CreateGame.PlayerSetup.Add(
+                new PlayerSetup
+                {
+                    Type = PlayerType.Participant,
+                    Race = race
+                });
+
+            var createGameResponse = Call(createGameRequest);
+
+            if (createGameResponse.Status != Status.InitGame)
+            {
+                return false;
+            }
+
+            var joinGameResponse = Call(
+                new Request
+                {
+                    JoinGame = new RequestJoinGame
+                    {
+                        Race = race,
+                        Options = new InterfaceOptions { Raw = true }
+                    }
+                });
+
+            return joinGameResponse.Status == Status.InGame;
         }
 
         public Response Call(Request request)
@@ -104,7 +163,18 @@ namespace Sandbox
 
         private void OnSocketError(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
         {
-            throw new NotImplementedException();
+            lock(socketLock)
+            {
+                if (!connected && connectionRetries > 0)
+                {
+                    connectionRetries -= 1;
+                    Thread.Sleep(5000);
+                    webSocket.Open();
+                    return;
+                }
+            }
+
+            throw new Exception("Unexpected socket error.", e.Exception);
         }
         
         #region IDisposable Support
