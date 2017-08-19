@@ -1,19 +1,14 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 
 using SC2APIProtocol;
-
-using WebSocket4Net;
 
 namespace Sandbox
 {
     class Program
     {
         private const string MARINE_MICRO_MAP_PATH = "D:/Program Files (x86)/StarCraft II/maps/Example/MarineMicro.SC2Map";
-
-        private static bool socketOpened = false;
+        
         private static bool exit = false;
 
         static void Main(string[] args)
