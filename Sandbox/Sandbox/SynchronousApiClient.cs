@@ -1,0 +1,145 @@
+﻿using System;
+using System.IO;
+using System.Threading;
+
+using SC2APIProtocol;
+using WebSocket4Net;
+
+namespace Sandbox
+{
+    /// <summary>
+    /// Code to simplify dealing with the API by making it appear synchronous.
+    /// 
+    /// Probably basically harmless to use this when running the game in Single-Step mode,
+    /// but maybe less so in Real-Time mode. Naturally this is not thread-safe.
+    /// </summary>
+    public class SynchronousApiClient : IDisposable
+    {
+        private static object socketLock = new object();
+
+        private WebSocket webSocket;
+
+        private bool connected = false;
+        private bool waiting = false;
+
+        private Response socketResponse;
+
+        public SynchronousApiClient(String address)
+        {
+            webSocket = new WebSocket(address);
+
+            webSocket.DataReceived += OnReceivedData;
+            webSocket.MessageReceived += OnReceivedMessage;
+            webSocket.Opened += OnSocketOpened;
+            webSocket.Error += OnSocketError;
+        }
+
+        public Response Call(Request request)
+        {
+            Connect();
+
+            using (var mem = new MemoryStream())
+            {
+                using (var stream = new Google.Protobuf.CodedOutputStream(mem))
+                {
+                    request.WriteTo(stream);
+                }
+
+                var data = mem.ToArray();
+
+                lock (socketLock)
+                {
+                    webSocket.Send(data, 0, data.Length);
+                    waiting = true;
+                }
+            }
+
+            // TODO: Use a proper synchronization primitive for this
+            while (waiting)
+            {
+                Thread.Sleep(5);
+            }
+
+            lock(socketLock)
+            {
+                var retval = socketResponse;
+                socketResponse = null;
+                return retval;
+            }
+        }
+
+        private void Connect()
+        {
+            if (connected)
+            {
+                return;
+            }
+
+            webSocket.Open();
+
+            while (!connected)
+            {
+                Thread.Sleep(20);
+            }
+        }
+
+        private void OnReceivedData(object sender, DataReceivedEventArgs e)
+        {
+            lock (socketLock)
+            {
+                socketResponse = Response.Parser.ParseFrom(e.Data);
+                waiting = false;
+            }
+        }
+
+        private void OnReceivedMessage(object sender, MessageReceivedEventArgs e)
+        {
+            throw new NotImplementedException("Expecting DataReceived rather than MessageReceived from WebSocket client.");
+        }
+
+        private void OnSocketOpened(object sender, EventArgs e)
+        {
+            connected = true;
+        }
+
+        private void OnSocketError(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        
+        #region IDisposable Support
+        private bool disposed = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    webSocket.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposed = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~SynchronousApiClient() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
+    }
+}
