@@ -67,6 +67,7 @@
     <Compile Include="TerranUnit.cs" />
     <Compile Include="TrainCommand.cs" />
     <Compile Include="Translator.cs" />
+    <Compile Include="UnitExtensions.cs" />
     <Compile Include="ZergBuilding.cs" />
     <Compile Include="ZergUnit.cs" />
   </ItemGroup>

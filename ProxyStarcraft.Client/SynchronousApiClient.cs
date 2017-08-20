@@ -54,11 +54,11 @@ namespace ProxyStarcraft.Client
             unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Data.Units.ToDictionary(unitType => unitType.UnitId);
             abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }).Data.Abilities.ToDictionary(ability => ability.AbilityId);
 
+            translator = translator ?? new Translator(abilities, unitTypes);
+
             var response = Call(new Request { Observation = new RequestObservation() });
-            var gameState = new GameState(gameInfo, response.Observation.Observation, unitTypes, abilities);
-
-            translator = translator ?? new Translator(gameState);
-
+            var gameState = new GameState(gameInfo, response.Observation.Observation, unitTypes, abilities, translator);
+            
             return gameState;
         }
 

@@ -5,18 +5,29 @@ using System.Linq;
 using ProxyStarcraft;
 using ProxyStarcraft.Client;
 using ProxyStarcraft.Proto;
+using System.Collections.Generic;
 
 namespace Sandbox
 {
     class Program
     {
-        private const string GAME_EXECUTABLE_PATH = "D:/Program Files (x86)/StarCraft II/Support64/SC2Switcher_x64.exe";
+        // TODO: Fix hardcoded path
+        private const string BASE_GAME_PATH = "D:/Program Files (x86)/StarCraft II";
+
+        private const string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Support64/SC2Switcher_x64.exe";
         private const string GAME_EXECUTABLE_ARGS = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -port 5000";
 
-        private const string MARINE_MICRO_MAP_PATH = "D:/Program Files (x86)/StarCraft II/maps/Example/MarineMicro.SC2Map";
+        private const string MARINE_MICRO_MAP_PATH = BASE_GAME_PATH + "/maps/Example/MarineMicro.SC2Map";
+        private const string EMPTY_MAP_PATH = BASE_GAME_PATH + "/maps/Test/Empty.SC2Map";
 
-        private const string EMPTY_MAP_PATH = "D:/Program Files (x86)/StarCraft II/maps/Test/Empty.SC2Map";
-
+        private const string MINIGAME_BUILD_MARINES_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/BuildMarines.SC2Map";
+        private const string MINIGAME_COLLECT_MINERALS_AND_GAS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/CollectMineralsAndGas.SC2Map";
+        private const string MINIGAME_COLLECT_MINERAL_SHARDS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/CollectMineralShards.SC2Map";
+        private const string MINIGAME_DEFEAT_ROACHES_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/DefeatRoaches.SC2Map";
+        private const string MINIGAME_DEFEAT_ZERGLINGS_AND_BANELINGS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/DefeatZerglingsAndBanelings.SC2Map";
+        private const string MINIGAME_FIND_AND_DEFEAT_ZERGLINGS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/FindAndDefeatZerglings.SC2Map";
+        private const string MINIGAME_MOVE_TO_BEACON_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/MoveToBeacon.SC2Map";
+        
         private static bool exit = false;
 
         static void Main(string[] args)
@@ -31,7 +42,8 @@ namespace Sandbox
                 using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
                 {
                     //RunMarineMicroGame(client);
-                    RunEmptyMapGame(client);
+                    //RunEmptyMapGame(client);
+                    RunGatherMinigame(client);
                 }
             }
         }
@@ -64,7 +76,7 @@ namespace Sandbox
 
                 // Exit once all of our units are dead - probably not going to be what we do in the long run,
                 // but it works for the example map we're currently on.
-                if (gameState.Observation.RawData.Units.All(unit => unit.Alliance == Alliance.Enemy))
+                if (gameState.Units.All(unit => unit.Alliance == Alliance.Enemy))
                 {
                     exit = true;
                 }
@@ -106,13 +118,57 @@ namespace Sandbox
 
             gameState = client.GetGameState();
 
-            client.SendCommands(new[] { new BuildCommand(gameState.Observation.RawData.Units[0], TerranBuilding.SupplyDepot, 15, 15) });
+            client.SendCommands(new[] { new BuildCommand(gameState.Units[0], TerranBuilding.SupplyDepot, 15, 15) });
 
             while (true)
             {
                 client.Step();
                 gameState = client.GetGameState();
             }
+        }
+
+        public static void RunGatherMinigame(SynchronousApiClient client)
+        {
+            if (!client.InitiateSinglePlayerGame(MINIGAME_COLLECT_MINERALS_AND_GAS_MAP_PATH, Race.Terran))
+            {
+                return;
+            }
+
+            var gameState = client.GetGameState();
+
+            while (true)
+            {
+                client.Step();
+                gameState = client.GetGameState();
+            }
+        }
+
+        public static void StartHarvesting(SynchronousApiClient client, GameState gameState)
+        {
+            var harvesters = new List<Unit>();
+            var minerals = new List<Unit>();
+
+            foreach (var unit in gameState.Units)
+            {
+                if (unit.Alliance == Alliance.Neutral && unit.MineralContents > 0)
+                {
+                    minerals.Add(unit);
+                }
+
+                if (gameState.Translator.IsHarvester(unit))
+                {
+                    harvesters.Add(unit);
+                }
+            }
+
+            var commands = new List<ICommand>();
+
+            foreach (var harvester in harvesters)
+            {
+                commands.Add(new HarvestCommand(harvester, harvester.GetClosest(minerals)));
+            }
+
+            client.SendCommands(commands);
         }
     }
 }

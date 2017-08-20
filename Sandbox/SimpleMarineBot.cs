@@ -15,7 +15,7 @@ namespace Sandbox
 
             // Simple strategy: fire at most damaged enemy in range, or closest if a tie
             // If there's no target, move toward the center of friendly units.
-            foreach (var unit in gameState.Observation.RawData.Units)
+            foreach (var unit in gameState.Units)
             {
                 if (unit.Alliance != Alliance.Self)
                 {
@@ -43,7 +43,7 @@ namespace Sandbox
             var y = 0f;
             var count = 0;
 
-            foreach (var unit in gameState.Observation.RawData.Units)
+            foreach (var unit in gameState.Units)
             {
                 if (unit.Alliance == Alliance.Self)
                 {
@@ -55,17 +55,7 @@ namespace Sandbox
 
             return new Point { X = x / count, Y = y / count };
         }
-
-        private static float DistanceBetween(Unit unit, Unit otherUnit)
-        {
-            var x = unit.Pos.X - otherUnit.Pos.X;
-            var y = unit.Pos.Y - otherUnit.Pos.Y;
-
-            var centerToCenter = Math.Sqrt(x * x + y * y);
-
-            return (float)(centerToCenter - unit.Radius - otherUnit.Radius);
-        }
-
+        
         private static Unit GetTarget(Unit unit, GameState gameState)
         {
             // Only valid for units with exactly one weapon
@@ -73,16 +63,16 @@ namespace Sandbox
 
             Unit target = null;
 
-            foreach (var otherUnit in gameState.Observation.RawData.Units)
+            foreach (var otherUnit in gameState.Units)
             {
                 if (otherUnit.Alliance == Alliance.Enemy)
                 {
-                    var distance = DistanceBetween(unit, otherUnit);
+                    var distance = unit.GetDistance(otherUnit);
                     if (distance < range)
                     {
                         if (target == null ||
                             otherUnit.Health < target.Health ||
-                            (otherUnit.Health == target.Health && distance < DistanceBetween(unit, target)))
+                            (otherUnit.Health == target.Health && distance < unit.GetDistance(target)))
                         {
                             target = otherUnit;
                         }

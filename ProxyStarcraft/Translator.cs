@@ -35,17 +35,17 @@ namespace ProxyStarcraft
         private uint probeHarvest;
         private uint droneHarvest;
 
-        public Translator(GameState gameState)
+        public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes)
         {
             // Somewhat-amusing trick: although there are tons of non-used abilities,
             // you can quickly narrow it down to ones that actually appear in-game
             // by only using the ones with hotkeys. Every button on the screen has a hotkey.
-            var hotkeyedAbilities = gameState.Abilities.Values.Where(ability => !string.IsNullOrEmpty(ability.Hotkey)).ToList();
+            var hotkeyedAbilities = abilities.Values.Where(ability => !string.IsNullOrEmpty(ability.Hotkey)).ToList();
 
             Move = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Move")).AbilityId;
             Attack = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Attack Attack")).AbilityId;
 
-            var abilities = hotkeyedAbilities
+            var buildAndTrainAbilities = hotkeyedAbilities
                 .Where(ability => ability.FriendlyName.Contains("Build") || ability.FriendlyName.Contains("Train"));
 
             scvHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather SCV")).AbilityId;
@@ -55,7 +55,7 @@ namespace ProxyStarcraft
 
             var abilitiesByName = new Dictionary<string, AbilityData>();
             
-            foreach (var ability in abilities)
+            foreach (var ability in buildAndTrainAbilities)
             {
                 abilitiesByName.Add(ability.FriendlyName, ability);
             }
@@ -171,7 +171,7 @@ namespace ProxyStarcraft
                 { ZergBuilding.UltraliskCavern, abilitiesByName["Build UltraliskCavern"].AbilityId }
             };
 
-            var unitTypesByName = gameState.UnitTypes.Values.Where(unitType => !string.IsNullOrEmpty(unitType.Name)).ToDictionary(unitType => unitType.Name);
+            var unitTypesByName = unitTypes.Values.Where(unitType => !string.IsNullOrEmpty(unitType.Name)).ToDictionary(unitType => unitType.Name);
 
             terranUnitTypesById = new Dictionary<uint, TerranUnit>();
 
@@ -388,8 +388,40 @@ namespace ProxyStarcraft
             throw new ArgumentException("Attempted to get harvest ability for unit other than SCV, MULE, Probe, or Drone.", "unit");
         }
 
+        public bool IsHarvester(Unit unit)
+        {
+            if (terranUnitTypesById.ContainsKey(unit.UnitType))
+            {
+                if (terranUnitTypesById[unit.UnitType] == TerranUnit.SCV)
+                {
+                    return true;
+                }
+
+                if (terranUnitTypesById[unit.UnitType] == TerranUnit.MULE)
+                {
+                    return true;
+                }
+            }
+
+            if (zergUnitTypesById.ContainsKey(unit.UnitType) && zergUnitTypesById[unit.UnitType] == ZergUnit.Drone)
+            {
+                return true;
+            }
+
+            if (protossUnitTypesById.ContainsKey(unit.UnitType) && protossUnitTypesById[unit.UnitType] == ProtossUnit.Probe)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public uint Move { get; private set; }
 
         public uint Attack { get; private set; }
+
+        public uint MineralDeposit { get; private set; }
+
+        public uint VespeneGeyser { get; private set; }
     }
 }
