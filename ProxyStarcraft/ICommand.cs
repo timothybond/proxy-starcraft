@@ -2,7 +2,7 @@
 
 namespace ProxyStarcraft
 {
-    public interface IOrder
+    public interface ICommand
     {
         Unit Unit { get; }
     }

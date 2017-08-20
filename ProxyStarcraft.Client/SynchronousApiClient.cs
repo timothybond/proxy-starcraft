@@ -73,48 +73,48 @@ namespace ProxyStarcraft.Client
             return response.Query.Abilities[0].Abilities.ToList();
         }
 
-        public void SendOrders(IEnumerable<IOrder> orders)
+        public void SendCommands(IEnumerable<ICommand> commands)
         {
             var actionRequest = new Request { Action = new RequestAction() };
 
-            foreach (var order in orders)
+            foreach (var command in commands)
             {
-                actionRequest.Action.Actions.Add(buildAction(order));
+                actionRequest.Action.Actions.Add(buildAction(command));
             }
 
             // TODO: Check response for errors
             var actionResponse = Call(actionRequest);
         }
 
-        private Proto.Action buildAction(IOrder order)
+        private Proto.Action buildAction(ICommand command)
         {
             ActionRawUnitCommand unitCommand;
 
-            switch (order)
+            switch (command)
             {
-                case MoveOrder moveOrder:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = Move, TargetWorldSpacePos = new Point2D { X = moveOrder.X, Y = moveOrder.Y } };
+                case MoveCommand moveCommand:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = Move, TargetWorldSpacePos = new Point2D { X = moveCommand.X, Y = moveCommand.Y } };
                     break;
-                case AttackOrder attackOrder:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetUnitTag = attackOrder.Target.Tag };
+                case AttackCommand attackCommand:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetUnitTag = attackCommand.Target.Tag };
                     break;
-                case BuildOrder buildOrder:
-                    var buildAbilityId = translator.GetAbilityId(buildOrder);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = buildOrder.X, Y = buildOrder.Y } };
+                case BuildCommand buildCommand:
+                    var buildAbilityId = translator.GetAbilityId(buildCommand);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = buildCommand.X, Y = buildCommand.Y } };
                     break;
-                case TrainOrder trainOrder:
-                    var trainAbilityId = translator.GetAbilityId(trainOrder);
+                case TrainCommand trainCommand:
+                    var trainAbilityId = translator.GetAbilityId(trainCommand);
                     unitCommand = new ActionRawUnitCommand { AbilityId = (int)trainAbilityId };
                     break;
-                case HarvestOrder harvestOrder:
-                    var harvestAbilityId = translator.GetHarvestAbility(harvestOrder.Unit);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)harvestAbilityId, TargetUnitTag = harvestOrder.Target.Tag };
+                case HarvestCommand harvestCommand:
+                    var harvestAbilityId = translator.GetHarvestAbility(harvestCommand.Unit);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)harvestAbilityId, TargetUnitTag = harvestCommand.Target.Tag };
                     break;
                 default:
                     throw new NotImplementedException();
             }
             
-            unitCommand.UnitTags.Add(order.Unit.Tag);
+            unitCommand.UnitTags.Add(command.Unit.Tag);
             return new Proto.Action { ActionRaw = new ActionRaw { UnitCommand = unitCommand } };
         }
         

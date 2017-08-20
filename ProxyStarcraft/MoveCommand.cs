@@ -2,9 +2,9 @@
 
 namespace ProxyStarcraft
 {
-    public class MoveOrder : IOrder
+    public class MoveCommand : ICommand
     {
-        public MoveOrder(Unit unit, float x, float y)
+        public MoveCommand(Unit unit, float x, float y)
         {
             Unit = unit;
             X = x;

@@ -8,9 +8,9 @@ namespace Sandbox
 {
     public class SimpleMarineBot : IBot
     {
-        public IReadOnlyList<IOrder> Act(GameState gameState)
+        public IReadOnlyList<ICommand> Act(GameState gameState)
         {
-            var orders = new List<IOrder>();
+            var commands = new List<ICommand>();
             var center = GetCenterOfMass(gameState);
 
             // Simple strategy: fire at most damaged enemy in range, or closest if a tie
@@ -26,15 +26,15 @@ namespace Sandbox
 
                 if (target == null)
                 {
-                    orders.Add(new MoveOrder(unit, center.X, center.Y));
+                    commands.Add(new MoveCommand(unit, center.X, center.Y));
                 }
                 else
                 {
-                    orders.Add(new AttackOrder(unit, target));
+                    commands.Add(new AttackCommand(unit, target));
                 }
             }
 
-            return orders;
+            return commands;
         }
 
         private static Point GetCenterOfMass(GameState gameState)

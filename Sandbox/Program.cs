@@ -56,8 +56,8 @@ namespace Sandbox
                 }
                 else
                 {
-                    var orders = bot.Act(gameState);
-                    client.SendOrders(orders);
+                    var commands = bot.Act(gameState);
+                    client.SendCommands(commands);
                     client.Step();
                     gameState = client.GetGameState();
                 }
@@ -106,7 +106,7 @@ namespace Sandbox
 
             gameState = client.GetGameState();
 
-            client.SendOrders(new[] { new BuildOrder(gameState.Observation.RawData.Units[0], TerranBuilding.SupplyDepot, 15, 15) });
+            client.SendCommands(new[] { new BuildCommand(gameState.Observation.RawData.Units[0], TerranBuilding.SupplyDepot, 15, 15) });
 
             while (true)
             {

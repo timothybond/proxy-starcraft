@@ -320,44 +320,44 @@ namespace ProxyStarcraft
             zergBuildingTypesById.Add(unitTypesByName["CreepTumor"].UnitId, ZergBuilding.CreepTumor);
         }
 
-        public uint GetAbilityId(TrainOrder trainOrder)
+        public uint GetAbilityId(TrainCommand trainCommand)
         {
-            if (trainOrder.TerranUnit != TerranUnit.Unspecified)
+            if (trainCommand.TerranUnit != TerranUnit.Unspecified)
             {
-                return createTerranUnitActions[trainOrder.TerranUnit];
+                return createTerranUnitActions[trainCommand.TerranUnit];
             }
 
-            if (trainOrder.ProtossUnit != ProtossUnit.Unspecified)
+            if (trainCommand.ProtossUnit != ProtossUnit.Unspecified)
             {
-                return createProtossUnitActions[trainOrder.ProtossUnit];
+                return createProtossUnitActions[trainCommand.ProtossUnit];
             }
 
-            if (trainOrder.ZergUnit != ZergUnit.Unspecified)
+            if (trainCommand.ZergUnit != ZergUnit.Unspecified)
             {
-                return createZergUnitActions[trainOrder.ZergUnit];
+                return createZergUnitActions[trainCommand.ZergUnit];
             }
 
-            throw new ArgumentException("Received a training order with no unit specified.");
+            throw new ArgumentException("Received a training command with no unit specified.");
         }
 
-        public uint GetAbilityId(BuildOrder buildOrder)
+        public uint GetAbilityId(BuildCommand buildCommand)
         {
-            if (buildOrder.TerranBuilding != TerranBuilding.Unspecified)
+            if (buildCommand.TerranBuilding != TerranBuilding.Unspecified)
             {
-                return buildTerranBuildingActions[buildOrder.TerranBuilding];
+                return buildTerranBuildingActions[buildCommand.TerranBuilding];
             }
 
-            if (buildOrder.ProtossBuilding != ProtossBuilding.Unspecified)
+            if (buildCommand.ProtossBuilding != ProtossBuilding.Unspecified)
             {
-                return buildProtossBuildingActions[buildOrder.ProtossBuilding];
+                return buildProtossBuildingActions[buildCommand.ProtossBuilding];
             }
 
-            if (buildOrder.ZergBuilding != ZergBuilding.Unspecified)
+            if (buildCommand.ZergBuilding != ZergBuilding.Unspecified)
             {
-                return buildZergBuildingActions[buildOrder.ZergBuilding];
+                return buildZergBuildingActions[buildCommand.ZergBuilding];
             }
 
-            throw new ArgumentException("Received a build order with no building specified.");
+            throw new ArgumentException("Received a build command with no building specified.");
         }
 
         public uint GetHarvestAbility(Unit unit)

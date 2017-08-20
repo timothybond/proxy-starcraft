@@ -3,38 +3,38 @@ using System;
 
 namespace ProxyStarcraft
 {
-    public class TrainOrder : IOrder
+    public class TrainCommand : ICommand
     {
-        private TrainOrder(Unit builder)
+        private TrainCommand(Unit builder)
         {
             this.Unit = builder;
         }
 
-        public TrainOrder(Unit builder, TerranUnit unit) : this(builder)
+        public TrainCommand(Unit builder, TerranUnit unit) : this(builder)
         {
             if (unit == TerranUnit.Unspecified)
             {
-                throw new ArgumentException("Cannot create a train order for 'Unspecified'.", "unit");
+                throw new ArgumentException("Cannot create a train command for 'Unspecified'.", "unit");
             }
 
             this.TerranUnit = unit;
         }
 
-        public TrainOrder(Unit builder, ProtossUnit unit) : this(builder)
+        public TrainCommand(Unit builder, ProtossUnit unit) : this(builder)
         {
             if (unit == ProtossUnit.Unspecified)
             {
-                throw new ArgumentException("Cannot create a train order for 'Unspecified'.", "unit");
+                throw new ArgumentException("Cannot create a train command for 'Unspecified'.", "unit");
             }
 
             this.ProtossUnit = unit;
         }
 
-        public TrainOrder(Unit builder, ZergUnit unit) : this(builder)
+        public TrainCommand(Unit builder, ZergUnit unit) : this(builder)
         {
             if (unit == ZergUnit.Unspecified)
             {
-                throw new ArgumentException("Cannot create a train order for 'Unspecified'.", "unit");
+                throw new ArgumentException("Cannot create a train command for 'Unspecified'.", "unit");
             }
 
             this.ZergUnit = unit;

@@ -4,6 +4,6 @@ namespace ProxyStarcraft
 {
     public interface IBot
     {
-        IReadOnlyList<IOrder> Act(GameState gameState);
+        IReadOnlyList<ICommand> Act(GameState gameState);
     }
 }

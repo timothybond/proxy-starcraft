@@ -2,12 +2,12 @@
 
 namespace ProxyStarcraft
 {
-    public class AttackOrder : IOrder
+    public class HarvestCommand : ICommand
     {
-        public AttackOrder(Unit unit, Unit target)
+        public HarvestCommand(Unit unit, Unit target)
         {
-            Unit = unit;
-            Target = target;
+            this.Unit = unit;
+            this.Target = target;
         }
 
         public Unit Unit { get; private set; }
