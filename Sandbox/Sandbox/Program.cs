@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 
+using ProxyStarcraft.Client;
 using SC2APIProtocol;
 
 namespace Sandbox

@@ -5,7 +5,7 @@ using System.Threading;
 using SC2APIProtocol;
 using WebSocket4Net;
 
-namespace Sandbox
+namespace ProxyStarcraft.Client
 {
     /// <summary>
     /// Code to simplify dealing with the API by making it appear synchronous.
