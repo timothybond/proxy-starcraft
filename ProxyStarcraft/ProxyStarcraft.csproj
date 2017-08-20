@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2746E56C-9A9E-4E15-B52F-381ED738B227}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Sandbox</RootNamespace>
-    <AssemblyName>Sandbox</AssemblyName>
+    <ProjectGuid>{1A82EE8C-0572-4267-81BE-C4B95CFCF546}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProxyStarcraft</RootNamespace>
+    <AssemblyName>ProxyStarcraft</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -44,27 +41,27 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebSocket4Net.0.14.1\lib\net45\WebSocket4Net.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proto\Common.cs" />
+    <Compile Include="Proto\Data.cs" />
+    <Compile Include="Proto\Debug.cs" />
+    <Compile Include="Proto\Error.cs" />
+    <Compile Include="Proto\Query.cs" />
+    <Compile Include="Proto\Raw.cs" />
+    <Compile Include="Proto\Sc2Api.cs" />
+    <Compile Include="Proto\Score.cs" />
+    <Compile Include="Proto\Spatial.cs" />
+    <Compile Include="Proto\Ui.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Proto\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProxyStarcraft.Client\ProxyStarcraft.Client.csproj">
-      <Project>{7f17749d-eae2-407a-b8bb-81dd0012715e}</Project>
-      <Name>ProxyStarcraft.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProxyStarcraft\ProxyStarcraft.csproj">
-      <Project>{1a82ee8c-0572-4267-81be-c4b95cfcf546}</Project>
-      <Name>ProxyStarcraft</Name>
-    </ProjectReference>
+    <Content Include="Proto\ProxyStarcraft.Proto.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -53,9 +53,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProxyStarcraft.Proto\ProxyStarcraft.Proto.csproj">
-      <Project>{f70fc361-6195-4a96-bddc-50ec0b6f928a}</Project>
-      <Name>ProxyStarcraft.Proto</Name>
+    <ProjectReference Include="..\ProxyStarcraft\ProxyStarcraft.csproj">
+      <Project>{1a82ee8c-0572-4267-81be-c4b95cfcf546}</Project>
+      <Name>ProxyStarcraft</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
