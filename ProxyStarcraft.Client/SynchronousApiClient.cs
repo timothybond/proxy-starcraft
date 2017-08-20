@@ -17,6 +17,10 @@ namespace ProxyStarcraft.Client
     /// </summary>
     public class SynchronousApiClient : IDisposable
     {
+        // Unique action IDs. May change. Should get from Abilities dictionary instead.
+        private const int Move = 16;
+        private const int Attack = 23;
+
         private static object socketLock = new object();
 
         private WebSocket webSocket;
@@ -30,6 +34,9 @@ namespace ProxyStarcraft.Client
         // Note: these only potentially changes at the beginning of a game, so we will avoid calling for them repeatedly.
         private ResponseGameInfo gameInfo;
         private Dictionary<uint, UnitTypeData> unitTypes;
+        private Dictionary<uint, AbilityData> abilities;
+
+        private Translator translator;
 
         public SynchronousApiClient(String address)
         {
@@ -45,9 +52,70 @@ namespace ProxyStarcraft.Client
         {
             gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }).GameInfo;
             unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Data.Units.ToDictionary(unitType => unitType.UnitId);
-            var response = Call(new Request { Observation = new RequestObservation() });
+            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }).Data.Abilities.ToDictionary(ability => ability.AbilityId);
 
-            return new GameState(gameInfo, response.Observation.Observation, unitTypes);
+            var response = Call(new Request { Observation = new RequestObservation() });
+            var gameState = new GameState(gameInfo, response.Observation.Observation, unitTypes, abilities);
+
+            translator = translator ?? new Translator(gameState);
+
+            return gameState;
+        }
+
+        public List<AvailableAbility> GetAbilities(ulong unitTag)
+        {
+            var queryRequest = new Request { Query = new RequestQuery { } };
+
+            queryRequest.Query.Abilities.Add(new RequestQueryAvailableAbilities { UnitTag = unitTag });
+
+            var response = Call(queryRequest);
+
+            return response.Query.Abilities[0].Abilities.ToList();
+        }
+
+        public void SendOrders(IEnumerable<IOrder> orders)
+        {
+            var actionRequest = new Request { Action = new RequestAction() };
+
+            foreach (var order in orders)
+            {
+                actionRequest.Action.Actions.Add(buildAction(order));
+            }
+
+            // TODO: Check response for errors
+            var actionResponse = Call(actionRequest);
+        }
+
+        private Proto.Action buildAction(IOrder order)
+        {
+            ActionRawUnitCommand unitCommand;
+
+            switch (order)
+            {
+                case MoveOrder moveOrder:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = Move, TargetWorldSpacePos = new Point2D { X = moveOrder.X, Y = moveOrder.Y } };
+                    break;
+                case AttackOrder attackOrder:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetUnitTag = attackOrder.Target.Tag };
+                    break;
+                case BuildOrder buildOrder:
+                    var buildAbilityId = translator.GetAbilityId(buildOrder);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = buildOrder.X, Y = buildOrder.Y } };
+                    break;
+                case TrainOrder trainOrder:
+                    var trainAbilityId = translator.GetAbilityId(trainOrder);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)trainAbilityId };
+                    break;
+                case HarvestOrder harvestOrder:
+                    var harvestAbilityId = translator.GetHarvestAbility(harvestOrder.Unit);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)harvestAbilityId, TargetUnitTag = harvestOrder.Target.Tag };
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            
+            unitCommand.UnitTags.Add(order.Unit.Tag);
+            return new Proto.Action { ActionRaw = new ActionRaw { UnitCommand = unitCommand } };
         }
         
         public void Step()
@@ -65,6 +133,8 @@ namespace ProxyStarcraft.Client
             Call(new Request { LeaveGame = new RequestLeaveGame() });
             gameInfo = null;
             unitTypes = null;
+            abilities = null;
+            translator = null;
         }
 
         public bool InitiateSinglePlayerGame(string map, Race race)
@@ -170,21 +240,26 @@ namespace ProxyStarcraft.Client
         private void OnSocketOpened(object sender, EventArgs e)
         {
             connected = true;
+            connectionRetries = 5;
         }
 
         private void OnSocketError(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
         {
             lock(socketLock)
             {
-                if (!connected && connectionRetries > 0)
+                if (connectionRetries > 0)
                 {
+                    if (!connected)
+                    {
+                        Thread.Sleep(5000);
+                    }
+
                     connectionRetries -= 1;
-                    Thread.Sleep(5000);
                     webSocket.Open();
                     return;
                 }
             }
-
+            
             throw new Exception("Unexpected socket error.", e.Exception);
         }
         
