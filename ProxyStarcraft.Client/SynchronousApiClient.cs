@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 
 using ProxyStarcraft.Proto;
 using WebSocket4Net;
+using System.Linq;
 
 namespace ProxyStarcraft.Client
 {
@@ -25,6 +27,10 @@ namespace ProxyStarcraft.Client
 
         private Response socketResponse;
 
+        // Note: these only potentially changes at the beginning of a game, so we will avoid calling for them repeatedly.
+        private ResponseGameInfo gameInfo;
+        private Dictionary<uint, UnitTypeData> unitTypes;
+
         public SynchronousApiClient(String address)
         {
             webSocket = new WebSocket(address);
@@ -35,18 +41,15 @@ namespace ProxyStarcraft.Client
             webSocket.Error += OnSocketError;
         }
 
-        public Observation GetRawObservation()
+        public GameState GetGameState()
         {
+            gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }).GameInfo;
+            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Data.Units.ToDictionary(unitType => unitType.UnitId);
             var response = Call(new Request { Observation = new RequestObservation() });
-            return response.Observation.Observation;
-        }
 
-        public ResponseGameInfo GetGameInfo()
-        {
-            var response = Call(new Request { GameInfo = new RequestGameInfo() });
-            return response.GameInfo;
+            return new GameState(gameInfo, response.Observation.Observation, unitTypes);
         }
-
+        
         public void Step()
         {
             Step(1);
@@ -60,6 +63,8 @@ namespace ProxyStarcraft.Client
         public void LeaveGame()
         {
             Call(new Request { LeaveGame = new RequestLeaveGame() });
+            gameInfo = null;
+            unitTypes = null;
         }
 
         public bool InitiateSinglePlayerGame(string map, Race race)
