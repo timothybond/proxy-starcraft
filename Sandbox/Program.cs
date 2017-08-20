@@ -29,18 +29,6 @@ namespace Sandbox
 
                     var gameState = client.GetGameState();
 
-                    var unitTypes = gameState.Observation.RawData.Units.Select(unit => unit.UnitType).Distinct();
-                    
-                    var unitTypeDataResponse = client.Call(new Request { Data = new RequestData { UnitTypeId = true } });
-
-                    
-
-                    var abilityDataResponse = client.Call(new Request { Data = new RequestData { AbilityId = true } });
-
-                    var buffDataResponse = client.Call(new Request { Data = new RequestData { BuffId = true } });
-
-                    var upgradeDataResponse = client.Call(new Request { Data = new RequestData { UpgradeId = true } });
-
                     while (true)
                     {
                         if (exit)
