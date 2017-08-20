@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace SC2APIProtocol {
+namespace ProxyStarcraft.Proto {
 
   /// <summary>Holder for reflection information generated from debug.proto</summary>
   public static partial class DebugReflection {
@@ -73,23 +73,23 @@ namespace SC2APIProtocol {
             "b3duEAkSDQoJdGVjaF90cmVlEAoSCwoHdXBncmFkZRALEg4KCmZhc3RfYnVp",
             "bGQQDGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::SC2APIProtocol.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.DebugGameState), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugCommand), global::SC2APIProtocol.DebugCommand.Parser, new[]{ "Draw", "GameState", "CreateUnit", "KillUnit", "TestProcess", "Score", "EndGame", "UnitValue", "Chat" }, new[]{ "Command" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugDraw), global::SC2APIProtocol.DebugDraw.Parser, new[]{ "Text", "Lines", "Boxes", "Spheres" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Line), global::SC2APIProtocol.Line.Parser, new[]{ "P0", "P1" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Color), global::SC2APIProtocol.Color.Parser, new[]{ "R", "G", "B" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugText), global::SC2APIProtocol.DebugText.Parser, new[]{ "Color", "Text", "VirtualPos", "WorldPos" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugLine), global::SC2APIProtocol.DebugLine.Parser, new[]{ "Color", "Line" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugBox), global::SC2APIProtocol.DebugBox.Parser, new[]{ "Color", "Min", "Max" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugSphere), global::SC2APIProtocol.DebugSphere.Parser, new[]{ "Color", "P", "R" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugCreateUnit), global::SC2APIProtocol.DebugCreateUnit.Parser, new[]{ "UnitType", "Owner", "Pos", "Quantity" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugKillUnit), global::SC2APIProtocol.DebugKillUnit.Parser, new[]{ "Tag" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugTestProcess), global::SC2APIProtocol.DebugTestProcess.Parser, new[]{ "Test", "DelayMs" }, null, new[]{ typeof(global::SC2APIProtocol.DebugTestProcess.Types.Test) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugSetScore), global::SC2APIProtocol.DebugSetScore.Parser, new[]{ "Score" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugEndGame), global::SC2APIProtocol.DebugEndGame.Parser, new[]{ "EndResult" }, null, new[]{ typeof(global::SC2APIProtocol.DebugEndGame.Types.EndResult) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugSetUnitValue), global::SC2APIProtocol.DebugSetUnitValue.Parser, new[]{ "UnitValue", "Value", "UnitTag" }, null, new[]{ typeof(global::SC2APIProtocol.DebugSetUnitValue.Types.UnitValue) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DebugChat), global::SC2APIProtocol.DebugChat.Parser, new[]{ "Message" }, null, null, null)
+          new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.DebugGameState), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugCommand), global::ProxyStarcraft.Proto.DebugCommand.Parser, new[]{ "Draw", "GameState", "CreateUnit", "KillUnit", "TestProcess", "Score", "EndGame", "UnitValue", "Chat" }, new[]{ "Command" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugDraw), global::ProxyStarcraft.Proto.DebugDraw.Parser, new[]{ "Text", "Lines", "Boxes", "Spheres" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Line), global::ProxyStarcraft.Proto.Line.Parser, new[]{ "P0", "P1" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Color), global::ProxyStarcraft.Proto.Color.Parser, new[]{ "R", "G", "B" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugText), global::ProxyStarcraft.Proto.DebugText.Parser, new[]{ "Color", "Text", "VirtualPos", "WorldPos" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugLine), global::ProxyStarcraft.Proto.DebugLine.Parser, new[]{ "Color", "Line" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugBox), global::ProxyStarcraft.Proto.DebugBox.Parser, new[]{ "Color", "Min", "Max" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugSphere), global::ProxyStarcraft.Proto.DebugSphere.Parser, new[]{ "Color", "P", "R" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugCreateUnit), global::ProxyStarcraft.Proto.DebugCreateUnit.Parser, new[]{ "UnitType", "Owner", "Pos", "Quantity" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugKillUnit), global::ProxyStarcraft.Proto.DebugKillUnit.Parser, new[]{ "Tag" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugTestProcess), global::ProxyStarcraft.Proto.DebugTestProcess.Parser, new[]{ "Test", "DelayMs" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.DebugTestProcess.Types.Test) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugSetScore), global::ProxyStarcraft.Proto.DebugSetScore.Parser, new[]{ "Score" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugEndGame), global::ProxyStarcraft.Proto.DebugEndGame.Parser, new[]{ "EndResult" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.DebugEndGame.Types.EndResult) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugSetUnitValue), global::ProxyStarcraft.Proto.DebugSetUnitValue.Parser, new[]{ "UnitValue", "Value", "UnitTag" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.DebugSetUnitValue.Types.UnitValue) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DebugChat), global::ProxyStarcraft.Proto.DebugChat.Parser, new[]{ "Message" }, null, null, null)
           }));
     }
     #endregion
@@ -125,7 +125,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -182,8 +182,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "draw" field.</summary>
     public const int DrawFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugDraw Draw {
-      get { return commandCase_ == CommandOneofCase.Draw ? (global::SC2APIProtocol.DebugDraw) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugDraw Draw {
+      get { return commandCase_ == CommandOneofCase.Draw ? (global::ProxyStarcraft.Proto.DebugDraw) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.Draw;
@@ -193,8 +193,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "game_state" field.</summary>
     public const int GameStateFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugGameState GameState {
-      get { return commandCase_ == CommandOneofCase.GameState ? (global::SC2APIProtocol.DebugGameState) command_ : 0; }
+    public global::ProxyStarcraft.Proto.DebugGameState GameState {
+      get { return commandCase_ == CommandOneofCase.GameState ? (global::ProxyStarcraft.Proto.DebugGameState) command_ : 0; }
       set {
         command_ = value;
         commandCase_ = CommandOneofCase.GameState;
@@ -204,8 +204,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "create_unit" field.</summary>
     public const int CreateUnitFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugCreateUnit CreateUnit {
-      get { return commandCase_ == CommandOneofCase.CreateUnit ? (global::SC2APIProtocol.DebugCreateUnit) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugCreateUnit CreateUnit {
+      get { return commandCase_ == CommandOneofCase.CreateUnit ? (global::ProxyStarcraft.Proto.DebugCreateUnit) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.CreateUnit;
@@ -215,8 +215,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "kill_unit" field.</summary>
     public const int KillUnitFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugKillUnit KillUnit {
-      get { return commandCase_ == CommandOneofCase.KillUnit ? (global::SC2APIProtocol.DebugKillUnit) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugKillUnit KillUnit {
+      get { return commandCase_ == CommandOneofCase.KillUnit ? (global::ProxyStarcraft.Proto.DebugKillUnit) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.KillUnit;
@@ -226,8 +226,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "test_process" field.</summary>
     public const int TestProcessFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugTestProcess TestProcess {
-      get { return commandCase_ == CommandOneofCase.TestProcess ? (global::SC2APIProtocol.DebugTestProcess) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugTestProcess TestProcess {
+      get { return commandCase_ == CommandOneofCase.TestProcess ? (global::ProxyStarcraft.Proto.DebugTestProcess) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.TestProcess;
@@ -240,8 +240,8 @@ namespace SC2APIProtocol {
     /// Useful only for single-player "curriculum" maps.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugSetScore Score {
-      get { return commandCase_ == CommandOneofCase.Score ? (global::SC2APIProtocol.DebugSetScore) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugSetScore Score {
+      get { return commandCase_ == CommandOneofCase.Score ? (global::ProxyStarcraft.Proto.DebugSetScore) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.Score;
@@ -251,8 +251,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "end_game" field.</summary>
     public const int EndGameFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugEndGame EndGame {
-      get { return commandCase_ == CommandOneofCase.EndGame ? (global::SC2APIProtocol.DebugEndGame) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugEndGame EndGame {
+      get { return commandCase_ == CommandOneofCase.EndGame ? (global::ProxyStarcraft.Proto.DebugEndGame) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.EndGame;
@@ -262,8 +262,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "unit_value" field.</summary>
     public const int UnitValueFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugSetUnitValue UnitValue {
-      get { return commandCase_ == CommandOneofCase.UnitValue ? (global::SC2APIProtocol.DebugSetUnitValue) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugSetUnitValue UnitValue {
+      get { return commandCase_ == CommandOneofCase.UnitValue ? (global::ProxyStarcraft.Proto.DebugSetUnitValue) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.UnitValue;
@@ -276,8 +276,8 @@ namespace SC2APIProtocol {
     /// TODO.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugChat Chat {
-      get { return commandCase_ == CommandOneofCase.Chat ? (global::SC2APIProtocol.DebugChat) command_ : null; }
+    public global::ProxyStarcraft.Proto.DebugChat Chat {
+      get { return commandCase_ == CommandOneofCase.Chat ? (global::ProxyStarcraft.Proto.DebugChat) command_ : null; }
       set {
         command_ = value;
         commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.Chat;
@@ -476,7 +476,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 10: {
-            global::SC2APIProtocol.DebugDraw subBuilder = new global::SC2APIProtocol.DebugDraw();
+            global::ProxyStarcraft.Proto.DebugDraw subBuilder = new global::ProxyStarcraft.Proto.DebugDraw();
             if (commandCase_ == CommandOneofCase.Draw) {
               subBuilder.MergeFrom(Draw);
             }
@@ -490,7 +490,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 26: {
-            global::SC2APIProtocol.DebugCreateUnit subBuilder = new global::SC2APIProtocol.DebugCreateUnit();
+            global::ProxyStarcraft.Proto.DebugCreateUnit subBuilder = new global::ProxyStarcraft.Proto.DebugCreateUnit();
             if (commandCase_ == CommandOneofCase.CreateUnit) {
               subBuilder.MergeFrom(CreateUnit);
             }
@@ -499,7 +499,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 34: {
-            global::SC2APIProtocol.DebugKillUnit subBuilder = new global::SC2APIProtocol.DebugKillUnit();
+            global::ProxyStarcraft.Proto.DebugKillUnit subBuilder = new global::ProxyStarcraft.Proto.DebugKillUnit();
             if (commandCase_ == CommandOneofCase.KillUnit) {
               subBuilder.MergeFrom(KillUnit);
             }
@@ -508,7 +508,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 42: {
-            global::SC2APIProtocol.DebugTestProcess subBuilder = new global::SC2APIProtocol.DebugTestProcess();
+            global::ProxyStarcraft.Proto.DebugTestProcess subBuilder = new global::ProxyStarcraft.Proto.DebugTestProcess();
             if (commandCase_ == CommandOneofCase.TestProcess) {
               subBuilder.MergeFrom(TestProcess);
             }
@@ -517,7 +517,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 50: {
-            global::SC2APIProtocol.DebugSetScore subBuilder = new global::SC2APIProtocol.DebugSetScore();
+            global::ProxyStarcraft.Proto.DebugSetScore subBuilder = new global::ProxyStarcraft.Proto.DebugSetScore();
             if (commandCase_ == CommandOneofCase.Score) {
               subBuilder.MergeFrom(Score);
             }
@@ -526,7 +526,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 58: {
-            global::SC2APIProtocol.DebugEndGame subBuilder = new global::SC2APIProtocol.DebugEndGame();
+            global::ProxyStarcraft.Proto.DebugEndGame subBuilder = new global::ProxyStarcraft.Proto.DebugEndGame();
             if (commandCase_ == CommandOneofCase.EndGame) {
               subBuilder.MergeFrom(EndGame);
             }
@@ -535,7 +535,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 66: {
-            global::SC2APIProtocol.DebugSetUnitValue subBuilder = new global::SC2APIProtocol.DebugSetUnitValue();
+            global::ProxyStarcraft.Proto.DebugSetUnitValue subBuilder = new global::ProxyStarcraft.Proto.DebugSetUnitValue();
             if (commandCase_ == CommandOneofCase.UnitValue) {
               subBuilder.MergeFrom(UnitValue);
             }
@@ -544,7 +544,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 74: {
-            global::SC2APIProtocol.DebugChat subBuilder = new global::SC2APIProtocol.DebugChat();
+            global::ProxyStarcraft.Proto.DebugChat subBuilder = new global::ProxyStarcraft.Proto.DebugChat();
             if (commandCase_ == CommandOneofCase.Chat) {
               subBuilder.MergeFrom(Chat);
             }
@@ -565,7 +565,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -595,41 +595,41 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "text" field.</summary>
     public const int TextFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.DebugText> _repeated_text_codec
-        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.DebugText.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.DebugText> text_ = new pbc::RepeatedField<global::SC2APIProtocol.DebugText>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DebugText> _repeated_text_codec
+        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.DebugText.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugText> text_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugText>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.DebugText> Text {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugText> Text {
       get { return text_; }
     }
 
     /// <summary>Field number for the "lines" field.</summary>
     public const int LinesFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.DebugLine> _repeated_lines_codec
-        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.DebugLine.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.DebugLine> lines_ = new pbc::RepeatedField<global::SC2APIProtocol.DebugLine>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DebugLine> _repeated_lines_codec
+        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.DebugLine.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugLine> lines_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugLine>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.DebugLine> Lines {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugLine> Lines {
       get { return lines_; }
     }
 
     /// <summary>Field number for the "boxes" field.</summary>
     public const int BoxesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.DebugBox> _repeated_boxes_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.DebugBox.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.DebugBox> boxes_ = new pbc::RepeatedField<global::SC2APIProtocol.DebugBox>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DebugBox> _repeated_boxes_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.DebugBox.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugBox> boxes_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugBox>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.DebugBox> Boxes {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugBox> Boxes {
       get { return boxes_; }
     }
 
     /// <summary>Field number for the "spheres" field.</summary>
     public const int SpheresFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.DebugSphere> _repeated_spheres_codec
-        = pb::FieldCodec.ForMessage(34, global::SC2APIProtocol.DebugSphere.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.DebugSphere> spheres_ = new pbc::RepeatedField<global::SC2APIProtocol.DebugSphere>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DebugSphere> _repeated_spheres_codec
+        = pb::FieldCodec.ForMessage(34, global::ProxyStarcraft.Proto.DebugSphere.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugSphere> spheres_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugSphere>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.DebugSphere> Spheres {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugSphere> Spheres {
       get { return spheres_; }
     }
 
@@ -734,7 +734,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -762,9 +762,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "p0" field.</summary>
     public const int P0FieldNumber = 1;
-    private global::SC2APIProtocol.Point p0_;
+    private global::ProxyStarcraft.Proto.Point p0_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point P0 {
+    public global::ProxyStarcraft.Proto.Point P0 {
       get { return p0_; }
       set {
         p0_ = value;
@@ -773,9 +773,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "p1" field.</summary>
     public const int P1FieldNumber = 2;
-    private global::SC2APIProtocol.Point p1_;
+    private global::ProxyStarcraft.Proto.Point p1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point P1 {
+    public global::ProxyStarcraft.Proto.Point P1 {
       get { return p1_; }
       set {
         p1_ = value;
@@ -844,13 +844,13 @@ namespace SC2APIProtocol {
       }
       if (other.p0_ != null) {
         if (p0_ == null) {
-          p0_ = new global::SC2APIProtocol.Point();
+          p0_ = new global::ProxyStarcraft.Proto.Point();
         }
         P0.MergeFrom(other.P0);
       }
       if (other.p1_ != null) {
         if (p1_ == null) {
-          p1_ = new global::SC2APIProtocol.Point();
+          p1_ = new global::ProxyStarcraft.Proto.Point();
         }
         P1.MergeFrom(other.P1);
       }
@@ -866,14 +866,14 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (p0_ == null) {
-              p0_ = new global::SC2APIProtocol.Point();
+              p0_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(p0_);
             break;
           }
           case 18: {
             if (p1_ == null) {
-              p1_ = new global::SC2APIProtocol.Point();
+              p1_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(p1_);
             break;
@@ -891,7 +891,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1067,7 +1067,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1097,9 +1097,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "color" field.</summary>
     public const int ColorFieldNumber = 1;
-    private global::SC2APIProtocol.Color color_;
+    private global::ProxyStarcraft.Proto.Color color_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Color Color {
+    public global::ProxyStarcraft.Proto.Color Color {
       get { return color_; }
       set {
         color_ = value;
@@ -1122,12 +1122,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "virtual_pos" field.</summary>
     public const int VirtualPosFieldNumber = 3;
-    private global::SC2APIProtocol.Point virtualPos_;
+    private global::ProxyStarcraft.Proto.Point virtualPos_;
     /// <summary>
     /// Virtualized position in 2D (the screen is 0..1, 0..1 for any resolution).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point VirtualPos {
+    public global::ProxyStarcraft.Proto.Point VirtualPos {
       get { return virtualPos_; }
       set {
         virtualPos_ = value;
@@ -1136,12 +1136,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "world_pos" field.</summary>
     public const int WorldPosFieldNumber = 4;
-    private global::SC2APIProtocol.Point worldPos_;
+    private global::ProxyStarcraft.Proto.Point worldPos_;
     /// <summary>
     /// Position in the world.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point WorldPos {
+    public global::ProxyStarcraft.Proto.Point WorldPos {
       get { return worldPos_; }
       set {
         worldPos_ = value;
@@ -1228,7 +1228,7 @@ namespace SC2APIProtocol {
       }
       if (other.color_ != null) {
         if (color_ == null) {
-          color_ = new global::SC2APIProtocol.Color();
+          color_ = new global::ProxyStarcraft.Proto.Color();
         }
         Color.MergeFrom(other.Color);
       }
@@ -1237,13 +1237,13 @@ namespace SC2APIProtocol {
       }
       if (other.virtualPos_ != null) {
         if (virtualPos_ == null) {
-          virtualPos_ = new global::SC2APIProtocol.Point();
+          virtualPos_ = new global::ProxyStarcraft.Proto.Point();
         }
         VirtualPos.MergeFrom(other.VirtualPos);
       }
       if (other.worldPos_ != null) {
         if (worldPos_ == null) {
-          worldPos_ = new global::SC2APIProtocol.Point();
+          worldPos_ = new global::ProxyStarcraft.Proto.Point();
         }
         WorldPos.MergeFrom(other.WorldPos);
       }
@@ -1259,7 +1259,7 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (color_ == null) {
-              color_ = new global::SC2APIProtocol.Color();
+              color_ = new global::ProxyStarcraft.Proto.Color();
             }
             input.ReadMessage(color_);
             break;
@@ -1270,14 +1270,14 @@ namespace SC2APIProtocol {
           }
           case 26: {
             if (virtualPos_ == null) {
-              virtualPos_ = new global::SC2APIProtocol.Point();
+              virtualPos_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(virtualPos_);
             break;
           }
           case 34: {
             if (worldPos_ == null) {
-              worldPos_ = new global::SC2APIProtocol.Point();
+              worldPos_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(worldPos_);
             break;
@@ -1298,7 +1298,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1326,9 +1326,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "color" field.</summary>
     public const int ColorFieldNumber = 1;
-    private global::SC2APIProtocol.Color color_;
+    private global::ProxyStarcraft.Proto.Color color_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Color Color {
+    public global::ProxyStarcraft.Proto.Color Color {
       get { return color_; }
       set {
         color_ = value;
@@ -1337,12 +1337,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "line" field.</summary>
     public const int LineFieldNumber = 2;
-    private global::SC2APIProtocol.Line line_;
+    private global::ProxyStarcraft.Proto.Line line_;
     /// <summary>
     /// World space line.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Line Line {
+    public global::ProxyStarcraft.Proto.Line Line {
       get { return line_; }
       set {
         line_ = value;
@@ -1411,13 +1411,13 @@ namespace SC2APIProtocol {
       }
       if (other.color_ != null) {
         if (color_ == null) {
-          color_ = new global::SC2APIProtocol.Color();
+          color_ = new global::ProxyStarcraft.Proto.Color();
         }
         Color.MergeFrom(other.Color);
       }
       if (other.line_ != null) {
         if (line_ == null) {
-          line_ = new global::SC2APIProtocol.Line();
+          line_ = new global::ProxyStarcraft.Proto.Line();
         }
         Line.MergeFrom(other.Line);
       }
@@ -1433,14 +1433,14 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (color_ == null) {
-              color_ = new global::SC2APIProtocol.Color();
+              color_ = new global::ProxyStarcraft.Proto.Color();
             }
             input.ReadMessage(color_);
             break;
           }
           case 18: {
             if (line_ == null) {
-              line_ = new global::SC2APIProtocol.Line();
+              line_ = new global::ProxyStarcraft.Proto.Line();
             }
             input.ReadMessage(line_);
             break;
@@ -1461,7 +1461,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1490,9 +1490,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "color" field.</summary>
     public const int ColorFieldNumber = 1;
-    private global::SC2APIProtocol.Color color_;
+    private global::ProxyStarcraft.Proto.Color color_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Color Color {
+    public global::ProxyStarcraft.Proto.Color Color {
       get { return color_; }
       set {
         color_ = value;
@@ -1501,9 +1501,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "min" field.</summary>
     public const int MinFieldNumber = 2;
-    private global::SC2APIProtocol.Point min_;
+    private global::ProxyStarcraft.Proto.Point min_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point Min {
+    public global::ProxyStarcraft.Proto.Point Min {
       get { return min_; }
       set {
         min_ = value;
@@ -1512,9 +1512,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "max" field.</summary>
     public const int MaxFieldNumber = 3;
-    private global::SC2APIProtocol.Point max_;
+    private global::ProxyStarcraft.Proto.Point max_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point Max {
+    public global::ProxyStarcraft.Proto.Point Max {
       get { return max_; }
       set {
         max_ = value;
@@ -1592,19 +1592,19 @@ namespace SC2APIProtocol {
       }
       if (other.color_ != null) {
         if (color_ == null) {
-          color_ = new global::SC2APIProtocol.Color();
+          color_ = new global::ProxyStarcraft.Proto.Color();
         }
         Color.MergeFrom(other.Color);
       }
       if (other.min_ != null) {
         if (min_ == null) {
-          min_ = new global::SC2APIProtocol.Point();
+          min_ = new global::ProxyStarcraft.Proto.Point();
         }
         Min.MergeFrom(other.Min);
       }
       if (other.max_ != null) {
         if (max_ == null) {
-          max_ = new global::SC2APIProtocol.Point();
+          max_ = new global::ProxyStarcraft.Proto.Point();
         }
         Max.MergeFrom(other.Max);
       }
@@ -1620,21 +1620,21 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (color_ == null) {
-              color_ = new global::SC2APIProtocol.Color();
+              color_ = new global::ProxyStarcraft.Proto.Color();
             }
             input.ReadMessage(color_);
             break;
           }
           case 18: {
             if (min_ == null) {
-              min_ = new global::SC2APIProtocol.Point();
+              min_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(min_);
             break;
           }
           case 26: {
             if (max_ == null) {
-              max_ = new global::SC2APIProtocol.Point();
+              max_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(max_);
             break;
@@ -1655,7 +1655,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1684,9 +1684,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "color" field.</summary>
     public const int ColorFieldNumber = 1;
-    private global::SC2APIProtocol.Color color_;
+    private global::ProxyStarcraft.Proto.Color color_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Color Color {
+    public global::ProxyStarcraft.Proto.Color Color {
       get { return color_; }
       set {
         color_ = value;
@@ -1695,9 +1695,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "p" field.</summary>
     public const int PFieldNumber = 2;
-    private global::SC2APIProtocol.Point p_;
+    private global::ProxyStarcraft.Proto.Point p_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point P {
+    public global::ProxyStarcraft.Proto.Point P {
       get { return p_; }
       set {
         p_ = value;
@@ -1786,13 +1786,13 @@ namespace SC2APIProtocol {
       }
       if (other.color_ != null) {
         if (color_ == null) {
-          color_ = new global::SC2APIProtocol.Color();
+          color_ = new global::ProxyStarcraft.Proto.Color();
         }
         Color.MergeFrom(other.Color);
       }
       if (other.p_ != null) {
         if (p_ == null) {
-          p_ = new global::SC2APIProtocol.Point();
+          p_ = new global::ProxyStarcraft.Proto.Point();
         }
         P.MergeFrom(other.P);
       }
@@ -1811,14 +1811,14 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (color_ == null) {
-              color_ = new global::SC2APIProtocol.Color();
+              color_ = new global::ProxyStarcraft.Proto.Color();
             }
             input.ReadMessage(color_);
             break;
           }
           case 18: {
             if (p_ == null) {
-              p_ = new global::SC2APIProtocol.Point();
+              p_ = new global::ProxyStarcraft.Proto.Point();
             }
             input.ReadMessage(p_);
             break;
@@ -1840,7 +1840,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[8]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1892,9 +1892,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "pos" field.</summary>
     public const int PosFieldNumber = 3;
-    private global::SC2APIProtocol.Point2D pos_;
+    private global::ProxyStarcraft.Proto.Point2D pos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Point2D Pos {
+    public global::ProxyStarcraft.Proto.Point2D Pos {
       get { return pos_; }
       set {
         pos_ = value;
@@ -1998,7 +1998,7 @@ namespace SC2APIProtocol {
       }
       if (other.pos_ != null) {
         if (pos_ == null) {
-          pos_ = new global::SC2APIProtocol.Point2D();
+          pos_ = new global::ProxyStarcraft.Proto.Point2D();
         }
         Pos.MergeFrom(other.Pos);
       }
@@ -2025,7 +2025,7 @@ namespace SC2APIProtocol {
           }
           case 26: {
             if (pos_ == null) {
-              pos_ = new global::SC2APIProtocol.Point2D();
+              pos_ = new global::ProxyStarcraft.Proto.Point2D();
             }
             input.ReadMessage(pos_);
             break;
@@ -2047,7 +2047,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[9]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2157,7 +2157,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[10]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2185,9 +2185,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "test" field.</summary>
     public const int TestFieldNumber = 1;
-    private global::SC2APIProtocol.DebugTestProcess.Types.Test test_ = 0;
+    private global::ProxyStarcraft.Proto.DebugTestProcess.Types.Test test_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugTestProcess.Types.Test Test {
+    public global::ProxyStarcraft.Proto.DebugTestProcess.Types.Test Test {
       get { return test_; }
       set {
         test_ = value;
@@ -2282,7 +2282,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            test_ = (global::SC2APIProtocol.DebugTestProcess.Types.Test) input.ReadEnum();
+            test_ = (global::ProxyStarcraft.Proto.DebugTestProcess.Types.Test) input.ReadEnum();
             break;
           }
           case 16: {
@@ -2316,7 +2316,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[11]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2433,7 +2433,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[12]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2460,9 +2460,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "end_result" field.</summary>
     public const int EndResultFieldNumber = 1;
-    private global::SC2APIProtocol.DebugEndGame.Types.EndResult endResult_ = 0;
+    private global::ProxyStarcraft.Proto.DebugEndGame.Types.EndResult endResult_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugEndGame.Types.EndResult EndResult {
+    public global::ProxyStarcraft.Proto.DebugEndGame.Types.EndResult EndResult {
       get { return endResult_; }
       set {
         endResult_ = value;
@@ -2534,7 +2534,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            endResult_ = (global::SC2APIProtocol.DebugEndGame.Types.EndResult) input.ReadEnum();
+            endResult_ = (global::ProxyStarcraft.Proto.DebugEndGame.Types.EndResult) input.ReadEnum();
             break;
           }
         }
@@ -2566,7 +2566,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[13]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2595,9 +2595,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "unit_value" field.</summary>
     public const int UnitValueFieldNumber = 1;
-    private global::SC2APIProtocol.DebugSetUnitValue.Types.UnitValue unitValue_ = 0;
+    private global::ProxyStarcraft.Proto.DebugSetUnitValue.Types.UnitValue unitValue_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.DebugSetUnitValue.Types.UnitValue UnitValue {
+    public global::ProxyStarcraft.Proto.DebugSetUnitValue.Types.UnitValue UnitValue {
       get { return unitValue_; }
       set {
         unitValue_ = value;
@@ -2715,7 +2715,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            unitValue_ = (global::SC2APIProtocol.DebugSetUnitValue.Types.UnitValue) input.ReadEnum();
+            unitValue_ = (global::ProxyStarcraft.Proto.DebugSetUnitValue.Types.UnitValue) input.ReadEnum();
             break;
           }
           case 21: {
@@ -2753,7 +2753,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DebugReflection.Descriptor.MessageTypes[14]; }
+      get { return global::ProxyStarcraft.Proto.DebugReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

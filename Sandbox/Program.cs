@@ -2,7 +2,7 @@
 using System.Linq;
 
 using ProxyStarcraft.Client;
-using SC2APIProtocol;
+using ProxyStarcraft.Proto;
 
 namespace Sandbox
 {
@@ -40,7 +40,6 @@ namespace Sandbox
                         {
                             client.Step();
                             observation = client.GetRawObservation();
-                            gameInfo = client.GetGameInfo();
                         }
 
                         if (observation.RawData.Units.All(unit => unit.Alliance == Alliance.Enemy))

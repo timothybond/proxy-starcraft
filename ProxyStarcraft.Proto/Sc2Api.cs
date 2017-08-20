@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace SC2APIProtocol {
+namespace ProxyStarcraft.Proto {
 
   /// <summary>Holder for reflection information generated from sc2api.proto</summary>
   public static partial class Sc2ApiReflection {
@@ -231,62 +231,62 @@ namespace SC2APIProtocol {
             "c3BlY2lmaWVkUmVzdWx0EAASCwoHVmljdG9yeRABEgoKBkRlZmVhdBACEgcK",
             "A1RpZRADEg0KCVVuZGVjaWRlZBAEYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::SC2APIProtocol.CommonReflection.Descriptor, global::SC2APIProtocol.DataReflection.Descriptor, global::SC2APIProtocol.DebugReflection.Descriptor, global::SC2APIProtocol.ErrorReflection.Descriptor, global::SC2APIProtocol.QueryReflection.Descriptor, global::SC2APIProtocol.RawReflection.Descriptor, global::SC2APIProtocol.ScoreReflection.Descriptor, global::SC2APIProtocol.SpatialReflection.Descriptor, global::SC2APIProtocol.UiReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.Status), typeof(global::SC2APIProtocol.Race), typeof(global::SC2APIProtocol.Difficulty), typeof(global::SC2APIProtocol.PlayerType), typeof(global::SC2APIProtocol.Alert), typeof(global::SC2APIProtocol.Result), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Request), global::SC2APIProtocol.Request.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug" }, new[]{ "Request" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Response), global::SC2APIProtocol.Response.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug", "Error", "Status" }, new[]{ "Response" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestCreateGame), global::SC2APIProtocol.RequestCreateGame.Parser, new[]{ "LocalMap", "BattlenetMapName", "PlayerSetup", "DisableFog", "RandomSeed", "Realtime" }, new[]{ "Map" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.LocalMap), global::SC2APIProtocol.LocalMap.Parser, new[]{ "MapPath", "MapData" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseCreateGame), global::SC2APIProtocol.ResponseCreateGame.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::SC2APIProtocol.ResponseCreateGame.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestJoinGame), global::SC2APIProtocol.RequestJoinGame.Parser, new[]{ "Race", "ObservedPlayerId", "Options", "ServerPorts", "ClientPorts", "SharedPort" }, new[]{ "Participation" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PortSet), global::SC2APIProtocol.PortSet.Parser, new[]{ "GamePort", "BasePort" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseJoinGame), global::SC2APIProtocol.ResponseJoinGame.Parser, new[]{ "PlayerId", "Error", "ErrorDetails" }, null, new[]{ typeof(global::SC2APIProtocol.ResponseJoinGame.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestRestartGame), global::SC2APIProtocol.RequestRestartGame.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseRestartGame), global::SC2APIProtocol.ResponseRestartGame.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::SC2APIProtocol.ResponseRestartGame.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestStartReplay), global::SC2APIProtocol.RequestStartReplay.Parser, new[]{ "ReplayPath", "ReplayData", "MapData", "ObservedPlayerId", "Options", "DisableFog" }, new[]{ "Replay" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseStartReplay), global::SC2APIProtocol.ResponseStartReplay.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::SC2APIProtocol.ResponseStartReplay.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestLeaveGame), global::SC2APIProtocol.RequestLeaveGame.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseLeaveGame), global::SC2APIProtocol.ResponseLeaveGame.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQuickSave), global::SC2APIProtocol.RequestQuickSave.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQuickSave), global::SC2APIProtocol.ResponseQuickSave.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQuickLoad), global::SC2APIProtocol.RequestQuickLoad.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQuickLoad), global::SC2APIProtocol.ResponseQuickLoad.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQuit), global::SC2APIProtocol.RequestQuit.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQuit), global::SC2APIProtocol.ResponseQuit.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestGameInfo), global::SC2APIProtocol.RequestGameInfo.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseGameInfo), global::SC2APIProtocol.ResponseGameInfo.Parser, new[]{ "MapName", "ModNames", "LocalMapPath", "PlayerInfo", "StartRaw", "Options" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestObservation), global::SC2APIProtocol.RequestObservation.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseObservation), global::SC2APIProtocol.ResponseObservation.Parser, new[]{ "Actions", "ActionErrors", "Observation", "PlayerResult", "Chat" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ChatReceived), global::SC2APIProtocol.ChatReceived.Parser, new[]{ "PlayerId", "Message" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestAction), global::SC2APIProtocol.RequestAction.Parser, new[]{ "Actions" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseAction), global::SC2APIProtocol.ResponseAction.Parser, new[]{ "Result" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestStep), global::SC2APIProtocol.RequestStep.Parser, new[]{ "Count" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseStep), global::SC2APIProtocol.ResponseStep.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestData), global::SC2APIProtocol.RequestData.Parser, new[]{ "AbilityId", "UnitTypeId", "UpgradeId", "BuffId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseData), global::SC2APIProtocol.ResponseData.Parser, new[]{ "Abilities", "Units", "Upgrades", "Buffs" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestSaveReplay), global::SC2APIProtocol.RequestSaveReplay.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseSaveReplay), global::SC2APIProtocol.ResponseSaveReplay.Parser, new[]{ "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestReplayInfo), global::SC2APIProtocol.RequestReplayInfo.Parser, new[]{ "ReplayPath", "ReplayData" }, new[]{ "Replay" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PlayerInfoExtra), global::SC2APIProtocol.PlayerInfoExtra.Parser, new[]{ "PlayerInfo", "PlayerResult", "PlayerMmr", "PlayerApm" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseReplayInfo), global::SC2APIProtocol.ResponseReplayInfo.Parser, new[]{ "MapName", "LocalMapPath", "PlayerInfo", "GameDurationLoops", "GameDurationSeconds", "GameVersion", "DataVersion", "DataBuild", "BaseBuild", "Error", "ErrorDetails" }, null, new[]{ typeof(global::SC2APIProtocol.ResponseReplayInfo.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestAvailableMaps), global::SC2APIProtocol.RequestAvailableMaps.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseAvailableMaps), global::SC2APIProtocol.ResponseAvailableMaps.Parser, new[]{ "LocalMapPaths", "BattlenetMapNames" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestSaveMap), global::SC2APIProtocol.RequestSaveMap.Parser, new[]{ "MapPath", "MapData" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseSaveMap), global::SC2APIProtocol.ResponseSaveMap.Parser, new[]{ "Error" }, null, new[]{ typeof(global::SC2APIProtocol.ResponseSaveMap.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestPing), global::SC2APIProtocol.RequestPing.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponsePing), global::SC2APIProtocol.ResponsePing.Parser, new[]{ "GameVersion", "DataVersion", "DataBuild", "BaseBuild" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestDebug), global::SC2APIProtocol.RequestDebug.Parser, new[]{ "Debug" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseDebug), global::SC2APIProtocol.ResponseDebug.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PlayerSetup), global::SC2APIProtocol.PlayerSetup.Parser, new[]{ "Type", "Race", "Difficulty" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.SpatialCameraSetup), global::SC2APIProtocol.SpatialCameraSetup.Parser, new[]{ "Width", "Resolution", "MinimapResolution" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.InterfaceOptions), global::SC2APIProtocol.InterfaceOptions.Parser, new[]{ "Raw", "Score", "FeatureLayer", "Render" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PlayerInfo), global::SC2APIProtocol.PlayerInfo.Parser, new[]{ "PlayerId", "Type", "RaceRequested", "RaceActual", "Difficulty" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PlayerCommon), global::SC2APIProtocol.PlayerCommon.Parser, new[]{ "PlayerId", "Minerals", "Vespene", "FoodCap", "FoodUsed", "FoodArmy", "FoodWorkers", "IdleWorkerCount", "ArmyCount", "WarpGateCount", "LarvaCount" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Observation), global::SC2APIProtocol.Observation.Parser, new[]{ "GameLoop", "PlayerCommon", "Alerts", "Abilities", "Score", "RawData", "FeatureLayerData", "RenderData", "UiData" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Action), global::SC2APIProtocol.Action.Parser, new[]{ "ActionRaw", "ActionFeatureLayer", "ActionRender", "ActionUi", "Chat" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionChat), global::SC2APIProtocol.ActionChat.Parser, new[]{ "Channel", "Message" }, null, new[]{ typeof(global::SC2APIProtocol.ActionChat.Types.Channel) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionError), global::SC2APIProtocol.ActionError.Parser, new[]{ "UnitTag", "AbilityId", "Result" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PlayerResult), global::SC2APIProtocol.PlayerResult.Parser, new[]{ "PlayerId", "Result" }, null, null, null)
+          new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, global::ProxyStarcraft.Proto.DataReflection.Descriptor, global::ProxyStarcraft.Proto.DebugReflection.Descriptor, global::ProxyStarcraft.Proto.ErrorReflection.Descriptor, global::ProxyStarcraft.Proto.QueryReflection.Descriptor, global::ProxyStarcraft.Proto.RawReflection.Descriptor, global::ProxyStarcraft.Proto.ScoreReflection.Descriptor, global::ProxyStarcraft.Proto.SpatialReflection.Descriptor, global::ProxyStarcraft.Proto.UiReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Status), typeof(global::ProxyStarcraft.Proto.Race), typeof(global::ProxyStarcraft.Proto.Difficulty), typeof(global::ProxyStarcraft.Proto.PlayerType), typeof(global::ProxyStarcraft.Proto.Alert), typeof(global::ProxyStarcraft.Proto.Result), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Request), global::ProxyStarcraft.Proto.Request.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug" }, new[]{ "Request" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Response), global::ProxyStarcraft.Proto.Response.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug", "Error", "Status" }, new[]{ "Response" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestCreateGame), global::ProxyStarcraft.Proto.RequestCreateGame.Parser, new[]{ "LocalMap", "BattlenetMapName", "PlayerSetup", "DisableFog", "RandomSeed", "Realtime" }, new[]{ "Map" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.LocalMap), global::ProxyStarcraft.Proto.LocalMap.Parser, new[]{ "MapPath", "MapData" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseCreateGame), global::ProxyStarcraft.Proto.ResponseCreateGame.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseCreateGame.Types.Error) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestJoinGame), global::ProxyStarcraft.Proto.RequestJoinGame.Parser, new[]{ "Race", "ObservedPlayerId", "Options", "ServerPorts", "ClientPorts", "SharedPort" }, new[]{ "Participation" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PortSet), global::ProxyStarcraft.Proto.PortSet.Parser, new[]{ "GamePort", "BasePort" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseJoinGame), global::ProxyStarcraft.Proto.ResponseJoinGame.Parser, new[]{ "PlayerId", "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseJoinGame.Types.Error) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestRestartGame), global::ProxyStarcraft.Proto.RequestRestartGame.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseRestartGame), global::ProxyStarcraft.Proto.ResponseRestartGame.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseRestartGame.Types.Error) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestStartReplay), global::ProxyStarcraft.Proto.RequestStartReplay.Parser, new[]{ "ReplayPath", "ReplayData", "MapData", "ObservedPlayerId", "Options", "DisableFog" }, new[]{ "Replay" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseStartReplay), global::ProxyStarcraft.Proto.ResponseStartReplay.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseStartReplay.Types.Error) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestLeaveGame), global::ProxyStarcraft.Proto.RequestLeaveGame.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseLeaveGame), global::ProxyStarcraft.Proto.ResponseLeaveGame.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQuickSave), global::ProxyStarcraft.Proto.RequestQuickSave.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQuickSave), global::ProxyStarcraft.Proto.ResponseQuickSave.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQuickLoad), global::ProxyStarcraft.Proto.RequestQuickLoad.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQuickLoad), global::ProxyStarcraft.Proto.ResponseQuickLoad.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQuit), global::ProxyStarcraft.Proto.RequestQuit.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQuit), global::ProxyStarcraft.Proto.ResponseQuit.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestGameInfo), global::ProxyStarcraft.Proto.RequestGameInfo.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseGameInfo), global::ProxyStarcraft.Proto.ResponseGameInfo.Parser, new[]{ "MapName", "ModNames", "LocalMapPath", "PlayerInfo", "StartRaw", "Options" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestObservation), global::ProxyStarcraft.Proto.RequestObservation.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseObservation), global::ProxyStarcraft.Proto.ResponseObservation.Parser, new[]{ "Actions", "ActionErrors", "Observation", "PlayerResult", "Chat" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ChatReceived), global::ProxyStarcraft.Proto.ChatReceived.Parser, new[]{ "PlayerId", "Message" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestAction), global::ProxyStarcraft.Proto.RequestAction.Parser, new[]{ "Actions" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseAction), global::ProxyStarcraft.Proto.ResponseAction.Parser, new[]{ "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestStep), global::ProxyStarcraft.Proto.RequestStep.Parser, new[]{ "Count" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseStep), global::ProxyStarcraft.Proto.ResponseStep.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestData), global::ProxyStarcraft.Proto.RequestData.Parser, new[]{ "AbilityId", "UnitTypeId", "UpgradeId", "BuffId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseData), global::ProxyStarcraft.Proto.ResponseData.Parser, new[]{ "Abilities", "Units", "Upgrades", "Buffs" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestSaveReplay), global::ProxyStarcraft.Proto.RequestSaveReplay.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseSaveReplay), global::ProxyStarcraft.Proto.ResponseSaveReplay.Parser, new[]{ "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestReplayInfo), global::ProxyStarcraft.Proto.RequestReplayInfo.Parser, new[]{ "ReplayPath", "ReplayData" }, new[]{ "Replay" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerInfoExtra), global::ProxyStarcraft.Proto.PlayerInfoExtra.Parser, new[]{ "PlayerInfo", "PlayerResult", "PlayerMmr", "PlayerApm" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseReplayInfo), global::ProxyStarcraft.Proto.ResponseReplayInfo.Parser, new[]{ "MapName", "LocalMapPath", "PlayerInfo", "GameDurationLoops", "GameDurationSeconds", "GameVersion", "DataVersion", "DataBuild", "BaseBuild", "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseReplayInfo.Types.Error) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestAvailableMaps), global::ProxyStarcraft.Proto.RequestAvailableMaps.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseAvailableMaps), global::ProxyStarcraft.Proto.ResponseAvailableMaps.Parser, new[]{ "LocalMapPaths", "BattlenetMapNames" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestSaveMap), global::ProxyStarcraft.Proto.RequestSaveMap.Parser, new[]{ "MapPath", "MapData" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseSaveMap), global::ProxyStarcraft.Proto.ResponseSaveMap.Parser, new[]{ "Error" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseSaveMap.Types.Error) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestPing), global::ProxyStarcraft.Proto.RequestPing.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponsePing), global::ProxyStarcraft.Proto.ResponsePing.Parser, new[]{ "GameVersion", "DataVersion", "DataBuild", "BaseBuild" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestDebug), global::ProxyStarcraft.Proto.RequestDebug.Parser, new[]{ "Debug" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseDebug), global::ProxyStarcraft.Proto.ResponseDebug.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerSetup), global::ProxyStarcraft.Proto.PlayerSetup.Parser, new[]{ "Type", "Race", "Difficulty" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.SpatialCameraSetup), global::ProxyStarcraft.Proto.SpatialCameraSetup.Parser, new[]{ "Width", "Resolution", "MinimapResolution" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.InterfaceOptions), global::ProxyStarcraft.Proto.InterfaceOptions.Parser, new[]{ "Raw", "Score", "FeatureLayer", "Render" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerInfo), global::ProxyStarcraft.Proto.PlayerInfo.Parser, new[]{ "PlayerId", "Type", "RaceRequested", "RaceActual", "Difficulty" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerCommon), global::ProxyStarcraft.Proto.PlayerCommon.Parser, new[]{ "PlayerId", "Minerals", "Vespene", "FoodCap", "FoodUsed", "FoodArmy", "FoodWorkers", "IdleWorkerCount", "ArmyCount", "WarpGateCount", "LarvaCount" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Observation), global::ProxyStarcraft.Proto.Observation.Parser, new[]{ "GameLoop", "PlayerCommon", "Alerts", "Abilities", "Score", "RawData", "FeatureLayerData", "RenderData", "UiData" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Action), global::ProxyStarcraft.Proto.Action.Parser, new[]{ "ActionRaw", "ActionFeatureLayer", "ActionRender", "ActionUi", "Chat" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionChat), global::ProxyStarcraft.Proto.ActionChat.Parser, new[]{ "Channel", "Message" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ActionChat.Types.Channel) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionError), global::ProxyStarcraft.Proto.ActionError.Parser, new[]{ "UnitTag", "AbilityId", "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerResult), global::ProxyStarcraft.Proto.PlayerResult.Parser, new[]{ "PlayerId", "Result" }, null, null, null)
           }));
     }
     #endregion
@@ -378,7 +378,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -471,8 +471,8 @@ namespace SC2APIProtocol {
     /// Game Setup
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestCreateGame CreateGame {
-      get { return requestCase_ == RequestOneofCase.CreateGame ? (global::SC2APIProtocol.RequestCreateGame) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestCreateGame CreateGame {
+      get { return requestCase_ == RequestOneofCase.CreateGame ? (global::ProxyStarcraft.Proto.RequestCreateGame) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.CreateGame;
@@ -485,8 +485,8 @@ namespace SC2APIProtocol {
     /// Send to host and all clients for game to begin.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestJoinGame JoinGame {
-      get { return requestCase_ == RequestOneofCase.JoinGame ? (global::SC2APIProtocol.RequestJoinGame) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestJoinGame JoinGame {
+      get { return requestCase_ == RequestOneofCase.JoinGame ? (global::ProxyStarcraft.Proto.RequestJoinGame) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.JoinGame;
@@ -499,8 +499,8 @@ namespace SC2APIProtocol {
     /// Single player only. Reinitializes the game with the same player setup.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestRestartGame RestartGame {
-      get { return requestCase_ == RequestOneofCase.RestartGame ? (global::SC2APIProtocol.RequestRestartGame) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestRestartGame RestartGame {
+      get { return requestCase_ == RequestOneofCase.RestartGame ? (global::ProxyStarcraft.Proto.RequestRestartGame) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.RestartGame;
@@ -513,8 +513,8 @@ namespace SC2APIProtocol {
     /// Start playing a replay.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestStartReplay StartReplay {
-      get { return requestCase_ == RequestOneofCase.StartReplay ? (global::SC2APIProtocol.RequestStartReplay) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestStartReplay StartReplay {
+      get { return requestCase_ == RequestOneofCase.StartReplay ? (global::ProxyStarcraft.Proto.RequestStartReplay) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.StartReplay;
@@ -527,8 +527,8 @@ namespace SC2APIProtocol {
     /// Multiplayer only. Disconnects from a multiplayer game, equivalent to surrender.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestLeaveGame LeaveGame {
-      get { return requestCase_ == RequestOneofCase.LeaveGame ? (global::SC2APIProtocol.RequestLeaveGame) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestLeaveGame LeaveGame {
+      get { return requestCase_ == RequestOneofCase.LeaveGame ? (global::ProxyStarcraft.Proto.RequestLeaveGame) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.LeaveGame;
@@ -541,8 +541,8 @@ namespace SC2APIProtocol {
     /// Not implemented. Saves game to an in-memory bookmark.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestQuickSave QuickSave {
-      get { return requestCase_ == RequestOneofCase.QuickSave ? (global::SC2APIProtocol.RequestQuickSave) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestQuickSave QuickSave {
+      get { return requestCase_ == RequestOneofCase.QuickSave ? (global::ProxyStarcraft.Proto.RequestQuickSave) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.QuickSave;
@@ -555,8 +555,8 @@ namespace SC2APIProtocol {
     /// Not implemented. Loads from an in-memory bookmark.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestQuickLoad QuickLoad {
-      get { return requestCase_ == RequestOneofCase.QuickLoad ? (global::SC2APIProtocol.RequestQuickLoad) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestQuickLoad QuickLoad {
+      get { return requestCase_ == RequestOneofCase.QuickLoad ? (global::ProxyStarcraft.Proto.RequestQuickLoad) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.QuickLoad;
@@ -569,8 +569,8 @@ namespace SC2APIProtocol {
     /// Terminates the application.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestQuit Quit {
-      get { return requestCase_ == RequestOneofCase.Quit ? (global::SC2APIProtocol.RequestQuit) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestQuit Quit {
+      get { return requestCase_ == RequestOneofCase.Quit ? (global::ProxyStarcraft.Proto.RequestQuit) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Quit;
@@ -583,8 +583,8 @@ namespace SC2APIProtocol {
     /// During Game
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestGameInfo GameInfo {
-      get { return requestCase_ == RequestOneofCase.GameInfo ? (global::SC2APIProtocol.RequestGameInfo) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestGameInfo GameInfo {
+      get { return requestCase_ == RequestOneofCase.GameInfo ? (global::ProxyStarcraft.Proto.RequestGameInfo) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.GameInfo;
@@ -597,8 +597,8 @@ namespace SC2APIProtocol {
     /// Snapshot of the current game state.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestObservation Observation {
-      get { return requestCase_ == RequestOneofCase.Observation ? (global::SC2APIProtocol.RequestObservation) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestObservation Observation {
+      get { return requestCase_ == RequestOneofCase.Observation ? (global::ProxyStarcraft.Proto.RequestObservation) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Observation;
@@ -611,8 +611,8 @@ namespace SC2APIProtocol {
     /// Executes an action.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestAction Action {
-      get { return requestCase_ == RequestOneofCase.Action ? (global::SC2APIProtocol.RequestAction) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestAction Action {
+      get { return requestCase_ == RequestOneofCase.Action ? (global::ProxyStarcraft.Proto.RequestAction) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Action;
@@ -625,8 +625,8 @@ namespace SC2APIProtocol {
     /// Advances the game simulation.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestStep Step {
-      get { return requestCase_ == RequestOneofCase.Step ? (global::SC2APIProtocol.RequestStep) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestStep Step {
+      get { return requestCase_ == RequestOneofCase.Step ? (global::ProxyStarcraft.Proto.RequestStep) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Step;
@@ -639,8 +639,8 @@ namespace SC2APIProtocol {
     /// Data about different gameplay elements. May be different for different games.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestData Data {
-      get { return requestCase_ == RequestOneofCase.Data ? (global::SC2APIProtocol.RequestData) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestData Data {
+      get { return requestCase_ == RequestOneofCase.Data ? (global::ProxyStarcraft.Proto.RequestData) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Data;
@@ -653,8 +653,8 @@ namespace SC2APIProtocol {
     /// Additional methods for inspecting game state.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestQuery Query {
-      get { return requestCase_ == RequestOneofCase.Query ? (global::SC2APIProtocol.RequestQuery) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestQuery Query {
+      get { return requestCase_ == RequestOneofCase.Query ? (global::ProxyStarcraft.Proto.RequestQuery) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Query;
@@ -667,8 +667,8 @@ namespace SC2APIProtocol {
     /// Generates a replay.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestSaveReplay SaveReplay {
-      get { return requestCase_ == RequestOneofCase.SaveReplay ? (global::SC2APIProtocol.RequestSaveReplay) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestSaveReplay SaveReplay {
+      get { return requestCase_ == RequestOneofCase.SaveReplay ? (global::ProxyStarcraft.Proto.RequestSaveReplay) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.SaveReplay;
@@ -681,8 +681,8 @@ namespace SC2APIProtocol {
     /// Other.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestReplayInfo ReplayInfo {
-      get { return requestCase_ == RequestOneofCase.ReplayInfo ? (global::SC2APIProtocol.RequestReplayInfo) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestReplayInfo ReplayInfo {
+      get { return requestCase_ == RequestOneofCase.ReplayInfo ? (global::ProxyStarcraft.Proto.RequestReplayInfo) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.ReplayInfo;
@@ -695,8 +695,8 @@ namespace SC2APIProtocol {
     /// Returns directory of maps that can be played on.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestAvailableMaps AvailableMaps {
-      get { return requestCase_ == RequestOneofCase.AvailableMaps ? (global::SC2APIProtocol.RequestAvailableMaps) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestAvailableMaps AvailableMaps {
+      get { return requestCase_ == RequestOneofCase.AvailableMaps ? (global::ProxyStarcraft.Proto.RequestAvailableMaps) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.AvailableMaps;
@@ -709,8 +709,8 @@ namespace SC2APIProtocol {
     /// Saves binary map data to the local temp directory.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestSaveMap SaveMap {
-      get { return requestCase_ == RequestOneofCase.SaveMap ? (global::SC2APIProtocol.RequestSaveMap) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestSaveMap SaveMap {
+      get { return requestCase_ == RequestOneofCase.SaveMap ? (global::ProxyStarcraft.Proto.RequestSaveMap) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.SaveMap;
@@ -723,8 +723,8 @@ namespace SC2APIProtocol {
     /// Debugging
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestPing Ping {
-      get { return requestCase_ == RequestOneofCase.Ping ? (global::SC2APIProtocol.RequestPing) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestPing Ping {
+      get { return requestCase_ == RequestOneofCase.Ping ? (global::ProxyStarcraft.Proto.RequestPing) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Ping;
@@ -737,8 +737,8 @@ namespace SC2APIProtocol {
     /// Display debug information and execute debug actions.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.RequestDebug Debug {
-      get { return requestCase_ == RequestOneofCase.Debug ? (global::SC2APIProtocol.RequestDebug) request_ : null; }
+    public global::ProxyStarcraft.Proto.RequestDebug Debug {
+      get { return requestCase_ == RequestOneofCase.Debug ? (global::ProxyStarcraft.Proto.RequestDebug) request_ : null; }
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Debug;
@@ -1080,7 +1080,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 10: {
-            global::SC2APIProtocol.RequestCreateGame subBuilder = new global::SC2APIProtocol.RequestCreateGame();
+            global::ProxyStarcraft.Proto.RequestCreateGame subBuilder = new global::ProxyStarcraft.Proto.RequestCreateGame();
             if (requestCase_ == RequestOneofCase.CreateGame) {
               subBuilder.MergeFrom(CreateGame);
             }
@@ -1089,7 +1089,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 18: {
-            global::SC2APIProtocol.RequestJoinGame subBuilder = new global::SC2APIProtocol.RequestJoinGame();
+            global::ProxyStarcraft.Proto.RequestJoinGame subBuilder = new global::ProxyStarcraft.Proto.RequestJoinGame();
             if (requestCase_ == RequestOneofCase.JoinGame) {
               subBuilder.MergeFrom(JoinGame);
             }
@@ -1098,7 +1098,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 26: {
-            global::SC2APIProtocol.RequestRestartGame subBuilder = new global::SC2APIProtocol.RequestRestartGame();
+            global::ProxyStarcraft.Proto.RequestRestartGame subBuilder = new global::ProxyStarcraft.Proto.RequestRestartGame();
             if (requestCase_ == RequestOneofCase.RestartGame) {
               subBuilder.MergeFrom(RestartGame);
             }
@@ -1107,7 +1107,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 34: {
-            global::SC2APIProtocol.RequestStartReplay subBuilder = new global::SC2APIProtocol.RequestStartReplay();
+            global::ProxyStarcraft.Proto.RequestStartReplay subBuilder = new global::ProxyStarcraft.Proto.RequestStartReplay();
             if (requestCase_ == RequestOneofCase.StartReplay) {
               subBuilder.MergeFrom(StartReplay);
             }
@@ -1116,7 +1116,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 42: {
-            global::SC2APIProtocol.RequestLeaveGame subBuilder = new global::SC2APIProtocol.RequestLeaveGame();
+            global::ProxyStarcraft.Proto.RequestLeaveGame subBuilder = new global::ProxyStarcraft.Proto.RequestLeaveGame();
             if (requestCase_ == RequestOneofCase.LeaveGame) {
               subBuilder.MergeFrom(LeaveGame);
             }
@@ -1125,7 +1125,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 50: {
-            global::SC2APIProtocol.RequestQuickSave subBuilder = new global::SC2APIProtocol.RequestQuickSave();
+            global::ProxyStarcraft.Proto.RequestQuickSave subBuilder = new global::ProxyStarcraft.Proto.RequestQuickSave();
             if (requestCase_ == RequestOneofCase.QuickSave) {
               subBuilder.MergeFrom(QuickSave);
             }
@@ -1134,7 +1134,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 58: {
-            global::SC2APIProtocol.RequestQuickLoad subBuilder = new global::SC2APIProtocol.RequestQuickLoad();
+            global::ProxyStarcraft.Proto.RequestQuickLoad subBuilder = new global::ProxyStarcraft.Proto.RequestQuickLoad();
             if (requestCase_ == RequestOneofCase.QuickLoad) {
               subBuilder.MergeFrom(QuickLoad);
             }
@@ -1143,7 +1143,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 66: {
-            global::SC2APIProtocol.RequestQuit subBuilder = new global::SC2APIProtocol.RequestQuit();
+            global::ProxyStarcraft.Proto.RequestQuit subBuilder = new global::ProxyStarcraft.Proto.RequestQuit();
             if (requestCase_ == RequestOneofCase.Quit) {
               subBuilder.MergeFrom(Quit);
             }
@@ -1152,7 +1152,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 74: {
-            global::SC2APIProtocol.RequestGameInfo subBuilder = new global::SC2APIProtocol.RequestGameInfo();
+            global::ProxyStarcraft.Proto.RequestGameInfo subBuilder = new global::ProxyStarcraft.Proto.RequestGameInfo();
             if (requestCase_ == RequestOneofCase.GameInfo) {
               subBuilder.MergeFrom(GameInfo);
             }
@@ -1161,7 +1161,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 82: {
-            global::SC2APIProtocol.RequestObservation subBuilder = new global::SC2APIProtocol.RequestObservation();
+            global::ProxyStarcraft.Proto.RequestObservation subBuilder = new global::ProxyStarcraft.Proto.RequestObservation();
             if (requestCase_ == RequestOneofCase.Observation) {
               subBuilder.MergeFrom(Observation);
             }
@@ -1170,7 +1170,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 90: {
-            global::SC2APIProtocol.RequestAction subBuilder = new global::SC2APIProtocol.RequestAction();
+            global::ProxyStarcraft.Proto.RequestAction subBuilder = new global::ProxyStarcraft.Proto.RequestAction();
             if (requestCase_ == RequestOneofCase.Action) {
               subBuilder.MergeFrom(Action);
             }
@@ -1179,7 +1179,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 98: {
-            global::SC2APIProtocol.RequestStep subBuilder = new global::SC2APIProtocol.RequestStep();
+            global::ProxyStarcraft.Proto.RequestStep subBuilder = new global::ProxyStarcraft.Proto.RequestStep();
             if (requestCase_ == RequestOneofCase.Step) {
               subBuilder.MergeFrom(Step);
             }
@@ -1188,7 +1188,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 106: {
-            global::SC2APIProtocol.RequestData subBuilder = new global::SC2APIProtocol.RequestData();
+            global::ProxyStarcraft.Proto.RequestData subBuilder = new global::ProxyStarcraft.Proto.RequestData();
             if (requestCase_ == RequestOneofCase.Data) {
               subBuilder.MergeFrom(Data);
             }
@@ -1197,7 +1197,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 114: {
-            global::SC2APIProtocol.RequestQuery subBuilder = new global::SC2APIProtocol.RequestQuery();
+            global::ProxyStarcraft.Proto.RequestQuery subBuilder = new global::ProxyStarcraft.Proto.RequestQuery();
             if (requestCase_ == RequestOneofCase.Query) {
               subBuilder.MergeFrom(Query);
             }
@@ -1206,7 +1206,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 122: {
-            global::SC2APIProtocol.RequestSaveReplay subBuilder = new global::SC2APIProtocol.RequestSaveReplay();
+            global::ProxyStarcraft.Proto.RequestSaveReplay subBuilder = new global::ProxyStarcraft.Proto.RequestSaveReplay();
             if (requestCase_ == RequestOneofCase.SaveReplay) {
               subBuilder.MergeFrom(SaveReplay);
             }
@@ -1215,7 +1215,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 130: {
-            global::SC2APIProtocol.RequestReplayInfo subBuilder = new global::SC2APIProtocol.RequestReplayInfo();
+            global::ProxyStarcraft.Proto.RequestReplayInfo subBuilder = new global::ProxyStarcraft.Proto.RequestReplayInfo();
             if (requestCase_ == RequestOneofCase.ReplayInfo) {
               subBuilder.MergeFrom(ReplayInfo);
             }
@@ -1224,7 +1224,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 138: {
-            global::SC2APIProtocol.RequestAvailableMaps subBuilder = new global::SC2APIProtocol.RequestAvailableMaps();
+            global::ProxyStarcraft.Proto.RequestAvailableMaps subBuilder = new global::ProxyStarcraft.Proto.RequestAvailableMaps();
             if (requestCase_ == RequestOneofCase.AvailableMaps) {
               subBuilder.MergeFrom(AvailableMaps);
             }
@@ -1233,7 +1233,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 146: {
-            global::SC2APIProtocol.RequestSaveMap subBuilder = new global::SC2APIProtocol.RequestSaveMap();
+            global::ProxyStarcraft.Proto.RequestSaveMap subBuilder = new global::ProxyStarcraft.Proto.RequestSaveMap();
             if (requestCase_ == RequestOneofCase.SaveMap) {
               subBuilder.MergeFrom(SaveMap);
             }
@@ -1242,7 +1242,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 154: {
-            global::SC2APIProtocol.RequestPing subBuilder = new global::SC2APIProtocol.RequestPing();
+            global::ProxyStarcraft.Proto.RequestPing subBuilder = new global::ProxyStarcraft.Proto.RequestPing();
             if (requestCase_ == RequestOneofCase.Ping) {
               subBuilder.MergeFrom(Ping);
             }
@@ -1251,7 +1251,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 162: {
-            global::SC2APIProtocol.RequestDebug subBuilder = new global::SC2APIProtocol.RequestDebug();
+            global::ProxyStarcraft.Proto.RequestDebug subBuilder = new global::ProxyStarcraft.Proto.RequestDebug();
             if (requestCase_ == RequestOneofCase.Debug) {
               subBuilder.MergeFrom(Debug);
             }
@@ -1272,7 +1272,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1364,8 +1364,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "create_game" field.</summary>
     public const int CreateGameFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseCreateGame CreateGame {
-      get { return responseCase_ == ResponseOneofCase.CreateGame ? (global::SC2APIProtocol.ResponseCreateGame) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseCreateGame CreateGame {
+      get { return responseCase_ == ResponseOneofCase.CreateGame ? (global::ProxyStarcraft.Proto.ResponseCreateGame) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.CreateGame;
@@ -1375,8 +1375,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "join_game" field.</summary>
     public const int JoinGameFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseJoinGame JoinGame {
-      get { return responseCase_ == ResponseOneofCase.JoinGame ? (global::SC2APIProtocol.ResponseJoinGame) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseJoinGame JoinGame {
+      get { return responseCase_ == ResponseOneofCase.JoinGame ? (global::ProxyStarcraft.Proto.ResponseJoinGame) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.JoinGame;
@@ -1386,8 +1386,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "restart_game" field.</summary>
     public const int RestartGameFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseRestartGame RestartGame {
-      get { return responseCase_ == ResponseOneofCase.RestartGame ? (global::SC2APIProtocol.ResponseRestartGame) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseRestartGame RestartGame {
+      get { return responseCase_ == ResponseOneofCase.RestartGame ? (global::ProxyStarcraft.Proto.ResponseRestartGame) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.RestartGame;
@@ -1397,8 +1397,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "start_replay" field.</summary>
     public const int StartReplayFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseStartReplay StartReplay {
-      get { return responseCase_ == ResponseOneofCase.StartReplay ? (global::SC2APIProtocol.ResponseStartReplay) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseStartReplay StartReplay {
+      get { return responseCase_ == ResponseOneofCase.StartReplay ? (global::ProxyStarcraft.Proto.ResponseStartReplay) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.StartReplay;
@@ -1408,8 +1408,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "leave_game" field.</summary>
     public const int LeaveGameFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseLeaveGame LeaveGame {
-      get { return responseCase_ == ResponseOneofCase.LeaveGame ? (global::SC2APIProtocol.ResponseLeaveGame) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseLeaveGame LeaveGame {
+      get { return responseCase_ == ResponseOneofCase.LeaveGame ? (global::ProxyStarcraft.Proto.ResponseLeaveGame) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.LeaveGame;
@@ -1419,8 +1419,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "quick_save" field.</summary>
     public const int QuickSaveFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseQuickSave QuickSave {
-      get { return responseCase_ == ResponseOneofCase.QuickSave ? (global::SC2APIProtocol.ResponseQuickSave) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseQuickSave QuickSave {
+      get { return responseCase_ == ResponseOneofCase.QuickSave ? (global::ProxyStarcraft.Proto.ResponseQuickSave) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.QuickSave;
@@ -1430,8 +1430,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "quick_load" field.</summary>
     public const int QuickLoadFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseQuickLoad QuickLoad {
-      get { return responseCase_ == ResponseOneofCase.QuickLoad ? (global::SC2APIProtocol.ResponseQuickLoad) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseQuickLoad QuickLoad {
+      get { return responseCase_ == ResponseOneofCase.QuickLoad ? (global::ProxyStarcraft.Proto.ResponseQuickLoad) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.QuickLoad;
@@ -1441,8 +1441,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "quit" field.</summary>
     public const int QuitFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseQuit Quit {
-      get { return responseCase_ == ResponseOneofCase.Quit ? (global::SC2APIProtocol.ResponseQuit) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseQuit Quit {
+      get { return responseCase_ == ResponseOneofCase.Quit ? (global::ProxyStarcraft.Proto.ResponseQuit) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Quit;
@@ -1452,8 +1452,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "game_info" field.</summary>
     public const int GameInfoFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseGameInfo GameInfo {
-      get { return responseCase_ == ResponseOneofCase.GameInfo ? (global::SC2APIProtocol.ResponseGameInfo) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseGameInfo GameInfo {
+      get { return responseCase_ == ResponseOneofCase.GameInfo ? (global::ProxyStarcraft.Proto.ResponseGameInfo) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.GameInfo;
@@ -1463,8 +1463,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "observation" field.</summary>
     public const int ObservationFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseObservation Observation {
-      get { return responseCase_ == ResponseOneofCase.Observation ? (global::SC2APIProtocol.ResponseObservation) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseObservation Observation {
+      get { return responseCase_ == ResponseOneofCase.Observation ? (global::ProxyStarcraft.Proto.ResponseObservation) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Observation;
@@ -1474,8 +1474,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "action" field.</summary>
     public const int ActionFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseAction Action {
-      get { return responseCase_ == ResponseOneofCase.Action ? (global::SC2APIProtocol.ResponseAction) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseAction Action {
+      get { return responseCase_ == ResponseOneofCase.Action ? (global::ProxyStarcraft.Proto.ResponseAction) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Action;
@@ -1485,8 +1485,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "step" field.</summary>
     public const int StepFieldNumber = 12;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseStep Step {
-      get { return responseCase_ == ResponseOneofCase.Step ? (global::SC2APIProtocol.ResponseStep) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseStep Step {
+      get { return responseCase_ == ResponseOneofCase.Step ? (global::ProxyStarcraft.Proto.ResponseStep) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Step;
@@ -1496,8 +1496,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseData Data {
-      get { return responseCase_ == ResponseOneofCase.Data ? (global::SC2APIProtocol.ResponseData) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseData Data {
+      get { return responseCase_ == ResponseOneofCase.Data ? (global::ProxyStarcraft.Proto.ResponseData) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Data;
@@ -1507,8 +1507,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "query" field.</summary>
     public const int QueryFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseQuery Query {
-      get { return responseCase_ == ResponseOneofCase.Query ? (global::SC2APIProtocol.ResponseQuery) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseQuery Query {
+      get { return responseCase_ == ResponseOneofCase.Query ? (global::ProxyStarcraft.Proto.ResponseQuery) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Query;
@@ -1518,8 +1518,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "save_replay" field.</summary>
     public const int SaveReplayFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseSaveReplay SaveReplay {
-      get { return responseCase_ == ResponseOneofCase.SaveReplay ? (global::SC2APIProtocol.ResponseSaveReplay) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseSaveReplay SaveReplay {
+      get { return responseCase_ == ResponseOneofCase.SaveReplay ? (global::ProxyStarcraft.Proto.ResponseSaveReplay) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.SaveReplay;
@@ -1529,8 +1529,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "replay_info" field.</summary>
     public const int ReplayInfoFieldNumber = 16;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseReplayInfo ReplayInfo {
-      get { return responseCase_ == ResponseOneofCase.ReplayInfo ? (global::SC2APIProtocol.ResponseReplayInfo) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseReplayInfo ReplayInfo {
+      get { return responseCase_ == ResponseOneofCase.ReplayInfo ? (global::ProxyStarcraft.Proto.ResponseReplayInfo) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.ReplayInfo;
@@ -1540,8 +1540,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "available_maps" field.</summary>
     public const int AvailableMapsFieldNumber = 17;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseAvailableMaps AvailableMaps {
-      get { return responseCase_ == ResponseOneofCase.AvailableMaps ? (global::SC2APIProtocol.ResponseAvailableMaps) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseAvailableMaps AvailableMaps {
+      get { return responseCase_ == ResponseOneofCase.AvailableMaps ? (global::ProxyStarcraft.Proto.ResponseAvailableMaps) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.AvailableMaps;
@@ -1551,8 +1551,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "save_map" field.</summary>
     public const int SaveMapFieldNumber = 18;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseSaveMap SaveMap {
-      get { return responseCase_ == ResponseOneofCase.SaveMap ? (global::SC2APIProtocol.ResponseSaveMap) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseSaveMap SaveMap {
+      get { return responseCase_ == ResponseOneofCase.SaveMap ? (global::ProxyStarcraft.Proto.ResponseSaveMap) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.SaveMap;
@@ -1565,8 +1565,8 @@ namespace SC2APIProtocol {
     /// Debugging
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponsePing Ping {
-      get { return responseCase_ == ResponseOneofCase.Ping ? (global::SC2APIProtocol.ResponsePing) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponsePing Ping {
+      get { return responseCase_ == ResponseOneofCase.Ping ? (global::ProxyStarcraft.Proto.ResponsePing) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Ping;
@@ -1576,8 +1576,8 @@ namespace SC2APIProtocol {
     /// <summary>Field number for the "debug" field.</summary>
     public const int DebugFieldNumber = 20;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseDebug Debug {
-      get { return responseCase_ == ResponseOneofCase.Debug ? (global::SC2APIProtocol.ResponseDebug) response_ : null; }
+    public global::ProxyStarcraft.Proto.ResponseDebug Debug {
+      get { return responseCase_ == ResponseOneofCase.Debug ? (global::ProxyStarcraft.Proto.ResponseDebug) response_ : null; }
       set {
         response_ = value;
         responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.Debug;
@@ -1599,12 +1599,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 99;
-    private global::SC2APIProtocol.Status status_ = 0;
+    private global::ProxyStarcraft.Proto.Status status_ = 0;
     /// <summary>
     /// Should be sent back with all responses.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Status Status {
+    public global::ProxyStarcraft.Proto.Status Status {
       get { return status_; }
       set {
         status_ = value;
@@ -1963,7 +1963,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 10: {
-            global::SC2APIProtocol.ResponseCreateGame subBuilder = new global::SC2APIProtocol.ResponseCreateGame();
+            global::ProxyStarcraft.Proto.ResponseCreateGame subBuilder = new global::ProxyStarcraft.Proto.ResponseCreateGame();
             if (responseCase_ == ResponseOneofCase.CreateGame) {
               subBuilder.MergeFrom(CreateGame);
             }
@@ -1972,7 +1972,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 18: {
-            global::SC2APIProtocol.ResponseJoinGame subBuilder = new global::SC2APIProtocol.ResponseJoinGame();
+            global::ProxyStarcraft.Proto.ResponseJoinGame subBuilder = new global::ProxyStarcraft.Proto.ResponseJoinGame();
             if (responseCase_ == ResponseOneofCase.JoinGame) {
               subBuilder.MergeFrom(JoinGame);
             }
@@ -1981,7 +1981,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 26: {
-            global::SC2APIProtocol.ResponseRestartGame subBuilder = new global::SC2APIProtocol.ResponseRestartGame();
+            global::ProxyStarcraft.Proto.ResponseRestartGame subBuilder = new global::ProxyStarcraft.Proto.ResponseRestartGame();
             if (responseCase_ == ResponseOneofCase.RestartGame) {
               subBuilder.MergeFrom(RestartGame);
             }
@@ -1990,7 +1990,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 34: {
-            global::SC2APIProtocol.ResponseStartReplay subBuilder = new global::SC2APIProtocol.ResponseStartReplay();
+            global::ProxyStarcraft.Proto.ResponseStartReplay subBuilder = new global::ProxyStarcraft.Proto.ResponseStartReplay();
             if (responseCase_ == ResponseOneofCase.StartReplay) {
               subBuilder.MergeFrom(StartReplay);
             }
@@ -1999,7 +1999,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 42: {
-            global::SC2APIProtocol.ResponseLeaveGame subBuilder = new global::SC2APIProtocol.ResponseLeaveGame();
+            global::ProxyStarcraft.Proto.ResponseLeaveGame subBuilder = new global::ProxyStarcraft.Proto.ResponseLeaveGame();
             if (responseCase_ == ResponseOneofCase.LeaveGame) {
               subBuilder.MergeFrom(LeaveGame);
             }
@@ -2008,7 +2008,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 50: {
-            global::SC2APIProtocol.ResponseQuickSave subBuilder = new global::SC2APIProtocol.ResponseQuickSave();
+            global::ProxyStarcraft.Proto.ResponseQuickSave subBuilder = new global::ProxyStarcraft.Proto.ResponseQuickSave();
             if (responseCase_ == ResponseOneofCase.QuickSave) {
               subBuilder.MergeFrom(QuickSave);
             }
@@ -2017,7 +2017,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 58: {
-            global::SC2APIProtocol.ResponseQuickLoad subBuilder = new global::SC2APIProtocol.ResponseQuickLoad();
+            global::ProxyStarcraft.Proto.ResponseQuickLoad subBuilder = new global::ProxyStarcraft.Proto.ResponseQuickLoad();
             if (responseCase_ == ResponseOneofCase.QuickLoad) {
               subBuilder.MergeFrom(QuickLoad);
             }
@@ -2026,7 +2026,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 66: {
-            global::SC2APIProtocol.ResponseQuit subBuilder = new global::SC2APIProtocol.ResponseQuit();
+            global::ProxyStarcraft.Proto.ResponseQuit subBuilder = new global::ProxyStarcraft.Proto.ResponseQuit();
             if (responseCase_ == ResponseOneofCase.Quit) {
               subBuilder.MergeFrom(Quit);
             }
@@ -2035,7 +2035,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 74: {
-            global::SC2APIProtocol.ResponseGameInfo subBuilder = new global::SC2APIProtocol.ResponseGameInfo();
+            global::ProxyStarcraft.Proto.ResponseGameInfo subBuilder = new global::ProxyStarcraft.Proto.ResponseGameInfo();
             if (responseCase_ == ResponseOneofCase.GameInfo) {
               subBuilder.MergeFrom(GameInfo);
             }
@@ -2044,7 +2044,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 82: {
-            global::SC2APIProtocol.ResponseObservation subBuilder = new global::SC2APIProtocol.ResponseObservation();
+            global::ProxyStarcraft.Proto.ResponseObservation subBuilder = new global::ProxyStarcraft.Proto.ResponseObservation();
             if (responseCase_ == ResponseOneofCase.Observation) {
               subBuilder.MergeFrom(Observation);
             }
@@ -2053,7 +2053,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 90: {
-            global::SC2APIProtocol.ResponseAction subBuilder = new global::SC2APIProtocol.ResponseAction();
+            global::ProxyStarcraft.Proto.ResponseAction subBuilder = new global::ProxyStarcraft.Proto.ResponseAction();
             if (responseCase_ == ResponseOneofCase.Action) {
               subBuilder.MergeFrom(Action);
             }
@@ -2062,7 +2062,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 98: {
-            global::SC2APIProtocol.ResponseStep subBuilder = new global::SC2APIProtocol.ResponseStep();
+            global::ProxyStarcraft.Proto.ResponseStep subBuilder = new global::ProxyStarcraft.Proto.ResponseStep();
             if (responseCase_ == ResponseOneofCase.Step) {
               subBuilder.MergeFrom(Step);
             }
@@ -2071,7 +2071,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 106: {
-            global::SC2APIProtocol.ResponseData subBuilder = new global::SC2APIProtocol.ResponseData();
+            global::ProxyStarcraft.Proto.ResponseData subBuilder = new global::ProxyStarcraft.Proto.ResponseData();
             if (responseCase_ == ResponseOneofCase.Data) {
               subBuilder.MergeFrom(Data);
             }
@@ -2080,7 +2080,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 114: {
-            global::SC2APIProtocol.ResponseQuery subBuilder = new global::SC2APIProtocol.ResponseQuery();
+            global::ProxyStarcraft.Proto.ResponseQuery subBuilder = new global::ProxyStarcraft.Proto.ResponseQuery();
             if (responseCase_ == ResponseOneofCase.Query) {
               subBuilder.MergeFrom(Query);
             }
@@ -2089,7 +2089,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 122: {
-            global::SC2APIProtocol.ResponseSaveReplay subBuilder = new global::SC2APIProtocol.ResponseSaveReplay();
+            global::ProxyStarcraft.Proto.ResponseSaveReplay subBuilder = new global::ProxyStarcraft.Proto.ResponseSaveReplay();
             if (responseCase_ == ResponseOneofCase.SaveReplay) {
               subBuilder.MergeFrom(SaveReplay);
             }
@@ -2098,7 +2098,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 130: {
-            global::SC2APIProtocol.ResponseReplayInfo subBuilder = new global::SC2APIProtocol.ResponseReplayInfo();
+            global::ProxyStarcraft.Proto.ResponseReplayInfo subBuilder = new global::ProxyStarcraft.Proto.ResponseReplayInfo();
             if (responseCase_ == ResponseOneofCase.ReplayInfo) {
               subBuilder.MergeFrom(ReplayInfo);
             }
@@ -2107,7 +2107,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 138: {
-            global::SC2APIProtocol.ResponseAvailableMaps subBuilder = new global::SC2APIProtocol.ResponseAvailableMaps();
+            global::ProxyStarcraft.Proto.ResponseAvailableMaps subBuilder = new global::ProxyStarcraft.Proto.ResponseAvailableMaps();
             if (responseCase_ == ResponseOneofCase.AvailableMaps) {
               subBuilder.MergeFrom(AvailableMaps);
             }
@@ -2116,7 +2116,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 146: {
-            global::SC2APIProtocol.ResponseSaveMap subBuilder = new global::SC2APIProtocol.ResponseSaveMap();
+            global::ProxyStarcraft.Proto.ResponseSaveMap subBuilder = new global::ProxyStarcraft.Proto.ResponseSaveMap();
             if (responseCase_ == ResponseOneofCase.SaveMap) {
               subBuilder.MergeFrom(SaveMap);
             }
@@ -2125,7 +2125,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 154: {
-            global::SC2APIProtocol.ResponsePing subBuilder = new global::SC2APIProtocol.ResponsePing();
+            global::ProxyStarcraft.Proto.ResponsePing subBuilder = new global::ProxyStarcraft.Proto.ResponsePing();
             if (responseCase_ == ResponseOneofCase.Ping) {
               subBuilder.MergeFrom(Ping);
             }
@@ -2134,7 +2134,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 162: {
-            global::SC2APIProtocol.ResponseDebug subBuilder = new global::SC2APIProtocol.ResponseDebug();
+            global::ProxyStarcraft.Proto.ResponseDebug subBuilder = new global::ProxyStarcraft.Proto.ResponseDebug();
             if (responseCase_ == ResponseOneofCase.Debug) {
               subBuilder.MergeFrom(Debug);
             }
@@ -2147,7 +2147,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 792: {
-            status_ = (global::SC2APIProtocol.Status) input.ReadEnum();
+            status_ = (global::ProxyStarcraft.Proto.Status) input.ReadEnum();
             break;
           }
         }
@@ -2168,7 +2168,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2211,8 +2211,8 @@ namespace SC2APIProtocol {
     /// Local .SC2Map file
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.LocalMap LocalMap {
-      get { return mapCase_ == MapOneofCase.LocalMap ? (global::SC2APIProtocol.LocalMap) map_ : null; }
+    public global::ProxyStarcraft.Proto.LocalMap LocalMap {
+      get { return mapCase_ == MapOneofCase.LocalMap ? (global::ProxyStarcraft.Proto.LocalMap) map_ : null; }
       set {
         map_ = value;
         mapCase_ = value == null ? MapOneofCase.None : MapOneofCase.LocalMap;
@@ -2235,11 +2235,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_setup" field.</summary>
     public const int PlayerSetupFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.PlayerSetup> _repeated_playerSetup_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.PlayerSetup.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.PlayerSetup> playerSetup_ = new pbc::RepeatedField<global::SC2APIProtocol.PlayerSetup>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.PlayerSetup> _repeated_playerSetup_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.PlayerSetup.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerSetup> playerSetup_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerSetup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.PlayerSetup> PlayerSetup {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerSetup> PlayerSetup {
       get { return playerSetup_; }
     }
 
@@ -2424,7 +2424,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 10: {
-            global::SC2APIProtocol.LocalMap subBuilder = new global::SC2APIProtocol.LocalMap();
+            global::ProxyStarcraft.Proto.LocalMap subBuilder = new global::ProxyStarcraft.Proto.LocalMap();
             if (mapCase_ == MapOneofCase.LocalMap) {
               subBuilder.MergeFrom(LocalMap);
             }
@@ -2465,7 +2465,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2615,7 +2615,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2643,9 +2643,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::SC2APIProtocol.ResponseCreateGame.Types.Error error_ = 0;
+    private global::ProxyStarcraft.Proto.ResponseCreateGame.Types.Error error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseCreateGame.Types.Error Error {
+    public global::ProxyStarcraft.Proto.ResponseCreateGame.Types.Error Error {
       get { return error_; }
       set {
         error_ = value;
@@ -2740,7 +2740,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            error_ = (global::SC2APIProtocol.ResponseCreateGame.Types.Error) input.ReadEnum();
+            error_ = (global::ProxyStarcraft.Proto.ResponseCreateGame.Types.Error) input.ReadEnum();
             break;
           }
           case 18: {
@@ -2787,7 +2787,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2830,8 +2830,8 @@ namespace SC2APIProtocol {
     /// Join as participant
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Race Race {
-      get { return participationCase_ == ParticipationOneofCase.Race ? (global::SC2APIProtocol.Race) participation_ : 0; }
+    public global::ProxyStarcraft.Proto.Race Race {
+      get { return participationCase_ == ParticipationOneofCase.Race ? (global::ProxyStarcraft.Proto.Race) participation_ : 0; }
       set {
         participation_ = value;
         participationCase_ = ParticipationOneofCase.Race;
@@ -2854,12 +2854,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "options" field.</summary>
     public const int OptionsFieldNumber = 3;
-    private global::SC2APIProtocol.InterfaceOptions options_;
+    private global::ProxyStarcraft.Proto.InterfaceOptions options_;
     /// <summary>
     /// This is limited to what is specified in RequestCreateGame, but you can request less information if you want.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.InterfaceOptions Options {
+    public global::ProxyStarcraft.Proto.InterfaceOptions Options {
       get { return options_; }
       set {
         options_ = value;
@@ -2868,12 +2868,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "server_ports" field.</summary>
     public const int ServerPortsFieldNumber = 4;
-    private global::SC2APIProtocol.PortSet serverPorts_;
+    private global::ProxyStarcraft.Proto.PortSet serverPorts_;
     /// <summary>
     /// Do not set in the single-player case. This is the port a server will use.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PortSet ServerPorts {
+    public global::ProxyStarcraft.Proto.PortSet ServerPorts {
       get { return serverPorts_; }
       set {
         serverPorts_ = value;
@@ -2882,14 +2882,14 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "client_ports" field.</summary>
     public const int ClientPortsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.PortSet> _repeated_clientPorts_codec
-        = pb::FieldCodec.ForMessage(42, global::SC2APIProtocol.PortSet.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.PortSet> clientPorts_ = new pbc::RepeatedField<global::SC2APIProtocol.PortSet>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.PortSet> _repeated_clientPorts_codec
+        = pb::FieldCodec.ForMessage(42, global::ProxyStarcraft.Proto.PortSet.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.PortSet> clientPorts_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.PortSet>();
     /// <summary>
     /// Do not set in the single-player case. These are the ports clients will use to initialize communication.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.PortSet> ClientPorts {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.PortSet> ClientPorts {
       get { return clientPorts_; }
     }
 
@@ -3021,13 +3021,13 @@ namespace SC2APIProtocol {
       }
       if (other.options_ != null) {
         if (options_ == null) {
-          options_ = new global::SC2APIProtocol.InterfaceOptions();
+          options_ = new global::ProxyStarcraft.Proto.InterfaceOptions();
         }
         Options.MergeFrom(other.Options);
       }
       if (other.serverPorts_ != null) {
         if (serverPorts_ == null) {
-          serverPorts_ = new global::SC2APIProtocol.PortSet();
+          serverPorts_ = new global::ProxyStarcraft.Proto.PortSet();
         }
         ServerPorts.MergeFrom(other.ServerPorts);
       }
@@ -3065,14 +3065,14 @@ namespace SC2APIProtocol {
           }
           case 26: {
             if (options_ == null) {
-              options_ = new global::SC2APIProtocol.InterfaceOptions();
+              options_ = new global::ProxyStarcraft.Proto.InterfaceOptions();
             }
             input.ReadMessage(options_);
             break;
           }
           case 34: {
             if (serverPorts_ == null) {
-              serverPorts_ = new global::SC2APIProtocol.PortSet();
+              serverPorts_ = new global::ProxyStarcraft.Proto.PortSet();
             }
             input.ReadMessage(serverPorts_);
             break;
@@ -3098,7 +3098,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3246,7 +3246,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3286,9 +3286,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 2;
-    private global::SC2APIProtocol.ResponseJoinGame.Types.Error error_ = 0;
+    private global::ProxyStarcraft.Proto.ResponseJoinGame.Types.Error error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseJoinGame.Types.Error Error {
+    public global::ProxyStarcraft.Proto.ResponseJoinGame.Types.Error Error {
       get { return error_; }
       set {
         error_ = value;
@@ -3399,7 +3399,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 16: {
-            error_ = (global::SC2APIProtocol.ResponseJoinGame.Types.Error) input.ReadEnum();
+            error_ = (global::ProxyStarcraft.Proto.ResponseJoinGame.Types.Error) input.ReadEnum();
             break;
           }
           case 26: {
@@ -3449,7 +3449,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[8]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3538,7 +3538,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[9]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3566,9 +3566,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::SC2APIProtocol.ResponseRestartGame.Types.Error error_ = 0;
+    private global::ProxyStarcraft.Proto.ResponseRestartGame.Types.Error error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseRestartGame.Types.Error Error {
+    public global::ProxyStarcraft.Proto.ResponseRestartGame.Types.Error Error {
       get { return error_; }
       set {
         error_ = value;
@@ -3663,7 +3663,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            error_ = (global::SC2APIProtocol.ResponseRestartGame.Types.Error) input.ReadEnum();
+            error_ = (global::ProxyStarcraft.Proto.ResponseRestartGame.Types.Error) input.ReadEnum();
             break;
           }
           case 18: {
@@ -3698,7 +3698,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[10]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3784,9 +3784,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "options" field.</summary>
     public const int OptionsFieldNumber = 3;
-    private global::SC2APIProtocol.InterfaceOptions options_;
+    private global::ProxyStarcraft.Proto.InterfaceOptions options_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.InterfaceOptions Options {
+    public global::ProxyStarcraft.Proto.InterfaceOptions Options {
       get { return options_; }
       set {
         options_ = value;
@@ -3929,7 +3929,7 @@ namespace SC2APIProtocol {
       }
       if (other.options_ != null) {
         if (options_ == null) {
-          options_ = new global::SC2APIProtocol.InterfaceOptions();
+          options_ = new global::ProxyStarcraft.Proto.InterfaceOptions();
         }
         Options.MergeFrom(other.Options);
       }
@@ -3965,7 +3965,7 @@ namespace SC2APIProtocol {
           }
           case 26: {
             if (options_ == null) {
-              options_ = new global::SC2APIProtocol.InterfaceOptions();
+              options_ = new global::ProxyStarcraft.Proto.InterfaceOptions();
             }
             input.ReadMessage(options_);
             break;
@@ -3995,7 +3995,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[11]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4023,9 +4023,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::SC2APIProtocol.ResponseStartReplay.Types.Error error_ = 0;
+    private global::ProxyStarcraft.Proto.ResponseStartReplay.Types.Error error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseStartReplay.Types.Error Error {
+    public global::ProxyStarcraft.Proto.ResponseStartReplay.Types.Error Error {
       get { return error_; }
       set {
         error_ = value;
@@ -4120,7 +4120,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            error_ = (global::SC2APIProtocol.ResponseStartReplay.Types.Error) input.ReadEnum();
+            error_ = (global::ProxyStarcraft.Proto.ResponseStartReplay.Types.Error) input.ReadEnum();
             break;
           }
           case 18: {
@@ -4161,7 +4161,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[12]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4250,7 +4250,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[13]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4342,7 +4342,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[14]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4434,7 +4434,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[15]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4526,7 +4526,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[16]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4618,7 +4618,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[17]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4710,7 +4710,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[18]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4799,7 +4799,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[19]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4891,7 +4891,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[20]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4980,7 +4980,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[21]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5044,22 +5044,22 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_info" field.</summary>
     public const int PlayerInfoFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.PlayerInfo> _repeated_playerInfo_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.PlayerInfo.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.PlayerInfo> playerInfo_ = new pbc::RepeatedField<global::SC2APIProtocol.PlayerInfo>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.PlayerInfo> _repeated_playerInfo_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.PlayerInfo.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerInfo> playerInfo_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.PlayerInfo> PlayerInfo {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerInfo> PlayerInfo {
       get { return playerInfo_; }
     }
 
     /// <summary>Field number for the "start_raw" field.</summary>
     public const int StartRawFieldNumber = 4;
-    private global::SC2APIProtocol.StartRaw startRaw_;
+    private global::ProxyStarcraft.Proto.StartRaw startRaw_;
     /// <summary>
     /// Populated if Raw interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.StartRaw StartRaw {
+    public global::ProxyStarcraft.Proto.StartRaw StartRaw {
       get { return startRaw_; }
       set {
         startRaw_ = value;
@@ -5068,9 +5068,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "options" field.</summary>
     public const int OptionsFieldNumber = 5;
-    private global::SC2APIProtocol.InterfaceOptions options_;
+    private global::ProxyStarcraft.Proto.InterfaceOptions options_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.InterfaceOptions Options {
+    public global::ProxyStarcraft.Proto.InterfaceOptions Options {
       get { return options_; }
       set {
         options_ = value;
@@ -5173,13 +5173,13 @@ namespace SC2APIProtocol {
       playerInfo_.Add(other.playerInfo_);
       if (other.startRaw_ != null) {
         if (startRaw_ == null) {
-          startRaw_ = new global::SC2APIProtocol.StartRaw();
+          startRaw_ = new global::ProxyStarcraft.Proto.StartRaw();
         }
         StartRaw.MergeFrom(other.StartRaw);
       }
       if (other.options_ != null) {
         if (options_ == null) {
-          options_ = new global::SC2APIProtocol.InterfaceOptions();
+          options_ = new global::ProxyStarcraft.Proto.InterfaceOptions();
         }
         Options.MergeFrom(other.Options);
       }
@@ -5207,14 +5207,14 @@ namespace SC2APIProtocol {
           }
           case 34: {
             if (startRaw_ == null) {
-              startRaw_ = new global::SC2APIProtocol.StartRaw();
+              startRaw_ = new global::ProxyStarcraft.Proto.StartRaw();
             }
             input.ReadMessage(startRaw_);
             break;
           }
           case 42: {
             if (options_ == null) {
-              options_ = new global::SC2APIProtocol.InterfaceOptions();
+              options_ = new global::ProxyStarcraft.Proto.InterfaceOptions();
             }
             input.ReadMessage(options_);
             break;
@@ -5239,7 +5239,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[22]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5328,7 +5328,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[23]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5359,35 +5359,35 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "actions" field.</summary>
     public const int ActionsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.Action> _repeated_actions_codec
-        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.Action.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.Action> actions_ = new pbc::RepeatedField<global::SC2APIProtocol.Action>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Action> _repeated_actions_codec
+        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.Action.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Action> actions_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Action>();
     /// <summary>
     /// Actions this player did since the last Observation.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.Action> Actions {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Action> Actions {
       get { return actions_; }
     }
 
     /// <summary>Field number for the "action_errors" field.</summary>
     public const int ActionErrorsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.ActionError> _repeated_actionErrors_codec
-        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.ActionError.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.ActionError> actionErrors_ = new pbc::RepeatedField<global::SC2APIProtocol.ActionError>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ActionError> _repeated_actionErrors_codec
+        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.ActionError.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionError> actionErrors_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionError>();
     /// <summary>
     /// Equivalent of UI "red text" errors.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.ActionError> ActionErrors {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionError> ActionErrors {
       get { return actionErrors_; }
     }
 
     /// <summary>Field number for the "observation" field.</summary>
     public const int ObservationFieldNumber = 3;
-    private global::SC2APIProtocol.Observation observation_;
+    private global::ProxyStarcraft.Proto.Observation observation_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Observation Observation {
+    public global::ProxyStarcraft.Proto.Observation Observation {
       get { return observation_; }
       set {
         observation_ = value;
@@ -5396,24 +5396,24 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_result" field.</summary>
     public const int PlayerResultFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.PlayerResult> _repeated_playerResult_codec
-        = pb::FieldCodec.ForMessage(34, global::SC2APIProtocol.PlayerResult.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.PlayerResult> playerResult_ = new pbc::RepeatedField<global::SC2APIProtocol.PlayerResult>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.PlayerResult> _repeated_playerResult_codec
+        = pb::FieldCodec.ForMessage(34, global::ProxyStarcraft.Proto.PlayerResult.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerResult> playerResult_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerResult>();
     /// <summary>
     /// Only populated if the game ended during this step.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.PlayerResult> PlayerResult {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerResult> PlayerResult {
       get { return playerResult_; }
     }
 
     /// <summary>Field number for the "chat" field.</summary>
     public const int ChatFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.ChatReceived> _repeated_chat_codec
-        = pb::FieldCodec.ForMessage(42, global::SC2APIProtocol.ChatReceived.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.ChatReceived> chat_ = new pbc::RepeatedField<global::SC2APIProtocol.ChatReceived>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ChatReceived> _repeated_chat_codec
+        = pb::FieldCodec.ForMessage(42, global::ProxyStarcraft.Proto.ChatReceived.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ChatReceived> chat_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ChatReceived>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.ChatReceived> Chat {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ChatReceived> Chat {
       get { return chat_; }
     }
 
@@ -5488,7 +5488,7 @@ namespace SC2APIProtocol {
       actionErrors_.Add(other.actionErrors_);
       if (other.observation_ != null) {
         if (observation_ == null) {
-          observation_ = new global::SC2APIProtocol.Observation();
+          observation_ = new global::ProxyStarcraft.Proto.Observation();
         }
         Observation.MergeFrom(other.Observation);
       }
@@ -5514,7 +5514,7 @@ namespace SC2APIProtocol {
           }
           case 26: {
             if (observation_ == null) {
-              observation_ = new global::SC2APIProtocol.Observation();
+              observation_ = new global::ProxyStarcraft.Proto.Observation();
             }
             input.ReadMessage(observation_);
             break;
@@ -5540,7 +5540,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[24]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5688,7 +5688,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[25]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5715,11 +5715,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "actions" field.</summary>
     public const int ActionsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.Action> _repeated_actions_codec
-        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.Action.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.Action> actions_ = new pbc::RepeatedField<global::SC2APIProtocol.Action>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Action> _repeated_actions_codec
+        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.Action.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Action> actions_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Action>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.Action> Actions {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Action> Actions {
       get { return actions_; }
     }
 
@@ -5797,7 +5797,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[26]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5824,11 +5824,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "result" field.</summary>
     public const int ResultFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.ActionResult> _repeated_result_codec
-        = pb::FieldCodec.ForEnum(10, x => (int) x, x => (global::SC2APIProtocol.ActionResult) x);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.ActionResult> result_ = new pbc::RepeatedField<global::SC2APIProtocol.ActionResult>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ActionResult> _repeated_result_codec
+        = pb::FieldCodec.ForEnum(10, x => (int) x, x => (global::ProxyStarcraft.Proto.ActionResult) x);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionResult> result_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionResult>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.ActionResult> Result {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionResult> Result {
       get { return result_; }
     }
 
@@ -5910,7 +5910,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[27]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6030,7 +6030,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[28]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6122,7 +6122,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[29]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6323,7 +6323,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[30]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[30]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6353,41 +6353,41 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "abilities" field.</summary>
     public const int AbilitiesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.AbilityData> _repeated_abilities_codec
-        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.AbilityData.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.AbilityData> abilities_ = new pbc::RepeatedField<global::SC2APIProtocol.AbilityData>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.AbilityData> _repeated_abilities_codec
+        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.AbilityData.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.AbilityData> abilities_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.AbilityData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.AbilityData> Abilities {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.AbilityData> Abilities {
       get { return abilities_; }
     }
 
     /// <summary>Field number for the "units" field.</summary>
     public const int UnitsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.UnitTypeData> _repeated_units_codec
-        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.UnitTypeData.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.UnitTypeData> units_ = new pbc::RepeatedField<global::SC2APIProtocol.UnitTypeData>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.UnitTypeData> _repeated_units_codec
+        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.UnitTypeData.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitTypeData> units_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitTypeData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.UnitTypeData> Units {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitTypeData> Units {
       get { return units_; }
     }
 
     /// <summary>Field number for the "upgrades" field.</summary>
     public const int UpgradesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.UpgradeData> _repeated_upgrades_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.UpgradeData.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.UpgradeData> upgrades_ = new pbc::RepeatedField<global::SC2APIProtocol.UpgradeData>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.UpgradeData> _repeated_upgrades_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.UpgradeData.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.UpgradeData> upgrades_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.UpgradeData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.UpgradeData> Upgrades {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.UpgradeData> Upgrades {
       get { return upgrades_; }
     }
 
     /// <summary>Field number for the "buffs" field.</summary>
     public const int BuffsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.BuffData> _repeated_buffs_codec
-        = pb::FieldCodec.ForMessage(34, global::SC2APIProtocol.BuffData.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.BuffData> buffs_ = new pbc::RepeatedField<global::SC2APIProtocol.BuffData>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.BuffData> _repeated_buffs_codec
+        = pb::FieldCodec.ForMessage(34, global::ProxyStarcraft.Proto.BuffData.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.BuffData> buffs_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.BuffData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.BuffData> Buffs {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.BuffData> Buffs {
       get { return buffs_; }
     }
 
@@ -6495,7 +6495,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[31]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[31]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6584,7 +6584,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[32]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6704,7 +6704,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[33]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[33]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6883,7 +6883,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[34]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[34]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6913,9 +6913,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_info" field.</summary>
     public const int PlayerInfoFieldNumber = 1;
-    private global::SC2APIProtocol.PlayerInfo playerInfo_;
+    private global::ProxyStarcraft.Proto.PlayerInfo playerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PlayerInfo PlayerInfo {
+    public global::ProxyStarcraft.Proto.PlayerInfo PlayerInfo {
       get { return playerInfo_; }
       set {
         playerInfo_ = value;
@@ -6924,9 +6924,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_result" field.</summary>
     public const int PlayerResultFieldNumber = 2;
-    private global::SC2APIProtocol.PlayerResult playerResult_;
+    private global::ProxyStarcraft.Proto.PlayerResult playerResult_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PlayerResult PlayerResult {
+    public global::ProxyStarcraft.Proto.PlayerResult PlayerResult {
       get { return playerResult_; }
       set {
         playerResult_ = value;
@@ -7035,13 +7035,13 @@ namespace SC2APIProtocol {
       }
       if (other.playerInfo_ != null) {
         if (playerInfo_ == null) {
-          playerInfo_ = new global::SC2APIProtocol.PlayerInfo();
+          playerInfo_ = new global::ProxyStarcraft.Proto.PlayerInfo();
         }
         PlayerInfo.MergeFrom(other.PlayerInfo);
       }
       if (other.playerResult_ != null) {
         if (playerResult_ == null) {
-          playerResult_ = new global::SC2APIProtocol.PlayerResult();
+          playerResult_ = new global::ProxyStarcraft.Proto.PlayerResult();
         }
         PlayerResult.MergeFrom(other.PlayerResult);
       }
@@ -7063,14 +7063,14 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (playerInfo_ == null) {
-              playerInfo_ = new global::SC2APIProtocol.PlayerInfo();
+              playerInfo_ = new global::ProxyStarcraft.Proto.PlayerInfo();
             }
             input.ReadMessage(playerInfo_);
             break;
           }
           case 18: {
             if (playerResult_ == null) {
-              playerResult_ = new global::SC2APIProtocol.PlayerResult();
+              playerResult_ = new global::ProxyStarcraft.Proto.PlayerResult();
             }
             input.ReadMessage(playerResult_);
             break;
@@ -7096,7 +7096,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[35]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7155,11 +7155,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_info" field.</summary>
     public const int PlayerInfoFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.PlayerInfoExtra> _repeated_playerInfo_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.PlayerInfoExtra.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.PlayerInfoExtra> playerInfo_ = new pbc::RepeatedField<global::SC2APIProtocol.PlayerInfoExtra>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.PlayerInfoExtra> _repeated_playerInfo_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.PlayerInfoExtra.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerInfoExtra> playerInfo_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerInfoExtra>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.PlayerInfoExtra> PlayerInfo {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.PlayerInfoExtra> PlayerInfo {
       get { return playerInfo_; }
     }
 
@@ -7231,9 +7231,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 9;
-    private global::SC2APIProtocol.ResponseReplayInfo.Types.Error error_ = 0;
+    private global::ProxyStarcraft.Proto.ResponseReplayInfo.Types.Error error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseReplayInfo.Types.Error Error {
+    public global::ProxyStarcraft.Proto.ResponseReplayInfo.Types.Error Error {
       get { return error_; }
       set {
         error_ = value;
@@ -7461,7 +7461,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 72: {
-            error_ = (global::SC2APIProtocol.ResponseReplayInfo.Types.Error) input.ReadEnum();
+            error_ = (global::ProxyStarcraft.Proto.ResponseReplayInfo.Types.Error) input.ReadEnum();
             break;
           }
           case 82: {
@@ -7503,7 +7503,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[36]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7597,7 +7597,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[37]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[37]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7736,7 +7736,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[38]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7887,7 +7887,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[39]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7914,9 +7914,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::SC2APIProtocol.ResponseSaveMap.Types.Error error_ = 0;
+    private global::ProxyStarcraft.Proto.ResponseSaveMap.Types.Error error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ResponseSaveMap.Types.Error Error {
+    public global::ProxyStarcraft.Proto.ResponseSaveMap.Types.Error Error {
       get { return error_; }
       set {
         error_ = value;
@@ -7988,7 +7988,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            error_ = (global::SC2APIProtocol.ResponseSaveMap.Types.Error) input.ReadEnum();
+            error_ = (global::ProxyStarcraft.Proto.ResponseSaveMap.Types.Error) input.ReadEnum();
             break;
           }
         }
@@ -8019,7 +8019,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[40]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8108,7 +8108,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[41]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8312,7 +8312,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[42]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8339,11 +8339,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "debug" field.</summary>
     public const int DebugFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.DebugCommand> _repeated_debug_codec
-        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.DebugCommand.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.DebugCommand> debug_ = new pbc::RepeatedField<global::SC2APIProtocol.DebugCommand>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DebugCommand> _repeated_debug_codec
+        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.DebugCommand.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugCommand> debug_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugCommand>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.DebugCommand> Debug {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DebugCommand> Debug {
       get { return debug_; }
     }
 
@@ -8421,7 +8421,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[43]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[43]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8510,7 +8510,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[44]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[44]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8539,9 +8539,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::SC2APIProtocol.PlayerType type_ = 0;
+    private global::ProxyStarcraft.Proto.PlayerType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PlayerType Type {
+    public global::ProxyStarcraft.Proto.PlayerType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -8550,12 +8550,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "race" field.</summary>
     public const int RaceFieldNumber = 2;
-    private global::SC2APIProtocol.Race race_ = 0;
+    private global::ProxyStarcraft.Proto.Race race_ = 0;
     /// <summary>
     /// Only used for a computer player.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Race Race {
+    public global::ProxyStarcraft.Proto.Race Race {
       get { return race_; }
       set {
         race_ = value;
@@ -8564,9 +8564,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "difficulty" field.</summary>
     public const int DifficultyFieldNumber = 3;
-    private global::SC2APIProtocol.Difficulty difficulty_ = 0;
+    private global::ProxyStarcraft.Proto.Difficulty difficulty_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Difficulty Difficulty {
+    public global::ProxyStarcraft.Proto.Difficulty Difficulty {
       get { return difficulty_; }
       set {
         difficulty_ = value;
@@ -8662,15 +8662,15 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            type_ = (global::SC2APIProtocol.PlayerType) input.ReadEnum();
+            type_ = (global::ProxyStarcraft.Proto.PlayerType) input.ReadEnum();
             break;
           }
           case 16: {
-            race_ = (global::SC2APIProtocol.Race) input.ReadEnum();
+            race_ = (global::ProxyStarcraft.Proto.Race) input.ReadEnum();
             break;
           }
           case 24: {
-            difficulty_ = (global::SC2APIProtocol.Difficulty) input.ReadEnum();
+            difficulty_ = (global::ProxyStarcraft.Proto.Difficulty) input.ReadEnum();
             break;
           }
         }
@@ -8686,7 +8686,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[45]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[45]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8726,9 +8726,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "resolution" field.</summary>
     public const int ResolutionFieldNumber = 2;
-    private global::SC2APIProtocol.Size2DI resolution_;
+    private global::ProxyStarcraft.Proto.Size2DI resolution_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Size2DI Resolution {
+    public global::ProxyStarcraft.Proto.Size2DI Resolution {
       get { return resolution_; }
       set {
         resolution_ = value;
@@ -8737,9 +8737,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "minimap_resolution" field.</summary>
     public const int MinimapResolutionFieldNumber = 3;
-    private global::SC2APIProtocol.Size2DI minimapResolution_;
+    private global::ProxyStarcraft.Proto.Size2DI minimapResolution_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Size2DI MinimapResolution {
+    public global::ProxyStarcraft.Proto.Size2DI MinimapResolution {
       get { return minimapResolution_; }
       set {
         minimapResolution_ = value;
@@ -8820,13 +8820,13 @@ namespace SC2APIProtocol {
       }
       if (other.resolution_ != null) {
         if (resolution_ == null) {
-          resolution_ = new global::SC2APIProtocol.Size2DI();
+          resolution_ = new global::ProxyStarcraft.Proto.Size2DI();
         }
         Resolution.MergeFrom(other.Resolution);
       }
       if (other.minimapResolution_ != null) {
         if (minimapResolution_ == null) {
-          minimapResolution_ = new global::SC2APIProtocol.Size2DI();
+          minimapResolution_ = new global::ProxyStarcraft.Proto.Size2DI();
         }
         MinimapResolution.MergeFrom(other.MinimapResolution);
       }
@@ -8846,14 +8846,14 @@ namespace SC2APIProtocol {
           }
           case 18: {
             if (resolution_ == null) {
-              resolution_ = new global::SC2APIProtocol.Size2DI();
+              resolution_ = new global::ProxyStarcraft.Proto.Size2DI();
             }
             input.ReadMessage(resolution_);
             break;
           }
           case 26: {
             if (minimapResolution_ == null) {
-              minimapResolution_ = new global::SC2APIProtocol.Size2DI();
+              minimapResolution_ = new global::ProxyStarcraft.Proto.Size2DI();
             }
             input.ReadMessage(minimapResolution_);
             break;
@@ -8871,7 +8871,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[46]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[46]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8926,12 +8926,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "feature_layer" field.</summary>
     public const int FeatureLayerFieldNumber = 3;
-    private global::SC2APIProtocol.SpatialCameraSetup featureLayer_;
+    private global::ProxyStarcraft.Proto.SpatialCameraSetup featureLayer_;
     /// <summary>
     /// Omit to disable.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.SpatialCameraSetup FeatureLayer {
+    public global::ProxyStarcraft.Proto.SpatialCameraSetup FeatureLayer {
       get { return featureLayer_; }
       set {
         featureLayer_ = value;
@@ -8940,12 +8940,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "render" field.</summary>
     public const int RenderFieldNumber = 4;
-    private global::SC2APIProtocol.SpatialCameraSetup render_;
+    private global::ProxyStarcraft.Proto.SpatialCameraSetup render_;
     /// <summary>
     /// Not implemented.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.SpatialCameraSetup Render {
+    public global::ProxyStarcraft.Proto.SpatialCameraSetup Render {
       get { return render_; }
       set {
         render_ = value;
@@ -9038,13 +9038,13 @@ namespace SC2APIProtocol {
       }
       if (other.featureLayer_ != null) {
         if (featureLayer_ == null) {
-          featureLayer_ = new global::SC2APIProtocol.SpatialCameraSetup();
+          featureLayer_ = new global::ProxyStarcraft.Proto.SpatialCameraSetup();
         }
         FeatureLayer.MergeFrom(other.FeatureLayer);
       }
       if (other.render_ != null) {
         if (render_ == null) {
-          render_ = new global::SC2APIProtocol.SpatialCameraSetup();
+          render_ = new global::ProxyStarcraft.Proto.SpatialCameraSetup();
         }
         Render.MergeFrom(other.Render);
       }
@@ -9068,14 +9068,14 @@ namespace SC2APIProtocol {
           }
           case 26: {
             if (featureLayer_ == null) {
-              featureLayer_ = new global::SC2APIProtocol.SpatialCameraSetup();
+              featureLayer_ = new global::ProxyStarcraft.Proto.SpatialCameraSetup();
             }
             input.ReadMessage(featureLayer_);
             break;
           }
           case 34: {
             if (render_ == null) {
-              render_ = new global::SC2APIProtocol.SpatialCameraSetup();
+              render_ = new global::ProxyStarcraft.Proto.SpatialCameraSetup();
             }
             input.ReadMessage(render_);
             break;
@@ -9093,7 +9093,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[47]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[47]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9139,9 +9139,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 2;
-    private global::SC2APIProtocol.PlayerType type_ = 0;
+    private global::ProxyStarcraft.Proto.PlayerType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PlayerType Type {
+    public global::ProxyStarcraft.Proto.PlayerType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -9150,9 +9150,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "race_requested" field.</summary>
     public const int RaceRequestedFieldNumber = 3;
-    private global::SC2APIProtocol.Race raceRequested_ = 0;
+    private global::ProxyStarcraft.Proto.Race raceRequested_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Race RaceRequested {
+    public global::ProxyStarcraft.Proto.Race RaceRequested {
       get { return raceRequested_; }
       set {
         raceRequested_ = value;
@@ -9161,12 +9161,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "race_actual" field.</summary>
     public const int RaceActualFieldNumber = 4;
-    private global::SC2APIProtocol.Race raceActual_ = 0;
+    private global::ProxyStarcraft.Proto.Race raceActual_ = 0;
     /// <summary>
     /// Only populated for your player or when watching replay
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Race RaceActual {
+    public global::ProxyStarcraft.Proto.Race RaceActual {
       get { return raceActual_; }
       set {
         raceActual_ = value;
@@ -9175,9 +9175,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "difficulty" field.</summary>
     public const int DifficultyFieldNumber = 5;
-    private global::SC2APIProtocol.Difficulty difficulty_ = 0;
+    private global::ProxyStarcraft.Proto.Difficulty difficulty_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Difficulty Difficulty {
+    public global::ProxyStarcraft.Proto.Difficulty Difficulty {
       get { return difficulty_; }
       set {
         difficulty_ = value;
@@ -9301,19 +9301,19 @@ namespace SC2APIProtocol {
             break;
           }
           case 16: {
-            type_ = (global::SC2APIProtocol.PlayerType) input.ReadEnum();
+            type_ = (global::ProxyStarcraft.Proto.PlayerType) input.ReadEnum();
             break;
           }
           case 24: {
-            raceRequested_ = (global::SC2APIProtocol.Race) input.ReadEnum();
+            raceRequested_ = (global::ProxyStarcraft.Proto.Race) input.ReadEnum();
             break;
           }
           case 32: {
-            raceActual_ = (global::SC2APIProtocol.Race) input.ReadEnum();
+            raceActual_ = (global::ProxyStarcraft.Proto.Race) input.ReadEnum();
             break;
           }
           case 40: {
-            difficulty_ = (global::SC2APIProtocol.Difficulty) input.ReadEnum();
+            difficulty_ = (global::ProxyStarcraft.Proto.Difficulty) input.ReadEnum();
             break;
           }
         }
@@ -9329,7 +9329,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[48]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[48]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9726,7 +9726,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[49]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[49]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9772,9 +9772,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "player_common" field.</summary>
     public const int PlayerCommonFieldNumber = 1;
-    private global::SC2APIProtocol.PlayerCommon playerCommon_;
+    private global::ProxyStarcraft.Proto.PlayerCommon playerCommon_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PlayerCommon PlayerCommon {
+    public global::ProxyStarcraft.Proto.PlayerCommon PlayerCommon {
       get { return playerCommon_; }
       set {
         playerCommon_ = value;
@@ -9783,32 +9783,32 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "alerts" field.</summary>
     public const int AlertsFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.Alert> _repeated_alerts_codec
-        = pb::FieldCodec.ForEnum(82, x => (int) x, x => (global::SC2APIProtocol.Alert) x);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.Alert> alerts_ = new pbc::RepeatedField<global::SC2APIProtocol.Alert>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Alert> _repeated_alerts_codec
+        = pb::FieldCodec.ForEnum(82, x => (int) x, x => (global::ProxyStarcraft.Proto.Alert) x);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Alert> alerts_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Alert>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.Alert> Alerts {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Alert> Alerts {
       get { return alerts_; }
     }
 
     /// <summary>Field number for the "abilities" field.</summary>
     public const int AbilitiesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.AvailableAbility> _repeated_abilities_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.AvailableAbility.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.AvailableAbility> abilities_ = new pbc::RepeatedField<global::SC2APIProtocol.AvailableAbility>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.AvailableAbility> _repeated_abilities_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.AvailableAbility.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.AvailableAbility> abilities_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.AvailableAbility>();
     /// <summary>
     /// Abilities available in the selection. Enabled if in this list, disabled otherwise.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.AvailableAbility> Abilities {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.AvailableAbility> Abilities {
       get { return abilities_; }
     }
 
     /// <summary>Field number for the "score" field.</summary>
     public const int ScoreFieldNumber = 4;
-    private global::SC2APIProtocol.Score score_;
+    private global::ProxyStarcraft.Proto.Score score_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Score Score {
+    public global::ProxyStarcraft.Proto.Score Score {
       get { return score_; }
       set {
         score_ = value;
@@ -9817,12 +9817,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "raw_data" field.</summary>
     public const int RawDataFieldNumber = 5;
-    private global::SC2APIProtocol.ObservationRaw rawData_;
+    private global::ProxyStarcraft.Proto.ObservationRaw rawData_;
     /// <summary>
     /// Populated if Raw interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ObservationRaw RawData {
+    public global::ProxyStarcraft.Proto.ObservationRaw RawData {
       get { return rawData_; }
       set {
         rawData_ = value;
@@ -9831,12 +9831,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "feature_layer_data" field.</summary>
     public const int FeatureLayerDataFieldNumber = 6;
-    private global::SC2APIProtocol.ObservationFeatureLayer featureLayerData_;
+    private global::ProxyStarcraft.Proto.ObservationFeatureLayer featureLayerData_;
     /// <summary>
     /// Populated if Feature Layer interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ObservationFeatureLayer FeatureLayerData {
+    public global::ProxyStarcraft.Proto.ObservationFeatureLayer FeatureLayerData {
       get { return featureLayerData_; }
       set {
         featureLayerData_ = value;
@@ -9845,12 +9845,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "render_data" field.</summary>
     public const int RenderDataFieldNumber = 7;
-    private global::SC2APIProtocol.ObservationRender renderData_;
+    private global::ProxyStarcraft.Proto.ObservationRender renderData_;
     /// <summary>
     /// Populated if Render interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ObservationRender RenderData {
+    public global::ProxyStarcraft.Proto.ObservationRender RenderData {
       get { return renderData_; }
       set {
         renderData_ = value;
@@ -9859,12 +9859,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "ui_data" field.</summary>
     public const int UiDataFieldNumber = 8;
-    private global::SC2APIProtocol.ObservationUI uiData_;
+    private global::ProxyStarcraft.Proto.ObservationUI uiData_;
     /// <summary>
     /// Populated if Feature Layer or Render interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ObservationUI UiData {
+    public global::ProxyStarcraft.Proto.ObservationUI UiData {
       get { return uiData_; }
       set {
         uiData_ = value;
@@ -9989,7 +9989,7 @@ namespace SC2APIProtocol {
       }
       if (other.playerCommon_ != null) {
         if (playerCommon_ == null) {
-          playerCommon_ = new global::SC2APIProtocol.PlayerCommon();
+          playerCommon_ = new global::ProxyStarcraft.Proto.PlayerCommon();
         }
         PlayerCommon.MergeFrom(other.PlayerCommon);
       }
@@ -9997,31 +9997,31 @@ namespace SC2APIProtocol {
       abilities_.Add(other.abilities_);
       if (other.score_ != null) {
         if (score_ == null) {
-          score_ = new global::SC2APIProtocol.Score();
+          score_ = new global::ProxyStarcraft.Proto.Score();
         }
         Score.MergeFrom(other.Score);
       }
       if (other.rawData_ != null) {
         if (rawData_ == null) {
-          rawData_ = new global::SC2APIProtocol.ObservationRaw();
+          rawData_ = new global::ProxyStarcraft.Proto.ObservationRaw();
         }
         RawData.MergeFrom(other.RawData);
       }
       if (other.featureLayerData_ != null) {
         if (featureLayerData_ == null) {
-          featureLayerData_ = new global::SC2APIProtocol.ObservationFeatureLayer();
+          featureLayerData_ = new global::ProxyStarcraft.Proto.ObservationFeatureLayer();
         }
         FeatureLayerData.MergeFrom(other.FeatureLayerData);
       }
       if (other.renderData_ != null) {
         if (renderData_ == null) {
-          renderData_ = new global::SC2APIProtocol.ObservationRender();
+          renderData_ = new global::ProxyStarcraft.Proto.ObservationRender();
         }
         RenderData.MergeFrom(other.RenderData);
       }
       if (other.uiData_ != null) {
         if (uiData_ == null) {
-          uiData_ = new global::SC2APIProtocol.ObservationUI();
+          uiData_ = new global::ProxyStarcraft.Proto.ObservationUI();
         }
         UiData.MergeFrom(other.UiData);
       }
@@ -10037,7 +10037,7 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (playerCommon_ == null) {
-              playerCommon_ = new global::SC2APIProtocol.PlayerCommon();
+              playerCommon_ = new global::ProxyStarcraft.Proto.PlayerCommon();
             }
             input.ReadMessage(playerCommon_);
             break;
@@ -10048,35 +10048,35 @@ namespace SC2APIProtocol {
           }
           case 34: {
             if (score_ == null) {
-              score_ = new global::SC2APIProtocol.Score();
+              score_ = new global::ProxyStarcraft.Proto.Score();
             }
             input.ReadMessage(score_);
             break;
           }
           case 42: {
             if (rawData_ == null) {
-              rawData_ = new global::SC2APIProtocol.ObservationRaw();
+              rawData_ = new global::ProxyStarcraft.Proto.ObservationRaw();
             }
             input.ReadMessage(rawData_);
             break;
           }
           case 50: {
             if (featureLayerData_ == null) {
-              featureLayerData_ = new global::SC2APIProtocol.ObservationFeatureLayer();
+              featureLayerData_ = new global::ProxyStarcraft.Proto.ObservationFeatureLayer();
             }
             input.ReadMessage(featureLayerData_);
             break;
           }
           case 58: {
             if (renderData_ == null) {
-              renderData_ = new global::SC2APIProtocol.ObservationRender();
+              renderData_ = new global::ProxyStarcraft.Proto.ObservationRender();
             }
             input.ReadMessage(renderData_);
             break;
           }
           case 66: {
             if (uiData_ == null) {
-              uiData_ = new global::SC2APIProtocol.ObservationUI();
+              uiData_ = new global::ProxyStarcraft.Proto.ObservationUI();
             }
             input.ReadMessage(uiData_);
             break;
@@ -10103,7 +10103,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[50]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[50]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10134,12 +10134,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "action_raw" field.</summary>
     public const int ActionRawFieldNumber = 1;
-    private global::SC2APIProtocol.ActionRaw actionRaw_;
+    private global::ProxyStarcraft.Proto.ActionRaw actionRaw_;
     /// <summary>
     /// Populated if Raw interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ActionRaw ActionRaw {
+    public global::ProxyStarcraft.Proto.ActionRaw ActionRaw {
       get { return actionRaw_; }
       set {
         actionRaw_ = value;
@@ -10148,12 +10148,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "action_feature_layer" field.</summary>
     public const int ActionFeatureLayerFieldNumber = 2;
-    private global::SC2APIProtocol.ActionSpatial actionFeatureLayer_;
+    private global::ProxyStarcraft.Proto.ActionSpatial actionFeatureLayer_;
     /// <summary>
     /// Populated if Feature Layer interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ActionSpatial ActionFeatureLayer {
+    public global::ProxyStarcraft.Proto.ActionSpatial ActionFeatureLayer {
       get { return actionFeatureLayer_; }
       set {
         actionFeatureLayer_ = value;
@@ -10162,12 +10162,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "action_render" field.</summary>
     public const int ActionRenderFieldNumber = 3;
-    private global::SC2APIProtocol.ActionSpatial actionRender_;
+    private global::ProxyStarcraft.Proto.ActionSpatial actionRender_;
     /// <summary>
     /// Not implemented. Populated if Render interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ActionSpatial ActionRender {
+    public global::ProxyStarcraft.Proto.ActionSpatial ActionRender {
       get { return actionRender_; }
       set {
         actionRender_ = value;
@@ -10176,12 +10176,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "action_ui" field.</summary>
     public const int ActionUiFieldNumber = 4;
-    private global::SC2APIProtocol.ActionUI actionUi_;
+    private global::ProxyStarcraft.Proto.ActionUI actionUi_;
     /// <summary>
     /// Populated if Feature Layer or Render interface is enabled.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ActionUI ActionUi {
+    public global::ProxyStarcraft.Proto.ActionUI ActionUi {
       get { return actionUi_; }
       set {
         actionUi_ = value;
@@ -10190,14 +10190,14 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "chat" field.</summary>
     public const int ChatFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.ActionChat> _repeated_chat_codec
-        = pb::FieldCodec.ForMessage(42, global::SC2APIProtocol.ActionChat.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.ActionChat> chat_ = new pbc::RepeatedField<global::SC2APIProtocol.ActionChat>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ActionChat> _repeated_chat_codec
+        = pb::FieldCodec.ForMessage(42, global::ProxyStarcraft.Proto.ActionChat.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionChat> chat_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionChat>();
     /// <summary>
     /// Chat messages as a player typing into the chat channel.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.ActionChat> Chat {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionChat> Chat {
       get { return chat_; }
     }
 
@@ -10285,25 +10285,25 @@ namespace SC2APIProtocol {
       }
       if (other.actionRaw_ != null) {
         if (actionRaw_ == null) {
-          actionRaw_ = new global::SC2APIProtocol.ActionRaw();
+          actionRaw_ = new global::ProxyStarcraft.Proto.ActionRaw();
         }
         ActionRaw.MergeFrom(other.ActionRaw);
       }
       if (other.actionFeatureLayer_ != null) {
         if (actionFeatureLayer_ == null) {
-          actionFeatureLayer_ = new global::SC2APIProtocol.ActionSpatial();
+          actionFeatureLayer_ = new global::ProxyStarcraft.Proto.ActionSpatial();
         }
         ActionFeatureLayer.MergeFrom(other.ActionFeatureLayer);
       }
       if (other.actionRender_ != null) {
         if (actionRender_ == null) {
-          actionRender_ = new global::SC2APIProtocol.ActionSpatial();
+          actionRender_ = new global::ProxyStarcraft.Proto.ActionSpatial();
         }
         ActionRender.MergeFrom(other.ActionRender);
       }
       if (other.actionUi_ != null) {
         if (actionUi_ == null) {
-          actionUi_ = new global::SC2APIProtocol.ActionUI();
+          actionUi_ = new global::ProxyStarcraft.Proto.ActionUI();
         }
         ActionUi.MergeFrom(other.ActionUi);
       }
@@ -10320,28 +10320,28 @@ namespace SC2APIProtocol {
             break;
           case 10: {
             if (actionRaw_ == null) {
-              actionRaw_ = new global::SC2APIProtocol.ActionRaw();
+              actionRaw_ = new global::ProxyStarcraft.Proto.ActionRaw();
             }
             input.ReadMessage(actionRaw_);
             break;
           }
           case 18: {
             if (actionFeatureLayer_ == null) {
-              actionFeatureLayer_ = new global::SC2APIProtocol.ActionSpatial();
+              actionFeatureLayer_ = new global::ProxyStarcraft.Proto.ActionSpatial();
             }
             input.ReadMessage(actionFeatureLayer_);
             break;
           }
           case 26: {
             if (actionRender_ == null) {
-              actionRender_ = new global::SC2APIProtocol.ActionSpatial();
+              actionRender_ = new global::ProxyStarcraft.Proto.ActionSpatial();
             }
             input.ReadMessage(actionRender_);
             break;
           }
           case 34: {
             if (actionUi_ == null) {
-              actionUi_ = new global::SC2APIProtocol.ActionUI();
+              actionUi_ = new global::ProxyStarcraft.Proto.ActionUI();
             }
             input.ReadMessage(actionUi_);
             break;
@@ -10363,7 +10363,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[51]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[51]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10391,9 +10391,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "channel" field.</summary>
     public const int ChannelFieldNumber = 1;
-    private global::SC2APIProtocol.ActionChat.Types.Channel channel_ = 0;
+    private global::ProxyStarcraft.Proto.ActionChat.Types.Channel channel_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ActionChat.Types.Channel Channel {
+    public global::ProxyStarcraft.Proto.ActionChat.Types.Channel Channel {
       get { return channel_; }
       set {
         channel_ = value;
@@ -10488,7 +10488,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            channel_ = (global::SC2APIProtocol.ActionChat.Types.Channel) input.ReadEnum();
+            channel_ = (global::ProxyStarcraft.Proto.ActionChat.Types.Channel) input.ReadEnum();
             break;
           }
           case 18: {
@@ -10521,7 +10521,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[52]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[52]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10575,9 +10575,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "result" field.</summary>
     public const int ResultFieldNumber = 3;
-    private global::SC2APIProtocol.ActionResult result_ = 0;
+    private global::ProxyStarcraft.Proto.ActionResult result_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.ActionResult Result {
+    public global::ProxyStarcraft.Proto.ActionResult Result {
       get { return result_; }
       set {
         result_ = value;
@@ -10681,7 +10681,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 24: {
-            result_ = (global::SC2APIProtocol.ActionResult) input.ReadEnum();
+            result_ = (global::ProxyStarcraft.Proto.ActionResult) input.ReadEnum();
             break;
           }
         }
@@ -10697,7 +10697,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.Sc2ApiReflection.Descriptor.MessageTypes[53]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[53]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10736,9 +10736,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "result" field.</summary>
     public const int ResultFieldNumber = 2;
-    private global::SC2APIProtocol.Result result_ = 0;
+    private global::ProxyStarcraft.Proto.Result result_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Result Result {
+    public global::ProxyStarcraft.Proto.Result Result {
       get { return result_; }
       set {
         result_ = value;
@@ -10826,7 +10826,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 16: {
-            result_ = (global::SC2APIProtocol.Result) input.ReadEnum();
+            result_ = (global::ProxyStarcraft.Proto.Result) input.ReadEnum();
             break;
           }
         }

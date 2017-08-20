@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace SC2APIProtocol {
+namespace ProxyStarcraft.Proto {
 
   /// <summary>Holder for reflection information generated from error.proto</summary>
   public static partial class ErrorReflection {
@@ -155,7 +155,7 @@ namespace SC2APIProtocol {
             "Y2VsT3JkZXIQ1gFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.ActionResult), }, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.ActionResult), }, null));
     }
     #endregion
 

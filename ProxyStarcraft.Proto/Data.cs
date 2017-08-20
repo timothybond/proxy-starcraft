@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace SC2APIProtocol {
+namespace ProxyStarcraft.Proto {
 
   /// <summary>Holder for reflection information generated from data.proto</summary>
   public static partial class DataReflection {
@@ -55,13 +55,13 @@ namespace SC2APIProtocol {
             "EgwKCFN1bW1vbmVkEAtiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.Attribute), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.AbilityData), global::SC2APIProtocol.AbilityData.Parser, new[]{ "AbilityId", "LinkName", "LinkIndex", "ButtonName", "FriendlyName", "Hotkey", "RemapsToAbilityId", "Available", "Target", "AllowMinimap", "AllowAutocast", "IsBuilding", "FootprintRadius", "IsInstantPlacement", "CastRange" }, null, new[]{ typeof(global::SC2APIProtocol.AbilityData.Types.Target) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DamageBonus), global::SC2APIProtocol.DamageBonus.Parser, new[]{ "Attribute", "Bonus" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Weapon), global::SC2APIProtocol.Weapon.Parser, new[]{ "Type", "Damage", "DamageBonus", "Attacks", "Range", "Speed" }, null, new[]{ typeof(global::SC2APIProtocol.Weapon.Types.TargetType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.UnitTypeData), global::SC2APIProtocol.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.UpgradeData), global::SC2APIProtocol.UpgradeData.Parser, new[]{ "UpgradeId", "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.BuffData), global::SC2APIProtocol.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Attribute), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.AbilityData), global::ProxyStarcraft.Proto.AbilityData.Parser, new[]{ "AbilityId", "LinkName", "LinkIndex", "ButtonName", "FriendlyName", "Hotkey", "RemapsToAbilityId", "Available", "Target", "AllowMinimap", "AllowAutocast", "IsBuilding", "FootprintRadius", "IsInstantPlacement", "CastRange" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.AbilityData.Types.Target) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DamageBonus), global::ProxyStarcraft.Proto.DamageBonus.Parser, new[]{ "Attribute", "Bonus" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Weapon), global::ProxyStarcraft.Proto.Weapon.Parser, new[]{ "Type", "Damage", "DamageBonus", "Attacks", "Range", "Speed" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.Weapon.Types.TargetType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UnitTypeData), global::ProxyStarcraft.Proto.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UpgradeData), global::ProxyStarcraft.Proto.UpgradeData.Parser, new[]{ "UpgradeId", "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.BuffData), global::ProxyStarcraft.Proto.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null)
           }));
     }
     #endregion
@@ -99,7 +99,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -252,12 +252,12 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "target" field.</summary>
     public const int TargetFieldNumber = 9;
-    private global::SC2APIProtocol.AbilityData.Types.Target target_ = 0;
+    private global::ProxyStarcraft.Proto.AbilityData.Types.Target target_ = 0;
     /// <summary>
     /// Determines if a point is optional or required.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.AbilityData.Types.Target Target {
+    public global::ProxyStarcraft.Proto.AbilityData.Types.Target Target {
       get { return target_; }
       set {
         target_ = value;
@@ -613,7 +613,7 @@ namespace SC2APIProtocol {
             break;
           }
           case 72: {
-            target_ = (global::SC2APIProtocol.AbilityData.Types.Target) input.ReadEnum();
+            target_ = (global::ProxyStarcraft.Proto.AbilityData.Types.Target) input.ReadEnum();
             break;
           }
           case 80: {
@@ -684,7 +684,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -712,9 +712,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "attribute" field.</summary>
     public const int AttributeFieldNumber = 1;
-    private global::SC2APIProtocol.Attribute attribute_ = 0;
+    private global::ProxyStarcraft.Proto.Attribute attribute_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Attribute Attribute {
+    public global::ProxyStarcraft.Proto.Attribute Attribute {
       get { return attribute_; }
       set {
         attribute_ = value;
@@ -809,7 +809,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            attribute_ = (global::SC2APIProtocol.Attribute) input.ReadEnum();
+            attribute_ = (global::ProxyStarcraft.Proto.Attribute) input.ReadEnum();
             break;
           }
           case 21: {
@@ -829,7 +829,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -861,9 +861,9 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::SC2APIProtocol.Weapon.Types.TargetType type_ = 0;
+    private global::ProxyStarcraft.Proto.Weapon.Types.TargetType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Weapon.Types.TargetType Type {
+    public global::ProxyStarcraft.Proto.Weapon.Types.TargetType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -883,11 +883,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "damage_bonus" field.</summary>
     public const int DamageBonusFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.DamageBonus> _repeated_damageBonus_codec
-        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.DamageBonus.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.DamageBonus> damageBonus_ = new pbc::RepeatedField<global::SC2APIProtocol.DamageBonus>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DamageBonus> _repeated_damageBonus_codec
+        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.DamageBonus.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DamageBonus> damageBonus_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DamageBonus>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.DamageBonus> DamageBonus {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DamageBonus> DamageBonus {
       get { return damageBonus_; }
     }
 
@@ -1048,7 +1048,7 @@ namespace SC2APIProtocol {
             input.SkipLastField();
             break;
           case 8: {
-            type_ = (global::SC2APIProtocol.Weapon.Types.TargetType) input.ReadEnum();
+            type_ = (global::ProxyStarcraft.Proto.Weapon.Types.TargetType) input.ReadEnum();
             break;
           }
           case 21: {
@@ -1098,7 +1098,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1212,14 +1212,14 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "attributes" field.</summary>
     public const int AttributesFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.Attribute> _repeated_attributes_codec
-        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::SC2APIProtocol.Attribute) x);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.Attribute> attributes_ = new pbc::RepeatedField<global::SC2APIProtocol.Attribute>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Attribute> _repeated_attributes_codec
+        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::ProxyStarcraft.Proto.Attribute) x);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Attribute> attributes_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Attribute>();
     /// <summary>
     /// Values include changes from upgrades
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.Attribute> Attributes {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Attribute> Attributes {
       get { return attributes_; }
     }
 
@@ -1247,11 +1247,11 @@ namespace SC2APIProtocol {
 
     /// <summary>Field number for the "weapons" field.</summary>
     public const int WeaponsFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::SC2APIProtocol.Weapon> _repeated_weapons_codec
-        = pb::FieldCodec.ForMessage(90, global::SC2APIProtocol.Weapon.Parser);
-    private readonly pbc::RepeatedField<global::SC2APIProtocol.Weapon> weapons_ = new pbc::RepeatedField<global::SC2APIProtocol.Weapon>();
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Weapon> _repeated_weapons_codec
+        = pb::FieldCodec.ForMessage(90, global::ProxyStarcraft.Proto.Weapon.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Weapon> weapons_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Weapon>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::SC2APIProtocol.Weapon> Weapons {
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Weapon> Weapons {
       get { return weapons_; }
     }
 
@@ -1467,7 +1467,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1615,7 +1615,7 @@ namespace SC2APIProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

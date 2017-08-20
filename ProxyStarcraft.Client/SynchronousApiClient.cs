@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading;
 
-using SC2APIProtocol;
+using ProxyStarcraft.Proto;
 using WebSocket4Net;
 
 namespace ProxyStarcraft.Client

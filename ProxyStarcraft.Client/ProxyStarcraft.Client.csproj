@@ -50,13 +50,13 @@
     <Compile Include="SynchronousApiClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SC2APIProtocol\SC2APIProtocol.csproj">
-      <Project>{555a5ed1-9c3d-4be2-8b3a-c47978f1e9f2}</Project>
-      <Name>SC2APIProtocol</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\ProxyStarcraft.Proto\ProxyStarcraft.Proto.csproj">
+      <Project>{f70fc361-6195-4a96-bddc-50ec0b6f928a}</Project>
+      <Name>ProxyStarcraft.Proto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
