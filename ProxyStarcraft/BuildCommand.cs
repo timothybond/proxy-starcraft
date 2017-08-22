@@ -11,6 +11,11 @@ namespace ProxyStarcraft
             this.X = x;
             this.Y = y;
         }
+
+        /// <summary>
+        /// Commands a unit to construct the specified building at the given location
+        /// (specified as the bottom-left square of the building).
+        /// </summary>
         public BuildCommand(Unit unit, TerranBuilding building, int x, int y) : this(unit, x, y)
         {
             if (building == TerranBuilding.Unspecified)
@@ -21,6 +26,10 @@ namespace ProxyStarcraft
             this.TerranBuilding = building;
         }
 
+        /// <summary>
+        /// Commands a unit to construct the specified building at the given location
+        /// (specified as the bottom-left square of the building).
+        /// </summary>
         public BuildCommand(Unit unit, ProtossBuilding building, int x, int y) : this(unit, x, y)
         {
             if (building == ProtossBuilding.Unspecified)
@@ -31,6 +40,10 @@ namespace ProxyStarcraft
             this.ProtossBuilding = building;
         }
 
+        /// <summary>
+        /// Commands a unit to construct the specified building at the given location
+        /// (specified as the bottom-left square of the building).
+        /// </summary>
         public BuildCommand(Unit unit, ZergBuilding building, int x, int y) : this(unit, x, y)
         {
             if (building == ZergBuilding.Unspecified)

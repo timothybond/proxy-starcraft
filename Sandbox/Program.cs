@@ -136,6 +136,8 @@ namespace Sandbox
 
             var gameState = client.GetGameState();
 
+            StartHarvesting(client, gameState);
+
             while (true)
             {
                 client.Step();

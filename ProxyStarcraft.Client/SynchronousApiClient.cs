@@ -38,6 +38,8 @@ namespace ProxyStarcraft.Client
 
         private Translator translator;
 
+        private Request lastRequest;
+
         public SynchronousApiClient(String address)
         {
             webSocket = new WebSocket(address);
@@ -100,7 +102,10 @@ namespace ProxyStarcraft.Client
                     break;
                 case BuildCommand buildCommand:
                     var buildAbilityId = translator.GetAbilityId(buildCommand);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = buildCommand.X, Y = buildCommand.Y } };
+                    var buildingSize = translator.GetBuildingSize(buildCommand);
+                    var x = buildCommand.X + buildingSize * 0.5f;
+                    var y = buildCommand.Y + buildingSize * 0.5f;
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
                     break;
                 case TrainCommand trainCommand:
                     var trainAbilityId = translator.GetAbilityId(trainCommand);
@@ -178,21 +183,7 @@ namespace ProxyStarcraft.Client
         {
             Connect();
 
-            using (var mem = new MemoryStream())
-            {
-                using (var stream = new Google.Protobuf.CodedOutputStream(mem))
-                {
-                    request.WriteTo(stream);
-                }
-
-                var data = mem.ToArray();
-
-                lock (socketLock)
-                {
-                    webSocket.Send(data, 0, data.Length);
-                    waiting = true;
-                }
-            }
+            SendRequest(request);
 
             // TODO: Use a proper synchronization primitive for this
             while (waiting)
@@ -205,6 +196,26 @@ namespace ProxyStarcraft.Client
                 var retval = socketResponse;
                 socketResponse = null;
                 return retval;
+            }
+        }
+
+        private void SendRequest(Request request)
+        {
+            using (var mem = new MemoryStream())
+            {
+                using (var stream = new Google.Protobuf.CodedOutputStream(mem))
+                {
+                    request.WriteTo(stream);
+                }
+
+                var data = mem.ToArray();
+
+                lock (socketLock)
+                {
+                    lastRequest = request;
+                    waiting = true;
+                    webSocket.Send(data, 0, data.Length);
+                }
             }
         }
 
@@ -253,9 +264,22 @@ namespace ProxyStarcraft.Client
                     {
                         Thread.Sleep(5000);
                     }
-
+                    
                     connectionRetries -= 1;
-                    webSocket.Open();
+
+                    try
+                    {
+                        webSocket.Open();
+
+                        if (waiting && lastRequest != null)
+                        {
+                            SendRequest(lastRequest);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    
                     return;
                 }
             }

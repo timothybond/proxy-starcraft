@@ -35,6 +35,68 @@ namespace ProxyStarcraft
         private uint probeHarvest;
         private uint droneHarvest;
 
+        private Dictionary<TerranBuilding, int> terranBuildingSizes = new Dictionary<TerranBuilding, int>
+        {
+            { TerranBuilding.CommandCenter, 5 },
+            { TerranBuilding.Refinery, 3 },
+            { TerranBuilding.SupplyDepot, 2 },
+            { TerranBuilding.Barracks, 5 }, // ?
+            { TerranBuilding.EngineeringBay, 0 },
+            { TerranBuilding.Bunker, 3 }, // ?
+            { TerranBuilding.SensorTower, 2 }, // ?
+            { TerranBuilding.MissileTurret, 2 }, // ?
+            { TerranBuilding.Factory, 0 },
+            { TerranBuilding.GhostAcademy, 0 },
+            { TerranBuilding.Starport, 0 },
+            { TerranBuilding.Armory, 0 },
+            { TerranBuilding.FusionCore, 0 },
+            { TerranBuilding.TechLab, 2 },
+            { TerranBuilding.Reactor, 0 },
+            { TerranBuilding.PlanetaryFortress, 5 },
+            { TerranBuilding.OrbitalCommand, 5 }
+        };
+
+        private Dictionary<ProtossBuilding, int> protossBuildingSizes = new Dictionary<ProtossBuilding, int>
+        {
+            { ProtossBuilding.Nexus, 5 },
+            { ProtossBuilding.Assimilator, 3 },
+            { ProtossBuilding.Pylon, 2 }, // ?
+            { ProtossBuilding.Gateway, 0 },
+            { ProtossBuilding.Forge, 0 },
+            { ProtossBuilding.CyberneticsCore, 0 },
+            { ProtossBuilding.PhotonCannon, 0 },
+            { ProtossBuilding.RoboticsFacility, 0 },
+            { ProtossBuilding.WarpGate, 0 },
+            { ProtossBuilding.Stargate, 0 },
+            { ProtossBuilding.TwilightCouncil, 0 },
+            { ProtossBuilding.RoboticsBay, 0 },
+            { ProtossBuilding.FleetBeacon, 0 },
+            { ProtossBuilding.TemplarArchive, 0 },
+            { ProtossBuilding.DarkShrine, 0 }
+        };
+
+        private Dictionary<ZergBuilding, int> zergBuildingSizes = new Dictionary<ZergBuilding, int>
+        {
+            { ZergBuilding.Hatchery, 5 },
+            { ZergBuilding.Extractor, 3 },
+            { ZergBuilding.SpawningPool, 0 },
+            { ZergBuilding.EvolutionChamber, 0 },
+            { ZergBuilding.RoachWarren, 0 },
+            { ZergBuilding.BanelingNest, 0 },
+            { ZergBuilding.SpineCrawler, 0 },
+            { ZergBuilding.SporeCrawler, 0 },
+            { ZergBuilding.Lair, 5 },
+            { ZergBuilding.HydraliskDen, 0 },
+            { ZergBuilding.LurkerDen, 0 },
+            { ZergBuilding.InfestationPit, 0 },
+            { ZergBuilding.Spire, 0 },
+            { ZergBuilding.NydusNetwork, 0 },
+            { ZergBuilding.Hive, 5 },
+            { ZergBuilding.GreaterSpire, 0 },
+            { ZergBuilding.UltraliskCavern, 0 },
+            { ZergBuilding.CreepTumor, 1 }
+        };
+
         public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes)
         {
             // Somewhat-amusing trick: although there are tons of non-used abilities,
@@ -423,5 +485,25 @@ namespace ProxyStarcraft
         public uint MineralDeposit { get; private set; }
 
         public uint VespeneGeyser { get; private set; }
+
+        public int GetBuildingSize(BuildCommand buildCommand)
+        {
+            if (buildCommand.TerranBuilding != TerranBuilding.Unspecified)
+            {
+                return terranBuildingSizes[buildCommand.TerranBuilding];
+            }
+
+            if (buildCommand.ProtossBuilding != ProtossBuilding.Unspecified)
+            {
+                return protossBuildingSizes[buildCommand.ProtossBuilding];
+            }
+
+            if (buildCommand.ZergBuilding != ZergBuilding.Unspecified)
+            {
+                return zergBuildingSizes[buildCommand.ZergBuilding];
+            }
+
+            throw new InvalidOperationException();
+        }
     }
 }
