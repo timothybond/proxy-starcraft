@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AttackCommand.cs" />
     <Compile Include="BuildCommand.cs" />
+    <Compile Include="CompositeBot.cs" />
     <Compile Include="HarvestCommand.cs" />
     <Compile Include="IBot.cs" />
     <Compile Include="GameState.cs" />

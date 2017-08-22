@@ -1,9 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace ProxyStarcraft
 {
+    /// <summary>
+    /// Convenience class that allows you to combine multiple bots together,
+    /// in case you want to program simple bots for different functions, e.g.,
+    /// resource gathering, unit production, and combat.
+    /// </summary>
     public class CompositeBot : IBot
     {
         private IReadOnlyList<IBot> bots;
