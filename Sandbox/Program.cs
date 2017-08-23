@@ -6,6 +6,9 @@ using ProxyStarcraft;
 using ProxyStarcraft.Client;
 using ProxyStarcraft.Proto;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Drawing.Imaging;
 
 namespace Sandbox
 {
@@ -136,6 +139,21 @@ namespace Sandbox
 
             var gameState = client.GetGameState();
 
+            using (var pathingGrid = GetImage(gameState.GameInfo.StartRaw.PathingGrid.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
+            {
+                pathingGrid.Save("D:/Temp/pathing.bmp");
+            }
+
+            using (var placementGrid = GetImage(gameState.GameInfo.StartRaw.PlacementGrid.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
+            {
+                placementGrid.Save("D:/Temp/placement.bmp");
+            }
+
+            using (var terrainHeight = GetImage(gameState.GameInfo.StartRaw.TerrainHeight.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
+            {
+                terrainHeight.Save("D:/Temp/terrain-height.bmp");
+            }
+            
             StartHarvesting(client, gameState);
 
             while (true)
@@ -143,6 +161,16 @@ namespace Sandbox
                 client.Step();
                 gameState = client.GetGameState();
             }
+        }
+
+        private static Bitmap GetImage(byte[] data, Size2DI mapSize)
+        {
+            return new Bitmap(
+                mapSize.X,
+                mapSize.Y,
+                mapSize.X,
+                PixelFormat.Format8bppIndexed,
+                Marshal.UnsafeAddrOfPinnedArrayElement(data, 0));
         }
 
         public static void StartHarvesting(SynchronousApiClient client, GameState gameState)

@@ -35,6 +35,7 @@ namespace ProxyStarcraft.Client
         private ResponseGameInfo gameInfo;
         private Dictionary<uint, UnitTypeData> unitTypes;
         private Dictionary<uint, AbilityData> abilities;
+        private MapData mapData;
 
         private Translator translator;
 
@@ -58,9 +59,16 @@ namespace ProxyStarcraft.Client
 
             translator = translator ?? new Translator(abilities, unitTypes);
 
+            mapData = mapData ?? new MapData(gameInfo.StartRaw);
+            
             var response = Call(new Request { Observation = new RequestObservation() });
+
+            mapData = new MapData(mapData, response.Observation.Observation.RawData.Units, translator, unitTypes);
+
             var gameState = new GameState(gameInfo, response.Observation.Observation, unitTypes, abilities, translator);
             
+
+
             return gameState;
         }
 
