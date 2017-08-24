@@ -35,23 +35,25 @@ namespace ProxyStarcraft
         private uint probeHarvest;
         private uint droneHarvest;
 
+        private IReadOnlyList<uint> mineralFieldTypes;
+
         private Dictionary<TerranBuilding, int> terranBuildingSizes = new Dictionary<TerranBuilding, int>
         {
             { TerranBuilding.CommandCenter, 5 },
             { TerranBuilding.Refinery, 3 },
             { TerranBuilding.SupplyDepot, 2 },
-            { TerranBuilding.Barracks, 5 }, // ?
-            { TerranBuilding.EngineeringBay, 0 },
-            { TerranBuilding.Bunker, 3 }, // ?
-            { TerranBuilding.SensorTower, 2 }, // ?
-            { TerranBuilding.MissileTurret, 2 }, // ?
-            { TerranBuilding.Factory, 0 },
-            { TerranBuilding.GhostAcademy, 0 },
-            { TerranBuilding.Starport, 0 },
-            { TerranBuilding.Armory, 0 },
-            { TerranBuilding.FusionCore, 0 },
+            { TerranBuilding.Barracks, 3 },
+            { TerranBuilding.EngineeringBay, 3 },
+            { TerranBuilding.Bunker, 3 },
+            { TerranBuilding.SensorTower, 1 },
+            { TerranBuilding.MissileTurret, 2 },
+            { TerranBuilding.Factory, 3 },
+            { TerranBuilding.GhostAcademy, 3 },
+            { TerranBuilding.Starport, 3 },
+            { TerranBuilding.Armory, 3 },
+            { TerranBuilding.FusionCore, 3 }, // ?
             { TerranBuilding.TechLab, 2 },
-            { TerranBuilding.Reactor, 0 },
+            { TerranBuilding.Reactor, 2 },
             { TerranBuilding.PlanetaryFortress, 5 },
             { TerranBuilding.OrbitalCommand, 5 }
         };
@@ -114,6 +116,8 @@ namespace ProxyStarcraft
             muleHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather Mule")).AbilityId;
             probeHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather Probe")).AbilityId;
             droneHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather Drone")).AbilityId;
+
+            mineralFieldTypes = unitTypes.Values.Where(u => u.Name.Contains("MineralField")).Select(u => u.UnitId).ToList();
 
             var abilitiesByName = new Dictionary<string, AbilityData>();
             
@@ -486,24 +490,68 @@ namespace ProxyStarcraft
 
         public uint VespeneGeyser { get; private set; }
 
-        public int GetBuildingSize(BuildCommand buildCommand)
+        public Size2DI GetBuildingSize(BuildCommand buildCommand)
         {
             if (buildCommand.TerranBuilding != TerranBuilding.Unspecified)
             {
-                return terranBuildingSizes[buildCommand.TerranBuilding];
+                return GetBuildingSize(buildCommand.TerranBuilding);
             }
 
             if (buildCommand.ProtossBuilding != ProtossBuilding.Unspecified)
             {
-                return protossBuildingSizes[buildCommand.ProtossBuilding];
+                return GetBuildingSize(buildCommand.ProtossBuilding);
             }
 
             if (buildCommand.ZergBuilding != ZergBuilding.Unspecified)
             {
-                return zergBuildingSizes[buildCommand.ZergBuilding];
+                return GetBuildingSize(buildCommand.ZergBuilding);
             }
 
             throw new InvalidOperationException();
+        }
+
+        public Size2DI GetBuildingSize(TerranBuilding building)
+        {
+            var side = terranBuildingSizes[building];
+            return new Size2DI() { X = side, Y = side };
+        }
+
+        public Size2DI GetBuildingSize(ProtossBuilding building)
+        {
+            var side = protossBuildingSizes[building];
+            return new Size2DI() { X = side, Y = side };
+        }
+
+        public Size2DI GetBuildingSize(ZergBuilding building)
+        {
+            var side = zergBuildingSizes[building];
+            return new Size2DI() { X = side, Y = side };
+        }
+
+        public Size2DI GetStructureSize(Unit unit)
+        {
+            if (terranBuildingTypesById.ContainsKey(unit.UnitType))
+            {
+                return GetBuildingSize(terranBuildingTypesById[unit.UnitType]);
+            }
+
+            if (protossBuildingTypesById.ContainsKey(unit.UnitType))
+            {
+                return GetBuildingSize(protossBuildingTypesById[unit.UnitType]);
+            }
+
+            if (zergBuildingTypesById.ContainsKey(unit.UnitType))
+            {
+                return GetBuildingSize(zergBuildingTypesById[unit.UnitType]);
+            }
+
+            // TODO: Determine if all mineral fiels are the same size
+            if (mineralFieldTypes.Contains(unit.UnitType))
+            {
+                return new Size2DI { X = 2, Y = 1 };
+            }
+
+            throw new ArgumentException($"Unit type '{unit.UnitType}' not recognized as a structure.");
         }
     }
 }
