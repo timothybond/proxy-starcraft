@@ -111,8 +111,8 @@ namespace ProxyStarcraft.Client
                 case BuildCommand buildCommand:
                     var buildAbilityId = translator.GetAbilityId(buildCommand);
                     var buildingSize = translator.GetBuildingSize(buildCommand);
-                    var x = buildCommand.X + buildingSize * 0.5f;
-                    var y = buildCommand.Y + buildingSize * 0.5f;
+                    var x = buildCommand.X + buildingSize.X * 0.5f;
+                    var y = buildCommand.Y + buildingSize.Y * 0.5f;
                     unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
                     break;
                 case TrainCommand trainCommand:
@@ -196,7 +196,22 @@ namespace ProxyStarcraft.Client
             // TODO: Use a proper synchronization primitive for this
             while (waiting)
             {
-                Thread.Sleep(5);
+                for (var i = 0; i < 100; i++)
+                {
+                    Thread.Sleep(5);
+                    if (!waiting)
+                    {
+                        break;
+                    }
+                }
+
+                // Most of our requests are actually idempotent, so on the off chance
+                // that we never get a response, it makes sense to just resend them.
+                // This might be something that should change if I can diagnose the root cause.
+                if (waiting)
+                {
+                    SendRequest(request);
+                }
             }
 
             lock(socketLock)
