@@ -64,15 +64,11 @@ namespace ProxyStarcraft.Client
             var response = Call(new Request { Observation = new RequestObservation() });
 
             mapData = new MapData(mapData, response.Observation.Observation.RawData.Units, translator, unitTypes);
-
-            var gameState = new GameState(gameInfo, response.Observation.Observation, unitTypes, abilities, translator);
             
-
-
-            return gameState;
+            return new GameState(gameInfo, response.Observation.Observation, mapData, unitTypes, abilities, translator);
         }
 
-        public List<AvailableAbility> GetAbilities(ulong unitTag)
+        public List<uint> GetAbilities(ulong unitTag)
         {
             var queryRequest = new Request { Query = new RequestQuery { } };
 
@@ -80,7 +76,7 @@ namespace ProxyStarcraft.Client
 
             var response = Call(queryRequest);
 
-            return response.Query.Abilities[0].Abilities.ToList();
+            return response.Query.Abilities[0].Abilities.Select(a => (uint)a.AbilityId).ToList();
         }
 
         public void SendCommands(IEnumerable<ICommand> commands)
@@ -89,14 +85,14 @@ namespace ProxyStarcraft.Client
 
             foreach (var command in commands)
             {
-                actionRequest.Action.Actions.Add(buildAction(command));
+                actionRequest.Action.Actions.Add(BuildAction(command));
             }
 
             // TODO: Check response for errors
             var actionResponse = Call(actionRequest);
         }
 
-        private Proto.Action buildAction(ICommand command)
+        private Proto.Action BuildAction(ICommand command)
         {
             ActionRawUnitCommand unitCommand;
 
@@ -104,6 +100,9 @@ namespace ProxyStarcraft.Client
             {
                 case MoveCommand moveCommand:
                     unitCommand = new ActionRawUnitCommand { AbilityId = Move, TargetWorldSpacePos = new Point2D { X = moveCommand.X, Y = moveCommand.Y } };
+                    break;
+                case AttackMoveCommand attackMoveCommand:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetWorldSpacePos = new Point2D { X = attackMoveCommand.X, Y = attackMoveCommand.Y } };
                     break;
                 case AttackCommand attackCommand:
                     unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetUnitTag = attackCommand.Target.Tag };
@@ -165,6 +164,50 @@ namespace ProxyStarcraft.Client
                 {
                     Type = PlayerType.Participant,
                     Race = race
+                });
+
+            var createGameResponse = Call(createGameRequest);
+
+            if (createGameResponse.Status != Status.InitGame)
+            {
+                return false;
+            }
+
+            var joinGameResponse = Call(
+                new Request
+                {
+                    JoinGame = new RequestJoinGame
+                    {
+                        Race = race,
+                        Options = new InterfaceOptions { Raw = true }
+                    }
+                });
+
+            return joinGameResponse.Status == Status.InGame;
+        }
+
+        public bool InitiateGameAgainstComputer(string map, Race race, Difficulty opponentLevel)
+        {
+            var createGameRequest = new Request
+            {
+                CreateGame = new RequestCreateGame
+                {
+                    LocalMap = new LocalMap { MapPath = map }
+                }
+            };
+
+            createGameRequest.CreateGame.PlayerSetup.Add(
+                new PlayerSetup
+                {
+                    Type = PlayerType.Participant,
+                    Race = race
+                });
+            createGameRequest.CreateGame.PlayerSetup.Add(
+                new PlayerSetup
+                {
+                    Type = PlayerType.Computer,
+                    Difficulty = opponentLevel,
+                    Race = Race.Random
                 });
 
             var createGameResponse = Call(createGameRequest);

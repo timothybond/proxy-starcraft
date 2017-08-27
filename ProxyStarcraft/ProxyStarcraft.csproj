@@ -44,13 +44,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttackCommand.cs" />
+    <Compile Include="AttackMoveCommand.cs" />
     <Compile Include="Attributes.cs" />
     <Compile Include="BuildCommand.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="BuildingOrUnit.cs" />
     <Compile Include="CompositeBot.cs" />
     <Compile Include="HarvestCommand.cs" />
     <Compile Include="IBot.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="MapData.cs" />
     <Compile Include="MoveCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,6 +30,8 @@ namespace Sandbox
         private const string MINIGAME_DEFEAT_ZERGLINGS_AND_BANELINGS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/DefeatZerglingsAndBanelings.SC2Map";
         private const string MINIGAME_FIND_AND_DEFEAT_ZERGLINGS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/FindAndDefeatZerglings.SC2Map";
         private const string MINIGAME_MOVE_TO_BEACON_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/MoveToBeacon.SC2Map";
+
+        private const string LADDER_ABYSSAL_REEF_MAP_PATH = BASE_GAME_PATH + "/maps/Ladder/AbyssalReefLE.SC2Map";
         
         private static bool exit = false;
 
@@ -46,7 +48,7 @@ namespace Sandbox
                 {
                     //RunMarineMicroGame(client);
                     //RunEmptyMapGame(client);
-                    RunGatherMinigame(client);
+                    PlayAgainstStandardAI(client);
                 }
             }
         }
@@ -130,13 +132,14 @@ namespace Sandbox
             }
         }
 
-        public static void RunGatherMinigame(SynchronousApiClient client)
+        public static void PlayAgainstStandardAI(SynchronousApiClient client)
         {
-            if (!client.InitiateSinglePlayerGame(MINIGAME_COLLECT_MINERALS_AND_GAS_MAP_PATH, Race.Terran))
+            if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, Race.Terran, Difficulty.Easy))
             {
                 return;
             }
-
+            
+            var bot = new BenchmarkBot();
             var gameState = client.GetGameState();
 
             using (var pathingGrid = GetImage(gameState.GameInfo.StartRaw.PathingGrid.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
@@ -153,11 +156,11 @@ namespace Sandbox
             {
                 terrainHeight.Save("D:/Temp/terrain-height.bmp");
             }
-            
-            StartHarvesting(client, gameState);
 
             while (true)
             {
+                var commands = bot.Act(gameState);
+                client.SendCommands(commands);
                 client.Step();
                 gameState = client.GetGameState();
             }
@@ -173,6 +176,24 @@ namespace Sandbox
                 Marshal.UnsafeAddrOfPinnedArrayElement(data, 0));
         }
 
+        public static Unit GetBuilder(BuildingOrUnit buildingOrUnit, GameState gameState, SynchronousApiClient client)
+        {
+            // TODO: Exclude units/structures already building things
+            var buildAction = gameState.Translator.GetBuildAction(buildingOrUnit);
+
+            foreach (var unit in gameState.Units.Where(u => u.Alliance == Alliance.Self))
+            {
+                var abilities = client.GetAbilities(unit.Tag);
+
+                if (abilities.Contains(buildAction))
+                {
+                    return unit;
+                }
+            }
+
+            return null;
+        }
+        
         public static void StartHarvesting(SynchronousApiClient client, GameState gameState)
         {
             var harvesters = new List<Unit>();
@@ -180,7 +201,7 @@ namespace Sandbox
 
             foreach (var unit in gameState.Units)
             {
-                if (unit.Alliance == Alliance.Neutral && unit.MineralContents > 0)
+                if (unit.IsMineralDeposit())
                 {
                     minerals.Add(unit);
                 }

@@ -14,6 +14,9 @@ namespace ProxyStarcraft
     /// </summary>
     public class Translator
     {
+        private Dictionary<uint, AbilityData> abilities;
+        private Dictionary<uint, UnitTypeData> unitTypes;
+
         private Dictionary<TerranUnit, uint> createTerranUnitActions;
         private Dictionary<ProtossUnit, uint> createProtossUnitActions;
         private Dictionary<ZergUnit, uint> createZergUnitActions;
@@ -25,7 +28,7 @@ namespace ProxyStarcraft
         private Dictionary<uint, TerranUnit> terranUnitTypesById;
         private Dictionary<uint, ProtossUnit> protossUnitTypesById;
         private Dictionary<uint, ZergUnit> zergUnitTypesById;
-
+        
         private Dictionary<uint, TerranBuilding> terranBuildingTypesById;
         private Dictionary<uint, ProtossBuilding> protossBuildingTypesById;
         private Dictionary<uint, ZergBuilding> zergBuildingTypesById;
@@ -36,6 +39,8 @@ namespace ProxyStarcraft
         private uint droneHarvest;
 
         private IReadOnlyList<uint> mineralFieldTypes;
+
+        private IReadOnlyList<uint> vespeneGeyserTypes;
 
         private Dictionary<TerranBuilding, int> terranBuildingSizes = new Dictionary<TerranBuilding, int>
         {
@@ -101,6 +106,9 @@ namespace ProxyStarcraft
 
         public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes)
         {
+            this.abilities = abilities;
+            this.unitTypes = unitTypes;
+            
             // Somewhat-amusing trick: although there are tons of non-used abilities,
             // you can quickly narrow it down to ones that actually appear in-game
             // by only using the ones with hotkeys. Every button on the screen has a hotkey.
@@ -118,6 +126,7 @@ namespace ProxyStarcraft
             droneHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather Drone")).AbilityId;
 
             mineralFieldTypes = unitTypes.Values.Where(u => u.Name.Contains("MineralField")).Select(u => u.UnitId).ToList();
+            vespeneGeyserTypes = unitTypes.Values.Where(u => u.Name.Contains("Vespene")).Select(u => u.UnitId).ToList();
 
             var abilitiesByName = new Dictionary<string, AbilityData>();
             
@@ -408,19 +417,17 @@ namespace ProxyStarcraft
 
         public uint GetAbilityId(BuildCommand buildCommand)
         {
-            if (buildCommand.TerranBuilding != TerranBuilding.Unspecified)
+            if (buildCommand.Building.TerranBuilding != TerranBuilding.Unspecified)
             {
-                return buildTerranBuildingActions[buildCommand.TerranBuilding];
+                return buildTerranBuildingActions[buildCommand.Building.TerranBuilding];
             }
-
-            if (buildCommand.ProtossBuilding != ProtossBuilding.Unspecified)
+            else if (buildCommand.Building.ProtossBuilding != ProtossBuilding.Unspecified)
             {
-                return buildProtossBuildingActions[buildCommand.ProtossBuilding];
+                return buildProtossBuildingActions[buildCommand.Building.ProtossBuilding];
             }
-
-            if (buildCommand.ZergBuilding != ZergBuilding.Unspecified)
+            else if (buildCommand.Building.ZergBuilding != ZergBuilding.Unspecified)
             {
-                return buildZergBuildingActions[buildCommand.ZergBuilding];
+                return buildZergBuildingActions[buildCommand.Building.ZergBuilding];
             }
 
             throw new ArgumentException("Received a build command with no building specified.");
@@ -482,6 +489,36 @@ namespace ProxyStarcraft
             return false;
         }
 
+        public bool IsUnitOfType(Unit unit, BuildingOrUnit unitType)
+        {
+            if (unitType.TerranUnit != TerranUnit.Unspecified)
+            {
+                return terranUnitTypesById.ContainsKey(unit.UnitType) && terranUnitTypesById[unit.UnitType] == unitType.TerranUnit;
+            }
+            else if (unitType.ProtossUnit != ProtossUnit.Unspecified)
+            {
+                return protossUnitTypesById.ContainsKey(unit.UnitType) && protossUnitTypesById[unit.UnitType] == unitType.ProtossUnit;
+            }
+            else if (unitType.ZergUnit != ZergUnit.Unspecified)
+            {
+                return zergUnitTypesById.ContainsKey(unit.UnitType) && zergUnitTypesById[unit.UnitType] == unitType.ZergUnit;
+            }
+            else if (unitType.TerranBuilding != TerranBuilding.Unspecified)
+            {
+                return terranBuildingTypesById.ContainsKey(unit.UnitType) && terranBuildingTypesById[unit.UnitType] == unitType.TerranBuilding;
+            }
+            else if (unitType.ProtossBuilding != ProtossBuilding.Unspecified)
+            {
+                return protossBuildingTypesById.ContainsKey(unit.UnitType) && protossBuildingTypesById[unit.UnitType] == unitType.ProtossBuilding;
+            }
+            else if (unitType.ZergBuilding != ZergBuilding.Unspecified)
+            {
+                return zergBuildingTypesById.ContainsKey(unit.UnitType) && zergBuildingTypesById[unit.UnitType] == unitType.ZergBuilding;
+            }
+
+            throw new NotImplementedException();
+        }
+        
         public uint Move { get; private set; }
 
         public uint Attack { get; private set; }
@@ -492,42 +529,48 @@ namespace ProxyStarcraft
 
         public Size2DI GetBuildingSize(BuildCommand buildCommand)
         {
-            if (buildCommand.TerranBuilding != TerranBuilding.Unspecified)
+            if (buildCommand.Building.TerranBuilding != TerranBuilding.Unspecified)
             {
-                return GetBuildingSize(buildCommand.TerranBuilding);
+                return GetBuildingSize(buildCommand.Building.TerranBuilding);
             }
 
-            if (buildCommand.ProtossBuilding != ProtossBuilding.Unspecified)
+            if (buildCommand.Building.ProtossBuilding != ProtossBuilding.Unspecified)
             {
-                return GetBuildingSize(buildCommand.ProtossBuilding);
+                return GetBuildingSize(buildCommand.Building.ProtossBuilding);
             }
 
-            if (buildCommand.ZergBuilding != ZergBuilding.Unspecified)
+            if (buildCommand.Building.ZergBuilding != ZergBuilding.Unspecified)
             {
-                return GetBuildingSize(buildCommand.ZergBuilding);
+                return GetBuildingSize(buildCommand.Building.ZergBuilding);
             }
 
-            throw new InvalidOperationException();
+            throw new NotImplementedException();
         }
 
-        public Size2DI GetBuildingSize(TerranBuilding building)
+        public Size2DI GetBuildingSize(Building building)
         {
-            var side = terranBuildingSizes[building];
+            int side;
+
+            if (building.TerranBuilding != TerranBuilding.Unspecified)
+            {
+                side = terranBuildingSizes[building.TerranBuilding];
+            }
+            else if (building.ProtossBuilding != ProtossBuilding.Unspecified)
+            {
+                side = protossBuildingSizes[building.ProtossBuilding];
+            }
+            else if (building.ZergBuilding != ZergBuilding.Unspecified)
+            {
+                side = zergBuildingSizes[building.ZergBuilding];
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
             return new Size2DI() { X = side, Y = side };
         }
-
-        public Size2DI GetBuildingSize(ProtossBuilding building)
-        {
-            var side = protossBuildingSizes[building];
-            return new Size2DI() { X = side, Y = side };
-        }
-
-        public Size2DI GetBuildingSize(ZergBuilding building)
-        {
-            var side = zergBuildingSizes[building];
-            return new Size2DI() { X = side, Y = side };
-        }
-
+        
         public Size2DI GetStructureSize(Unit unit)
         {
             if (terranBuildingTypesById.ContainsKey(unit.UnitType))
@@ -545,13 +588,83 @@ namespace ProxyStarcraft
                 return GetBuildingSize(zergBuildingTypesById[unit.UnitType]);
             }
 
-            // TODO: Determine if all mineral fiels are the same size
+            // TODO: Determine if all mineral fields are the same size
             if (mineralFieldTypes.Contains(unit.UnitType))
             {
                 return new Size2DI { X = 2, Y = 1 };
             }
 
-            throw new ArgumentException($"Unit type '{unit.UnitType}' not recognized as a structure.");
+            if (vespeneGeyserTypes.Contains(unit.UnitType))
+            {
+                return new Size2DI { X = 3, Y = 3 };
+            }
+
+            // Various other non-building structures are a bit of a puzzler for the moment.
+            return new Size2DI { X = 0, Y = 0 };
+        }
+
+        public uint GetBuildAction(BuildingOrUnit buildingOrUnit)
+        {
+            if (buildingOrUnit.TerranBuilding != TerranBuilding.Unspecified)
+            {
+                return buildTerranBuildingActions[buildingOrUnit.TerranBuilding];
+            }
+            else if (buildingOrUnit.ProtossBuilding != ProtossBuilding.Unspecified)
+            {
+                return buildProtossBuildingActions[buildingOrUnit.ProtossBuilding];
+            }
+            else if (buildingOrUnit.ZergBuilding != ZergBuilding.Unspecified)
+            {
+                return buildZergBuildingActions[buildingOrUnit.ZergBuilding];
+            }
+            else if (buildingOrUnit.TerranUnit != TerranUnit.Unspecified)
+            {
+                return createTerranUnitActions[buildingOrUnit.TerranUnit];
+            }
+            else if (buildingOrUnit.ProtossUnit != ProtossUnit.Unspecified)
+            {
+                return createProtossUnitActions[buildingOrUnit.ProtossUnit];
+            }
+            else if (buildingOrUnit.ZergUnit != ZergUnit.Unspecified)
+            {
+                return createZergUnitActions[buildingOrUnit.ZergUnit];
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool IsBuildingSomething(Unit unit)
+        {
+            var orders = unit.Orders.FirstOrDefault();
+
+            if (orders == null)
+            {
+                return false;
+            }
+
+            var ability = orders.AbilityId;
+
+            return buildTerranBuildingActions.ContainsValue(ability) ||
+                   buildProtossBuildingActions.ContainsValue(ability) ||
+                   buildZergBuildingActions.ContainsValue(ability) ||
+                   createTerranUnitActions.ContainsValue(ability) ||
+                   createProtossUnitActions.ContainsValue(ability) ||
+                   createZergUnitActions.ContainsValue(ability);
+        }
+
+        public bool IsBuilding(Unit unit, BuildingOrUnit target)
+        {
+            var orders = unit.Orders.FirstOrDefault();
+
+            if (orders == null)
+            {
+                return false;
+            }
+
+            var ability = orders.AbilityId;
+            return ability == GetBuildAction(target);
         }
     }
 }
