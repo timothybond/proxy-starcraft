@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RallyTargetCommand.cs" />
+    <Compile Include="RallyWorkersTargetCommand.cs" />
     <Compile Include="AttackCommand.cs" />
     <Compile Include="AttackMoveCommand.cs" />
     <Compile Include="Attributes.cs" />
@@ -70,6 +72,8 @@
     <Compile Include="Proto\Score.cs" />
     <Compile Include="Proto\Spatial.cs" />
     <Compile Include="Proto\Ui.cs" />
+    <Compile Include="RallyLocationCommand.cs" />
+    <Compile Include="RallyLocationWorkersCommand.cs" />
     <Compile Include="TerranBuilding.cs" />
     <Compile Include="TerranUnit.cs" />
     <Compile Include="TrainCommand.cs" />

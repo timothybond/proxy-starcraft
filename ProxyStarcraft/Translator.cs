@@ -11,6 +11,9 @@ namespace ProxyStarcraft
     /// 
     /// Note that as far as I can tell, the API is not guaranteed to
     /// continue using the exact same identifiers for everything.
+    /// 
+    /// This needs rework... it mostly serves its purpose but it tends
+    /// to just be the extra thing you need to pass around everywhere.
     /// </summary>
     public class Translator
     {
@@ -38,6 +41,13 @@ namespace ProxyStarcraft
         private uint probeHarvest;
         private uint droneHarvest;
 
+        private uint rally;
+        private uint rallyUnitsHatchery;
+
+        private uint rallyWorkersCommandCenter;
+        private uint rallyWorkersHatchery;
+        private uint rallyWorkersNexus;
+        
         private IReadOnlyList<uint> mineralFieldTypes;
 
         private IReadOnlyList<uint> vespeneGeyserTypes;
@@ -116,6 +126,12 @@ namespace ProxyStarcraft
 
             Move = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Move")).AbilityId;
             Attack = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Attack Attack")).AbilityId;
+
+            rally = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Building")).AbilityId;
+            rallyWorkersCommandCenter = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally CommandCenter")).AbilityId;
+            rallyWorkersNexus = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Nexus")).AbilityId;
+            rallyWorkersHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Workers")).AbilityId;
+            rallyUnitsHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Units")).AbilityId;
 
             var buildAndTrainAbilities = hotkeyedAbilities
                 .Where(ability => ability.FriendlyName.Contains("Build") || ability.FriendlyName.Contains("Train"));
@@ -665,6 +681,54 @@ namespace ProxyStarcraft
 
             var ability = orders.AbilityId;
             return ability == GetBuildAction(target);
+        }
+
+        /// <summary>
+        /// Gets the appropriate Rally ability for the given structure.
+        /// 
+        /// Note that this primarily exists to differentiate between the Hatchery and everything else,
+        /// because the Hatchery has its own Rally command (because it produces both units and workers
+        /// and therefore needs two, I guess). This will not ensure that the unit is a building.
+        /// </summary>
+        public uint GetRallyAbility(Unit unit)
+        {
+            if (IsUnitOfType(unit, ZergBuilding.Hatchery) ||
+                IsUnitOfType(unit, ZergBuilding.Lair) ||
+                IsUnitOfType(unit, ZergBuilding.Hive))
+            {
+                return rallyUnitsHatchery;
+            }
+
+            return rally;
+        }
+
+        /// <summary>
+        /// Gets the appropriate Rally Workers ability for the given structure.
+        /// 
+        /// Throws ArgumentException if it's not a main base structure.
+        /// </summary>
+        public uint GetRallyWorkersAbility(Unit unit)
+        {
+            if (IsUnitOfType(unit, TerranBuilding.CommandCenter) ||
+                IsUnitOfType(unit, TerranBuilding.OrbitalCommand) ||
+                IsUnitOfType(unit, TerranBuilding.PlanetaryFortress))
+            {
+                return rallyWorkersCommandCenter;
+            }
+
+            if (IsUnitOfType(unit, ProtossBuilding.Nexus))
+            {
+                return rallyWorkersNexus;
+            }
+            
+            if (IsUnitOfType(unit, ZergBuilding.Hatchery) ||
+                IsUnitOfType(unit, ZergBuilding.Lair) ||
+                IsUnitOfType(unit, ZergBuilding.Hive))
+            {
+                return rallyWorkersHatchery;
+            }
+
+            throw new ArgumentException("Unit was not a CommandCenter/Nexus/Hatchery or equivalent.");
         }
     }
 }

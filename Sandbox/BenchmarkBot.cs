@@ -18,6 +18,14 @@ namespace Sandbox
 
         private const uint MaxWorkersPerMineralDeposit = 2;
 
+        private Dictionary<ulong, List<ulong>> workersByMineralDeposit;
+
+        private bool first = true;
+
+        // I'm not entirely sure units are getting updated with their commands in a timely fashion,
+        // so I'm going to avoid issuing any commands within one step of the last command set
+        private int sleep = 0;
+
         public IReadOnlyList<ICommand> Act(GameState gameState)
         {
             /* Detailed strategy:
@@ -43,6 +51,12 @@ namespace Sandbox
             var soldiers = new List<Unit>();
             var soldierProducers = new List<Unit>();
 
+            if (sleep > 0)
+            {
+                sleep -= 1;
+                return commands;
+            }
+            
             foreach (var unit in gameState.Units)
             {
                 if (unit.IsMineralDeposit())
@@ -70,40 +84,77 @@ namespace Sandbox
                     }
                 }
             }
-            
+
+            // First update, ignore the default worker orders, which are to mass on the center mineral deposit
+            // (this ends up causing problems since we have to keep track of who is harvesting what ourselves)
+            if (first)
+            {
+                foreach (var worker in workers)
+                {
+                    worker.Orders.Clear();
+                }
+
+                workersByMineralDeposit = mineralDeposits.ToDictionary(m => m.Tag, m => new List<ulong>());
+            }
+
             if (commandCenter == null)
             {
                 // Accept death as inevitable.
                 return new List<ICommand>();
+                
+                // TODO: Surrender?
             }
 
             // Each possible behavior is implemented as a function that adds a command to the list
             // if the situation is appropriate. We will then execute whichever command was added first.
-
-            // This would otherwise be called twice
-            var mineralsNeedingWorkers = MineralDepositsNeedingWorkers(mineralDeposits, commandCenter);
-
-            if (mineralsNeedingWorkers.Count > 0)
-            {
-                BuildWorkerForMineralDeposit(gameState, mineralDeposits, commandCenter, commands);
-            }
-            
+            BuildWorker(gameState, commandCenter, commands);
             BuildMarine(gameState, soldierProducers, commands);
-            BuildSupplyDepot(gameState, workers, commands);
+            BuildSupplyDepot(gameState, workers, soldierProducers, commands);
             BuildBarracks(gameState, workers, commands);
 
             commands = commands.Take(1).ToList();
 
+            // If we tell a worker to build something, make sure we don't think he's harvesting
+            if (commands.Count == 1)
+            {
+                sleep = 1;
+                RemoveWorkerFromHarvestAssignments(commands[0].Unit);
+            }
+
             // No matter what else happens, we can always attack, and we should always set idle workers to harvest minerals
             Attack(gameState, commandCenter, soldiers, commands);
-            SetIdleWorkerToHarvest(gameState, mineralsNeedingWorkers, workers, commands);
+            SetIdleWorkerToHarvest(gameState, workers, mineralDeposits, commands);
 
+            if (first)
+            {
+                first = false;
+
+                // Make sure workers don't automatically harvest minerals, since we're managing assignments ourselves
+                commands.Add(new RallyWorkersLocationCommand(commandCenter, commandCenter.Pos.X, commandCenter.Pos.Y));
+            }
+            
             return commands;
         }
 
-        private void BuildWorkerForMineralDeposit(GameState gameState, List<Unit> mineralDepositsNeedingWorkers, Unit commandCenter, List<ICommand> commands)
+        private void RemoveWorkerFromHarvestAssignments(Unit unit)
+        {
+            foreach (var pair in workersByMineralDeposit)
+            {
+                if (pair.Value.Contains(unit.Tag))
+                {
+                    pair.Value.Remove(unit.Tag);
+                }
+            }
+        }
+
+        private void BuildWorker(GameState gameState, Unit commandCenter, List<ICommand> commands)
         {
             if (gameState.Translator.IsBuildingSomething(commandCenter))
+            {
+                return;
+            }
+
+            if (workersByMineralDeposit.All(pair => pair.Value.Count >= 2))
             {
                 return;
             }
@@ -148,15 +199,11 @@ namespace Sandbox
             }
         }
 
-        private void BuildSupplyDepot(GameState gameState, List<Unit> workers, List<ICommand> commands)
+        private void BuildSupplyDepot(GameState gameState, List<Unit> workers, List<Unit> soldierProducers, List<ICommand> commands)
         {
-            // Don't queue up multiple Supply Depots
-            if (workers.Any(worker => gameState.Translator.IsBuilding(worker, TerranBuilding.SupplyDepot)))
-            {
-                return;
-            }
-
-            if (gameState.Observation.PlayerCommon.FoodUsed >= gameState.Observation.PlayerCommon.FoodCap &&
+            // Keep spare supply equal to what we could use, which is one worker from the Command Center and
+            // one Marine for each Barracks
+            if (gameState.Observation.PlayerCommon.FoodUsed + 1 + soldierProducers.Count >= gameState.Observation.PlayerCommon.FoodCap &&
                 gameState.Observation.PlayerCommon.FoodCap < 200)
             {
                 Build(gameState, workers, TerranBuilding.SupplyDepot, 100, commands);
@@ -170,6 +217,12 @@ namespace Sandbox
 
         private void Build(GameState gameState, List<Unit> workers, TerranBuilding building, uint minerals, List<ICommand> commands)
         {
+            // Don't queue up multiples of the same building
+            if (workers.Any(w => gameState.Translator.IsBuilding(w, building)))
+            {
+                return;
+            }
+
             if (gameState.Observation.PlayerCommon.Minerals < minerals)
             {
                 return;
@@ -188,30 +241,32 @@ namespace Sandbox
 
         private void SetIdleWorkerToHarvest(
             GameState gameState,
-            IReadOnlyList<Unit> mineralDepositsNeedingWorkers,
             List<Unit> workers,
+            List<Unit> minerals,
             List<ICommand> commands)
         {
-            // To simplify our job, we only do this to one worker per frame, so we can't
-            // accidentally stack up too many on one mineral deposit (in theory)
-            if (gameState.Observation.PlayerCommon.IdleWorkerCount == 0)
+            var idleWorkers = workers.Where(w => w.Orders.Count == 0).ToList();
+            var mineralsByTag = minerals.ToDictionary(m => m.Tag);
+            
+            while (!IsFullyHarvestingMineralDeposits() && idleWorkers.Count > 0)
             {
-                return;
-            }
+                var mineralDeposit = MineralsNeedingWorkers().First();
+                var lastIdleWorker = idleWorkers.Last();
 
-            if (mineralDepositsNeedingWorkers.Count == 0)
-            {
-                return;
+                commands.Add(new HarvestCommand(lastIdleWorker, mineralsByTag[mineralDeposit]));
+                workersByMineralDeposit[mineralDeposit].Add(lastIdleWorker.Tag);
+                idleWorkers.Remove(lastIdleWorker);
             }
-
-            commands.Add(new HarvestCommand(workers.First(w => w.Orders.Count == 0), mineralDepositsNeedingWorkers.First()));
         }
 
-        private IReadOnlyList<Unit> MineralDepositsNeedingWorkers(List<Unit> mineralDeposits, Unit commandCenter)
+        private bool IsFullyHarvestingMineralDeposits()
         {
-            var mineralsAtBase = mineralDeposits.Where(m => commandCenter.GetDistance(m) < 10f).ToList();
+            return MineralsNeedingWorkers().Count == 0;
+        }
 
-            return mineralsAtBase.Where(m => m.AssignedHarvesters < MaxWorkersPerMineralDeposit).ToList();
+        private IReadOnlyList<ulong> MineralsNeedingWorkers()
+        {
+            return workersByMineralDeposit.Where(pair => pair.Value.Count < MaxWorkersPerMineralDeposit).Select(pair => pair.Key).ToList();
         }
         
         private static BuildCommand GetBuildCommand(Unit unit, Building building, GameState gameState)

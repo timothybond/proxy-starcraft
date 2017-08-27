@@ -12,14 +12,14 @@ namespace ProxyStarcraft
     {
         public GameState(
             ResponseGameInfo gameInfo,
-            Observation observation,
+            ResponseObservation observation,
             MapData mapData,
             Dictionary<uint, UnitTypeData> unitTypes,
             Dictionary<uint, AbilityData> abilities,
             Translator translator)
         {
             this.GameInfo = gameInfo;
-            this.Observation = observation;
+            this.Response = observation;
             this.MapData = mapData;
             this.UnitTypes = unitTypes;
             this.Abilities = abilities;
@@ -30,11 +30,22 @@ namespace ProxyStarcraft
         /// Game information that doesn't change over time, such as which parts of the map are passible.
         /// </summary>
         public ResponseGameInfo GameInfo { get; private set; }
+        
+        /// <summary>
+        /// Raw response. You probably don't need this most of the time.
+        /// </summary>
+        public ResponseObservation Response { get; private set; }
 
         /// <summary>
         /// Current game state, including all visible units (although those can also be reached via the Units property for convenience).
         /// </summary>
-        public Observation Observation { get; private set; }
+        public Observation Observation
+        {
+            get
+            {
+                return this.Response.Observation;
+            }
+        }
 
         /// <summary>
         /// Static and dynamic information about the map, including known structures.

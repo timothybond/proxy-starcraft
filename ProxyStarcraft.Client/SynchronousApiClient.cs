@@ -6,6 +6,7 @@ using System.Threading;
 using ProxyStarcraft.Proto;
 using WebSocket4Net;
 using System.Linq;
+using System.Diagnostics;
 
 namespace ProxyStarcraft.Client
 {
@@ -65,7 +66,7 @@ namespace ProxyStarcraft.Client
 
             mapData = new MapData(mapData, response.Observation.Observation.RawData.Units, translator, unitTypes);
             
-            return new GameState(gameInfo, response.Observation.Observation, mapData, unitTypes, abilities, translator);
+            return new GameState(gameInfo, response.Observation, mapData, unitTypes, abilities, translator);
         }
 
         public List<uint> GetAbilities(ulong unitTag)
@@ -90,6 +91,11 @@ namespace ProxyStarcraft.Client
 
             // TODO: Check response for errors
             var actionResponse = Call(actionRequest);
+
+            if (actionResponse.Action.Result.Any(result => result != ActionResult.Success))
+            {
+                Debugger.Break();
+            }
         }
 
         private Proto.Action BuildAction(ICommand command)
@@ -121,6 +127,22 @@ namespace ProxyStarcraft.Client
                 case HarvestCommand harvestCommand:
                     var harvestAbilityId = translator.GetHarvestAbility(harvestCommand.Unit);
                     unitCommand = new ActionRawUnitCommand { AbilityId = (int)harvestAbilityId, TargetUnitTag = harvestCommand.Target.Tag };
+                    break;
+                case RallyLocationCommand rallyCommand:
+                    var rallyAbilityId = translator.GetRallyAbility(rallyCommand.Unit);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyAbilityId, TargetWorldSpacePos = new Point2D { X = rallyCommand.X, Y = rallyCommand.Y } };
+                    break;
+                case RallyWorkersLocationCommand rallyWorkersCommand:
+                    var rallyWorkersAbilityId = translator.GetRallyWorkersAbility(rallyWorkersCommand.Unit);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyWorkersAbilityId, TargetWorldSpacePos = new Point2D { X = rallyWorkersCommand.X, Y = rallyWorkersCommand.Y } };
+                    break;
+                case RallyTargetCommand rallyTargetCommand:
+                    var rallyTargetAbilityId = translator.GetRallyAbility(rallyTargetCommand.Unit);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyTargetAbilityId, TargetUnitTag = rallyTargetCommand.Target.Tag };
+                    break;
+                case RallyWorkersTargetCommand rallyWorkersTargetCommand:
+                    var rallyWorkersTargetAbilityId = translator.GetRallyWorkersAbility(rallyWorkersTargetCommand.Unit);
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyWorkersTargetAbilityId, TargetUnitTag = rallyWorkersTargetCommand.Target.Tag };
                     break;
                 default:
                     throw new NotImplementedException();
@@ -300,7 +322,7 @@ namespace ProxyStarcraft.Client
             }
         }
 
-        private void OnReceivedData(object sender, DataReceivedEventArgs e)
+        private void OnReceivedData(object sender, WebSocket4Net.DataReceivedEventArgs e)
         {
             lock (socketLock)
             {
