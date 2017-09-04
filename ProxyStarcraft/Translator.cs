@@ -411,6 +411,10 @@ namespace ProxyStarcraft
             zergBuildingTypesById.Add(unitTypesByName["CreepTumor"].UnitId, ZergBuildingType.CreepTumor);
         }
 
+        public IReadOnlyDictionary<uint, AbilityData> AbilityTypes => this.abilities;
+
+        public IReadOnlyDictionary<uint, UnitTypeData> UnitTypes => this.unitTypes;
+
         public uint GetAbilityId(TrainCommand trainCommand)
         {
             if (trainCommand.TerranUnit != TerranUnitType.Unspecified)

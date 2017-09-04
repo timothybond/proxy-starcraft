@@ -8,9 +8,12 @@
         {
             this.translator = translator;
             this.Raw = unit;
+            this.RawType = translator.UnitTypes[unit.UnitType];
         }
 
         public Proto.Unit Raw { get; private set; }
+
+        public Proto.UnitTypeData RawType { get; private set; }
 
         public abstract BuildingOrUnitType Type { get; }
 
