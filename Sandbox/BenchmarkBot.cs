@@ -176,7 +176,7 @@ namespace Sandbox
 
             foreach (var producer in soldierProducers)
             {
-                if (!gameState.Translator.IsBuildingSomething(producer))
+                if (!gameState.Translator.IsBuildingSomething(producer) && producer.BuildProgress == 1.0)
                 {
                     commands.Add(new TrainCommand(producer, TerranUnit.Marine));
                     return;
@@ -206,19 +206,26 @@ namespace Sandbox
             if (gameState.Observation.PlayerCommon.FoodUsed + 1 + soldierProducers.Count >= gameState.Observation.PlayerCommon.FoodCap &&
                 gameState.Observation.PlayerCommon.FoodCap < 200)
             {
-                Build(gameState, workers, TerranBuilding.SupplyDepot, 100, commands);
+                Build(gameState, workers, TerranBuilding.SupplyDepot, 100, commands, false);
             }
         }
 
         private void BuildBarracks(GameState gameState, List<Unit> workers, List<ICommand> commands)
         {
-            Build(gameState, workers, TerranBuilding.Barracks, 150, commands);
+            // Can't build a Barracks if you don't have a Supply Depot first
+            if (gameState.Units.Any(
+                unit =>
+                    unit.Alliance == Alliance.Self &&
+                    gameState.Translator.IsUnitOfType(unit, TerranBuilding.SupplyDepot) &&
+                    unit.BuildProgress == 1.0))
+            {
+                Build(gameState, workers, TerranBuilding.Barracks, 150, commands, true);
+            }
         }
 
-        private void Build(GameState gameState, List<Unit> workers, TerranBuilding building, uint minerals, List<ICommand> commands)
+        private void Build(GameState gameState, List<Unit> workers, TerranBuilding building, uint minerals, List<ICommand> commands, bool allowMultipleInProgress)
         {
-            // Don't queue up multiples of the same building
-            if (workers.Any(w => gameState.Translator.IsBuilding(w, building)))
+            if (!allowMultipleInProgress && workers.Any(w => gameState.Translator.IsBuilding(w, building)))
             {
                 return;
             }
