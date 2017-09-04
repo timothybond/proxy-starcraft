@@ -1,54 +1,53 @@
-﻿using System;
+﻿using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {
-    /// <summary>
-    /// Represents one of TerranBuilding, ProtossBuilding, or ZergBuilding.
-    /// 
-    /// Replace if a better way to represent a Union type is determined.
-    /// </summary>
-    public class Building
+    public abstract class Building : Unit2
     {
-        public static implicit operator Building(TerranBuilding building) => new Building(building);
-
-        public static implicit operator Building(ProtossBuilding building) => new Building(building);
-
-        public static implicit operator Building(ZergBuilding building) => new Building(building);
-
-        public Building(TerranBuilding building)
+        public Building(Proto.Unit unit, Translator translator) : base(unit, translator)
         {
-            if (building == TerranBuilding.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranBuilding type - 'Unspecified'.", "building");
-            }
-
-            this.TerranBuilding = building;
         }
 
-        public Building(ProtossBuilding building)
-        {
-            if (building == ProtossBuilding.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossBuilding type - 'Unspecified'.", "building");
-            }
+        public abstract BuildingType BuildingType { get; }
 
-            this.ProtossBuilding = building;
+        public Size2DI Size => translator.GetBuildingSize(this.BuildingType);
+
+        public TrainCommand Train(TerranUnitType unitType)
+        {
+            var ability = translator.GetBuildAction(unitType);
+            return new TrainCommand(this.Raw, unitType, ability);
         }
 
-        public Building(ZergBuilding building)
+        public TrainCommand Train(ProtossUnitType unitType)
         {
-            if (building == ZergBuilding.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergBuilding type - 'Unspecified'.", "building");
-            }
-
-            this.ZergBuilding = building;
+            var ability = translator.GetBuildAction(unitType);
+            return new TrainCommand(this.Raw, unitType, ability);
         }
 
-        public TerranBuilding TerranBuilding { get; private set; }
+        public TrainCommand Train(ZergUnitType unitType)
+        {
+            var ability = translator.GetBuildAction(unitType);
+            return new TrainCommand(this.Raw, unitType, ability);
+        }
 
-        public ProtossBuilding ProtossBuilding { get; private set; }
+        public RallyLocationCommand Rally(float x, float y)
+        {
+            return new RallyLocationCommand(translator.GetRallyAbility(this.Raw), this.Raw, x, y);
+        }
 
-        public ZergBuilding ZergBuilding { get; private set; }
+        public RallyTargetCommand Rally(Unit2 unit)
+        {
+            return new RallyTargetCommand(translator.GetRallyAbility(this.Raw), this.Raw, unit.Raw);
+        }
+
+        public RallyWorkersLocationCommand RallyWorkers(float x, float y)
+        {
+            return new RallyWorkersLocationCommand(translator.GetRallyWorkersAbility(this.Raw), this.Raw, x, y);
+        }
+
+        public RallyWorkersTargetCommand RallyWorkers(Unit2 unit)
+        {
+            return new RallyWorkersTargetCommand(translator.GetRallyWorkersAbility(this.Raw), this.Raw, unit.Raw);
+        }
     }
 }

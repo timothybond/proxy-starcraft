@@ -3,16 +3,11 @@ using System;
 
 namespace ProxyStarcraft
 {
-    public class TrainCommand : ICommand
+    public class TrainCommand : NoTargetCommand
     {
-        private TrainCommand(Unit builder)
+        public TrainCommand(Unit builder, TerranUnitType unit, uint abilityId) : base(abilityId, builder)
         {
-            this.Unit = builder;
-        }
-
-        public TrainCommand(Unit builder, TerranUnit unit) : this(builder)
-        {
-            if (unit == TerranUnit.Unspecified)
+            if (unit == TerranUnitType.Unspecified)
             {
                 throw new ArgumentException("Cannot create a train command for 'Unspecified'.", "unit");
             }
@@ -20,9 +15,9 @@ namespace ProxyStarcraft
             this.TerranUnit = unit;
         }
 
-        public TrainCommand(Unit builder, ProtossUnit unit) : this(builder)
+        public TrainCommand(Unit builder, ProtossUnitType unit, uint abilityId) : base(abilityId, builder)
         {
-            if (unit == ProtossUnit.Unspecified)
+            if (unit == ProtossUnitType.Unspecified)
             {
                 throw new ArgumentException("Cannot create a train command for 'Unspecified'.", "unit");
             }
@@ -30,22 +25,20 @@ namespace ProxyStarcraft
             this.ProtossUnit = unit;
         }
 
-        public TrainCommand(Unit builder, ZergUnit unit) : this(builder)
+        public TrainCommand(Unit builder, ZergUnitType unit, uint abilityId) : base(abilityId, builder)
         {
-            if (unit == ZergUnit.Unspecified)
+            if (unit == ZergUnitType.Unspecified)
             {
                 throw new ArgumentException("Cannot create a train command for 'Unspecified'.", "unit");
             }
 
             this.ZergUnit = unit;
         }
+        
+        public TerranUnitType TerranUnit { get; private set; }
 
-        public Unit Unit { get; private set; }
+        public ProtossUnitType ProtossUnit { get; private set; }
 
-        public TerranUnit TerranUnit { get; private set; }
-
-        public ProtossUnit ProtossUnit { get; private set; }
-
-        public ZergUnit ZergUnit { get; private set; }
+        public ZergUnitType ZergUnit { get; private set; }
     }
 }

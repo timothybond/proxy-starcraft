@@ -2,19 +2,10 @@
 
 namespace ProxyStarcraft
 {
-    public class AttackMoveCommand : ICommand
+    public class AttackMoveCommand : LocationTargetCommand
     {
-        public AttackMoveCommand(Unit unit, float x, float y)
+        public AttackMoveCommand(uint abilityId, Unit unit, float x, float y) : base(abilityId, unit, x, y)
         {
-            Unit = unit;
-            X = x;
-            Y = y;
         }
-
-        public Unit Unit { get; private set; }
-
-        public float X { get; private set; }
-
-        public float Y { get; private set; }
     }
 }

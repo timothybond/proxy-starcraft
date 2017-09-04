@@ -2,16 +2,10 @@
 
 namespace ProxyStarcraft
 {
-    public class AttackCommand : ICommand
+    public class AttackCommand : UnitTargetCommand
     {
-        public AttackCommand(Unit unit, Unit target)
+        public AttackCommand(uint abilityId, Unit unit, Unit target) : base(abilityId, unit, target)
         {
-            Unit = unit;
-            Target = target;
         }
-
-        public Unit Unit { get; private set; }
-
-        public Unit Target { get; private set; }
     }
 }

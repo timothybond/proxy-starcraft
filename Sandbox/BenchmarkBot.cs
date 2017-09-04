@@ -26,7 +26,7 @@ namespace Sandbox
         // so I'm going to avoid issuing any commands within one step of the last command set
         private int sleep = 0;
 
-        public IReadOnlyList<ICommand> Act(GameState gameState)
+        public IReadOnlyList<Command> Act(GameState gameState)
         {
             /* Detailed strategy:
              * 
@@ -41,15 +41,17 @@ namespace Sandbox
              * 
              * Implement for maps with only two starting locations, so we don't scout.
              */
-            var commands = new List<ICommand>();
+            var commands = new List<Command>();
 
-            var controlledUnits = gameState.Units.Where(u => u.Alliance == Alliance.Self).ToList();
+            var controlledUnits = gameState.RawUnits.Where(u => u.Alliance == Alliance.Self).ToList();
 
-            Unit commandCenter = null;
-            var workers = new List<Unit>();
-            var mineralDeposits = new List<Unit>();
-            var soldiers = new List<Unit>();
-            var soldierProducers = new List<Unit>();
+            TerranBuilding commandCenter = null;
+            var workers = new List<TerranUnit>();
+            var soldiers = new List<TerranUnit>();
+            var soldierProducers = new List<TerranBuilding>();
+
+            var mineralDeposits = gameState.NeutralUnits.Where(u => u.IsMineralDeposit).ToList();
+
 
             if (sleep > 0)
             {
@@ -59,28 +61,28 @@ namespace Sandbox
             
             foreach (var unit in gameState.Units)
             {
-                if (unit.IsMineralDeposit())
+                if (unit is TerranBuilding terranBuilding)
                 {
-                    mineralDeposits.Add(unit);
+                    if (terranBuilding.TerranBuildingType == TerranBuildingType.CommandCenter ||
+                        terranBuilding.TerranBuildingType == TerranBuildingType.OrbitalCommand ||
+                        terranBuilding.TerranBuildingType == TerranBuildingType.PlanetaryFortress)
+                    {
+                        commandCenter = terranBuilding;
+                    }
+                    else if (terranBuilding.TerranBuildingType == TerranBuildingType.Barracks)
+                    {
+                        soldierProducers.Add(terranBuilding);
+                    }
                 }
-
-                if (unit.Alliance == Alliance.Self)
+                else if (unit is TerranUnit terranUnit)
                 {
-                    if (gameState.Translator.IsUnitOfType(unit, TerranBuilding.CommandCenter))
+                    if (terranUnit.TerranUnitType == TerranUnitType.SCV)
                     {
-                        commandCenter = unit;
+                        workers.Add(terranUnit);
                     }
-                    else if (gameState.Translator.IsUnitOfType(unit, TerranBuilding.Barracks))
+                    else if (terranUnit.TerranUnitType == TerranUnitType.Marine)
                     {
-                        soldierProducers.Add(unit);
-                    }
-                    else if (gameState.Translator.IsUnitOfType(unit, TerranUnit.SCV))
-                    {
-                        workers.Add(unit);
-                    }
-                    else if (gameState.Translator.IsUnitOfType(unit, TerranUnit.Marine))
-                    {
-                        soldiers.Add(unit);
+                        soldiers.Add(terranUnit);
                     }
                 }
             }
@@ -91,16 +93,16 @@ namespace Sandbox
             {
                 foreach (var worker in workers)
                 {
-                    worker.Orders.Clear();
+                    worker.Raw.Orders.Clear();
                 }
 
-                workersByMineralDeposit = mineralDeposits.ToDictionary(m => m.Tag, m => new List<ulong>());
+                workersByMineralDeposit = mineralDeposits.ToDictionary(m => m.Raw.Tag, m => new List<ulong>());
             }
 
             if (commandCenter == null)
             {
                 // Accept death as inevitable.
-                return new List<ICommand>();
+                return new List<Command>();
                 
                 // TODO: Surrender?
             }
@@ -130,7 +132,7 @@ namespace Sandbox
                 first = false;
 
                 // Make sure workers don't automatically harvest minerals, since we're managing assignments ourselves
-                commands.Add(new RallyWorkersLocationCommand(commandCenter, commandCenter.Pos.X, commandCenter.Pos.Y));
+                commands.Add(commandCenter.RallyWorkers(commandCenter.Raw.Pos.X, commandCenter.Raw.Pos.Y));
             }
             
             return commands;
@@ -147,9 +149,9 @@ namespace Sandbox
             }
         }
 
-        private void BuildWorker(GameState gameState, Unit commandCenter, List<ICommand> commands)
+        private void BuildWorker(GameState gameState, TerranBuilding commandCenter, List<Command> commands)
         {
-            if (gameState.Translator.IsBuildingSomething(commandCenter))
+            if (commandCenter.IsBuildingSomething)
             {
                 return;
             }
@@ -162,11 +164,11 @@ namespace Sandbox
             if (gameState.Observation.PlayerCommon.Minerals >= 50 &&
                 gameState.Observation.PlayerCommon.FoodUsed < gameState.Observation.PlayerCommon.FoodCap)
             {
-                commands.Add(new TrainCommand(commandCenter, TerranUnit.SCV));
+                commands.Add(commandCenter.Train(TerranUnitType.SCV));
             }
         }
 
-        private void BuildMarine(GameState gameState, List<Unit> soldierProducers, List<ICommand> commands)
+        private void BuildMarine(GameState gameState, List<TerranBuilding> soldierProducers, List<Command> commands)
         {
             if (gameState.Observation.PlayerCommon.Minerals < 50 ||
                 gameState.Observation.PlayerCommon.FoodUsed >= gameState.Observation.PlayerCommon.FoodCap)
@@ -176,17 +178,17 @@ namespace Sandbox
 
             foreach (var producer in soldierProducers)
             {
-                if (!gameState.Translator.IsBuildingSomething(producer) && producer.BuildProgress == 1.0)
+                if (!producer.IsBuildingSomething && producer.Raw.BuildProgress == 1.0)
                 {
-                    commands.Add(new TrainCommand(producer, TerranUnit.Marine));
+                    commands.Add(producer.Train(TerranUnitType.Marine));
                     return;
                 }
             }
         }
 
-        private void Attack(GameState gameState, Unit commandCenter, List<Unit> soldiers, List<ICommand> commands)
+        private void Attack(GameState gameState, TerranBuilding commandCenter, List<TerranUnit> soldiers, List<Command> commands)
         {
-            var idleSoldiers = soldiers.Where(s => s.Orders.Count == 0).ToList();
+            var idleSoldiers = soldiers.Where(s => s.Raw.Orders.Count == 0).ToList();
 
             if (idleSoldiers.Count >= AttackThreshold)
             {
@@ -194,38 +196,38 @@ namespace Sandbox
 
                 foreach (var soldier in idleSoldiers)
                 {
-                    commands.Add(new AttackMoveCommand(soldier, enemyStartLocation.X, enemyStartLocation.Y));
+                    commands.Add(soldier.AttackMove(enemyStartLocation.X, enemyStartLocation.Y));
                 }
             }
         }
 
-        private void BuildSupplyDepot(GameState gameState, List<Unit> workers, List<Unit> soldierProducers, List<ICommand> commands)
+        private void BuildSupplyDepot(GameState gameState, List<TerranUnit> workers, List<TerranBuilding> soldierProducers, List<Command> commands)
         {
             // Keep spare supply equal to what we could use, which is one worker from the Command Center and
             // one Marine for each Barracks
             if (gameState.Observation.PlayerCommon.FoodUsed + 1 + soldierProducers.Count >= gameState.Observation.PlayerCommon.FoodCap &&
                 gameState.Observation.PlayerCommon.FoodCap < 200)
             {
-                Build(gameState, workers, TerranBuilding.SupplyDepot, 100, commands, false);
+                Build(gameState, workers, TerranBuildingType.SupplyDepot, 100, commands, false);
             }
         }
 
-        private void BuildBarracks(GameState gameState, List<Unit> workers, List<ICommand> commands)
+        private void BuildBarracks(GameState gameState, List<TerranUnit> workers, List<Command> commands)
         {
             // Can't build a Barracks if you don't have a Supply Depot first
-            if (gameState.Units.Any(
+            if (gameState.RawUnits.Any(
                 unit =>
                     unit.Alliance == Alliance.Self &&
-                    gameState.Translator.IsUnitOfType(unit, TerranBuilding.SupplyDepot) &&
+                    gameState.Translator.IsUnitOfType(unit, TerranBuildingType.SupplyDepot) &&
                     unit.BuildProgress == 1.0))
             {
-                Build(gameState, workers, TerranBuilding.Barracks, 150, commands, true);
+                Build(gameState, workers, TerranBuildingType.Barracks, 150, commands, true);
             }
         }
 
-        private void Build(GameState gameState, List<Unit> workers, TerranBuilding building, uint minerals, List<ICommand> commands, bool allowMultipleInProgress)
+        private void Build(GameState gameState, List<TerranUnit> workers, TerranBuildingType building, uint minerals, List<Command> commands, bool allowMultipleInProgress)
         {
-            if (!allowMultipleInProgress && workers.Any(w => gameState.Translator.IsBuilding(w, building)))
+            if (!allowMultipleInProgress && workers.Any(w => w.IsBuilding(building)))
             {
                 return;
             }
@@ -235,7 +237,7 @@ namespace Sandbox
                 return;
             }
 
-            var worker = workers.FirstOrDefault(w => !gameState.Translator.IsBuildingSomething(w));
+            var worker = workers.FirstOrDefault(w => !w.IsBuildingSomething);
 
             if (worker == null)
             {
@@ -248,20 +250,20 @@ namespace Sandbox
 
         private void SetIdleWorkerToHarvest(
             GameState gameState,
-            List<Unit> workers,
-            List<Unit> minerals,
-            List<ICommand> commands)
+            List<TerranUnit> workers,
+            List<Unit2> minerals,
+            List<Command> commands)
         {
-            var idleWorkers = workers.Where(w => w.Orders.Count == 0).ToList();
-            var mineralsByTag = minerals.ToDictionary(m => m.Tag);
+            var idleWorkers = workers.Where(w => w.Raw.Orders.Count == 0).ToList();
+            var mineralsByTag = minerals.ToDictionary(m => m.Raw.Tag);
             
             while (!IsFullyHarvestingMineralDeposits() && idleWorkers.Count > 0)
             {
                 var mineralDeposit = MineralsNeedingWorkers().First();
                 var lastIdleWorker = idleWorkers.Last();
 
-                commands.Add(new HarvestCommand(lastIdleWorker, mineralsByTag[mineralDeposit]));
-                workersByMineralDeposit[mineralDeposit].Add(lastIdleWorker.Tag);
+                commands.Add(lastIdleWorker.Harvest(mineralsByTag[mineralDeposit]));
+                workersByMineralDeposit[mineralDeposit].Add(lastIdleWorker.Raw.Tag);
                 idleWorkers.Remove(lastIdleWorker);
             }
         }
@@ -276,14 +278,14 @@ namespace Sandbox
             return workersByMineralDeposit.Where(pair => pair.Value.Count < MaxWorkersPerMineralDeposit).Select(pair => pair.Key).ToList();
         }
         
-        private static BuildCommand GetBuildCommand(Unit unit, Building building, GameState gameState)
+        private static BuildCommand GetBuildCommand(TerranUnit unit, TerranBuildingType building, GameState gameState)
         {
             // We're going to make some dumb assumptions here:
             // 1. We'd like to build this building very near where this unit currently is
             // 2. As long as we don't block anything, it doesn't matter where it goes
             var size = gameState.Translator.GetBuildingSize(building);
 
-            var locations = new HashSet<Location> { new Location { X = (int)Math.Round(unit.Pos.X), Y = (int)Math.Round(unit.Pos.Y) } };
+            var locations = new HashSet<Location> { new Location { X = (int)Math.Round(unit.Raw.Pos.X), Y = (int)Math.Round(unit.Raw.Pos.Y) } };
             var pastLocations = new HashSet<Location>();
             var nextLocations = new HashSet<Location>();
 
@@ -294,7 +296,7 @@ namespace Sandbox
                 {
                     if (gameState.MapData.CanBuild(size, location.X, location.Y))
                     {
-                        return new BuildCommand(unit, building, location.X, location.Y);
+                        return unit.Build(building, location.X, location.Y);
                     }
 
                     var adjacentLocations = AdjacentLocations(location, gameState.MapData.Size);

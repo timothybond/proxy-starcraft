@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using ProxyStarcraft.Proto;
 using Google.Protobuf.Collections;
@@ -6,7 +7,7 @@ using Google.Protobuf.Collections;
 namespace ProxyStarcraft
 {
     /// <summary>
-    /// Represents a snapshot of the game, including all information your bot should need to act.
+    /// Represents a snapshot of the game from the perspective of a single player.
     /// </summary>
     public class GameState
     {
@@ -24,6 +25,35 @@ namespace ProxyStarcraft
             this.UnitTypes = unitTypes;
             this.Abilities = abilities;
             this.Translator = translator;
+
+            var unitsByAlliance = this.Response.Observation.RawData.Units.GroupBy(u => u.Alliance);
+            
+            foreach (var grouping in unitsByAlliance)
+            {
+                if (grouping.Key == Alliance.Self)
+                {
+                    this.Units = grouping.Select(translator.ConvertUnit).ToList();
+                }
+                else if (grouping.Key == Alliance.Ally)
+                {
+                    this.AlliedUnits = grouping.Select(translator.ConvertUnit).ToList();
+                }
+                else if (grouping.Key == Alliance.Enemy)
+                {
+                    this.EnemyUnits = grouping.Select(translator.ConvertUnit).ToList();
+                }
+                else if (grouping.Key == Alliance.Neutral)
+                {
+                    this.NeutralUnits = grouping.Select(translator.ConvertUnit).ToList();
+                }
+            }
+
+            this.Units = this.Units ?? new List<Unit2>();
+            this.AlliedUnits = this.AlliedUnits ?? new List<Unit2>();
+            this.EnemyUnits = this.EnemyUnits ?? new List<Unit2>();
+            this.NeutralUnits = this.NeutralUnits ?? new List<Unit2>();
+
+            this.AllUnits = this.Units.Concat(this.AlliedUnits).Concat(this.EnemyUnits).Concat(this.NeutralUnits).ToList();
         }
 
         /// <summary>
@@ -70,7 +100,32 @@ namespace ProxyStarcraft
         /// </summary>
         public Translator Translator { get; private set; }
 
-        public RepeatedField<Unit> Units
+        /// <summary>
+        /// Units controlled by this player.
+        /// </summary>
+        public IReadOnlyList<Unit2> Units { get; private set; }
+
+        /// <summary>
+        /// Units controlled by any player, or none.
+        /// </summary>
+        public IReadOnlyList<Unit2> AllUnits { get; private set; }
+
+        /// <summary>
+        /// Uncontrolled units, such as mineral deposits and critters.
+        /// </summary>
+        public IReadOnlyList<Unit2> NeutralUnits { get; set; }
+
+        /// <summary>
+        /// Units controlled by hostile players.
+        /// </summary>
+        public IReadOnlyList<Unit2> EnemyUnits { get; private set; }
+
+        /// <summary>
+        /// Units controlled by other, friendly players.
+        /// </summary>
+        public IReadOnlyList<Unit2> AlliedUnits { get; private set; }
+
+        public RepeatedField<Unit> RawUnits
         {
             get { return this.Observation.RawData.Units; }
         }

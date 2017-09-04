@@ -2,19 +2,10 @@
 
 namespace ProxyStarcraft
 {
-    public class RallyLocationCommand : ICommand
+    public class RallyLocationCommand : LocationTargetCommand
     {
-        public RallyLocationCommand(Unit unit, float x, float y)
+        public RallyLocationCommand(uint abilityId, Unit unit, float x, float y) : base(abilityId, unit, x, y)
         {
-            Unit = unit;
-            X = x;
-            Y = y;
         }
-
-        public Unit Unit { get; private set; }
-
-        public float X { get; private set; }
-
-        public float Y { get; private set; }
     }
 }

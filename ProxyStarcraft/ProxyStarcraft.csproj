@@ -43,25 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Building.cs" />
+    <Compile Include="LocationTargetCommand.cs" />
+    <Compile Include="NoTargetCommand.cs" />
+    <Compile Include="ProtossBuilding.cs" />
+    <Compile Include="ProtossUnit.cs" />
     <Compile Include="RallyTargetCommand.cs" />
     <Compile Include="RallyWorkersTargetCommand.cs" />
     <Compile Include="AttackCommand.cs" />
     <Compile Include="AttackMoveCommand.cs" />
     <Compile Include="Attributes.cs" />
     <Compile Include="BuildCommand.cs" />
-    <Compile Include="Building.cs" />
-    <Compile Include="BuildingOrUnit.cs" />
+    <Compile Include="BuildingType.cs" />
+    <Compile Include="BuildingOrUnitType.cs" />
     <Compile Include="CompositeBot.cs" />
     <Compile Include="HarvestCommand.cs" />
     <Compile Include="IBot.cs" />
     <Compile Include="GameState.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="MapData.cs" />
     <Compile Include="MoveCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProtossBuilding.cs" />
-    <Compile Include="ProtossUnit.cs" />
+    <Compile Include="ProtossBuildingType.cs" />
+    <Compile Include="ProtossUnitType.cs" />
     <Compile Include="Proto\Common.cs" />
     <Compile Include="Proto\Data.cs" />
     <Compile Include="Proto\Debug.cs" />
@@ -75,12 +80,20 @@
     <Compile Include="RallyLocationCommand.cs" />
     <Compile Include="RallyLocationWorkersCommand.cs" />
     <Compile Include="TerranBuilding.cs" />
+    <Compile Include="TerranBuildingType.cs" />
     <Compile Include="TerranUnit.cs" />
+    <Compile Include="TerranUnitType.cs" />
     <Compile Include="TrainCommand.cs" />
     <Compile Include="Translator.cs" />
+    <Compile Include="Unit.cs" />
     <Compile Include="UnitExtensions.cs" />
+    <Compile Include="UnitTargetCommand.cs" />
+    <Compile Include="UnitType.cs" />
+    <Compile Include="UnspecifiedUnit.cs" />
     <Compile Include="ZergBuilding.cs" />
+    <Compile Include="ZergBuildingType.cs" />
     <Compile Include="ZergUnit.cs" />
+    <Compile Include="ZergUnitType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,27 +1,30 @@
-﻿namespace ProxyStarcraft
+﻿using System;
+
+using ProxyStarcraft.Proto;
+
+namespace ProxyStarcraft
 {
-    public enum ProtossUnit
+    public class ProtossUnit : Unit2
     {
-        Unspecified = 0,
-        Probe,
-        Zealot,
-        Stalker,
-        Sentry,
-        Adept,
-        HighTemplar,
-        DarkTemplar,
-        Immortal,
-        Colossus,
-        Disruptor,
-        Archon,
-        Observer,
-        WarpPrism,
-        Phoenix,
-        VoidRay,
-        Oracle,
-        Carrier,
-        Tempest,
-        MothershipCore,
-        Mothership
+        public ProtossUnit(Unit unit, Translator translator) : base(unit, translator)
+        {
+            var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
+
+            if (unitType.ProtossUnit == ProtossUnitType.Unspecified)
+            {
+                throw new ArgumentException($"Expected a ProtossUnitType, got '{unitType.ToString()}'.");
+            }
+
+            this.ProtossUnitType = unitType.ProtossUnit;
+        }
+
+        public ProtossUnitType ProtossUnitType { get; private set; }
+
+        public override BuildingOrUnitType Type => this.ProtossUnitType;
+
+        public BuildCommand Build(ProtossBuildingType building, int x, int y)
+        {
+            return base.Build(building, x, y);
+        }
     }
 }

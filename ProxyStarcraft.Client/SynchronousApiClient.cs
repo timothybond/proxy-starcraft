@@ -80,7 +80,7 @@ namespace ProxyStarcraft.Client
             return response.Query.Abilities[0].Abilities.Select(a => (uint)a.AbilityId).ToList();
         }
 
-        public void SendCommands(IEnumerable<ICommand> commands)
+        public void SendCommands(IEnumerable<Command> commands)
         {
             var actionRequest = new Request { Action = new RequestAction() };
 
@@ -98,51 +98,30 @@ namespace ProxyStarcraft.Client
             }
         }
 
-        private Proto.Action BuildAction(ICommand command)
+        private Proto.Action BuildAction(Command command)
         {
             ActionRawUnitCommand unitCommand;
 
             switch (command)
             {
-                case MoveCommand moveCommand:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = Move, TargetWorldSpacePos = new Point2D { X = moveCommand.X, Y = moveCommand.Y } };
-                    break;
-                case AttackMoveCommand attackMoveCommand:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetWorldSpacePos = new Point2D { X = attackMoveCommand.X, Y = attackMoveCommand.Y } };
-                    break;
-                case AttackCommand attackCommand:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = Attack, TargetUnitTag = attackCommand.Target.Tag };
-                    break;
                 case BuildCommand buildCommand:
-                    var buildAbilityId = translator.GetAbilityId(buildCommand);
                     var buildingSize = translator.GetBuildingSize(buildCommand);
                     var x = buildCommand.X + buildingSize.X * 0.5f;
                     var y = buildCommand.Y + buildingSize.Y * 0.5f;
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)buildAbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
                     break;
-                case TrainCommand trainCommand:
-                    var trainAbilityId = translator.GetAbilityId(trainCommand);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)trainAbilityId };
+                case LocationTargetCommand locationTargetCommand:
+                    unitCommand = new ActionRawUnitCommand
+                    {
+                        AbilityId = (int)locationTargetCommand.AbilityId,
+                        TargetWorldSpacePos = new Point2D { X = locationTargetCommand.X, Y = locationTargetCommand.Y }
+                    };
                     break;
-                case HarvestCommand harvestCommand:
-                    var harvestAbilityId = translator.GetHarvestAbility(harvestCommand.Unit);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)harvestAbilityId, TargetUnitTag = harvestCommand.Target.Tag };
+                case UnitTargetCommand unitTargetCommand:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)unitTargetCommand.AbilityId, TargetUnitTag = unitTargetCommand.Target.Tag };
                     break;
-                case RallyLocationCommand rallyCommand:
-                    var rallyAbilityId = translator.GetRallyAbility(rallyCommand.Unit);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyAbilityId, TargetWorldSpacePos = new Point2D { X = rallyCommand.X, Y = rallyCommand.Y } };
-                    break;
-                case RallyWorkersLocationCommand rallyWorkersCommand:
-                    var rallyWorkersAbilityId = translator.GetRallyWorkersAbility(rallyWorkersCommand.Unit);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyWorkersAbilityId, TargetWorldSpacePos = new Point2D { X = rallyWorkersCommand.X, Y = rallyWorkersCommand.Y } };
-                    break;
-                case RallyTargetCommand rallyTargetCommand:
-                    var rallyTargetAbilityId = translator.GetRallyAbility(rallyTargetCommand.Unit);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyTargetAbilityId, TargetUnitTag = rallyTargetCommand.Target.Tag };
-                    break;
-                case RallyWorkersTargetCommand rallyWorkersTargetCommand:
-                    var rallyWorkersTargetAbilityId = translator.GetRallyWorkersAbility(rallyWorkersTargetCommand.Unit);
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)rallyWorkersTargetAbilityId, TargetUnitTag = rallyWorkersTargetCommand.Target.Tag };
+                case NoTargetCommand noTargetCommand:
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)noTargetCommand.AbilityId };
                     break;
                 default:
                     throw new NotImplementedException();

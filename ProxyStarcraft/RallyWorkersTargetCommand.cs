@@ -2,16 +2,10 @@
 
 namespace ProxyStarcraft
 {
-    public class RallyWorkersTargetCommand : ICommand
+    public class RallyWorkersTargetCommand : UnitTargetCommand
     {
-        public RallyWorkersTargetCommand(Unit unit, Unit target)
+        public RallyWorkersTargetCommand(uint abilityId, Unit unit, Unit target) : base(abilityId, unit, target)
         {
-            Unit = unit;
-            Target = target;
         }
-
-        public Unit Unit { get; private set; }
-
-        public Unit Target { get; private set; }
     }
 }

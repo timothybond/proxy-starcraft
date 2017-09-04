@@ -2,16 +2,10 @@
 
 namespace ProxyStarcraft
 {
-    public class HarvestCommand : ICommand
+    public class HarvestCommand : UnitTargetCommand
     {
-        public HarvestCommand(Unit unit, Unit target)
+        public HarvestCommand(uint abilityId, Unit unit, Unit target) : base(abilityId, unit, target)
         {
-            this.Unit = unit;
-            this.Target = target;
         }
-
-        public Unit Unit { get; private set; }
-
-        public Unit Target { get; private set; }
     }
 }

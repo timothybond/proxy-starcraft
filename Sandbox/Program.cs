@@ -81,7 +81,7 @@ namespace Sandbox
 
                 // Exit once all of our units are dead - probably not going to be what we do in the long run,
                 // but it works for the example map we're currently on.
-                if (gameState.Units.All(unit => unit.Alliance == Alliance.Enemy))
+                if (gameState.RawUnits.All(unit => unit.Alliance == Alliance.Enemy))
                 {
                     exit = true;
                 }
@@ -123,7 +123,8 @@ namespace Sandbox
 
             gameState = client.GetGameState();
 
-            client.SendCommands(new[] { new BuildCommand(gameState.Units[0], TerranBuilding.SupplyDepot, 15, 15) });
+            // Broke this, probably not much point in fixing it
+            //client.SendCommands(new[] { new BuildCommand(gameState.RawUnits[0], TerranBuildingType.SupplyDepot, 15, 15) });
 
             while (true)
             {
@@ -134,7 +135,7 @@ namespace Sandbox
 
         public static void PlayAgainstStandardAI(SynchronousApiClient client)
         {
-            if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, Race.Terran, Difficulty.Easy))
+            if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, Race.Terran, Difficulty.MediumHard))
             {
                 return;
             }
@@ -176,12 +177,12 @@ namespace Sandbox
                 Marshal.UnsafeAddrOfPinnedArrayElement(data, 0));
         }
 
-        public static Unit GetBuilder(BuildingOrUnit buildingOrUnit, GameState gameState, SynchronousApiClient client)
+        public static Unit GetBuilder(BuildingOrUnitType buildingOrUnit, GameState gameState, SynchronousApiClient client)
         {
             // TODO: Exclude units/structures already building things
             var buildAction = gameState.Translator.GetBuildAction(buildingOrUnit);
 
-            foreach (var unit in gameState.Units.Where(u => u.Alliance == Alliance.Self))
+            foreach (var unit in gameState.RawUnits.Where(u => u.Alliance == Alliance.Self))
             {
                 var abilities = client.GetAbilities(unit.Tag);
 
@@ -196,27 +197,14 @@ namespace Sandbox
         
         public static void StartHarvesting(SynchronousApiClient client, GameState gameState)
         {
-            var harvesters = new List<Unit>();
-            var minerals = new List<Unit>();
-
-            foreach (var unit in gameState.Units)
-            {
-                if (unit.IsMineralDeposit())
-                {
-                    minerals.Add(unit);
-                }
-
-                if (gameState.Translator.IsHarvester(unit))
-                {
-                    harvesters.Add(unit);
-                }
-            }
-
-            var commands = new List<ICommand>();
+            var harvesters = gameState.Units.Where(unit => unit is TerranUnit terranUnit && terranUnit.TerranUnitType == TerranUnitType.SCV).ToList();
+            var minerals = gameState.NeutralUnits.Where(unit => unit.IsMineralDeposit);
+            
+            var commands = new List<Command>();
 
             foreach (var harvester in harvesters)
             {
-                commands.Add(new HarvestCommand(harvester, harvester.GetClosest(minerals)));
+                commands.Add(harvester.Harvest(harvester.GetClosest(minerals)));
             }
 
             client.SendCommands(commands);

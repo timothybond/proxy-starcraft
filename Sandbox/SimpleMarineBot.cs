@@ -8,29 +8,24 @@ namespace Sandbox
 {
     public class SimpleMarineBot : IBot
     {
-        public IReadOnlyList<ICommand> Act(GameState gameState)
+        public IReadOnlyList<Command> Act(GameState gameState)
         {
-            var commands = new List<ICommand>();
+            var commands = new List<Command>();
             var center = GetCenterOfMass(gameState);
 
             // Simple strategy: fire at most damaged enemy in range, or closest if a tie
             // If there's no target, move toward the center of friendly units.
             foreach (var unit in gameState.Units)
             {
-                if (unit.Alliance != Alliance.Self)
-                {
-                    continue;
-                }
-
                 var target = GetTarget(unit, gameState);
 
                 if (target == null)
                 {
-                    commands.Add(new MoveCommand(unit, center.X, center.Y));
+                    commands.Add(unit.Move(center.X, center.Y));
                 }
                 else
                 {
-                    commands.Add(new AttackCommand(unit, target));
+                    commands.Add(unit.Attack(target));
                 }
             }
 
@@ -43,7 +38,7 @@ namespace Sandbox
             var y = 0f;
             var count = 0;
 
-            foreach (var unit in gameState.Units)
+            foreach (var unit in gameState.RawUnits)
             {
                 if (unit.Alliance == Alliance.Self)
                 {
@@ -56,26 +51,23 @@ namespace Sandbox
             return new Point { X = x / count, Y = y / count };
         }
         
-        private static Unit GetTarget(Unit unit, GameState gameState)
+        private static Unit2 GetTarget(Unit2 unit, GameState gameState)
         {
             // Only valid for units with exactly one weapon
-            var range = gameState.UnitTypes[unit.UnitType].Weapons[0].Range;
+            var range = gameState.UnitTypes[unit.Raw.UnitType].Weapons[0].Range;
 
-            Unit target = null;
+            Unit2 target = null;
 
-            foreach (var otherUnit in gameState.Units)
+            foreach (var enemyUnit in gameState.EnemyUnits)
             {
-                if (otherUnit.Alliance == Alliance.Enemy)
+                var distance = unit.GetDistance(enemyUnit);
+                if (distance < range)
                 {
-                    var distance = unit.GetDistance(otherUnit);
-                    if (distance < range)
+                    if (target == null ||
+                        enemyUnit.Raw.Health < target.Raw.Health ||
+                        (enemyUnit.Raw.Health == target.Raw.Health && distance < unit.GetDistance(target)))
                     {
-                        if (target == null ||
-                            otherUnit.Health < target.Health ||
-                            (otherUnit.Health == target.Health && distance < unit.GetDistance(target)))
-                        {
-                            target = otherUnit;
-                        }
+                        target = enemyUnit;
                     }
                 }
             }

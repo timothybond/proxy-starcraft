@@ -1,25 +1,27 @@
-﻿namespace ProxyStarcraft
+﻿using System;
+
+using ProxyStarcraft.Proto;
+
+namespace ProxyStarcraft
 {
-    public enum ZergBuilding
+    public class ZergBuilding : Building
     {
-        Unspecified = 0,
-        Hatchery,
-        Extractor,
-        SpawningPool,
-        EvolutionChamber,
-        RoachWarren,
-        BanelingNest,
-        SpineCrawler,
-        SporeCrawler,
-        Lair,
-        HydraliskDen,
-        LurkerDen,
-        InfestationPit,
-        Spire,
-        NydusNetwork,
-        Hive,
-        GreaterSpire,
-        UltraliskCavern,
-        CreepTumor
+        public ZergBuilding(Unit unit, Translator translator) : base(unit, translator)
+        {
+            var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
+
+            if (unitType.ZergBuilding == ZergBuildingType.Unspecified)
+            {
+                throw new ArgumentException($"Expected a ZergBuildingType, got '{unitType.ToString()}'.");
+            }
+
+            this.ZergBuildingType = unitType.ZergBuilding;
+        }
+
+        public ZergBuildingType ZergBuildingType { get; private set; }
+
+        public override BuildingOrUnitType Type => this.ZergBuildingType;
+
+        public override BuildingType BuildingType => this.ZergBuildingType;
     }
 }

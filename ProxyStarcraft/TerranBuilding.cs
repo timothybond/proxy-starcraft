@@ -1,24 +1,27 @@
-﻿namespace ProxyStarcraft
+﻿using System;
+
+using ProxyStarcraft.Proto;
+
+namespace ProxyStarcraft
 {
-    public enum TerranBuilding
+    public class TerranBuilding : Building
     {
-        Unspecified = 0,
-        CommandCenter,
-        Refinery,
-        SupplyDepot,
-        Barracks,
-        EngineeringBay,
-        Bunker,
-        SensorTower,
-        MissileTurret,
-        Factory,
-        GhostAcademy,
-        Starport,
-        Armory,
-        FusionCore,
-        TechLab,
-        Reactor,
-        PlanetaryFortress,
-        OrbitalCommand
+        public TerranBuilding(Unit unit, Translator translator) : base(unit, translator)
+        {
+            var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
+
+            if (unitType.TerranBuilding == TerranBuildingType.Unspecified)
+            {
+                throw new ArgumentException($"Expected a TerranBuildingType, got '{unitType.ToString()}'.");
+            }
+
+            this.TerranBuildingType = unitType.TerranBuilding;
+        }
+
+        public TerranBuildingType TerranBuildingType { get; private set; }
+
+        public override BuildingType BuildingType => this.TerranBuildingType;
+
+        public override BuildingOrUnitType Type => this.TerranBuildingType;
     }
 }
