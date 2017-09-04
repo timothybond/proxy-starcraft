@@ -92,7 +92,7 @@ namespace ProxyStarcraft.Client
             // TODO: Check response for errors
             var actionResponse = Call(actionRequest);
 
-            if (actionResponse.Action.Result.Any(result => result != ActionResult.Success))
+            if (actionResponse.Action != null && actionResponse.Action.Result.Any(result => result != ActionResult.Success))
             {
                 Debugger.Break();
             }
