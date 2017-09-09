@@ -8,12 +8,14 @@ namespace ProxyStarcraft
     public class MapData
     {
         // I believe this uses 0 for 'not buildable' and 255 for 'buildable'.
-        private byte[,] placementGrid;
+        private MapArray<byte> placementGrid;
 
-        // Not totally sure what the expected values are here
-        private byte[,] pathingGrid;
+        // Strangely, this appears to be 0 for 'can move to/through' and 255 for 'can't move to/through'
+        private MapArray<byte> pathingGrid;
 
-        private Unit[,] structuresAndDeposits;
+        private MapArray<byte> heightGrid;
+
+        private MapArray<Unit> structuresAndDeposits;
 
         // One space of padding around each non-buildable space,
         // usable as a primitive strategy to avoid blocking things like ramps
@@ -27,26 +29,11 @@ namespace ProxyStarcraft
             this.Raw = startingData;
             this.Size = startingData.MapSize;
 
-            pathingGrid = new byte[this.Size.X, this.Size.Y];
-            placementGrid = new byte[this.Size.X, this.Size.Y];
-            
-            var pathingBytes = startingData.PathingGrid.Data.ToByteArray();
-            var placementBytes = startingData.PlacementGrid.Data.ToByteArray();
+            pathingGrid = new MapArray<byte>(startingData.PathingGrid.Data.ToByteArray(), this.Size);
+            placementGrid = new MapArray<byte>(startingData.PlacementGrid.Data.ToByteArray(), this.Size);
+            heightGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
 
-            // The bytes for this image aren't in the format that we would want -
-            // for convience and clarity we would like a 2d array where the x and y coordinates
-            // match the locations as used elsewhere in the engine, i.e., bytes ordered from
-            // bottom to top and then from left to right.
-            //
-            // The actual bytes are given from left to right and then from top to bottom.
-            // We can fix this by transposing them, and then inverting the y-values.
-            for (var i = 0; i < pathingBytes.Length; i++)
-            {
-                pathingGrid[i % this.Size.X, this.Size.Y - 1 - i / this.Size.X] = pathingBytes[i];
-                placementGrid[i % this.Size.X, this.Size.Y - 1 - i / this.Size.X] = placementBytes[i];
-            }
-
-            structuresAndDeposits = new Unit[this.Size.X, this.Size.Y];
+            structuresAndDeposits = new MapArray<Unit>(this.Size);
 
             GeneratePadding(startingData);
 
@@ -59,9 +46,10 @@ namespace ProxyStarcraft
             this.Size = prior.Size;
             this.placementGrid = prior.placementGrid;
             this.pathingGrid = prior.pathingGrid;
+            this.heightGrid = prior.heightGrid;
             this.padding = prior.padding;
 
-            this.structuresAndDeposits = new Unit[this.Size.X, this.Size.Y];
+            this.structuresAndDeposits = new MapArray<Unit>(this.Size);
             this.structurePadding = new bool[this.Size.X, this.Size.Y];
 
             foreach (var unit in units)
@@ -88,6 +76,12 @@ namespace ProxyStarcraft
         public StartRaw Raw { get; private set; }
 
         public Size2DI Size { get; private set; }
+
+        public MapArray<byte> PlacementGrid => new MapArray<byte>(this.placementGrid);
+
+        public MapArray<byte> PathingGrid => new MapArray<byte>(this.pathingGrid);
+
+        public MapArray<byte> HeightGrid => new MapArray<byte>(this.heightGrid);
 
         // TODO: Check that the pathing grid is what I think it is, because I have become suspicious
         public bool CanTraverse(Location location)

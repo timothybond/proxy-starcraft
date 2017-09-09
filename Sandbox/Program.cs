@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
+using ProxyStarcraft.Map;
 
 namespace Sandbox
 {
@@ -18,7 +19,7 @@ namespace Sandbox
         private const string BASE_GAME_PATH = "D:/Program Files (x86)/StarCraft II";
 
         private const string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Support64/SC2Switcher_x64.exe";
-        private const string GAME_EXECUTABLE_ARGS = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -port 5000";
+        private const string GAME_EXECUTABLE_ARGS = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -port 5000 -win";
 
         private const string MARINE_MICRO_MAP_PATH = BASE_GAME_PATH + "/maps/Example/MarineMicro.SC2Map";
         private const string EMPTY_MAP_PATH = BASE_GAME_PATH + "/maps/Test/Empty.SC2Map";
@@ -143,19 +144,24 @@ namespace Sandbox
             var bot = new BenchmarkBot();
             var gameState = client.GetGameState();
 
-            using (var pathingGrid = GetImage(gameState.GameInfo.StartRaw.PathingGrid.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
+            using (var pathingGrid = GetImage(gameState.MapData.PathingGrid))
             {
                 pathingGrid.Save("D:/Temp/pathing.bmp");
             }
 
-            using (var placementGrid = GetImage(gameState.GameInfo.StartRaw.PlacementGrid.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
+            using (var placementGrid = GetImage(gameState.MapData.PlacementGrid))
             {
                 placementGrid.Save("D:/Temp/placement.bmp");
             }
 
-            using (var terrainHeight = GetImage(gameState.GameInfo.StartRaw.TerrainHeight.Data.ToByteArray(), gameState.GameInfo.StartRaw.MapSize))
+            using (var terrainHeight = GetImage(gameState.MapData.HeightGrid))
             {
                 terrainHeight.Save("D:/Temp/terrain-height.bmp");
+            }
+
+            using (var areas = GetImage(MapAnalyzer.GetAreas(gameState.MapData)))
+            {
+                areas.Save("D:/Temp/areas.bmp");
             }
 
             while (true)
@@ -165,6 +171,11 @@ namespace Sandbox
                 client.Step();
                 gameState = client.GetGameState();
             }
+        }
+
+        private static Bitmap GetImage(MapArray<byte> data)
+        {
+            return GetImage(data.Data, data.Size);
         }
 
         private static Bitmap GetImage(byte[] data, Size2DI mapSize)
