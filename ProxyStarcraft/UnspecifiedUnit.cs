@@ -2,9 +2,9 @@
 
 namespace ProxyStarcraft
 {
-    public class UnspecifiedUnit : Unit2
+    public class UnspecifiedUnit : Unit
     {
-        public UnspecifiedUnit(Unit unit, Translator translator) : base(unit, translator)
+        public UnspecifiedUnit(Proto.Unit unit, Translator translator) : base(unit, translator)
         {
         }
 

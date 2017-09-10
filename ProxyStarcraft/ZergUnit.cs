@@ -4,9 +4,9 @@ using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {
-    public class ZergUnit : Unit2
+    public class ZergUnit : Unit
     {
-        public ZergUnit(Unit unit, Translator translator) : base(unit, translator)
+        public ZergUnit(Proto.Unit unit, Translator translator) : base(unit, translator)
         {
             var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
 

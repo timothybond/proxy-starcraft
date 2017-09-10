@@ -127,7 +127,7 @@ namespace ProxyStarcraft.Client
                     throw new NotImplementedException();
             }
             
-            unitCommand.UnitTags.Add(command.Unit.Tag);
+            unitCommand.UnitTags.Add((ulong)command.Unit.Tag);
             return new Proto.Action { ActionRaw = new ActionRaw { UnitCommand = unitCommand } };
         }
         

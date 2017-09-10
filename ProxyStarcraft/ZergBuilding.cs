@@ -6,7 +6,7 @@ namespace ProxyStarcraft
 {
     public class ZergBuilding : Building
     {
-        public ZergBuilding(Unit unit, Translator translator) : base(unit, translator)
+        public ZergBuilding(Proto.Unit unit, Translator translator) : base(unit, translator)
         {
             var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
 

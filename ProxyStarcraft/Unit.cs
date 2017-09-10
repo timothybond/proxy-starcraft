@@ -1,10 +1,10 @@
 ﻿namespace ProxyStarcraft
 {
-    public abstract class Unit2
+    public abstract class Unit
     {
         protected readonly Translator translator;
 
-        public Unit2(Proto.Unit unit, Translator translator)
+        public Unit(Proto.Unit unit, Translator translator)
         {
             this.translator = translator;
             this.Raw = unit;
@@ -25,6 +25,12 @@
 
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
 
+        public ulong Tag => this.Raw.Tag;
+
+        public float X => this.Raw.Pos.X;
+
+        public float Y => this.Raw.Pos.Y;
+
         public bool IsBuilding(BuildingOrUnitType buildingOrUnitType)
         {
             return translator.IsBuilding(this.Raw, buildingOrUnitType);
@@ -32,27 +38,27 @@
 
         public MoveCommand Move(float x, float y)
         {
-            return new MoveCommand(translator.Move, this.Raw, x, y);
+            return new MoveCommand(translator.Move, this, x, y);
         }
 
-        public AttackCommand Attack(Unit2 target)
+        public AttackCommand Attack(Unit target)
         {
-            return new AttackCommand(translator.Attack, this.Raw, target.Raw);
+            return new AttackCommand(translator.Attack, this, target);
         }
 
         public AttackMoveCommand AttackMove(float x, float y)
         {
-            return new AttackMoveCommand(translator.Attack, this.Raw, x, y);
+            return new AttackMoveCommand(translator.Attack, this, x, y);
         }
 
-        public HarvestCommand Harvest(Unit2 target)
+        public HarvestCommand Harvest(Unit target)
         {
-            return new HarvestCommand(translator.GetHarvestAbility(this.Raw), this.Raw, target.Raw);
+            return new HarvestCommand(translator.GetHarvestAbility(this.Raw), this, target);
         }
 
         protected BuildCommand Build(BuildingType buildingType, int x, int y)
         {
-            return new BuildCommand(this.Raw, buildingType, x, y, translator.GetBuildAction(buildingType));
+            return new BuildCommand(this, buildingType, x, y, translator.GetBuildAction(buildingType));
         }
     }
 }

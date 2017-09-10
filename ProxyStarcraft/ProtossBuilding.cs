@@ -6,7 +6,7 @@ namespace ProxyStarcraft
 {
     public class ProtossBuilding : Building
     {
-        public ProtossBuilding(Unit unit, Translator translator) : base(unit, translator)
+        public ProtossBuilding(Proto.Unit unit, Translator translator) : base(unit, translator)
         {
             var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
 

@@ -138,7 +138,7 @@ namespace Sandbox
             return commands;
         }
 
-        private void RemoveWorkerFromHarvestAssignments(Unit unit)
+        private void RemoveWorkerFromHarvestAssignments(ProxyStarcraft.Unit unit)
         {
             foreach (var pair in workersByMineralDeposit)
             {
@@ -251,7 +251,7 @@ namespace Sandbox
         private void SetIdleWorkerToHarvest(
             GameState gameState,
             List<TerranUnit> workers,
-            List<Unit2> minerals,
+            List<ProxyStarcraft.Unit> minerals,
             List<Command> commands)
         {
             var idleWorkers = workers.Where(w => w.Raw.Orders.Count == 0).ToList();

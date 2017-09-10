@@ -453,7 +453,7 @@ namespace ProxyStarcraft
             throw new ArgumentException("Received a build command with no building specified.");
         }
 
-        public uint GetHarvestAbility(Unit unit)
+        public uint GetHarvestAbility(Proto.Unit unit)
         {
             if (terranUnitTypesById.ContainsKey(unit.UnitType))
             {
@@ -481,7 +481,7 @@ namespace ProxyStarcraft
             throw new ArgumentException("Attempted to get harvest ability for unit other than SCV, MULE, Probe, or Drone.", "unit");
         }
 
-        public bool IsHarvester(Unit unit)
+        public bool IsHarvester(Proto.Unit unit)
         {
             if (terranUnitTypesById.ContainsKey(unit.UnitType))
             {
@@ -509,7 +509,7 @@ namespace ProxyStarcraft
             return false;
         }
 
-        public bool IsUnitOfType(Unit unit, BuildingOrUnitType unitType)
+        public bool IsUnitOfType(Proto.Unit unit, BuildingOrUnitType unitType)
         {
             if (unitType.TerranUnit != TerranUnitType.Unspecified)
             {
@@ -591,7 +591,7 @@ namespace ProxyStarcraft
             return new Size2DI() { X = side, Y = side };
         }
         
-        public Size2DI GetStructureSize(Unit unit)
+        public Size2DI GetStructureSize(Proto.Unit unit)
         {
             if (terranBuildingTypesById.ContainsKey(unit.UnitType))
             {
@@ -655,7 +655,7 @@ namespace ProxyStarcraft
             }
         }
 
-        public bool IsBuildingSomething(Unit unit)
+        public bool IsBuildingSomething(Proto.Unit unit)
         {
             var orders = unit.Orders.FirstOrDefault();
 
@@ -674,7 +674,7 @@ namespace ProxyStarcraft
                    createZergUnitActions.ContainsValue(ability);
         }
 
-        public bool IsBuilding(Unit unit, BuildingOrUnitType target)
+        public bool IsBuilding(Proto.Unit unit, BuildingOrUnitType target)
         {
             var orders = unit.Orders.FirstOrDefault();
 
@@ -694,7 +694,7 @@ namespace ProxyStarcraft
         /// because the Hatchery has its own Rally command (because it produces both units and workers
         /// and therefore needs two, I guess). This will not ensure that the unit is a building.
         /// </summary>
-        public uint GetRallyAbility(Unit unit)
+        public uint GetRallyAbility(Proto.Unit unit)
         {
             if (IsUnitOfType(unit, ZergBuildingType.Hatchery) ||
                 IsUnitOfType(unit, ZergBuildingType.Lair) ||
@@ -711,7 +711,7 @@ namespace ProxyStarcraft
         /// 
         /// Throws ArgumentException if it's not a main base structure.
         /// </summary>
-        public uint GetRallyWorkersAbility(Unit unit)
+        public uint GetRallyWorkersAbility(Proto.Unit unit)
         {
             if (IsUnitOfType(unit, TerranBuildingType.CommandCenter) ||
                 IsUnitOfType(unit, TerranBuildingType.OrbitalCommand) ||
@@ -765,7 +765,7 @@ namespace ProxyStarcraft
             throw new NotImplementedException();
         }
 
-        public Unit2 ConvertUnit(Proto.Unit unit)
+        public Unit ConvertUnit(Proto.Unit unit)
         {
             var unitTypeId = unit.UnitType;
 

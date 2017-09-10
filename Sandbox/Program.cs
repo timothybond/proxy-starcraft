@@ -158,16 +158,12 @@ namespace Sandbox
             {
                 terrainHeight.Save("D:/Temp/terrain-height.bmp");
             }
-
-            var areas = MapAnalyzer.GetAreaGrid(gameState.MapData);
-
-            using (var areasBitmap = GetImage(areas))
+            
+            using (var areasBitmap = GetImage(gameState.MapData.AreaGrid))
             {
                 areasBitmap.Save("D:/Temp/areas.bmp");
             }
-
-            var areaGraph = MapAnalyzer.GetAreas(gameState.MapData);
-
+            
             while (true)
             {
                 var commands = bot.Act(gameState);
@@ -192,12 +188,12 @@ namespace Sandbox
                 Marshal.UnsafeAddrOfPinnedArrayElement(data, 0));
         }
 
-        public static Unit GetBuilder(BuildingOrUnitType buildingOrUnit, GameState gameState, SynchronousApiClient client)
+        public static ProxyStarcraft.Unit GetBuilder(BuildingOrUnitType buildingOrUnit, GameState gameState, SynchronousApiClient client)
         {
             // TODO: Exclude units/structures already building things
             var buildAction = gameState.Translator.GetBuildAction(buildingOrUnit);
 
-            foreach (var unit in gameState.RawUnits.Where(u => u.Alliance == Alliance.Self))
+            foreach (var unit in gameState.Units)
             {
                 var abilities = client.GetAbilities(unit.Tag);
 

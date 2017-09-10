@@ -48,10 +48,10 @@ namespace ProxyStarcraft
                 }
             }
 
-            this.Units = this.Units ?? new List<Unit2>();
-            this.AlliedUnits = this.AlliedUnits ?? new List<Unit2>();
-            this.EnemyUnits = this.EnemyUnits ?? new List<Unit2>();
-            this.NeutralUnits = this.NeutralUnits ?? new List<Unit2>();
+            this.Units = this.Units ?? new List<Unit>();
+            this.AlliedUnits = this.AlliedUnits ?? new List<Unit>();
+            this.EnemyUnits = this.EnemyUnits ?? new List<Unit>();
+            this.NeutralUnits = this.NeutralUnits ?? new List<Unit>();
 
             this.AllUnits = this.Units.Concat(this.AlliedUnits).Concat(this.EnemyUnits).Concat(this.NeutralUnits).ToList();
         }
@@ -103,29 +103,29 @@ namespace ProxyStarcraft
         /// <summary>
         /// Units controlled by this player.
         /// </summary>
-        public IReadOnlyList<Unit2> Units { get; private set; }
+        public IReadOnlyList<Unit> Units { get; private set; }
 
         /// <summary>
         /// Units controlled by any player, or none.
         /// </summary>
-        public IReadOnlyList<Unit2> AllUnits { get; private set; }
+        public IReadOnlyList<Unit> AllUnits { get; private set; }
 
         /// <summary>
         /// Uncontrolled units, such as mineral deposits and critters.
         /// </summary>
-        public IReadOnlyList<Unit2> NeutralUnits { get; set; }
+        public IReadOnlyList<Unit> NeutralUnits { get; set; }
 
         /// <summary>
         /// Units controlled by hostile players.
         /// </summary>
-        public IReadOnlyList<Unit2> EnemyUnits { get; private set; }
+        public IReadOnlyList<Unit> EnemyUnits { get; private set; }
 
         /// <summary>
         /// Units controlled by other, friendly players.
         /// </summary>
-        public IReadOnlyList<Unit2> AlliedUnits { get; private set; }
+        public IReadOnlyList<Unit> AlliedUnits { get; private set; }
 
-        public RepeatedField<Unit> RawUnits
+        public RepeatedField<Proto.Unit> RawUnits
         {
             get { return this.Observation.RawData.Units; }
         }

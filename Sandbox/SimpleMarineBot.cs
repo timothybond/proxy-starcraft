@@ -51,12 +51,12 @@ namespace Sandbox
             return new Point { X = x / count, Y = y / count };
         }
         
-        private static Unit2 GetTarget(Unit2 unit, GameState gameState)
+        private static ProxyStarcraft.Unit GetTarget(ProxyStarcraft.Unit unit, GameState gameState)
         {
             // Only valid for units with exactly one weapon
             var range = gameState.UnitTypes[unit.Raw.UnitType].Weapons[0].Range;
 
-            Unit2 target = null;
+            ProxyStarcraft.Unit target = null;
 
             foreach (var enemyUnit in gameState.EnemyUnits)
             {

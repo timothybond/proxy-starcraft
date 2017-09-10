@@ -2,7 +2,7 @@
 
 namespace ProxyStarcraft
 {
-    public abstract class Building : Unit2
+    public abstract class Building : Unit
     {
         public Building(Proto.Unit unit, Translator translator) : base(unit, translator)
         {
@@ -15,39 +15,39 @@ namespace ProxyStarcraft
         public TrainCommand Train(TerranUnitType unitType)
         {
             var ability = translator.GetBuildAction(unitType);
-            return new TrainCommand(this.Raw, unitType, ability);
+            return new TrainCommand(this, unitType, ability);
         }
 
         public TrainCommand Train(ProtossUnitType unitType)
         {
             var ability = translator.GetBuildAction(unitType);
-            return new TrainCommand(this.Raw, unitType, ability);
+            return new TrainCommand(this, unitType, ability);
         }
 
         public TrainCommand Train(ZergUnitType unitType)
         {
             var ability = translator.GetBuildAction(unitType);
-            return new TrainCommand(this.Raw, unitType, ability);
+            return new TrainCommand(this, unitType, ability);
         }
 
         public RallyLocationCommand Rally(float x, float y)
         {
-            return new RallyLocationCommand(translator.GetRallyAbility(this.Raw), this.Raw, x, y);
+            return new RallyLocationCommand(translator.GetRallyAbility(this.Raw), this, x, y);
         }
 
-        public RallyTargetCommand Rally(Unit2 unit)
+        public RallyTargetCommand Rally(Unit unit)
         {
-            return new RallyTargetCommand(translator.GetRallyAbility(this.Raw), this.Raw, unit.Raw);
+            return new RallyTargetCommand(translator.GetRallyAbility(this.Raw), this, unit);
         }
 
         public RallyWorkersLocationCommand RallyWorkers(float x, float y)
         {
-            return new RallyWorkersLocationCommand(translator.GetRallyWorkersAbility(this.Raw), this.Raw, x, y);
+            return new RallyWorkersLocationCommand(translator.GetRallyWorkersAbility(this.Raw), this, x, y);
         }
 
-        public RallyWorkersTargetCommand RallyWorkers(Unit2 unit)
+        public RallyWorkersTargetCommand RallyWorkers(Unit unit)
         {
-            return new RallyWorkersTargetCommand(translator.GetRallyWorkersAbility(this.Raw), this.Raw, unit.Raw);
+            return new RallyWorkersTargetCommand(translator.GetRallyWorkersAbility(this.Raw), this, unit);
         }
     }
 }
