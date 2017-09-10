@@ -91,10 +91,6 @@
       <Project>{7f17749d-eae2-407a-b8bb-81dd0012715e}</Project>
       <Name>ProxyStarcraft.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProxyStarcraft.Map\ProxyStarcraft.Map.csproj">
-      <Project>{07035164-5f3c-4b76-9ede-14b75630b43d}</Project>
-      <Name>ProxyStarcraft.Map</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProxyStarcraft\ProxyStarcraft.csproj">
       <Project>{1a82ee8c-0572-4267-81be-c4b95cfcf546}</Project>
       <Name>ProxyStarcraft</Name>
