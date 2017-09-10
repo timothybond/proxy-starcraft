@@ -159,10 +159,14 @@ namespace Sandbox
                 terrainHeight.Save("D:/Temp/terrain-height.bmp");
             }
 
-            using (var areas = GetImage(MapAnalyzer.GetAreas(gameState.MapData)))
+            var areas = MapAnalyzer.GetAreaGrid(gameState.MapData);
+
+            using (var areasBitmap = GetImage(areas))
             {
-                areas.Save("D:/Temp/areas.bmp");
+                areasBitmap.Save("D:/Temp/areas.bmp");
             }
+
+            var areaGraph = MapAnalyzer.GetAreas(gameState.MapData);
 
             while (true)
             {
