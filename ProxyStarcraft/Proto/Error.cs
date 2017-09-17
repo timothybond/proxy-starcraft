@@ -155,7 +155,7 @@ namespace ProxyStarcraft.Proto {
             "cmRlchDWAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.ActionResult), }, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.ActionResult), }, null));
     }
     #endregion
 

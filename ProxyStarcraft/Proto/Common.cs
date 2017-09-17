@@ -35,14 +35,14 @@ namespace ProxyStarcraft.Proto {
             "EAISCwoHUHJvdG9zcxADEgoKBlJhbmRvbRAEYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.Race), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.AvailableAbility), global::SC2APIProtocol.AvailableAbility.Parser, new[]{ "AbilityId", "RequiresPoint" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ImageData), global::SC2APIProtocol.ImageData.Parser, new[]{ "BitsPerPixel", "Size", "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.PointI), global::SC2APIProtocol.PointI.Parser, new[]{ "X", "Y" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RectangleI), global::SC2APIProtocol.RectangleI.Parser, new[]{ "P0", "P1" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Point2D), global::SC2APIProtocol.Point2D.Parser, new[]{ "X", "Y" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Point), global::SC2APIProtocol.Point.Parser, new[]{ "X", "Y", "Z" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Size2DI), global::SC2APIProtocol.Size2DI.Parser, new[]{ "X", "Y" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Race), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.AvailableAbility), global::ProxyStarcraft.Proto.AvailableAbility.Parser, new[]{ "AbilityId", "RequiresPoint" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ImageData), global::ProxyStarcraft.Proto.ImageData.Parser, new[]{ "BitsPerPixel", "Size", "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PointI), global::ProxyStarcraft.Proto.PointI.Parser, new[]{ "X", "Y" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RectangleI), global::ProxyStarcraft.Proto.RectangleI.Parser, new[]{ "P0", "P1" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Point2D), global::ProxyStarcraft.Proto.Point2D.Parser, new[]{ "X", "Y" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Point), global::ProxyStarcraft.Proto.Point.Parser, new[]{ "X", "Y", "Z" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Size2DI), global::ProxyStarcraft.Proto.Size2DI.Parser, new[]{ "X", "Y" }, null, null, null)
           }));
     }
     #endregion
@@ -67,7 +67,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -212,7 +212,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -255,12 +255,12 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "size" field.</summary>
     public const int SizeFieldNumber = 2;
-    private global::SC2APIProtocol.Size2DI size_;
+    private global::ProxyStarcraft.Proto.Size2DI size_;
     /// <summary>
     /// Dimension in pixels.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.Size2DI Size {
+    public global::ProxyStarcraft.Proto.Size2DI Size {
       get { return size_; }
       set {
         size_ = value;
@@ -355,7 +355,7 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.size_ != null) {
         if (size_ == null) {
-          size_ = new global::SC2APIProtocol.Size2DI();
+          size_ = new global::ProxyStarcraft.Proto.Size2DI();
         }
         Size.MergeFrom(other.Size);
       }
@@ -378,7 +378,7 @@ namespace ProxyStarcraft.Proto {
           }
           case 18: {
             if (size_ == null) {
-              size_ = new global::SC2APIProtocol.Size2DI();
+              size_ = new global::ProxyStarcraft.Proto.Size2DI();
             }
             input.ReadMessage(size_);
             break;
@@ -404,7 +404,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -552,7 +552,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -580,9 +580,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "p0" field.</summary>
     public const int P0FieldNumber = 1;
-    private global::SC2APIProtocol.PointI p0_;
+    private global::ProxyStarcraft.Proto.PointI p0_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PointI P0 {
+    public global::ProxyStarcraft.Proto.PointI P0 {
       get { return p0_; }
       set {
         p0_ = value;
@@ -591,9 +591,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "p1" field.</summary>
     public const int P1FieldNumber = 2;
-    private global::SC2APIProtocol.PointI p1_;
+    private global::ProxyStarcraft.Proto.PointI p1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SC2APIProtocol.PointI P1 {
+    public global::ProxyStarcraft.Proto.PointI P1 {
       get { return p1_; }
       set {
         p1_ = value;
@@ -662,13 +662,13 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.p0_ != null) {
         if (p0_ == null) {
-          p0_ = new global::SC2APIProtocol.PointI();
+          p0_ = new global::ProxyStarcraft.Proto.PointI();
         }
         P0.MergeFrom(other.P0);
       }
       if (other.p1_ != null) {
         if (p1_ == null) {
-          p1_ = new global::SC2APIProtocol.PointI();
+          p1_ = new global::ProxyStarcraft.Proto.PointI();
         }
         P1.MergeFrom(other.P1);
       }
@@ -684,14 +684,14 @@ namespace ProxyStarcraft.Proto {
             break;
           case 10: {
             if (p0_ == null) {
-              p0_ = new global::SC2APIProtocol.PointI();
+              p0_ = new global::ProxyStarcraft.Proto.PointI();
             }
             input.ReadMessage(p0_);
             break;
           }
           case 18: {
             if (p1_ == null) {
-              p1_ = new global::SC2APIProtocol.PointI();
+              p1_ = new global::ProxyStarcraft.Proto.PointI();
             }
             input.ReadMessage(p1_);
             break;
@@ -713,7 +713,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -862,7 +862,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1038,7 +1038,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SC2APIProtocol.CommonReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ProxyStarcraft.Proto.CommonReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
