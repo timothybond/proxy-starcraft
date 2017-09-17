@@ -56,9 +56,15 @@
             return new HarvestCommand(translator.GetHarvestAbility(this.Raw), this, target);
         }
 
-        protected BuildCommand Build(BuildingType buildingType, int x, int y)
+        public BuildCommand Build(BuildingType buildingType, int x, int y)
         {
             return new BuildCommand(this, buildingType, x, y, translator.GetBuildAction(buildingType));
+        }
+
+        public TrainCommand Train(UnitType unitType)
+        {
+            var ability = translator.GetBuildAction(unitType);
+            return new TrainCommand(this, unitType, ability);
         }
     }
 }

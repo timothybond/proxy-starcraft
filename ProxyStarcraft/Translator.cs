@@ -430,27 +430,7 @@ namespace ProxyStarcraft
         public IReadOnlyDictionary<uint, AbilityData> AbilityTypes => this.abilities;
 
         public IReadOnlyDictionary<uint, UnitTypeData> UnitTypes => this.unitTypes;
-
-        public uint GetAbilityId(TrainCommand trainCommand)
-        {
-            if (trainCommand.TerranUnit != TerranUnitType.Unspecified)
-            {
-                return createTerranUnitActions[trainCommand.TerranUnit];
-            }
-
-            if (trainCommand.ProtossUnit != ProtossUnitType.Unspecified)
-            {
-                return createProtossUnitActions[trainCommand.ProtossUnit];
-            }
-
-            if (trainCommand.ZergUnit != ZergUnitType.Unspecified)
-            {
-                return createZergUnitActions[trainCommand.ZergUnit];
-            }
-
-            throw new ArgumentException("Received a training command with no unit specified.");
-        }
-
+        
         public uint GetAbilityId(BuildCommand buildCommand)
         {
             if (buildCommand.Building.TerranBuilding != TerranBuildingType.Unspecified)
