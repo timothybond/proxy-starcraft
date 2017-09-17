@@ -372,6 +372,12 @@ namespace ProxyStarcraft
             terranBuildingTypesById.Add(unitTypesByName["FusionCore"].UnitId, TerranBuildingType.FusionCore);
             terranBuildingTypesById.Add(unitTypesByName["TechLab"].UnitId, TerranBuildingType.TechLab);
             terranBuildingTypesById.Add(unitTypesByName["Reactor"].UnitId, TerranBuildingType.Reactor);
+            terranBuildingTypesById.Add(unitTypesByName["BarracksTechLab"].UnitId, TerranBuildingType.BarracksTechLab);
+            terranBuildingTypesById.Add(unitTypesByName["BarracksReactor"].UnitId, TerranBuildingType.BarracksReactor);
+            terranBuildingTypesById.Add(unitTypesByName["FactoryTechLab"].UnitId, TerranBuildingType.FactoryTechLab);
+            terranBuildingTypesById.Add(unitTypesByName["FactoryReactor"].UnitId, TerranBuildingType.FactoryReactor);
+            terranBuildingTypesById.Add(unitTypesByName["StarportTechLab"].UnitId, TerranBuildingType.StarportTechLab);
+            terranBuildingTypesById.Add(unitTypesByName["StarportReactor"].UnitId, TerranBuildingType.StarportReactor);
             terranBuildingTypesById.Add(unitTypesByName["PlanetaryFortress"].UnitId, TerranBuildingType.PlanetaryFortress);
             terranBuildingTypesById.Add(unitTypesByName["OrbitalCommand"].UnitId, TerranBuildingType.OrbitalCommand);
 

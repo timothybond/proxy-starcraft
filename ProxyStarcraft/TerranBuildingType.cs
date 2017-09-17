@@ -18,6 +18,12 @@
         FusionCore,
         TechLab,
         Reactor,
+        BarracksTechLab,
+        BarracksReactor,
+        FactoryTechLab,
+        FactoryReactor,
+        StarportTechLab,
+        StarportReactor,
         PlanetaryFortress,
         OrbitalCommand
     }
