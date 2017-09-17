@@ -67,6 +67,8 @@ namespace ProxyStarcraft
             { TerranBuildingType.Starport, 3 },
             { TerranBuildingType.Armory, 3 },
             { TerranBuildingType.FusionCore, 3 }, // ?
+            { TerranBuildingType.TechLab, 2 },
+            { TerranBuildingType.Reactor, 2 },
             { TerranBuildingType.BarracksTechLab, 2 },
             { TerranBuildingType.BarracksReactor, 2 },
             { TerranBuildingType.FactoryTechLab, 2 },
