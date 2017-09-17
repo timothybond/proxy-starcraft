@@ -94,6 +94,7 @@
     <Compile Include="TrainCommand.cs" />
     <Compile Include="Translator.cs" />
     <Compile Include="Unit.cs" />
+    <Compile Include="UnitCost.cs" />
     <Compile Include="UnitExtensions.cs" />
     <Compile Include="UnitTargetCommand.cs" />
     <Compile Include="UnitType.cs" />

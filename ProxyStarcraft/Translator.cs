@@ -651,6 +651,304 @@ namespace ProxyStarcraft
             }
         }
 
+        public UnitCost GetCost(BuildingOrUnitType buildingOrUnit)
+        {
+            var unitTypeId = GetUnitTypeId(buildingOrUnit);
+            var rawUnitType = this.UnitTypes[unitTypeId];
+
+            var minerals = rawUnitType.MineralCost;
+            var vespene = rawUnitType.VespeneCost;
+            var supply = rawUnitType.FoodRequired;
+            var prerequisiteId = rawUnitType.TechRequirement; // TODO: handle tech_alias values, Tech Lab requirement
+            var prerequisite = GetBuildingOrUnitType(prerequisiteId);
+
+            return new UnitCost(minerals, vespene, supply, prerequisite, GetBuilder(buildingOrUnit));
+        }
+
+        public BuildingOrUnitType GetBuilder(BuildingOrUnitType buildingOrUnit)
+        {
+            if (buildingOrUnit.TerranUnit != TerranUnitType.Unspecified)
+            {
+                switch (buildingOrUnit.TerranUnit)
+                {
+                    case TerranUnitType.SCV:
+                        return TerranBuildingType.CommandCenter;
+
+                    case TerranUnitType.MULE:
+                        return TerranBuildingType.OrbitalCommand;
+
+                    case TerranUnitType.Marine:
+                    case TerranUnitType.Marauder:
+                    case TerranUnitType.Reaper:
+                    case TerranUnitType.Ghost:
+                        return TerranBuildingType.Barracks;
+
+                    case TerranUnitType.Hellion:
+                    case TerranUnitType.Hellbat:
+                    case TerranUnitType.SiegeTank:
+                    case TerranUnitType.Cyclone:
+                    case TerranUnitType.Thor:
+                    case TerranUnitType.WidowMine:
+                        return TerranBuildingType.Factory;
+
+                    case TerranUnitType.Viking:
+                    case TerranUnitType.Medivac:
+                    case TerranUnitType.Liberator:
+                    case TerranUnitType.Raven:
+                    case TerranUnitType.Banshee:
+                    case TerranUnitType.Battlecruiser:
+                        return TerranBuildingType.Starport;
+
+                    case TerranUnitType.AutoTurret:
+                        return TerranUnitType.Raven;
+
+                    case TerranUnitType.PointDefenseDrone:
+                        return TerranUnitType.Raven;
+
+                    default:
+                        throw new NotImplementedException();
+                }
+
+            }
+            else if (buildingOrUnit.TerranBuilding != TerranBuildingType.Unspecified)
+            {
+                switch (buildingOrUnit.TerranBuilding)
+                {
+                    case TerranBuildingType.CommandCenter:
+                    case TerranBuildingType.Refinery:
+                    case TerranBuildingType.SupplyDepot:
+                    case TerranBuildingType.Barracks:
+                    case TerranBuildingType.EngineeringBay:
+                    case TerranBuildingType.Bunker:
+                    case TerranBuildingType.SensorTower:
+                    case TerranBuildingType.MissileTurret:
+                    case TerranBuildingType.Factory:
+                    case TerranBuildingType.GhostAcademy:
+                    case TerranBuildingType.Starport:
+                    case TerranBuildingType.Armory:
+                    case TerranBuildingType.FusionCore:
+                        return TerranUnitType.SCV;
+
+                    case TerranBuildingType.BarracksTechLab:
+                    case TerranBuildingType.BarracksReactor:
+                        return TerranBuildingType.Barracks;
+
+                    case TerranBuildingType.FactoryTechLab:
+                    case TerranBuildingType.FactoryReactor:
+                        return TerranBuildingType.Factory;
+
+                    case TerranBuildingType.StarportTechLab:
+                    case TerranBuildingType.StarportReactor:
+                        return TerranBuildingType.Starport;
+
+                    case TerranBuildingType.PlanetaryFortress:
+                    case TerranBuildingType.OrbitalCommand:
+                        return TerranBuildingType.CommandCenter;
+
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+            else if (buildingOrUnit.ProtossUnit != ProtossUnitType.Unspecified)
+            {
+                switch (buildingOrUnit.ProtossUnit)
+                {
+                    case ProtossUnitType.Probe:
+                    case ProtossUnitType.MothershipCore:
+                        return ProtossBuildingType.Nexus;
+
+                    case ProtossUnitType.Zealot:
+                    case ProtossUnitType.Stalker:
+                    case ProtossUnitType.Sentry:
+                    case ProtossUnitType.Adept:
+                    case ProtossUnitType.HighTemplar:
+                    case ProtossUnitType.DarkTemplar:
+                        return ProtossBuildingType.Gateway;
+                    case ProtossUnitType.Immortal:
+                    case ProtossUnitType.Colossus:
+                    case ProtossUnitType.Disruptor:
+                    case ProtossUnitType.Observer:
+                    case ProtossUnitType.WarpPrism:
+                        return ProtossBuildingType.RoboticsFacility;
+
+                    case ProtossUnitType.Archon:
+                        return ProtossUnitType.HighTemplar;
+                        
+                    case ProtossUnitType.Phoenix:
+                    case ProtossUnitType.VoidRay:
+                    case ProtossUnitType.Oracle:
+                    case ProtossUnitType.Carrier:
+                    case ProtossUnitType.Tempest:
+                        return ProtossBuildingType.Stargate;
+                    
+                    case ProtossUnitType.Mothership:
+                        return ProtossUnitType.MothershipCore;
+
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+            else if (buildingOrUnit.ProtossBuilding != ProtossBuildingType.Unspecified)
+            {
+                switch (buildingOrUnit.ProtossBuilding)
+                {
+                    case ProtossBuildingType.Nexus:
+                    case ProtossBuildingType.Assimilator:
+                    case ProtossBuildingType.Pylon:
+                    case ProtossBuildingType.Gateway:
+                    case ProtossBuildingType.Forge:
+                    case ProtossBuildingType.CyberneticsCore:
+                    case ProtossBuildingType.PhotonCannon:
+                    case ProtossBuildingType.RoboticsFacility:
+                    case ProtossBuildingType.Stargate:
+                    case ProtossBuildingType.TwilightCouncil:
+                    case ProtossBuildingType.RoboticsBay:
+                    case ProtossBuildingType.FleetBeacon:
+                    case ProtossBuildingType.TemplarArchive:
+                    case ProtossBuildingType.DarkShrine:
+                        return ProtossUnitType.Probe;
+
+                    case ProtossBuildingType.WarpGate:
+                        return ProtossBuildingType.Gateway;
+
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+            else if (buildingOrUnit.ZergUnit != ZergUnitType.Unspecified)
+            {
+                switch (buildingOrUnit.ZergUnit)
+                {
+                    case ZergUnitType.Larva:
+                    case ZergUnitType.Queen:
+                        return ZergBuildingType.Hatchery; // TODO: Recognize that Lairs/Hives are basically Hatcheries
+
+                    case ZergUnitType.Drone:
+                    case ZergUnitType.Zergling:
+                    case ZergUnitType.Roach:
+                    case ZergUnitType.Hydralisk:
+                    case ZergUnitType.Infestor:
+                    case ZergUnitType.SwarmHost:
+                    case ZergUnitType.Ultralisk:
+                    case ZergUnitType.Overlord:
+                    case ZergUnitType.Mutalisk:
+                    case ZergUnitType.Corruptor:
+                    case ZergUnitType.Viper:
+                        return ZergUnitType.Larva;
+
+                    case ZergUnitType.Locust:
+                        return ZergUnitType.SwarmHost;
+
+                    case ZergUnitType.Lurker:
+                        return ZergUnitType.Hydralisk;
+
+                    case ZergUnitType.Ravager:
+                        return ZergUnitType.Roach;
+
+                    case ZergUnitType.InfestedTerran:
+                        return ZergUnitType.Infestor;
+
+                    case ZergUnitType.BroodLord:
+                        return ZergUnitType.Corruptor;
+
+                    case ZergUnitType.Broodling:
+                        return ZergUnitType.BroodLord;
+
+                    case ZergUnitType.Overseer:
+                        return ZergUnitType.Overlord;
+
+                    case ZergUnitType.Changeling:
+                        return ZergUnitType.Overseer;
+
+                    case ZergUnitType.Baneling:
+                        return ZergUnitType.Zergling;
+
+                    case ZergUnitType.NydusWorm:
+                        return ZergBuildingType.NydusNetwork;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+            else if (buildingOrUnit.ZergBuilding != ZergBuildingType.Unspecified)
+            {
+                switch (buildingOrUnit.ZergBuilding)
+                {
+                    case ZergBuildingType.Hatchery:
+                    case ZergBuildingType.Extractor:
+                    case ZergBuildingType.SpawningPool:
+                    case ZergBuildingType.EvolutionChamber:
+                    case ZergBuildingType.RoachWarren:
+                    case ZergBuildingType.BanelingNest:
+                    case ZergBuildingType.SpineCrawler:
+                    case ZergBuildingType.SporeCrawler:
+                    case ZergBuildingType.HydraliskDen:
+                    case ZergBuildingType.InfestationPit:
+                    case ZergBuildingType.Spire:
+                    case ZergBuildingType.NydusNetwork:
+                    case ZergBuildingType.UltraliskCavern:
+                        return ZergUnitType.Drone;
+
+                    case ZergBuildingType.LurkerDen:
+                        return ZergBuildingType.HydraliskDen;
+
+                    case ZergBuildingType.GreaterSpire:
+                        return ZergBuildingType.Spire;
+
+                    case ZergBuildingType.Lair:
+                        return ZergBuildingType.Hatchery;
+
+                    case ZergBuildingType.Hive:
+                        return ZergBuildingType.Lair;
+                    
+                    case ZergBuildingType.CreepTumor:
+                        return ZergUnitType.Queen;
+
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Gets a unique identifier for the unit type (or one of the unit types if there are multiple, and it's not picky) specified.
+        /// </summary>
+        private uint GetUnitTypeId(BuildingOrUnitType buildingOrUnit)
+        {
+            if (buildingOrUnit.TerranUnit != TerranUnitType.Unspecified)
+            {
+                return terranUnitTypesById.First(pair => pair.Value == buildingOrUnit.TerranUnit).Key;
+            }
+
+            if (buildingOrUnit.TerranBuilding != TerranBuildingType.Unspecified)
+            {
+                return terranBuildingTypesById.First(pair => pair.Value == buildingOrUnit.TerranBuilding).Key;
+            }
+
+            if (buildingOrUnit.ProtossUnit != ProtossUnitType.Unspecified)
+            {
+                return protossUnitTypesById.First(pair => pair.Value == buildingOrUnit.ProtossUnit).Key;
+            }
+
+            if (buildingOrUnit.ProtossBuilding != ProtossBuildingType.Unspecified)
+            {
+                return protossBuildingTypesById.First(pair => pair.Value == buildingOrUnit.ProtossBuilding).Key;
+            }
+
+            if (buildingOrUnit.ZergUnit != ZergUnitType.Unspecified)
+            {
+                return zergUnitTypesById.First(pair => pair.Value == buildingOrUnit.ZergUnit).Key;
+            }
+
+            if (buildingOrUnit.ZergBuilding != ZergBuildingType.Unspecified)
+            {
+                return zergBuildingTypesById.First(pair => pair.Value == buildingOrUnit.ZergBuilding).Key;
+            }
+
+            throw new NotImplementedException();
+        }
+
         public bool IsBuildingSomething(Proto.Unit unit)
         {
             var orders = unit.Orders.FirstOrDefault();
