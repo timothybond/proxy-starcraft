@@ -1,7 +1,5 @@
 ﻿using System;
 
-using ProxyStarcraft.Proto;
-
 namespace ProxyStarcraft
 {
     public class ZergBuilding : Building

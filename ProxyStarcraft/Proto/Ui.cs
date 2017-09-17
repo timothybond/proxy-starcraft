@@ -6,11 +6,11 @@
 using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-using scg = global::System.Collections.Generic;
-namespace ProxyStarcraft.Proto {
+namespace ProxyStarcraft.Proto
+{
 
-  /// <summary>Holder for reflection information generated from ui.proto</summary>
-  public static partial class UiReflection {
+    /// <summary>Holder for reflection information generated from ui.proto</summary>
+    public static partial class UiReflection {
 
     #region Descriptor
     /// <summary>File descriptor for ui.proto</summary>

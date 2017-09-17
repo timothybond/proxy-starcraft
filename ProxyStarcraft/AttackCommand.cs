@@ -1,6 +1,4 @@
-﻿using ProxyStarcraft.Proto;
-
-namespace ProxyStarcraft
+﻿namespace ProxyStarcraft
 {
     public class AttackCommand : UnitTargetCommand
     {

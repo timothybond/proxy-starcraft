@@ -4,13 +4,12 @@
 #region Designer generated code
 
 using pb = global::Google.Protobuf;
-using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-using scg = global::System.Collections.Generic;
-namespace ProxyStarcraft.Proto {
+namespace ProxyStarcraft.Proto
+{
 
-  /// <summary>Holder for reflection information generated from score.proto</summary>
-  public static partial class ScoreReflection {
+    /// <summary>Holder for reflection information generated from score.proto</summary>
+    public static partial class ScoreReflection {
 
     #region Descriptor
     /// <summary>File descriptor for score.proto</summary>
