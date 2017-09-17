@@ -4,12 +4,13 @@
 #region Designer generated code
 
 using pb = global::Google.Protobuf;
+using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-namespace ProxyStarcraft.Proto
-{
+using scg = global::System.Collections.Generic;
+namespace ProxyStarcraft.Proto {
 
-    /// <summary>Holder for reflection information generated from score.proto</summary>
-    public static partial class ScoreReflection {
+  /// <summary>Holder for reflection information generated from score.proto</summary>
+  public static partial class ScoreReflection {
 
     #region Descriptor
     /// <summary>File descriptor for score.proto</summary>
@@ -21,50 +22,50 @@ namespace ProxyStarcraft.Proto
     static ScoreReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgtzY29yZS5wcm90bxIOU0MyQVBJUHJvdG9jb2wiwgEKBVNjb3JlEjMKCnNj",
+            "CgtzY29yZS5wcm90bxIOU0MyQVBJUHJvdG9jb2wivgEKBVNjb3JlEjMKCnNj",
             "b3JlX3R5cGUYBiABKA4yHy5TQzJBUElQcm90b2NvbC5TY29yZS5TY29yZVR5",
             "cGUSDQoFc2NvcmUYByABKAUSMwoNc2NvcmVfZGV0YWlscxgIIAEoCzIcLlND",
-            "MkFQSVByb3RvY29sLlNjb3JlRGV0YWlscyJACglTY29yZVR5cGUSGAoUVW5z",
-            "cGVjaWZpZWRTY29yZVR5cGUQABIOCgpDdXJyaWN1bHVtEAESCQoFTWVsZWUQ",
-            "AiJoChRDYXRlZ29yeVNjb3JlRGV0YWlscxIMCgRub25lGAEgASgCEgwKBGFy",
-            "bXkYAiABKAISDwoHZWNvbm9teRgDIAEoAhISCgp0ZWNobm9sb2d5GAQgASgC",
-            "Eg8KB3VwZ3JhZGUYBSABKAIiQgoRVml0YWxTY29yZURldGFpbHMSDAoEbGlm",
-            "ZRgBIAEoAhIPCgdzaGllbGRzGAIgASgCEg4KBmVuZXJneRgDIAEoAiLWCQoM",
-            "U2NvcmVEZXRhaWxzEhwKFGlkbGVfcHJvZHVjdGlvbl90aW1lGAEgASgCEhgK",
-            "EGlkbGVfd29ya2VyX3RpbWUYAiABKAISGQoRdG90YWxfdmFsdWVfdW5pdHMY",
-            "AyABKAISHgoWdG90YWxfdmFsdWVfc3RydWN0dXJlcxgEIAEoAhIaChJraWxs",
-            "ZWRfdmFsdWVfdW5pdHMYBSABKAISHwoXa2lsbGVkX3ZhbHVlX3N0cnVjdHVy",
-            "ZXMYBiABKAISGgoSY29sbGVjdGVkX21pbmVyYWxzGAcgASgCEhkKEWNvbGxl",
-            "Y3RlZF92ZXNwZW5lGAggASgCEiAKGGNvbGxlY3Rpb25fcmF0ZV9taW5lcmFs",
-            "cxgJIAEoAhIfChdjb2xsZWN0aW9uX3JhdGVfdmVzcGVuZRgKIAEoAhIWCg5z",
-            "cGVudF9taW5lcmFscxgLIAEoAhIVCg1zcGVudF92ZXNwZW5lGAwgASgCEjcK",
-            "CWZvb2RfdXNlZBgNIAEoCzIkLlNDMkFQSVByb3RvY29sLkNhdGVnb3J5U2Nv",
-            "cmVEZXRhaWxzEj0KD2tpbGxlZF9taW5lcmFscxgOIAEoCzIkLlNDMkFQSVBy",
-            "b3RvY29sLkNhdGVnb3J5U2NvcmVEZXRhaWxzEjwKDmtpbGxlZF92ZXNwZW5l",
-            "GA8gASgLMiQuU0MyQVBJUHJvdG9jb2wuQ2F0ZWdvcnlTY29yZURldGFpbHMS",
-            "OwoNbG9zdF9taW5lcmFscxgQIAEoCzIkLlNDMkFQSVByb3RvY29sLkNhdGVn",
-            "b3J5U2NvcmVEZXRhaWxzEjoKDGxvc3RfdmVzcGVuZRgRIAEoCzIkLlNDMkFQ",
-            "SVByb3RvY29sLkNhdGVnb3J5U2NvcmVEZXRhaWxzEkQKFmZyaWVuZGx5X2Zp",
-            "cmVfbWluZXJhbHMYEiABKAsyJC5TQzJBUElQcm90b2NvbC5DYXRlZ29yeVNj",
-            "b3JlRGV0YWlscxJDChVmcmllbmRseV9maXJlX3Zlc3BlbmUYEyABKAsyJC5T",
-            "QzJBUElQcm90b2NvbC5DYXRlZ29yeVNjb3JlRGV0YWlscxI7Cg11c2VkX21p",
-            "bmVyYWxzGBQgASgLMiQuU0MyQVBJUHJvdG9jb2wuQ2F0ZWdvcnlTY29yZURl",
-            "dGFpbHMSOgoMdXNlZF92ZXNwZW5lGBUgASgLMiQuU0MyQVBJUHJvdG9jb2wu",
-            "Q2F0ZWdvcnlTY29yZURldGFpbHMSQQoTdG90YWxfdXNlZF9taW5lcmFscxgW",
-            "IAEoCzIkLlNDMkFQSVByb3RvY29sLkNhdGVnb3J5U2NvcmVEZXRhaWxzEkAK",
-            "EnRvdGFsX3VzZWRfdmVzcGVuZRgXIAEoCzIkLlNDMkFQSVByb3RvY29sLkNh",
-            "dGVnb3J5U2NvcmVEZXRhaWxzEj0KEnRvdGFsX2RhbWFnZV9kZWFsdBgYIAEo",
-            "CzIhLlNDMkFQSVByb3RvY29sLlZpdGFsU2NvcmVEZXRhaWxzEj0KEnRvdGFs",
-            "X2RhbWFnZV90YWtlbhgZIAEoCzIhLlNDMkFQSVByb3RvY29sLlZpdGFsU2Nv",
-            "cmVEZXRhaWxzEjcKDHRvdGFsX2hlYWxlZBgaIAEoCzIhLlNDMkFQSVByb3Rv",
-            "Y29sLlZpdGFsU2NvcmVEZXRhaWxzYgZwcm90bzM="));
+            "MkFQSVByb3RvY29sLlNjb3JlRGV0YWlscyI8CglTY29yZVR5cGUSFAoQSW52",
+            "YWxpZFNjb3JlVHlwZRAAEg4KCkN1cnJpY3VsdW0QARIJCgVNZWxlZRACImgK",
+            "FENhdGVnb3J5U2NvcmVEZXRhaWxzEgwKBG5vbmUYASABKAISDAoEYXJteRgC",
+            "IAEoAhIPCgdlY29ub215GAMgASgCEhIKCnRlY2hub2xvZ3kYBCABKAISDwoH",
+            "dXBncmFkZRgFIAEoAiJCChFWaXRhbFNjb3JlRGV0YWlscxIMCgRsaWZlGAEg",
+            "ASgCEg8KB3NoaWVsZHMYAiABKAISDgoGZW5lcmd5GAMgASgCItYJCgxTY29y",
+            "ZURldGFpbHMSHAoUaWRsZV9wcm9kdWN0aW9uX3RpbWUYASABKAISGAoQaWRs",
+            "ZV93b3JrZXJfdGltZRgCIAEoAhIZChF0b3RhbF92YWx1ZV91bml0cxgDIAEo",
+            "AhIeChZ0b3RhbF92YWx1ZV9zdHJ1Y3R1cmVzGAQgASgCEhoKEmtpbGxlZF92",
+            "YWx1ZV91bml0cxgFIAEoAhIfChdraWxsZWRfdmFsdWVfc3RydWN0dXJlcxgG",
+            "IAEoAhIaChJjb2xsZWN0ZWRfbWluZXJhbHMYByABKAISGQoRY29sbGVjdGVk",
+            "X3Zlc3BlbmUYCCABKAISIAoYY29sbGVjdGlvbl9yYXRlX21pbmVyYWxzGAkg",
+            "ASgCEh8KF2NvbGxlY3Rpb25fcmF0ZV92ZXNwZW5lGAogASgCEhYKDnNwZW50",
+            "X21pbmVyYWxzGAsgASgCEhUKDXNwZW50X3Zlc3BlbmUYDCABKAISNwoJZm9v",
+            "ZF91c2VkGA0gASgLMiQuU0MyQVBJUHJvdG9jb2wuQ2F0ZWdvcnlTY29yZURl",
+            "dGFpbHMSPQoPa2lsbGVkX21pbmVyYWxzGA4gASgLMiQuU0MyQVBJUHJvdG9j",
+            "b2wuQ2F0ZWdvcnlTY29yZURldGFpbHMSPAoOa2lsbGVkX3Zlc3BlbmUYDyAB",
+            "KAsyJC5TQzJBUElQcm90b2NvbC5DYXRlZ29yeVNjb3JlRGV0YWlscxI7Cg1s",
+            "b3N0X21pbmVyYWxzGBAgASgLMiQuU0MyQVBJUHJvdG9jb2wuQ2F0ZWdvcnlT",
+            "Y29yZURldGFpbHMSOgoMbG9zdF92ZXNwZW5lGBEgASgLMiQuU0MyQVBJUHJv",
+            "dG9jb2wuQ2F0ZWdvcnlTY29yZURldGFpbHMSRAoWZnJpZW5kbHlfZmlyZV9t",
+            "aW5lcmFscxgSIAEoCzIkLlNDMkFQSVByb3RvY29sLkNhdGVnb3J5U2NvcmVE",
+            "ZXRhaWxzEkMKFWZyaWVuZGx5X2ZpcmVfdmVzcGVuZRgTIAEoCzIkLlNDMkFQ",
+            "SVByb3RvY29sLkNhdGVnb3J5U2NvcmVEZXRhaWxzEjsKDXVzZWRfbWluZXJh",
+            "bHMYFCABKAsyJC5TQzJBUElQcm90b2NvbC5DYXRlZ29yeVNjb3JlRGV0YWls",
+            "cxI6Cgx1c2VkX3Zlc3BlbmUYFSABKAsyJC5TQzJBUElQcm90b2NvbC5DYXRl",
+            "Z29yeVNjb3JlRGV0YWlscxJBChN0b3RhbF91c2VkX21pbmVyYWxzGBYgASgL",
+            "MiQuU0MyQVBJUHJvdG9jb2wuQ2F0ZWdvcnlTY29yZURldGFpbHMSQAoSdG90",
+            "YWxfdXNlZF92ZXNwZW5lGBcgASgLMiQuU0MyQVBJUHJvdG9jb2wuQ2F0ZWdv",
+            "cnlTY29yZURldGFpbHMSPQoSdG90YWxfZGFtYWdlX2RlYWx0GBggASgLMiEu",
+            "U0MyQVBJUHJvdG9jb2wuVml0YWxTY29yZURldGFpbHMSPQoSdG90YWxfZGFt",
+            "YWdlX3Rha2VuGBkgASgLMiEuU0MyQVBJUHJvdG9jb2wuVml0YWxTY29yZURl",
+            "dGFpbHMSNwoMdG90YWxfaGVhbGVkGBogASgLMiEuU0MyQVBJUHJvdG9jb2wu",
+            "Vml0YWxTY29yZURldGFpbHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Score), global::ProxyStarcraft.Proto.Score.Parser, new[]{ "ScoreType", "Score_", "ScoreDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.Score.Types.ScoreType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.CategoryScoreDetails), global::ProxyStarcraft.Proto.CategoryScoreDetails.Parser, new[]{ "None", "Army", "Economy", "Technology", "Upgrade" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.VitalScoreDetails), global::ProxyStarcraft.Proto.VitalScoreDetails.Parser, new[]{ "Life", "Shields", "Energy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ScoreDetails), global::ProxyStarcraft.Proto.ScoreDetails.Parser, new[]{ "IdleProductionTime", "IdleWorkerTime", "TotalValueUnits", "TotalValueStructures", "KilledValueUnits", "KilledValueStructures", "CollectedMinerals", "CollectedVespene", "CollectionRateMinerals", "CollectionRateVespene", "SpentMinerals", "SpentVespene", "FoodUsed", "KilledMinerals", "KilledVespene", "LostMinerals", "LostVespene", "FriendlyFireMinerals", "FriendlyFireVespene", "UsedMinerals", "UsedVespene", "TotalUsedMinerals", "TotalUsedVespene", "TotalDamageDealt", "TotalDamageTaken", "TotalHealed" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Score), global::SC2APIProtocol.Score.Parser, new[]{ "ScoreType", "Score_", "ScoreDetails" }, null, new[]{ typeof(global::SC2APIProtocol.Score.Types.ScoreType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.CategoryScoreDetails), global::SC2APIProtocol.CategoryScoreDetails.Parser, new[]{ "None", "Army", "Economy", "Technology", "Upgrade" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.VitalScoreDetails), global::SC2APIProtocol.VitalScoreDetails.Parser, new[]{ "Life", "Shields", "Energy" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ScoreDetails), global::SC2APIProtocol.ScoreDetails.Parser, new[]{ "IdleProductionTime", "IdleWorkerTime", "TotalValueUnits", "TotalValueStructures", "KilledValueUnits", "KilledValueStructures", "CollectedMinerals", "CollectedVespene", "CollectionRateMinerals", "CollectionRateVespene", "SpentMinerals", "SpentVespene", "FoodUsed", "KilledMinerals", "KilledVespene", "LostMinerals", "LostVespene", "FriendlyFireMinerals", "FriendlyFireVespene", "UsedMinerals", "UsedVespene", "TotalUsedMinerals", "TotalUsedVespene", "TotalDamageDealt", "TotalDamageTaken", "TotalHealed" }, null, null, null)
           }));
     }
     #endregion
@@ -78,7 +79,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.ScoreReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SC2APIProtocol.ScoreReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -107,9 +108,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "score_type" field.</summary>
     public const int ScoreTypeFieldNumber = 6;
-    private global::ProxyStarcraft.Proto.Score.Types.ScoreType scoreType_ = 0;
+    private global::SC2APIProtocol.Score.Types.ScoreType scoreType_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.Score.Types.ScoreType ScoreType {
+    public global::SC2APIProtocol.Score.Types.ScoreType ScoreType {
       get { return scoreType_; }
       set {
         scoreType_ = value;
@@ -132,9 +133,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "score_details" field.</summary>
     public const int ScoreDetailsFieldNumber = 8;
-    private global::ProxyStarcraft.Proto.ScoreDetails scoreDetails_;
+    private global::SC2APIProtocol.ScoreDetails scoreDetails_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ScoreDetails ScoreDetails {
+    public global::SC2APIProtocol.ScoreDetails ScoreDetails {
       get { return scoreDetails_; }
       set {
         scoreDetails_ = value;
@@ -218,7 +219,7 @@ namespace ProxyStarcraft.Proto
       }
       if (other.scoreDetails_ != null) {
         if (scoreDetails_ == null) {
-          scoreDetails_ = new global::ProxyStarcraft.Proto.ScoreDetails();
+          scoreDetails_ = new global::SC2APIProtocol.ScoreDetails();
         }
         ScoreDetails.MergeFrom(other.ScoreDetails);
       }
@@ -233,7 +234,7 @@ namespace ProxyStarcraft.Proto
             input.SkipLastField();
             break;
           case 48: {
-            scoreType_ = (global::ProxyStarcraft.Proto.Score.Types.ScoreType) input.ReadEnum();
+            scoreType_ = (global::SC2APIProtocol.Score.Types.ScoreType) input.ReadEnum();
             break;
           }
           case 56: {
@@ -242,7 +243,7 @@ namespace ProxyStarcraft.Proto
           }
           case 66: {
             if (scoreDetails_ == null) {
-              scoreDetails_ = new global::ProxyStarcraft.Proto.ScoreDetails();
+              scoreDetails_ = new global::SC2APIProtocol.ScoreDetails();
             }
             input.ReadMessage(scoreDetails_);
             break;
@@ -256,7 +257,7 @@ namespace ProxyStarcraft.Proto
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum ScoreType {
-        [pbr::OriginalName("UnspecifiedScoreType")] UnspecifiedScoreType = 0,
+        [pbr::OriginalName("InvalidScoreType")] InvalidScoreType = 0,
         /// <summary>
         /// map generated score (from curriculum maps with special scoring)
         /// </summary>
@@ -279,7 +280,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.ScoreReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SC2APIProtocol.ScoreReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -511,7 +512,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.ScoreReflection.Descriptor.MessageTypes[2]; }
+      get { return global::SC2APIProtocol.ScoreReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -684,7 +685,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.ScoreReflection.Descriptor.MessageTypes[3]; }
+      get { return global::SC2APIProtocol.ScoreReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -881,9 +882,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "food_used" field.</summary>
     public const int FoodUsedFieldNumber = 13;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails foodUsed_;
+    private global::SC2APIProtocol.CategoryScoreDetails foodUsed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails FoodUsed {
+    public global::SC2APIProtocol.CategoryScoreDetails FoodUsed {
       get { return foodUsed_; }
       set {
         foodUsed_ = value;
@@ -892,9 +893,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "killed_minerals" field.</summary>
     public const int KilledMineralsFieldNumber = 14;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails killedMinerals_;
+    private global::SC2APIProtocol.CategoryScoreDetails killedMinerals_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails KilledMinerals {
+    public global::SC2APIProtocol.CategoryScoreDetails KilledMinerals {
       get { return killedMinerals_; }
       set {
         killedMinerals_ = value;
@@ -903,9 +904,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "killed_vespene" field.</summary>
     public const int KilledVespeneFieldNumber = 15;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails killedVespene_;
+    private global::SC2APIProtocol.CategoryScoreDetails killedVespene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails KilledVespene {
+    public global::SC2APIProtocol.CategoryScoreDetails KilledVespene {
       get { return killedVespene_; }
       set {
         killedVespene_ = value;
@@ -914,9 +915,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "lost_minerals" field.</summary>
     public const int LostMineralsFieldNumber = 16;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails lostMinerals_;
+    private global::SC2APIProtocol.CategoryScoreDetails lostMinerals_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails LostMinerals {
+    public global::SC2APIProtocol.CategoryScoreDetails LostMinerals {
       get { return lostMinerals_; }
       set {
         lostMinerals_ = value;
@@ -925,9 +926,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "lost_vespene" field.</summary>
     public const int LostVespeneFieldNumber = 17;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails lostVespene_;
+    private global::SC2APIProtocol.CategoryScoreDetails lostVespene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails LostVespene {
+    public global::SC2APIProtocol.CategoryScoreDetails LostVespene {
       get { return lostVespene_; }
       set {
         lostVespene_ = value;
@@ -936,9 +937,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "friendly_fire_minerals" field.</summary>
     public const int FriendlyFireMineralsFieldNumber = 18;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails friendlyFireMinerals_;
+    private global::SC2APIProtocol.CategoryScoreDetails friendlyFireMinerals_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails FriendlyFireMinerals {
+    public global::SC2APIProtocol.CategoryScoreDetails FriendlyFireMinerals {
       get { return friendlyFireMinerals_; }
       set {
         friendlyFireMinerals_ = value;
@@ -947,9 +948,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "friendly_fire_vespene" field.</summary>
     public const int FriendlyFireVespeneFieldNumber = 19;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails friendlyFireVespene_;
+    private global::SC2APIProtocol.CategoryScoreDetails friendlyFireVespene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails FriendlyFireVespene {
+    public global::SC2APIProtocol.CategoryScoreDetails FriendlyFireVespene {
       get { return friendlyFireVespene_; }
       set {
         friendlyFireVespene_ = value;
@@ -958,9 +959,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "used_minerals" field.</summary>
     public const int UsedMineralsFieldNumber = 20;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails usedMinerals_;
+    private global::SC2APIProtocol.CategoryScoreDetails usedMinerals_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails UsedMinerals {
+    public global::SC2APIProtocol.CategoryScoreDetails UsedMinerals {
       get { return usedMinerals_; }
       set {
         usedMinerals_ = value;
@@ -969,9 +970,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "used_vespene" field.</summary>
     public const int UsedVespeneFieldNumber = 21;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails usedVespene_;
+    private global::SC2APIProtocol.CategoryScoreDetails usedVespene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails UsedVespene {
+    public global::SC2APIProtocol.CategoryScoreDetails UsedVespene {
       get { return usedVespene_; }
       set {
         usedVespene_ = value;
@@ -980,12 +981,12 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "total_used_minerals" field.</summary>
     public const int TotalUsedMineralsFieldNumber = 22;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails totalUsedMinerals_;
+    private global::SC2APIProtocol.CategoryScoreDetails totalUsedMinerals_;
     /// <summary>
     /// Interesting as a delta
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails TotalUsedMinerals {
+    public global::SC2APIProtocol.CategoryScoreDetails TotalUsedMinerals {
       get { return totalUsedMinerals_; }
       set {
         totalUsedMinerals_ = value;
@@ -994,12 +995,12 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "total_used_vespene" field.</summary>
     public const int TotalUsedVespeneFieldNumber = 23;
-    private global::ProxyStarcraft.Proto.CategoryScoreDetails totalUsedVespene_;
+    private global::SC2APIProtocol.CategoryScoreDetails totalUsedVespene_;
     /// <summary>
     /// Interesting as a delta
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CategoryScoreDetails TotalUsedVespene {
+    public global::SC2APIProtocol.CategoryScoreDetails TotalUsedVespene {
       get { return totalUsedVespene_; }
       set {
         totalUsedVespene_ = value;
@@ -1008,12 +1009,12 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "total_damage_dealt" field.</summary>
     public const int TotalDamageDealtFieldNumber = 24;
-    private global::ProxyStarcraft.Proto.VitalScoreDetails totalDamageDealt_;
+    private global::SC2APIProtocol.VitalScoreDetails totalDamageDealt_;
     /// <summary>
     /// Interesting as a delta
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.VitalScoreDetails TotalDamageDealt {
+    public global::SC2APIProtocol.VitalScoreDetails TotalDamageDealt {
       get { return totalDamageDealt_; }
       set {
         totalDamageDealt_ = value;
@@ -1022,12 +1023,12 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "total_damage_taken" field.</summary>
     public const int TotalDamageTakenFieldNumber = 25;
-    private global::ProxyStarcraft.Proto.VitalScoreDetails totalDamageTaken_;
+    private global::SC2APIProtocol.VitalScoreDetails totalDamageTaken_;
     /// <summary>
     /// Interesting as a delta
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.VitalScoreDetails TotalDamageTaken {
+    public global::SC2APIProtocol.VitalScoreDetails TotalDamageTaken {
       get { return totalDamageTaken_; }
       set {
         totalDamageTaken_ = value;
@@ -1036,12 +1037,12 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "total_healed" field.</summary>
     public const int TotalHealedFieldNumber = 26;
-    private global::ProxyStarcraft.Proto.VitalScoreDetails totalHealed_;
+    private global::SC2APIProtocol.VitalScoreDetails totalHealed_;
     /// <summary>
     /// Interesting as a delta
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.VitalScoreDetails TotalHealed {
+    public global::SC2APIProtocol.VitalScoreDetails TotalHealed {
       get { return totalHealed_; }
       set {
         totalHealed_ = value;
@@ -1362,85 +1363,85 @@ namespace ProxyStarcraft.Proto
       }
       if (other.foodUsed_ != null) {
         if (foodUsed_ == null) {
-          foodUsed_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          foodUsed_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         FoodUsed.MergeFrom(other.FoodUsed);
       }
       if (other.killedMinerals_ != null) {
         if (killedMinerals_ == null) {
-          killedMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          killedMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         KilledMinerals.MergeFrom(other.KilledMinerals);
       }
       if (other.killedVespene_ != null) {
         if (killedVespene_ == null) {
-          killedVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          killedVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         KilledVespene.MergeFrom(other.KilledVespene);
       }
       if (other.lostMinerals_ != null) {
         if (lostMinerals_ == null) {
-          lostMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          lostMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         LostMinerals.MergeFrom(other.LostMinerals);
       }
       if (other.lostVespene_ != null) {
         if (lostVespene_ == null) {
-          lostVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          lostVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         LostVespene.MergeFrom(other.LostVespene);
       }
       if (other.friendlyFireMinerals_ != null) {
         if (friendlyFireMinerals_ == null) {
-          friendlyFireMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          friendlyFireMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         FriendlyFireMinerals.MergeFrom(other.FriendlyFireMinerals);
       }
       if (other.friendlyFireVespene_ != null) {
         if (friendlyFireVespene_ == null) {
-          friendlyFireVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          friendlyFireVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         FriendlyFireVespene.MergeFrom(other.FriendlyFireVespene);
       }
       if (other.usedMinerals_ != null) {
         if (usedMinerals_ == null) {
-          usedMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          usedMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         UsedMinerals.MergeFrom(other.UsedMinerals);
       }
       if (other.usedVespene_ != null) {
         if (usedVespene_ == null) {
-          usedVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          usedVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         UsedVespene.MergeFrom(other.UsedVespene);
       }
       if (other.totalUsedMinerals_ != null) {
         if (totalUsedMinerals_ == null) {
-          totalUsedMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          totalUsedMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         TotalUsedMinerals.MergeFrom(other.TotalUsedMinerals);
       }
       if (other.totalUsedVespene_ != null) {
         if (totalUsedVespene_ == null) {
-          totalUsedVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+          totalUsedVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
         }
         TotalUsedVespene.MergeFrom(other.TotalUsedVespene);
       }
       if (other.totalDamageDealt_ != null) {
         if (totalDamageDealt_ == null) {
-          totalDamageDealt_ = new global::ProxyStarcraft.Proto.VitalScoreDetails();
+          totalDamageDealt_ = new global::SC2APIProtocol.VitalScoreDetails();
         }
         TotalDamageDealt.MergeFrom(other.TotalDamageDealt);
       }
       if (other.totalDamageTaken_ != null) {
         if (totalDamageTaken_ == null) {
-          totalDamageTaken_ = new global::ProxyStarcraft.Proto.VitalScoreDetails();
+          totalDamageTaken_ = new global::SC2APIProtocol.VitalScoreDetails();
         }
         TotalDamageTaken.MergeFrom(other.TotalDamageTaken);
       }
       if (other.totalHealed_ != null) {
         if (totalHealed_ == null) {
-          totalHealed_ = new global::ProxyStarcraft.Proto.VitalScoreDetails();
+          totalHealed_ = new global::SC2APIProtocol.VitalScoreDetails();
         }
         TotalHealed.MergeFrom(other.TotalHealed);
       }
@@ -1504,98 +1505,98 @@ namespace ProxyStarcraft.Proto
           }
           case 106: {
             if (foodUsed_ == null) {
-              foodUsed_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              foodUsed_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(foodUsed_);
             break;
           }
           case 114: {
             if (killedMinerals_ == null) {
-              killedMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              killedMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(killedMinerals_);
             break;
           }
           case 122: {
             if (killedVespene_ == null) {
-              killedVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              killedVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(killedVespene_);
             break;
           }
           case 130: {
             if (lostMinerals_ == null) {
-              lostMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              lostMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(lostMinerals_);
             break;
           }
           case 138: {
             if (lostVespene_ == null) {
-              lostVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              lostVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(lostVespene_);
             break;
           }
           case 146: {
             if (friendlyFireMinerals_ == null) {
-              friendlyFireMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              friendlyFireMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(friendlyFireMinerals_);
             break;
           }
           case 154: {
             if (friendlyFireVespene_ == null) {
-              friendlyFireVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              friendlyFireVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(friendlyFireVespene_);
             break;
           }
           case 162: {
             if (usedMinerals_ == null) {
-              usedMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              usedMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(usedMinerals_);
             break;
           }
           case 170: {
             if (usedVespene_ == null) {
-              usedVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              usedVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(usedVespene_);
             break;
           }
           case 178: {
             if (totalUsedMinerals_ == null) {
-              totalUsedMinerals_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              totalUsedMinerals_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(totalUsedMinerals_);
             break;
           }
           case 186: {
             if (totalUsedVespene_ == null) {
-              totalUsedVespene_ = new global::ProxyStarcraft.Proto.CategoryScoreDetails();
+              totalUsedVespene_ = new global::SC2APIProtocol.CategoryScoreDetails();
             }
             input.ReadMessage(totalUsedVespene_);
             break;
           }
           case 194: {
             if (totalDamageDealt_ == null) {
-              totalDamageDealt_ = new global::ProxyStarcraft.Proto.VitalScoreDetails();
+              totalDamageDealt_ = new global::SC2APIProtocol.VitalScoreDetails();
             }
             input.ReadMessage(totalDamageDealt_);
             break;
           }
           case 202: {
             if (totalDamageTaken_ == null) {
-              totalDamageTaken_ = new global::ProxyStarcraft.Proto.VitalScoreDetails();
+              totalDamageTaken_ = new global::SC2APIProtocol.VitalScoreDetails();
             }
             input.ReadMessage(totalDamageTaken_);
             break;
           }
           case 210: {
             if (totalHealed_ == null) {
-              totalHealed_ = new global::ProxyStarcraft.Proto.VitalScoreDetails();
+              totalHealed_ = new global::SC2APIProtocol.VitalScoreDetails();
             }
             input.ReadMessage(totalHealed_);
             break;

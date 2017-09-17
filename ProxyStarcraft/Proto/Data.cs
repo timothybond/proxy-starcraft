@@ -22,46 +22,54 @@ namespace ProxyStarcraft.Proto {
     static DataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgpkYXRhLnByb3RvEg5TQzJBUElQcm90b2NvbCLbAwoLQWJpbGl0eURhdGES",
-            "EgoKYWJpbGl0eV9pZBgBIAEoDRIRCglsaW5rX25hbWUYAiABKAkSEgoKbGlu",
-            "a19pbmRleBgDIAEoDRITCgtidXR0b25fbmFtZRgEIAEoCRIVCg1mcmllbmRs",
-            "eV9uYW1lGAUgASgJEg4KBmhvdGtleRgGIAEoCRIcChRyZW1hcHNfdG9fYWJp",
-            "bGl0eV9pZBgHIAEoDRIRCglhdmFpbGFibGUYCCABKAgSMgoGdGFyZ2V0GAkg",
-            "ASgOMiIuU0MyQVBJUHJvdG9jb2wuQWJpbGl0eURhdGEuVGFyZ2V0EhUKDWFs",
-            "bG93X21pbmltYXAYCiABKAgSFgoOYWxsb3dfYXV0b2Nhc3QYCyABKAgSEwoL",
-            "aXNfYnVpbGRpbmcYDCABKAgSGAoQZm9vdHByaW50X3JhZGl1cxgNIAEoAhIc",
-            "ChRpc19pbnN0YW50X3BsYWNlbWVudBgOIAEoCBISCgpjYXN0X3JhbmdlGA8g",
-            "ASgCImAKBlRhcmdldBIVChFVbnNwZWNpZmllZFRhcmdldBAAEggKBE5vbmUQ",
-            "ARIJCgVQb2ludBACEggKBFVuaXQQAxIPCgtQb2ludE9yVW5pdBAEEg8KC1Bv",
-            "aW50T3JOb25lEAUiSgoLRGFtYWdlQm9udXMSLAoJYXR0cmlidXRlGAEgASgO",
-            "MhkuU0MyQVBJUHJvdG9jb2wuQXR0cmlidXRlEg0KBWJvbnVzGAIgASgCIvIB",
-            "CgZXZWFwb24SLwoEdHlwZRgBIAEoDjIhLlNDMkFQSVByb3RvY29sLldlYXBv",
-            "bi5UYXJnZXRUeXBlEg4KBmRhbWFnZRgCIAEoAhIxCgxkYW1hZ2VfYm9udXMY",
-            "AyADKAsyGy5TQzJBUElQcm90b2NvbC5EYW1hZ2VCb251cxIPCgdhdHRhY2tz",
-            "GAQgASgNEg0KBXJhbmdlGAUgASgCEg0KBXNwZWVkGAYgASgCIkUKClRhcmdl",
-            "dFR5cGUSGQoVVW5zcGVjaWZpZWRUYXJnZXRUeXBlEAASCgoGR3JvdW5kEAES",
-            "BwoDQWlyEAISBwoDQW55EAMi/wEKDFVuaXRUeXBlRGF0YRIPCgd1bml0X2lk",
-            "GAEgASgNEgwKBG5hbWUYAiABKAkSEQoJYXZhaWxhYmxlGAMgASgIEhIKCmNh",
-            "cmdvX3NpemUYBCABKA0SFAoMbWluZXJhbF9jb3N0GAwgASgNEhQKDHZlc3Bl",
-            "bmVfY29zdBgNIAEoDRItCgphdHRyaWJ1dGVzGAggAygOMhkuU0MyQVBJUHJv",
-            "dG9jb2wuQXR0cmlidXRlEhYKDm1vdmVtZW50X3NwZWVkGAkgASgCEg0KBWFy",
-            "bW9yGAogASgCEicKB3dlYXBvbnMYCyADKAsyFi5TQzJBUElQcm90b2NvbC5X",
-            "ZWFwb24iLwoLVXBncmFkZURhdGESEgoKdXBncmFkZV9pZBgBIAEoDRIMCgRu",
-            "YW1lGAIgASgJIikKCEJ1ZmZEYXRhEg8KB2J1ZmZfaWQYASABKA0SDAoEbmFt",
-            "ZRgCIAEoCSq4AQoJQXR0cmlidXRlEhgKFFVuc3BlY2lmaWVkQXR0cmlidXRl",
-            "EAASCQoFTGlnaHQQARILCgdBcm1vcmVkEAISDgoKQmlvbG9naWNhbBADEg4K",
-            "Ck1lY2hhbmljYWwQBBILCgdSb2JvdGljEAUSCwoHUHNpb25pYxAGEgsKB01h",
-            "c3NpdmUQBxINCglTdHJ1Y3R1cmUQCBIJCgVIb3ZlchAJEgoKBkhlcm9pYxAK",
-            "EgwKCFN1bW1vbmVkEAtiBnByb3RvMw=="));
+            "CgpkYXRhLnByb3RvEg5TQzJBUElQcm90b2NvbBoMY29tbW9uLnByb3RvItcD",
+            "CgtBYmlsaXR5RGF0YRISCgphYmlsaXR5X2lkGAEgASgNEhEKCWxpbmtfbmFt",
+            "ZRgCIAEoCRISCgpsaW5rX2luZGV4GAMgASgNEhMKC2J1dHRvbl9uYW1lGAQg",
+            "ASgJEhUKDWZyaWVuZGx5X25hbWUYBSABKAkSDgoGaG90a2V5GAYgASgJEhwK",
+            "FHJlbWFwc190b19hYmlsaXR5X2lkGAcgASgNEhEKCWF2YWlsYWJsZRgIIAEo",
+            "CBIyCgZ0YXJnZXQYCSABKA4yIi5TQzJBUElQcm90b2NvbC5BYmlsaXR5RGF0",
+            "YS5UYXJnZXQSFQoNYWxsb3dfbWluaW1hcBgKIAEoCBIWCg5hbGxvd19hdXRv",
+            "Y2FzdBgLIAEoCBITCgtpc19idWlsZGluZxgMIAEoCBIYChBmb290cHJpbnRf",
+            "cmFkaXVzGA0gASgCEhwKFGlzX2luc3RhbnRfcGxhY2VtZW50GA4gASgIEhIK",
+            "CmNhc3RfcmFuZ2UYDyABKAIiXAoGVGFyZ2V0EhEKDUludmFsaWRUYXJnZXQQ",
+            "ABIICgROb25lEAESCQoFUG9pbnQQAhIICgRVbml0EAMSDwoLUG9pbnRPclVu",
+            "aXQQBBIPCgtQb2ludE9yTm9uZRAFIkoKC0RhbWFnZUJvbnVzEiwKCWF0dHJp",
+            "YnV0ZRgBIAEoDjIZLlNDMkFQSVByb3RvY29sLkF0dHJpYnV0ZRINCgVib251",
+            "cxgCIAEoAiLuAQoGV2VhcG9uEi8KBHR5cGUYASABKA4yIS5TQzJBUElQcm90",
+            "b2NvbC5XZWFwb24uVGFyZ2V0VHlwZRIOCgZkYW1hZ2UYAiABKAISMQoMZGFt",
+            "YWdlX2JvbnVzGAMgAygLMhsuU0MyQVBJUHJvdG9jb2wuRGFtYWdlQm9udXMS",
+            "DwoHYXR0YWNrcxgEIAEoDRINCgVyYW5nZRgFIAEoAhINCgVzcGVlZBgGIAEo",
+            "AiJBCgpUYXJnZXRUeXBlEhUKEUludmFsaWRUYXJnZXRUeXBlEAASCgoGR3Jv",
+            "dW5kEAESBwoDQWlyEAISBwoDQW55EAMigAQKDFVuaXRUeXBlRGF0YRIPCgd1",
+            "bml0X2lkGAEgASgNEgwKBG5hbWUYAiABKAkSEQoJYXZhaWxhYmxlGAMgASgI",
+            "EhIKCmNhcmdvX3NpemUYBCABKA0SFAoMbWluZXJhbF9jb3N0GAwgASgNEhQK",
+            "DHZlc3BlbmVfY29zdBgNIAEoDRIVCg1mb29kX3JlcXVpcmVkGA4gASgCEhUK",
+            "DWZvb2RfcHJvdmlkZWQYEiABKAISEgoKYWJpbGl0eV9pZBgPIAEoDRIiCgRy",
+            "YWNlGBAgASgOMhQuU0MyQVBJUHJvdG9jb2wuUmFjZRISCgpidWlsZF90aW1l",
+            "GBEgASgCEhMKC2hhc192ZXNwZW5lGBMgASgIEhQKDGhhc19taW5lcmFscxgU",
+            "IAEoCBISCgp0ZWNoX2FsaWFzGBUgAygNEhIKCnVuaXRfYWxpYXMYFiABKA0S",
+            "GAoQdGVjaF9yZXF1aXJlbWVudBgXIAEoDRIYChByZXF1aXJlX2F0dGFjaGVk",
+            "GBggASgIEi0KCmF0dHJpYnV0ZXMYCCADKA4yGS5TQzJBUElQcm90b2NvbC5B",
+            "dHRyaWJ1dGUSFgoObW92ZW1lbnRfc3BlZWQYCSABKAISDQoFYXJtb3IYCiAB",
+            "KAISJwoHd2VhcG9ucxgLIAMoCzIWLlNDMkFQSVByb3RvY29sLldlYXBvbiKG",
+            "AQoLVXBncmFkZURhdGESEgoKdXBncmFkZV9pZBgBIAEoDRIMCgRuYW1lGAIg",
+            "ASgJEhQKDG1pbmVyYWxfY29zdBgDIAEoDRIUCgx2ZXNwZW5lX2Nvc3QYBCAB",
+            "KA0SFQoNcmVzZWFyY2hfdGltZRgFIAEoAhISCgphYmlsaXR5X2lkGAYgASgN",
+            "IikKCEJ1ZmZEYXRhEg8KB2J1ZmZfaWQYASABKA0SDAoEbmFtZRgCIAEoCSq0",
+            "AQoJQXR0cmlidXRlEhQKEEludmFsaWRBdHRyaWJ1dGUQABIJCgVMaWdodBAB",
+            "EgsKB0FybW9yZWQQAhIOCgpCaW9sb2dpY2FsEAMSDgoKTWVjaGFuaWNhbBAE",
+            "EgsKB1JvYm90aWMQBRILCgdQc2lvbmljEAYSCwoHTWFzc2l2ZRAHEg0KCVN0",
+            "cnVjdHVyZRAIEgkKBUhvdmVyEAkSCgoGSGVyb2ljEAoSDAoIU3VtbW9uZWQQ",
+            "C2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Attribute), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.AbilityData), global::ProxyStarcraft.Proto.AbilityData.Parser, new[]{ "AbilityId", "LinkName", "LinkIndex", "ButtonName", "FriendlyName", "Hotkey", "RemapsToAbilityId", "Available", "Target", "AllowMinimap", "AllowAutocast", "IsBuilding", "FootprintRadius", "IsInstantPlacement", "CastRange" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.AbilityData.Types.Target) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DamageBonus), global::ProxyStarcraft.Proto.DamageBonus.Parser, new[]{ "Attribute", "Bonus" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Weapon), global::ProxyStarcraft.Proto.Weapon.Parser, new[]{ "Type", "Damage", "DamageBonus", "Attacks", "Range", "Speed" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.Weapon.Types.TargetType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UnitTypeData), global::ProxyStarcraft.Proto.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UpgradeData), global::ProxyStarcraft.Proto.UpgradeData.Parser, new[]{ "UpgradeId", "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.BuffData), global::ProxyStarcraft.Proto.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null)
+          new pbr::FileDescriptor[] { global::SC2APIProtocol.CommonReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SC2APIProtocol.Attribute), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.AbilityData), global::SC2APIProtocol.AbilityData.Parser, new[]{ "AbilityId", "LinkName", "LinkIndex", "ButtonName", "FriendlyName", "Hotkey", "RemapsToAbilityId", "Available", "Target", "AllowMinimap", "AllowAutocast", "IsBuilding", "FootprintRadius", "IsInstantPlacement", "CastRange" }, null, new[]{ typeof(global::SC2APIProtocol.AbilityData.Types.Target) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.DamageBonus), global::SC2APIProtocol.DamageBonus.Parser, new[]{ "Attribute", "Bonus" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.Weapon), global::SC2APIProtocol.Weapon.Parser, new[]{ "Type", "Damage", "DamageBonus", "Attacks", "Range", "Speed" }, null, new[]{ typeof(global::SC2APIProtocol.Weapon.Types.TargetType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.UnitTypeData), global::SC2APIProtocol.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "FoodRequired", "FoodProvided", "AbilityId", "Race", "BuildTime", "HasVespene", "HasMinerals", "TechAlias", "UnitAlias", "TechRequirement", "RequireAttached", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.UpgradeData), global::SC2APIProtocol.UpgradeData.Parser, new[]{ "UpgradeId", "Name", "MineralCost", "VespeneCost", "ResearchTime", "AbilityId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.BuffData), global::SC2APIProtocol.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null)
           }));
     }
     #endregion
@@ -69,7 +77,7 @@ namespace ProxyStarcraft.Proto {
   }
   #region Enums
   public enum Attribute {
-    [pbr::OriginalName("UnspecifiedAttribute")] UnspecifiedAttribute = 0,
+    [pbr::OriginalName("InvalidAttribute")] InvalidAttribute = 0,
     [pbr::OriginalName("Light")] Light = 1,
     [pbr::OriginalName("Armored")] Armored = 2,
     [pbr::OriginalName("Biological")] Biological = 3,
@@ -99,7 +107,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -252,12 +260,12 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "target" field.</summary>
     public const int TargetFieldNumber = 9;
-    private global::ProxyStarcraft.Proto.AbilityData.Types.Target target_ = 0;
+    private global::SC2APIProtocol.AbilityData.Types.Target target_ = 0;
     /// <summary>
     /// Determines if a point is optional or required.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.AbilityData.Types.Target Target {
+    public global::SC2APIProtocol.AbilityData.Types.Target Target {
       get { return target_; }
       set {
         target_ = value;
@@ -613,7 +621,7 @@ namespace ProxyStarcraft.Proto {
             break;
           }
           case 72: {
-            target_ = (global::ProxyStarcraft.Proto.AbilityData.Types.Target) input.ReadEnum();
+            target_ = (global::SC2APIProtocol.AbilityData.Types.Target) input.ReadEnum();
             break;
           }
           case 80: {
@@ -649,7 +657,7 @@ namespace ProxyStarcraft.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum Target {
-        [pbr::OriginalName("UnspecifiedTarget")] UnspecifiedTarget = 0,
+        [pbr::OriginalName("InvalidTarget")] InvalidTarget = 0,
         /// <summary>
         /// Does not require a target.
         /// </summary>
@@ -684,7 +692,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -712,9 +720,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "attribute" field.</summary>
     public const int AttributeFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.Attribute attribute_ = 0;
+    private global::SC2APIProtocol.Attribute attribute_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.Attribute Attribute {
+    public global::SC2APIProtocol.Attribute Attribute {
       get { return attribute_; }
       set {
         attribute_ = value;
@@ -809,7 +817,7 @@ namespace ProxyStarcraft.Proto {
             input.SkipLastField();
             break;
           case 8: {
-            attribute_ = (global::ProxyStarcraft.Proto.Attribute) input.ReadEnum();
+            attribute_ = (global::SC2APIProtocol.Attribute) input.ReadEnum();
             break;
           }
           case 21: {
@@ -829,7 +837,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[2]; }
+      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -861,9 +869,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.Weapon.Types.TargetType type_ = 0;
+    private global::SC2APIProtocol.Weapon.Types.TargetType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.Weapon.Types.TargetType Type {
+    public global::SC2APIProtocol.Weapon.Types.TargetType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -883,11 +891,11 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "damage_bonus" field.</summary>
     public const int DamageBonusFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.DamageBonus> _repeated_damageBonus_codec
-        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.DamageBonus.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.DamageBonus> damageBonus_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.DamageBonus>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.DamageBonus> _repeated_damageBonus_codec
+        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.DamageBonus.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.DamageBonus> damageBonus_ = new pbc::RepeatedField<global::SC2APIProtocol.DamageBonus>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.DamageBonus> DamageBonus {
+    public pbc::RepeatedField<global::SC2APIProtocol.DamageBonus> DamageBonus {
       get { return damageBonus_; }
     }
 
@@ -1048,7 +1056,7 @@ namespace ProxyStarcraft.Proto {
             input.SkipLastField();
             break;
           case 8: {
-            type_ = (global::ProxyStarcraft.Proto.Weapon.Types.TargetType) input.ReadEnum();
+            type_ = (global::SC2APIProtocol.Weapon.Types.TargetType) input.ReadEnum();
             break;
           }
           case 21: {
@@ -1080,7 +1088,7 @@ namespace ProxyStarcraft.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum TargetType {
-        [pbr::OriginalName("UnspecifiedTargetType")] UnspecifiedTargetType = 0,
+        [pbr::OriginalName("InvalidTargetType")] InvalidTargetType = 0,
         [pbr::OriginalName("Ground")] Ground = 1,
         [pbr::OriginalName("Air")] Air = 2,
         [pbr::OriginalName("Any")] Any = 3,
@@ -1098,7 +1106,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[3]; }
+      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1121,6 +1129,17 @@ namespace ProxyStarcraft.Proto {
       cargoSize_ = other.cargoSize_;
       mineralCost_ = other.mineralCost_;
       vespeneCost_ = other.vespeneCost_;
+      foodRequired_ = other.foodRequired_;
+      foodProvided_ = other.foodProvided_;
+      abilityId_ = other.abilityId_;
+      race_ = other.race_;
+      buildTime_ = other.buildTime_;
+      hasVespene_ = other.hasVespene_;
+      hasMinerals_ = other.hasMinerals_;
+      techAlias_ = other.techAlias_.Clone();
+      unitAlias_ = other.unitAlias_;
+      techRequirement_ = other.techRequirement_;
+      requireAttached_ = other.requireAttached_;
       attributes_ = other.attributes_.Clone();
       movementSpeed_ = other.movementSpeed_;
       armor_ = other.armor_;
@@ -1210,16 +1229,151 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "food_required" field.</summary>
+    public const int FoodRequiredFieldNumber = 14;
+    private float foodRequired_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float FoodRequired {
+      get { return foodRequired_; }
+      set {
+        foodRequired_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "food_provided" field.</summary>
+    public const int FoodProvidedFieldNumber = 18;
+    private float foodProvided_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float FoodProvided {
+      get { return foodProvided_; }
+      set {
+        foodProvided_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ability_id" field.</summary>
+    public const int AbilityIdFieldNumber = 15;
+    private uint abilityId_;
+    /// <summary>
+    /// This is the ability the builds the unit
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint AbilityId {
+      get { return abilityId_; }
+      set {
+        abilityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "race" field.</summary>
+    public const int RaceFieldNumber = 16;
+    private global::SC2APIProtocol.Race race_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SC2APIProtocol.Race Race {
+      get { return race_; }
+      set {
+        race_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "build_time" field.</summary>
+    public const int BuildTimeFieldNumber = 17;
+    private float buildTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float BuildTime {
+      get { return buildTime_; }
+      set {
+        buildTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "has_vespene" field.</summary>
+    public const int HasVespeneFieldNumber = 19;
+    private bool hasVespene_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool HasVespene {
+      get { return hasVespene_; }
+      set {
+        hasVespene_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "has_minerals" field.</summary>
+    public const int HasMineralsFieldNumber = 20;
+    private bool hasMinerals_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool HasMinerals {
+      get { return hasMinerals_; }
+      set {
+        hasMinerals_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tech_alias" field.</summary>
+    public const int TechAliasFieldNumber = 21;
+    private static readonly pb::FieldCodec<uint> _repeated_techAlias_codec
+        = pb::FieldCodec.ForUInt32(170);
+    private readonly pbc::RepeatedField<uint> techAlias_ = new pbc::RepeatedField<uint>();
+    /// <summary>
+    /// Units this is equivalent to in terms of satisfying tech requirement.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<uint> TechAlias {
+      get { return techAlias_; }
+    }
+
+    /// <summary>Field number for the "unit_alias" field.</summary>
+    public const int UnitAliasFieldNumber = 22;
+    private uint unitAlias_;
+    /// <summary>
+    /// Units that are morphed variants of the same unit.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint UnitAlias {
+      get { return unitAlias_; }
+      set {
+        unitAlias_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tech_requirement" field.</summary>
+    public const int TechRequirementFieldNumber = 23;
+    private uint techRequirement_;
+    /// <summary>
+    /// Structure required to build this unit. (Or any with the same tech_alias)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint TechRequirement {
+      get { return techRequirement_; }
+      set {
+        techRequirement_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "require_attached" field.</summary>
+    public const int RequireAttachedFieldNumber = 24;
+    private bool requireAttached_;
+    /// <summary>
+    /// Whether tech_requirement is an add-on.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool RequireAttached {
+      get { return requireAttached_; }
+      set {
+        requireAttached_ = value;
+      }
+    }
+
     /// <summary>Field number for the "attributes" field.</summary>
     public const int AttributesFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Attribute> _repeated_attributes_codec
-        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::ProxyStarcraft.Proto.Attribute) x);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Attribute> attributes_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Attribute>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.Attribute> _repeated_attributes_codec
+        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::SC2APIProtocol.Attribute) x);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.Attribute> attributes_ = new pbc::RepeatedField<global::SC2APIProtocol.Attribute>();
     /// <summary>
     /// Values include changes from upgrades
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Attribute> Attributes {
+    public pbc::RepeatedField<global::SC2APIProtocol.Attribute> Attributes {
       get { return attributes_; }
     }
 
@@ -1247,11 +1401,11 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "weapons" field.</summary>
     public const int WeaponsFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.Weapon> _repeated_weapons_codec
-        = pb::FieldCodec.ForMessage(90, global::ProxyStarcraft.Proto.Weapon.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.Weapon> weapons_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.Weapon>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.Weapon> _repeated_weapons_codec
+        = pb::FieldCodec.ForMessage(90, global::SC2APIProtocol.Weapon.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.Weapon> weapons_ = new pbc::RepeatedField<global::SC2APIProtocol.Weapon>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.Weapon> Weapons {
+    public pbc::RepeatedField<global::SC2APIProtocol.Weapon> Weapons {
       get { return weapons_; }
     }
 
@@ -1274,6 +1428,17 @@ namespace ProxyStarcraft.Proto {
       if (CargoSize != other.CargoSize) return false;
       if (MineralCost != other.MineralCost) return false;
       if (VespeneCost != other.VespeneCost) return false;
+      if (FoodRequired != other.FoodRequired) return false;
+      if (FoodProvided != other.FoodProvided) return false;
+      if (AbilityId != other.AbilityId) return false;
+      if (Race != other.Race) return false;
+      if (BuildTime != other.BuildTime) return false;
+      if (HasVespene != other.HasVespene) return false;
+      if (HasMinerals != other.HasMinerals) return false;
+      if(!techAlias_.Equals(other.techAlias_)) return false;
+      if (UnitAlias != other.UnitAlias) return false;
+      if (TechRequirement != other.TechRequirement) return false;
+      if (RequireAttached != other.RequireAttached) return false;
       if(!attributes_.Equals(other.attributes_)) return false;
       if (MovementSpeed != other.MovementSpeed) return false;
       if (Armor != other.Armor) return false;
@@ -1290,6 +1455,17 @@ namespace ProxyStarcraft.Proto {
       if (CargoSize != 0) hash ^= CargoSize.GetHashCode();
       if (MineralCost != 0) hash ^= MineralCost.GetHashCode();
       if (VespeneCost != 0) hash ^= VespeneCost.GetHashCode();
+      if (FoodRequired != 0F) hash ^= FoodRequired.GetHashCode();
+      if (FoodProvided != 0F) hash ^= FoodProvided.GetHashCode();
+      if (AbilityId != 0) hash ^= AbilityId.GetHashCode();
+      if (Race != 0) hash ^= Race.GetHashCode();
+      if (BuildTime != 0F) hash ^= BuildTime.GetHashCode();
+      if (HasVespene != false) hash ^= HasVespene.GetHashCode();
+      if (HasMinerals != false) hash ^= HasMinerals.GetHashCode();
+      hash ^= techAlias_.GetHashCode();
+      if (UnitAlias != 0) hash ^= UnitAlias.GetHashCode();
+      if (TechRequirement != 0) hash ^= TechRequirement.GetHashCode();
+      if (RequireAttached != false) hash ^= RequireAttached.GetHashCode();
       hash ^= attributes_.GetHashCode();
       if (MovementSpeed != 0F) hash ^= MovementSpeed.GetHashCode();
       if (Armor != 0F) hash ^= Armor.GetHashCode();
@@ -1338,6 +1514,47 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(VespeneCost);
       }
+      if (FoodRequired != 0F) {
+        output.WriteRawTag(117);
+        output.WriteFloat(FoodRequired);
+      }
+      if (AbilityId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AbilityId);
+      }
+      if (Race != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteEnum((int) Race);
+      }
+      if (BuildTime != 0F) {
+        output.WriteRawTag(141, 1);
+        output.WriteFloat(BuildTime);
+      }
+      if (FoodProvided != 0F) {
+        output.WriteRawTag(149, 1);
+        output.WriteFloat(FoodProvided);
+      }
+      if (HasVespene != false) {
+        output.WriteRawTag(152, 1);
+        output.WriteBool(HasVespene);
+      }
+      if (HasMinerals != false) {
+        output.WriteRawTag(160, 1);
+        output.WriteBool(HasMinerals);
+      }
+      techAlias_.WriteTo(output, _repeated_techAlias_codec);
+      if (UnitAlias != 0) {
+        output.WriteRawTag(176, 1);
+        output.WriteUInt32(UnitAlias);
+      }
+      if (TechRequirement != 0) {
+        output.WriteRawTag(184, 1);
+        output.WriteUInt32(TechRequirement);
+      }
+      if (RequireAttached != false) {
+        output.WriteRawTag(192, 1);
+        output.WriteBool(RequireAttached);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1360,6 +1577,37 @@ namespace ProxyStarcraft.Proto {
       }
       if (VespeneCost != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(VespeneCost);
+      }
+      if (FoodRequired != 0F) {
+        size += 1 + 4;
+      }
+      if (FoodProvided != 0F) {
+        size += 2 + 4;
+      }
+      if (AbilityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AbilityId);
+      }
+      if (Race != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Race);
+      }
+      if (BuildTime != 0F) {
+        size += 2 + 4;
+      }
+      if (HasVespene != false) {
+        size += 2 + 1;
+      }
+      if (HasMinerals != false) {
+        size += 2 + 1;
+      }
+      size += techAlias_.CalculateSize(_repeated_techAlias_codec);
+      if (UnitAlias != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(UnitAlias);
+      }
+      if (TechRequirement != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(TechRequirement);
+      }
+      if (RequireAttached != false) {
+        size += 2 + 1;
       }
       size += attributes_.CalculateSize(_repeated_attributes_codec);
       if (MovementSpeed != 0F) {
@@ -1394,6 +1642,37 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.VespeneCost != 0) {
         VespeneCost = other.VespeneCost;
+      }
+      if (other.FoodRequired != 0F) {
+        FoodRequired = other.FoodRequired;
+      }
+      if (other.FoodProvided != 0F) {
+        FoodProvided = other.FoodProvided;
+      }
+      if (other.AbilityId != 0) {
+        AbilityId = other.AbilityId;
+      }
+      if (other.Race != 0) {
+        Race = other.Race;
+      }
+      if (other.BuildTime != 0F) {
+        BuildTime = other.BuildTime;
+      }
+      if (other.HasVespene != false) {
+        HasVespene = other.HasVespene;
+      }
+      if (other.HasMinerals != false) {
+        HasMinerals = other.HasMinerals;
+      }
+      techAlias_.Add(other.techAlias_);
+      if (other.UnitAlias != 0) {
+        UnitAlias = other.UnitAlias;
+      }
+      if (other.TechRequirement != 0) {
+        TechRequirement = other.TechRequirement;
+      }
+      if (other.RequireAttached != false) {
+        RequireAttached = other.RequireAttached;
       }
       attributes_.Add(other.attributes_);
       if (other.MovementSpeed != 0F) {
@@ -1454,6 +1733,51 @@ namespace ProxyStarcraft.Proto {
             VespeneCost = input.ReadUInt32();
             break;
           }
+          case 117: {
+            FoodRequired = input.ReadFloat();
+            break;
+          }
+          case 120: {
+            AbilityId = input.ReadUInt32();
+            break;
+          }
+          case 128: {
+            race_ = (global::SC2APIProtocol.Race) input.ReadEnum();
+            break;
+          }
+          case 141: {
+            BuildTime = input.ReadFloat();
+            break;
+          }
+          case 149: {
+            FoodProvided = input.ReadFloat();
+            break;
+          }
+          case 152: {
+            HasVespene = input.ReadBool();
+            break;
+          }
+          case 160: {
+            HasMinerals = input.ReadBool();
+            break;
+          }
+          case 170:
+          case 168: {
+            techAlias_.AddEntriesFrom(input, _repeated_techAlias_codec);
+            break;
+          }
+          case 176: {
+            UnitAlias = input.ReadUInt32();
+            break;
+          }
+          case 184: {
+            TechRequirement = input.ReadUInt32();
+            break;
+          }
+          case 192: {
+            RequireAttached = input.ReadBool();
+            break;
+          }
         }
       }
     }
@@ -1467,7 +1791,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[4]; }
+      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1486,6 +1810,10 @@ namespace ProxyStarcraft.Proto {
     public UpgradeData(UpgradeData other) : this() {
       upgradeId_ = other.upgradeId_;
       name_ = other.name_;
+      mineralCost_ = other.mineralCost_;
+      vespeneCost_ = other.vespeneCost_;
+      researchTime_ = other.researchTime_;
+      abilityId_ = other.abilityId_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1518,6 +1846,50 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "mineral_cost" field.</summary>
+    public const int MineralCostFieldNumber = 3;
+    private uint mineralCost_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint MineralCost {
+      get { return mineralCost_; }
+      set {
+        mineralCost_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "vespene_cost" field.</summary>
+    public const int VespeneCostFieldNumber = 4;
+    private uint vespeneCost_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint VespeneCost {
+      get { return vespeneCost_; }
+      set {
+        vespeneCost_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "research_time" field.</summary>
+    public const int ResearchTimeFieldNumber = 5;
+    private float researchTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float ResearchTime {
+      get { return researchTime_; }
+      set {
+        researchTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ability_id" field.</summary>
+    public const int AbilityIdFieldNumber = 6;
+    private uint abilityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint AbilityId {
+      get { return abilityId_; }
+      set {
+        abilityId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UpgradeData);
@@ -1533,6 +1905,10 @@ namespace ProxyStarcraft.Proto {
       }
       if (UpgradeId != other.UpgradeId) return false;
       if (Name != other.Name) return false;
+      if (MineralCost != other.MineralCost) return false;
+      if (VespeneCost != other.VespeneCost) return false;
+      if (ResearchTime != other.ResearchTime) return false;
+      if (AbilityId != other.AbilityId) return false;
       return true;
     }
 
@@ -1541,6 +1917,10 @@ namespace ProxyStarcraft.Proto {
       int hash = 1;
       if (UpgradeId != 0) hash ^= UpgradeId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (MineralCost != 0) hash ^= MineralCost.GetHashCode();
+      if (VespeneCost != 0) hash ^= VespeneCost.GetHashCode();
+      if (ResearchTime != 0F) hash ^= ResearchTime.GetHashCode();
+      if (AbilityId != 0) hash ^= AbilityId.GetHashCode();
       return hash;
     }
 
@@ -1559,6 +1939,22 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (MineralCost != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(MineralCost);
+      }
+      if (VespeneCost != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(VespeneCost);
+      }
+      if (ResearchTime != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(ResearchTime);
+      }
+      if (AbilityId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AbilityId);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1569,6 +1965,18 @@ namespace ProxyStarcraft.Proto {
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (MineralCost != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MineralCost);
+      }
+      if (VespeneCost != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(VespeneCost);
+      }
+      if (ResearchTime != 0F) {
+        size += 1 + 4;
+      }
+      if (AbilityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AbilityId);
       }
       return size;
     }
@@ -1583,6 +1991,18 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.MineralCost != 0) {
+        MineralCost = other.MineralCost;
+      }
+      if (other.VespeneCost != 0) {
+        VespeneCost = other.VespeneCost;
+      }
+      if (other.ResearchTime != 0F) {
+        ResearchTime = other.ResearchTime;
+      }
+      if (other.AbilityId != 0) {
+        AbilityId = other.AbilityId;
       }
     }
 
@@ -1602,6 +2022,22 @@ namespace ProxyStarcraft.Proto {
             Name = input.ReadString();
             break;
           }
+          case 24: {
+            MineralCost = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            VespeneCost = input.ReadUInt32();
+            break;
+          }
+          case 45: {
+            ResearchTime = input.ReadFloat();
+            break;
+          }
+          case 48: {
+            AbilityId = input.ReadUInt32();
+            break;
+          }
         }
       }
     }
@@ -1615,7 +2051,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[5]; }
+      get { return global::SC2APIProtocol.DataReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -48,16 +48,16 @@ namespace ProxyStarcraft.Proto {
             "c3VsdBgBIAEoDjIcLlNDMkFQSVByb3RvY29sLkFjdGlvblJlc3VsdGIGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, global::ProxyStarcraft.Proto.ErrorReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::SC2APIProtocol.CommonReflection.Descriptor, global::SC2APIProtocol.ErrorReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQuery), global::ProxyStarcraft.Proto.RequestQuery.Parser, new[]{ "Pathing", "Abilities", "Placements", "IgnoreResourceRequirements" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQuery), global::ProxyStarcraft.Proto.ResponseQuery.Parser, new[]{ "Pathing", "Abilities", "Placements" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQueryPathing), global::ProxyStarcraft.Proto.RequestQueryPathing.Parser, new[]{ "StartPos", "UnitTag", "EndPos" }, new[]{ "Start" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQueryPathing), global::ProxyStarcraft.Proto.ResponseQueryPathing.Parser, new[]{ "Distance" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities), global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities.Parser, new[]{ "UnitTag" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities), global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities.Parser, new[]{ "Abilities", "UnitTag", "UnitTypeId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement), global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement.Parser, new[]{ "AbilityId", "TargetPos", "PlacingUnitTag" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement), global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement.Parser, new[]{ "Result" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQuery), global::SC2APIProtocol.RequestQuery.Parser, new[]{ "Pathing", "Abilities", "Placements", "IgnoreResourceRequirements" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQuery), global::SC2APIProtocol.ResponseQuery.Parser, new[]{ "Pathing", "Abilities", "Placements" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQueryPathing), global::SC2APIProtocol.RequestQueryPathing.Parser, new[]{ "StartPos", "UnitTag", "EndPos" }, new[]{ "Start" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQueryPathing), global::SC2APIProtocol.ResponseQueryPathing.Parser, new[]{ "Distance" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQueryAvailableAbilities), global::SC2APIProtocol.RequestQueryAvailableAbilities.Parser, new[]{ "UnitTag" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQueryAvailableAbilities), global::SC2APIProtocol.ResponseQueryAvailableAbilities.Parser, new[]{ "Abilities", "UnitTag", "UnitTypeId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.RequestQueryBuildingPlacement), global::SC2APIProtocol.RequestQueryBuildingPlacement.Parser, new[]{ "AbilityId", "TargetPos", "PlacingUnitTag" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ResponseQueryBuildingPlacement), global::SC2APIProtocol.ResponseQueryBuildingPlacement.Parser, new[]{ "Result" }, null, null, null)
           }));
     }
     #endregion
@@ -71,7 +71,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,31 +101,31 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "pathing" field.</summary>
     public const int PathingFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.RequestQueryPathing> _repeated_pathing_codec
-        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.RequestQueryPathing.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryPathing> pathing_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryPathing>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.RequestQueryPathing> _repeated_pathing_codec
+        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.RequestQueryPathing.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.RequestQueryPathing> pathing_ = new pbc::RepeatedField<global::SC2APIProtocol.RequestQueryPathing>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryPathing> Pathing {
+    public pbc::RepeatedField<global::SC2APIProtocol.RequestQueryPathing> Pathing {
       get { return pathing_; }
     }
 
     /// <summary>Field number for the "abilities" field.</summary>
     public const int AbilitiesFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities> _repeated_abilities_codec
-        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities> abilities_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.RequestQueryAvailableAbilities> _repeated_abilities_codec
+        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.RequestQueryAvailableAbilities.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.RequestQueryAvailableAbilities> abilities_ = new pbc::RepeatedField<global::SC2APIProtocol.RequestQueryAvailableAbilities>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryAvailableAbilities> Abilities {
+    public pbc::RepeatedField<global::SC2APIProtocol.RequestQueryAvailableAbilities> Abilities {
       get { return abilities_; }
     }
 
     /// <summary>Field number for the "placements" field.</summary>
     public const int PlacementsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement> _repeated_placements_codec
-        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement> placements_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.RequestQueryBuildingPlacement> _repeated_placements_codec
+        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.RequestQueryBuildingPlacement.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.RequestQueryBuildingPlacement> placements_ = new pbc::RepeatedField<global::SC2APIProtocol.RequestQueryBuildingPlacement>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.RequestQueryBuildingPlacement> Placements {
+    public pbc::RepeatedField<global::SC2APIProtocol.RequestQueryBuildingPlacement> Placements {
       get { return placements_; }
     }
 
@@ -251,7 +251,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -280,31 +280,31 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "pathing" field.</summary>
     public const int PathingFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ResponseQueryPathing> _repeated_pathing_codec
-        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.ResponseQueryPathing.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryPathing> pathing_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryPathing>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.ResponseQueryPathing> _repeated_pathing_codec
+        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.ResponseQueryPathing.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryPathing> pathing_ = new pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryPathing>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryPathing> Pathing {
+    public pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryPathing> Pathing {
       get { return pathing_; }
     }
 
     /// <summary>Field number for the "abilities" field.</summary>
     public const int AbilitiesFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities> _repeated_abilities_codec
-        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities> abilities_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.ResponseQueryAvailableAbilities> _repeated_abilities_codec
+        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.ResponseQueryAvailableAbilities.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryAvailableAbilities> abilities_ = new pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryAvailableAbilities>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryAvailableAbilities> Abilities {
+    public pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryAvailableAbilities> Abilities {
       get { return abilities_; }
     }
 
     /// <summary>Field number for the "placements" field.</summary>
     public const int PlacementsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement> _repeated_placements_codec
-        = pb::FieldCodec.ForMessage(26, global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement> placements_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.ResponseQueryBuildingPlacement> _repeated_placements_codec
+        = pb::FieldCodec.ForMessage(26, global::SC2APIProtocol.ResponseQueryBuildingPlacement.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryBuildingPlacement> placements_ = new pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryBuildingPlacement>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ResponseQueryBuildingPlacement> Placements {
+    public pbc::RepeatedField<global::SC2APIProtocol.ResponseQueryBuildingPlacement> Placements {
       get { return placements_; }
     }
 
@@ -403,7 +403,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[2]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -440,8 +440,8 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "start_pos" field.</summary>
     public const int StartPosFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.Point2D StartPos {
-      get { return startCase_ == StartOneofCase.StartPos ? (global::ProxyStarcraft.Proto.Point2D) start_ : null; }
+    public global::SC2APIProtocol.Point2D StartPos {
+      get { return startCase_ == StartOneofCase.StartPos ? (global::SC2APIProtocol.Point2D) start_ : null; }
       set {
         start_ = value;
         startCase_ = value == null ? StartOneofCase.None : StartOneofCase.StartPos;
@@ -461,9 +461,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "end_pos" field.</summary>
     public const int EndPosFieldNumber = 3;
-    private global::ProxyStarcraft.Proto.Point2D endPos_;
+    private global::SC2APIProtocol.Point2D endPos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.Point2D EndPos {
+    public global::SC2APIProtocol.Point2D EndPos {
       get { return endPos_; }
       set {
         endPos_ = value;
@@ -562,7 +562,7 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.endPos_ != null) {
         if (endPos_ == null) {
-          endPos_ = new global::ProxyStarcraft.Proto.Point2D();
+          endPos_ = new global::SC2APIProtocol.Point2D();
         }
         EndPos.MergeFrom(other.EndPos);
       }
@@ -586,7 +586,7 @@ namespace ProxyStarcraft.Proto {
             input.SkipLastField();
             break;
           case 10: {
-            global::ProxyStarcraft.Proto.Point2D subBuilder = new global::ProxyStarcraft.Proto.Point2D();
+            global::SC2APIProtocol.Point2D subBuilder = new global::SC2APIProtocol.Point2D();
             if (startCase_ == StartOneofCase.StartPos) {
               subBuilder.MergeFrom(StartPos);
             }
@@ -600,7 +600,7 @@ namespace ProxyStarcraft.Proto {
           }
           case 26: {
             if (endPos_ == null) {
-              endPos_ = new global::ProxyStarcraft.Proto.Point2D();
+              endPos_ = new global::SC2APIProtocol.Point2D();
             }
             input.ReadMessage(endPos_);
             break;
@@ -618,7 +618,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[3]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -741,7 +741,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[4]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -858,7 +858,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[5]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -887,11 +887,11 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "abilities" field.</summary>
     public const int AbilitiesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.AvailableAbility> _repeated_abilities_codec
-        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.AvailableAbility.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.AvailableAbility> abilities_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.AvailableAbility>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.AvailableAbility> _repeated_abilities_codec
+        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.AvailableAbility.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.AvailableAbility> abilities_ = new pbc::RepeatedField<global::SC2APIProtocol.AvailableAbility>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.AvailableAbility> Abilities {
+    public pbc::RepeatedField<global::SC2APIProtocol.AvailableAbility> Abilities {
       get { return abilities_; }
     }
 
@@ -1026,7 +1026,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[6]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1066,9 +1066,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "target_pos" field.</summary>
     public const int TargetPosFieldNumber = 2;
-    private global::ProxyStarcraft.Proto.Point2D targetPos_;
+    private global::SC2APIProtocol.Point2D targetPos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.Point2D TargetPos {
+    public global::SC2APIProtocol.Point2D TargetPos {
       get { return targetPos_; }
       set {
         targetPos_ = value;
@@ -1163,7 +1163,7 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.targetPos_ != null) {
         if (targetPos_ == null) {
-          targetPos_ = new global::ProxyStarcraft.Proto.Point2D();
+          targetPos_ = new global::SC2APIProtocol.Point2D();
         }
         TargetPos.MergeFrom(other.TargetPos);
       }
@@ -1186,7 +1186,7 @@ namespace ProxyStarcraft.Proto {
           }
           case 18: {
             if (targetPos_ == null) {
-              targetPos_ = new global::ProxyStarcraft.Proto.Point2D();
+              targetPos_ = new global::SC2APIProtocol.Point2D();
             }
             input.ReadMessage(targetPos_);
             break;
@@ -1208,7 +1208,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.QueryReflection.Descriptor.MessageTypes[7]; }
+      get { return global::SC2APIProtocol.QueryReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1235,9 +1235,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "result" field.</summary>
     public const int ResultFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.ActionResult result_ = 0;
+    private global::SC2APIProtocol.ActionResult result_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionResult Result {
+    public global::SC2APIProtocol.ActionResult Result {
       get { return result_; }
       set {
         result_ = value;
@@ -1309,7 +1309,7 @@ namespace ProxyStarcraft.Proto {
             input.SkipLastField();
             break;
           case 8: {
-            result_ = (global::ProxyStarcraft.Proto.ActionResult) input.ReadEnum();
+            result_ = (global::SC2APIProtocol.ActionResult) input.ReadEnum();
             break;
           }
         }

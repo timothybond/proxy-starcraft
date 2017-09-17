@@ -6,11 +6,11 @@
 using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-namespace ProxyStarcraft.Proto
-{
+using scg = global::System.Collections.Generic;
+namespace ProxyStarcraft.Proto {
 
-    /// <summary>Holder for reflection information generated from ui.proto</summary>
-    public static partial class UiReflection {
+  /// <summary>Holder for reflection information generated from ui.proto</summary>
+  public static partial class UiReflection {
 
     #region Descriptor
     /// <summary>File descriptor for ui.proto</summary>
@@ -55,47 +55,47 @@ namespace ProxyStarcraft.Proto
             "bkNhcmdvUGFuZWxVbmxvYWRIABJQChBwcm9kdWN0aW9uX3BhbmVsGAggASgL",
             "MjQuU0MyQVBJUHJvdG9jb2wuQWN0aW9uUHJvZHVjdGlvblBhbmVsUmVtb3Zl",
             "RnJvbVF1ZXVlSAASPwoPdG9nZ2xlX2F1dG9jYXN0GAkgASgLMiQuU0MyQVBJ",
-            "UHJvdG9jb2wuQWN0aW9uVG9nZ2xlQXV0b2Nhc3RIAEIICgZhY3Rpb24i8QEK",
+            "UHJvdG9jb2wuQWN0aW9uVG9nZ2xlQXV0b2Nhc3RIAEIICgZhY3Rpb24i8wEK",
             "EkFjdGlvbkNvbnRyb2xHcm91cBJFCgZhY3Rpb24YASABKA4yNS5TQzJBUElQ",
             "cm90b2NvbC5BY3Rpb25Db250cm9sR3JvdXAuQ29udHJvbEdyb3VwQWN0aW9u",
-            "EhsKE2NvbnRyb2xfZ3JvdXBfaW5kZXgYAiABKA0idwoSQ29udHJvbEdyb3Vw",
-            "QWN0aW9uEhsKF1Vuc3BlY2lmaWVkQ29udHJvbEdyb3VwEAASCgoGUmVjYWxs",
-            "EAESBwoDU2V0EAISCgoGQXBwZW5kEAMSDwoLU2V0QW5kU3RlYWwQBBISCg5B",
-            "cHBlbmRBbmRTdGVhbBAFIikKEEFjdGlvblNlbGVjdEFybXkSFQoNc2VsZWN0",
-            "aW9uX2FkZBgBIAEoCCIuChVBY3Rpb25TZWxlY3RXYXJwR2F0ZXMSFQoNc2Vs",
-            "ZWN0aW9uX2FkZBgBIAEoCCITChFBY3Rpb25TZWxlY3RMYXJ2YSKXAQoWQWN0",
-            "aW9uU2VsZWN0SWRsZVdvcmtlchI5CgR0eXBlGAEgASgOMisuU0MyQVBJUHJv",
-            "dG9jb2wuQWN0aW9uU2VsZWN0SWRsZVdvcmtlci5UeXBlIkIKBFR5cGUSEwoP",
-            "VW5zcGVjaWZpZWRUeXBlEAASBwoDU2V0EAESBwoDQWRkEAISBwoDQWxsEAMS",
-            "CgoGQWRkQWxsEAQiyAEKEEFjdGlvbk11bHRpUGFuZWwSMwoEdHlwZRgBIAEo",
-            "DjIlLlNDMkFQSVByb3RvY29sLkFjdGlvbk11bHRpUGFuZWwuVHlwZRISCgp1",
-            "bml0X2luZGV4GAIgASgFImsKBFR5cGUSEwoPVW5zcGVjaWZpZWRUeXBlEAAS",
-            "EAoMU2luZ2xlU2VsZWN0EAESEAoMRGVzZWxlY3RVbml0EAISEwoPU2VsZWN0",
-            "QWxsT2ZUeXBlEAMSFQoRRGVzZWxlY3RBbGxPZlR5cGUQBCIsChZBY3Rpb25D",
-            "YXJnb1BhbmVsVW5sb2FkEhIKCnVuaXRfaW5kZXgYASABKAUiOgokQWN0aW9u",
-            "UHJvZHVjdGlvblBhbmVsUmVtb3ZlRnJvbVF1ZXVlEhIKCnVuaXRfaW5kZXgY",
-            "ASABKAUiKgoUQWN0aW9uVG9nZ2xlQXV0b2Nhc3QSEgoKYWJpbGl0eV9pZBgB",
-            "IAEoBWIGcHJvdG8z"));
+            "EhsKE2NvbnRyb2xfZ3JvdXBfaW5kZXgYAiABKA0ieQoSQ29udHJvbEdyb3Vw",
+            "QWN0aW9uEh0KGUludmFsaWRDb250cm9sR3JvdXBBY3Rpb24QABIKCgZSZWNh",
+            "bGwQARIHCgNTZXQQAhIKCgZBcHBlbmQQAxIPCgtTZXRBbmRTdGVhbBAEEhIK",
+            "DkFwcGVuZEFuZFN0ZWFsEAUiKQoQQWN0aW9uU2VsZWN0QXJteRIVCg1zZWxl",
+            "Y3Rpb25fYWRkGAEgASgIIi4KFUFjdGlvblNlbGVjdFdhcnBHYXRlcxIVCg1z",
+            "ZWxlY3Rpb25fYWRkGAEgASgIIhMKEUFjdGlvblNlbGVjdExhcnZhIpMBChZB",
+            "Y3Rpb25TZWxlY3RJZGxlV29ya2VyEjkKBHR5cGUYASABKA4yKy5TQzJBUElQ",
+            "cm90b2NvbC5BY3Rpb25TZWxlY3RJZGxlV29ya2VyLlR5cGUiPgoEVHlwZRIP",
+            "CgtJbnZhbGlkVHlwZRAAEgcKA1NldBABEgcKA0FkZBACEgcKA0FsbBADEgoK",
+            "BkFkZEFsbBAEIsQBChBBY3Rpb25NdWx0aVBhbmVsEjMKBHR5cGUYASABKA4y",
+            "JS5TQzJBUElQcm90b2NvbC5BY3Rpb25NdWx0aVBhbmVsLlR5cGUSEgoKdW5p",
+            "dF9pbmRleBgCIAEoBSJnCgRUeXBlEg8KC0ludmFsaWRUeXBlEAASEAoMU2lu",
+            "Z2xlU2VsZWN0EAESEAoMRGVzZWxlY3RVbml0EAISEwoPU2VsZWN0QWxsT2ZU",
+            "eXBlEAMSFQoRRGVzZWxlY3RBbGxPZlR5cGUQBCIsChZBY3Rpb25DYXJnb1Bh",
+            "bmVsVW5sb2FkEhIKCnVuaXRfaW5kZXgYASABKAUiOgokQWN0aW9uUHJvZHVj",
+            "dGlvblBhbmVsUmVtb3ZlRnJvbVF1ZXVlEhIKCnVuaXRfaW5kZXgYASABKAUi",
+            "KgoUQWN0aW9uVG9nZ2xlQXV0b2Nhc3QSEgoKYWJpbGl0eV9pZBgBIAEoBWIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ObservationUI), global::ProxyStarcraft.Proto.ObservationUI.Parser, new[]{ "Groups", "Single", "Multi", "Cargo", "Production" }, new[]{ "Panel" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ControlGroup), global::ProxyStarcraft.Proto.ControlGroup.Parser, new[]{ "ControlGroupIndex", "LeaderUnitType", "Count" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UnitInfo), global::ProxyStarcraft.Proto.UnitInfo.Parser, new[]{ "UnitType", "PlayerRelative", "Health", "Shields", "Energy", "TransportSlotsTaken", "BuildProgress", "AddOn" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.SinglePanel), global::ProxyStarcraft.Proto.SinglePanel.Parser, new[]{ "Unit" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.MultiPanel), global::ProxyStarcraft.Proto.MultiPanel.Parser, new[]{ "Units" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.CargoPanel), global::ProxyStarcraft.Proto.CargoPanel.Parser, new[]{ "Unit", "Passengers", "SlotsAvailable" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ProductionPanel), global::ProxyStarcraft.Proto.ProductionPanel.Parser, new[]{ "Unit", "BuildQueue" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionUI), global::ProxyStarcraft.Proto.ActionUI.Parser, new[]{ "ControlGroup", "SelectArmy", "SelectWarpGates", "SelectLarva", "SelectIdleWorker", "MultiPanel", "CargoPanel", "ProductionPanel", "ToggleAutocast" }, new[]{ "Action" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionControlGroup), global::ProxyStarcraft.Proto.ActionControlGroup.Parser, new[]{ "Action", "ControlGroupIndex" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ActionControlGroup.Types.ControlGroupAction) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionSelectArmy), global::ProxyStarcraft.Proto.ActionSelectArmy.Parser, new[]{ "SelectionAdd" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionSelectWarpGates), global::ProxyStarcraft.Proto.ActionSelectWarpGates.Parser, new[]{ "SelectionAdd" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionSelectLarva), global::ProxyStarcraft.Proto.ActionSelectLarva.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionSelectIdleWorker), global::ProxyStarcraft.Proto.ActionSelectIdleWorker.Parser, new[]{ "Type" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ActionSelectIdleWorker.Types.Type) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionMultiPanel), global::ProxyStarcraft.Proto.ActionMultiPanel.Parser, new[]{ "Type", "UnitIndex" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ActionMultiPanel.Types.Type) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionCargoPanelUnload), global::ProxyStarcraft.Proto.ActionCargoPanelUnload.Parser, new[]{ "UnitIndex" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionProductionPanelRemoveFromQueue), global::ProxyStarcraft.Proto.ActionProductionPanelRemoveFromQueue.Parser, new[]{ "UnitIndex" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionToggleAutocast), global::ProxyStarcraft.Proto.ActionToggleAutocast.Parser, new[]{ "AbilityId" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ObservationUI), global::SC2APIProtocol.ObservationUI.Parser, new[]{ "Groups", "Single", "Multi", "Cargo", "Production" }, new[]{ "Panel" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ControlGroup), global::SC2APIProtocol.ControlGroup.Parser, new[]{ "ControlGroupIndex", "LeaderUnitType", "Count" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.UnitInfo), global::SC2APIProtocol.UnitInfo.Parser, new[]{ "UnitType", "PlayerRelative", "Health", "Shields", "Energy", "TransportSlotsTaken", "BuildProgress", "AddOn" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.SinglePanel), global::SC2APIProtocol.SinglePanel.Parser, new[]{ "Unit" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.MultiPanel), global::SC2APIProtocol.MultiPanel.Parser, new[]{ "Units" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.CargoPanel), global::SC2APIProtocol.CargoPanel.Parser, new[]{ "Unit", "Passengers", "SlotsAvailable" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ProductionPanel), global::SC2APIProtocol.ProductionPanel.Parser, new[]{ "Unit", "BuildQueue" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionUI), global::SC2APIProtocol.ActionUI.Parser, new[]{ "ControlGroup", "SelectArmy", "SelectWarpGates", "SelectLarva", "SelectIdleWorker", "MultiPanel", "CargoPanel", "ProductionPanel", "ToggleAutocast" }, new[]{ "Action" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionControlGroup), global::SC2APIProtocol.ActionControlGroup.Parser, new[]{ "Action", "ControlGroupIndex" }, null, new[]{ typeof(global::SC2APIProtocol.ActionControlGroup.Types.ControlGroupAction) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionSelectArmy), global::SC2APIProtocol.ActionSelectArmy.Parser, new[]{ "SelectionAdd" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionSelectWarpGates), global::SC2APIProtocol.ActionSelectWarpGates.Parser, new[]{ "SelectionAdd" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionSelectLarva), global::SC2APIProtocol.ActionSelectLarva.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionSelectIdleWorker), global::SC2APIProtocol.ActionSelectIdleWorker.Parser, new[]{ "Type" }, null, new[]{ typeof(global::SC2APIProtocol.ActionSelectIdleWorker.Types.Type) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionMultiPanel), global::SC2APIProtocol.ActionMultiPanel.Parser, new[]{ "Type", "UnitIndex" }, null, new[]{ typeof(global::SC2APIProtocol.ActionMultiPanel.Types.Type) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionCargoPanelUnload), global::SC2APIProtocol.ActionCargoPanelUnload.Parser, new[]{ "UnitIndex" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionProductionPanelRemoveFromQueue), global::SC2APIProtocol.ActionProductionPanelRemoveFromQueue.Parser, new[]{ "UnitIndex" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SC2APIProtocol.ActionToggleAutocast), global::SC2APIProtocol.ActionToggleAutocast.Parser, new[]{ "AbilityId" }, null, null, null)
           }));
     }
     #endregion
@@ -109,7 +109,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -151,19 +151,19 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "groups" field.</summary>
     public const int GroupsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ControlGroup> _repeated_groups_codec
-        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.ControlGroup.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ControlGroup> groups_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ControlGroup>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.ControlGroup> _repeated_groups_codec
+        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.ControlGroup.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.ControlGroup> groups_ = new pbc::RepeatedField<global::SC2APIProtocol.ControlGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ControlGroup> Groups {
+    public pbc::RepeatedField<global::SC2APIProtocol.ControlGroup> Groups {
       get { return groups_; }
     }
 
     /// <summary>Field number for the "single" field.</summary>
     public const int SingleFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.SinglePanel Single {
-      get { return panelCase_ == PanelOneofCase.Single ? (global::ProxyStarcraft.Proto.SinglePanel) panel_ : null; }
+    public global::SC2APIProtocol.SinglePanel Single {
+      get { return panelCase_ == PanelOneofCase.Single ? (global::SC2APIProtocol.SinglePanel) panel_ : null; }
       set {
         panel_ = value;
         panelCase_ = value == null ? PanelOneofCase.None : PanelOneofCase.Single;
@@ -173,8 +173,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "multi" field.</summary>
     public const int MultiFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.MultiPanel Multi {
-      get { return panelCase_ == PanelOneofCase.Multi ? (global::ProxyStarcraft.Proto.MultiPanel) panel_ : null; }
+    public global::SC2APIProtocol.MultiPanel Multi {
+      get { return panelCase_ == PanelOneofCase.Multi ? (global::SC2APIProtocol.MultiPanel) panel_ : null; }
       set {
         panel_ = value;
         panelCase_ = value == null ? PanelOneofCase.None : PanelOneofCase.Multi;
@@ -184,8 +184,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "cargo" field.</summary>
     public const int CargoFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.CargoPanel Cargo {
-      get { return panelCase_ == PanelOneofCase.Cargo ? (global::ProxyStarcraft.Proto.CargoPanel) panel_ : null; }
+    public global::SC2APIProtocol.CargoPanel Cargo {
+      get { return panelCase_ == PanelOneofCase.Cargo ? (global::SC2APIProtocol.CargoPanel) panel_ : null; }
       set {
         panel_ = value;
         panelCase_ = value == null ? PanelOneofCase.None : PanelOneofCase.Cargo;
@@ -195,8 +195,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "production" field.</summary>
     public const int ProductionFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ProductionPanel Production {
-      get { return panelCase_ == PanelOneofCase.Production ? (global::ProxyStarcraft.Proto.ProductionPanel) panel_ : null; }
+    public global::SC2APIProtocol.ProductionPanel Production {
+      get { return panelCase_ == PanelOneofCase.Production ? (global::SC2APIProtocol.ProductionPanel) panel_ : null; }
       set {
         panel_ = value;
         panelCase_ = value == null ? PanelOneofCase.None : PanelOneofCase.Production;
@@ -339,7 +339,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 18: {
-            global::ProxyStarcraft.Proto.SinglePanel subBuilder = new global::ProxyStarcraft.Proto.SinglePanel();
+            global::SC2APIProtocol.SinglePanel subBuilder = new global::SC2APIProtocol.SinglePanel();
             if (panelCase_ == PanelOneofCase.Single) {
               subBuilder.MergeFrom(Single);
             }
@@ -348,7 +348,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 26: {
-            global::ProxyStarcraft.Proto.MultiPanel subBuilder = new global::ProxyStarcraft.Proto.MultiPanel();
+            global::SC2APIProtocol.MultiPanel subBuilder = new global::SC2APIProtocol.MultiPanel();
             if (panelCase_ == PanelOneofCase.Multi) {
               subBuilder.MergeFrom(Multi);
             }
@@ -357,7 +357,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 34: {
-            global::ProxyStarcraft.Proto.CargoPanel subBuilder = new global::ProxyStarcraft.Proto.CargoPanel();
+            global::SC2APIProtocol.CargoPanel subBuilder = new global::SC2APIProtocol.CargoPanel();
             if (panelCase_ == PanelOneofCase.Cargo) {
               subBuilder.MergeFrom(Cargo);
             }
@@ -366,7 +366,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 42: {
-            global::ProxyStarcraft.Proto.ProductionPanel subBuilder = new global::ProxyStarcraft.Proto.ProductionPanel();
+            global::SC2APIProtocol.ProductionPanel subBuilder = new global::SC2APIProtocol.ProductionPanel();
             if (panelCase_ == PanelOneofCase.Production) {
               subBuilder.MergeFrom(Production);
             }
@@ -387,7 +387,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -560,7 +560,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[2]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -674,9 +674,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "add_on" field.</summary>
     public const int AddOnFieldNumber = 8;
-    private global::ProxyStarcraft.Proto.UnitInfo addOn_;
+    private global::SC2APIProtocol.UnitInfo addOn_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.UnitInfo AddOn {
+    public global::SC2APIProtocol.UnitInfo AddOn {
       get { return addOn_; }
       set {
         addOn_ = value;
@@ -820,7 +820,7 @@ namespace ProxyStarcraft.Proto
       }
       if (other.addOn_ != null) {
         if (addOn_ == null) {
-          addOn_ = new global::ProxyStarcraft.Proto.UnitInfo();
+          addOn_ = new global::SC2APIProtocol.UnitInfo();
         }
         AddOn.MergeFrom(other.AddOn);
       }
@@ -864,7 +864,7 @@ namespace ProxyStarcraft.Proto
           }
           case 66: {
             if (addOn_ == null) {
-              addOn_ = new global::ProxyStarcraft.Proto.UnitInfo();
+              addOn_ = new global::SC2APIProtocol.UnitInfo();
             }
             input.ReadMessage(addOn_);
             break;
@@ -882,7 +882,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[3]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -909,13 +909,13 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "unit" field.</summary>
     public const int UnitFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.UnitInfo unit_;
+    private global::SC2APIProtocol.UnitInfo unit_;
     /// <summary>
     /// Upgrades?
     /// Buffs?
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.UnitInfo Unit {
+    public global::SC2APIProtocol.UnitInfo Unit {
       get { return unit_; }
       set {
         unit_ = value;
@@ -975,7 +975,7 @@ namespace ProxyStarcraft.Proto
       }
       if (other.unit_ != null) {
         if (unit_ == null) {
-          unit_ = new global::ProxyStarcraft.Proto.UnitInfo();
+          unit_ = new global::SC2APIProtocol.UnitInfo();
         }
         Unit.MergeFrom(other.Unit);
       }
@@ -991,7 +991,7 @@ namespace ProxyStarcraft.Proto
             break;
           case 10: {
             if (unit_ == null) {
-              unit_ = new global::ProxyStarcraft.Proto.UnitInfo();
+              unit_ = new global::SC2APIProtocol.UnitInfo();
             }
             input.ReadMessage(unit_);
             break;
@@ -1009,7 +1009,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[4]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1036,11 +1036,11 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "units" field.</summary>
     public const int UnitsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.UnitInfo> _repeated_units_codec
-        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.UnitInfo.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo> units_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.UnitInfo> _repeated_units_codec
+        = pb::FieldCodec.ForMessage(10, global::SC2APIProtocol.UnitInfo.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.UnitInfo> units_ = new pbc::RepeatedField<global::SC2APIProtocol.UnitInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo> Units {
+    public pbc::RepeatedField<global::SC2APIProtocol.UnitInfo> Units {
       get { return units_; }
     }
 
@@ -1118,7 +1118,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[5]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1147,9 +1147,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "unit" field.</summary>
     public const int UnitFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.UnitInfo unit_;
+    private global::SC2APIProtocol.UnitInfo unit_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.UnitInfo Unit {
+    public global::SC2APIProtocol.UnitInfo Unit {
       get { return unit_; }
       set {
         unit_ = value;
@@ -1158,11 +1158,11 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "passengers" field.</summary>
     public const int PassengersFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.UnitInfo> _repeated_passengers_codec
-        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.UnitInfo.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo> passengers_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.UnitInfo> _repeated_passengers_codec
+        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.UnitInfo.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.UnitInfo> passengers_ = new pbc::RepeatedField<global::SC2APIProtocol.UnitInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo> Passengers {
+    public pbc::RepeatedField<global::SC2APIProtocol.UnitInfo> Passengers {
       get { return passengers_; }
     }
 
@@ -1246,7 +1246,7 @@ namespace ProxyStarcraft.Proto
       }
       if (other.unit_ != null) {
         if (unit_ == null) {
-          unit_ = new global::ProxyStarcraft.Proto.UnitInfo();
+          unit_ = new global::SC2APIProtocol.UnitInfo();
         }
         Unit.MergeFrom(other.Unit);
       }
@@ -1266,7 +1266,7 @@ namespace ProxyStarcraft.Proto
             break;
           case 10: {
             if (unit_ == null) {
-              unit_ = new global::ProxyStarcraft.Proto.UnitInfo();
+              unit_ = new global::SC2APIProtocol.UnitInfo();
             }
             input.ReadMessage(unit_);
             break;
@@ -1292,7 +1292,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[6]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1320,9 +1320,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "unit" field.</summary>
     public const int UnitFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.UnitInfo unit_;
+    private global::SC2APIProtocol.UnitInfo unit_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.UnitInfo Unit {
+    public global::SC2APIProtocol.UnitInfo Unit {
       get { return unit_; }
       set {
         unit_ = value;
@@ -1331,11 +1331,11 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "build_queue" field.</summary>
     public const int BuildQueueFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.UnitInfo> _repeated_buildQueue_codec
-        = pb::FieldCodec.ForMessage(18, global::ProxyStarcraft.Proto.UnitInfo.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo> buildQueue_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo>();
+    private static readonly pb::FieldCodec<global::SC2APIProtocol.UnitInfo> _repeated_buildQueue_codec
+        = pb::FieldCodec.ForMessage(18, global::SC2APIProtocol.UnitInfo.Parser);
+    private readonly pbc::RepeatedField<global::SC2APIProtocol.UnitInfo> buildQueue_ = new pbc::RepeatedField<global::SC2APIProtocol.UnitInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.UnitInfo> BuildQueue {
+    public pbc::RepeatedField<global::SC2APIProtocol.UnitInfo> BuildQueue {
       get { return buildQueue_; }
     }
 
@@ -1396,7 +1396,7 @@ namespace ProxyStarcraft.Proto
       }
       if (other.unit_ != null) {
         if (unit_ == null) {
-          unit_ = new global::ProxyStarcraft.Proto.UnitInfo();
+          unit_ = new global::SC2APIProtocol.UnitInfo();
         }
         Unit.MergeFrom(other.Unit);
       }
@@ -1413,7 +1413,7 @@ namespace ProxyStarcraft.Proto
             break;
           case 10: {
             if (unit_ == null) {
-              unit_ = new global::ProxyStarcraft.Proto.UnitInfo();
+              unit_ = new global::SC2APIProtocol.UnitInfo();
             }
             input.ReadMessage(unit_);
             break;
@@ -1435,7 +1435,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[7]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1492,8 +1492,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "control_group" field.</summary>
     public const int ControlGroupFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionControlGroup ControlGroup {
-      get { return actionCase_ == ActionOneofCase.ControlGroup ? (global::ProxyStarcraft.Proto.ActionControlGroup) action_ : null; }
+    public global::SC2APIProtocol.ActionControlGroup ControlGroup {
+      get { return actionCase_ == ActionOneofCase.ControlGroup ? (global::SC2APIProtocol.ActionControlGroup) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.ControlGroup;
@@ -1503,8 +1503,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "select_army" field.</summary>
     public const int SelectArmyFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionSelectArmy SelectArmy {
-      get { return actionCase_ == ActionOneofCase.SelectArmy ? (global::ProxyStarcraft.Proto.ActionSelectArmy) action_ : null; }
+    public global::SC2APIProtocol.ActionSelectArmy SelectArmy {
+      get { return actionCase_ == ActionOneofCase.SelectArmy ? (global::SC2APIProtocol.ActionSelectArmy) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.SelectArmy;
@@ -1514,8 +1514,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "select_warp_gates" field.</summary>
     public const int SelectWarpGatesFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionSelectWarpGates SelectWarpGates {
-      get { return actionCase_ == ActionOneofCase.SelectWarpGates ? (global::ProxyStarcraft.Proto.ActionSelectWarpGates) action_ : null; }
+    public global::SC2APIProtocol.ActionSelectWarpGates SelectWarpGates {
+      get { return actionCase_ == ActionOneofCase.SelectWarpGates ? (global::SC2APIProtocol.ActionSelectWarpGates) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.SelectWarpGates;
@@ -1525,8 +1525,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "select_larva" field.</summary>
     public const int SelectLarvaFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionSelectLarva SelectLarva {
-      get { return actionCase_ == ActionOneofCase.SelectLarva ? (global::ProxyStarcraft.Proto.ActionSelectLarva) action_ : null; }
+    public global::SC2APIProtocol.ActionSelectLarva SelectLarva {
+      get { return actionCase_ == ActionOneofCase.SelectLarva ? (global::SC2APIProtocol.ActionSelectLarva) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.SelectLarva;
@@ -1536,8 +1536,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "select_idle_worker" field.</summary>
     public const int SelectIdleWorkerFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionSelectIdleWorker SelectIdleWorker {
-      get { return actionCase_ == ActionOneofCase.SelectIdleWorker ? (global::ProxyStarcraft.Proto.ActionSelectIdleWorker) action_ : null; }
+    public global::SC2APIProtocol.ActionSelectIdleWorker SelectIdleWorker {
+      get { return actionCase_ == ActionOneofCase.SelectIdleWorker ? (global::SC2APIProtocol.ActionSelectIdleWorker) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.SelectIdleWorker;
@@ -1547,8 +1547,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "multi_panel" field.</summary>
     public const int MultiPanelFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionMultiPanel MultiPanel {
-      get { return actionCase_ == ActionOneofCase.MultiPanel ? (global::ProxyStarcraft.Proto.ActionMultiPanel) action_ : null; }
+    public global::SC2APIProtocol.ActionMultiPanel MultiPanel {
+      get { return actionCase_ == ActionOneofCase.MultiPanel ? (global::SC2APIProtocol.ActionMultiPanel) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.MultiPanel;
@@ -1558,8 +1558,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "cargo_panel" field.</summary>
     public const int CargoPanelFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionCargoPanelUnload CargoPanel {
-      get { return actionCase_ == ActionOneofCase.CargoPanel ? (global::ProxyStarcraft.Proto.ActionCargoPanelUnload) action_ : null; }
+    public global::SC2APIProtocol.ActionCargoPanelUnload CargoPanel {
+      get { return actionCase_ == ActionOneofCase.CargoPanel ? (global::SC2APIProtocol.ActionCargoPanelUnload) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.CargoPanel;
@@ -1569,8 +1569,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "production_panel" field.</summary>
     public const int ProductionPanelFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionProductionPanelRemoveFromQueue ProductionPanel {
-      get { return actionCase_ == ActionOneofCase.ProductionPanel ? (global::ProxyStarcraft.Proto.ActionProductionPanelRemoveFromQueue) action_ : null; }
+    public global::SC2APIProtocol.ActionProductionPanelRemoveFromQueue ProductionPanel {
+      get { return actionCase_ == ActionOneofCase.ProductionPanel ? (global::SC2APIProtocol.ActionProductionPanelRemoveFromQueue) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.ProductionPanel;
@@ -1580,8 +1580,8 @@ namespace ProxyStarcraft.Proto
     /// <summary>Field number for the "toggle_autocast" field.</summary>
     public const int ToggleAutocastFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionToggleAutocast ToggleAutocast {
-      get { return actionCase_ == ActionOneofCase.ToggleAutocast ? (global::ProxyStarcraft.Proto.ActionToggleAutocast) action_ : null; }
+    public global::SC2APIProtocol.ActionToggleAutocast ToggleAutocast {
+      get { return actionCase_ == ActionOneofCase.ToggleAutocast ? (global::SC2APIProtocol.ActionToggleAutocast) action_ : null; }
       set {
         action_ = value;
         actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.ToggleAutocast;
@@ -1780,7 +1780,7 @@ namespace ProxyStarcraft.Proto
             input.SkipLastField();
             break;
           case 10: {
-            global::ProxyStarcraft.Proto.ActionControlGroup subBuilder = new global::ProxyStarcraft.Proto.ActionControlGroup();
+            global::SC2APIProtocol.ActionControlGroup subBuilder = new global::SC2APIProtocol.ActionControlGroup();
             if (actionCase_ == ActionOneofCase.ControlGroup) {
               subBuilder.MergeFrom(ControlGroup);
             }
@@ -1789,7 +1789,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 18: {
-            global::ProxyStarcraft.Proto.ActionSelectArmy subBuilder = new global::ProxyStarcraft.Proto.ActionSelectArmy();
+            global::SC2APIProtocol.ActionSelectArmy subBuilder = new global::SC2APIProtocol.ActionSelectArmy();
             if (actionCase_ == ActionOneofCase.SelectArmy) {
               subBuilder.MergeFrom(SelectArmy);
             }
@@ -1798,7 +1798,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 26: {
-            global::ProxyStarcraft.Proto.ActionSelectWarpGates subBuilder = new global::ProxyStarcraft.Proto.ActionSelectWarpGates();
+            global::SC2APIProtocol.ActionSelectWarpGates subBuilder = new global::SC2APIProtocol.ActionSelectWarpGates();
             if (actionCase_ == ActionOneofCase.SelectWarpGates) {
               subBuilder.MergeFrom(SelectWarpGates);
             }
@@ -1807,7 +1807,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 34: {
-            global::ProxyStarcraft.Proto.ActionSelectLarva subBuilder = new global::ProxyStarcraft.Proto.ActionSelectLarva();
+            global::SC2APIProtocol.ActionSelectLarva subBuilder = new global::SC2APIProtocol.ActionSelectLarva();
             if (actionCase_ == ActionOneofCase.SelectLarva) {
               subBuilder.MergeFrom(SelectLarva);
             }
@@ -1816,7 +1816,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 42: {
-            global::ProxyStarcraft.Proto.ActionSelectIdleWorker subBuilder = new global::ProxyStarcraft.Proto.ActionSelectIdleWorker();
+            global::SC2APIProtocol.ActionSelectIdleWorker subBuilder = new global::SC2APIProtocol.ActionSelectIdleWorker();
             if (actionCase_ == ActionOneofCase.SelectIdleWorker) {
               subBuilder.MergeFrom(SelectIdleWorker);
             }
@@ -1825,7 +1825,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 50: {
-            global::ProxyStarcraft.Proto.ActionMultiPanel subBuilder = new global::ProxyStarcraft.Proto.ActionMultiPanel();
+            global::SC2APIProtocol.ActionMultiPanel subBuilder = new global::SC2APIProtocol.ActionMultiPanel();
             if (actionCase_ == ActionOneofCase.MultiPanel) {
               subBuilder.MergeFrom(MultiPanel);
             }
@@ -1834,7 +1834,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 58: {
-            global::ProxyStarcraft.Proto.ActionCargoPanelUnload subBuilder = new global::ProxyStarcraft.Proto.ActionCargoPanelUnload();
+            global::SC2APIProtocol.ActionCargoPanelUnload subBuilder = new global::SC2APIProtocol.ActionCargoPanelUnload();
             if (actionCase_ == ActionOneofCase.CargoPanel) {
               subBuilder.MergeFrom(CargoPanel);
             }
@@ -1843,7 +1843,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 66: {
-            global::ProxyStarcraft.Proto.ActionProductionPanelRemoveFromQueue subBuilder = new global::ProxyStarcraft.Proto.ActionProductionPanelRemoveFromQueue();
+            global::SC2APIProtocol.ActionProductionPanelRemoveFromQueue subBuilder = new global::SC2APIProtocol.ActionProductionPanelRemoveFromQueue();
             if (actionCase_ == ActionOneofCase.ProductionPanel) {
               subBuilder.MergeFrom(ProductionPanel);
             }
@@ -1852,7 +1852,7 @@ namespace ProxyStarcraft.Proto
             break;
           }
           case 74: {
-            global::ProxyStarcraft.Proto.ActionToggleAutocast subBuilder = new global::ProxyStarcraft.Proto.ActionToggleAutocast();
+            global::SC2APIProtocol.ActionToggleAutocast subBuilder = new global::SC2APIProtocol.ActionToggleAutocast();
             if (actionCase_ == ActionOneofCase.ToggleAutocast) {
               subBuilder.MergeFrom(ToggleAutocast);
             }
@@ -1873,7 +1873,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[8]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1901,9 +1901,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "action" field.</summary>
     public const int ActionFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.ActionControlGroup.Types.ControlGroupAction action_ = 0;
+    private global::SC2APIProtocol.ActionControlGroup.Types.ControlGroupAction action_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionControlGroup.Types.ControlGroupAction Action {
+    public global::SC2APIProtocol.ActionControlGroup.Types.ControlGroupAction Action {
       get { return action_; }
       set {
         action_ = value;
@@ -1998,7 +1998,7 @@ namespace ProxyStarcraft.Proto
             input.SkipLastField();
             break;
           case 8: {
-            action_ = (global::ProxyStarcraft.Proto.ActionControlGroup.Types.ControlGroupAction) input.ReadEnum();
+            action_ = (global::SC2APIProtocol.ActionControlGroup.Types.ControlGroupAction) input.ReadEnum();
             break;
           }
           case 16: {
@@ -2014,7 +2014,7 @@ namespace ProxyStarcraft.Proto
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum ControlGroupAction {
-        [pbr::OriginalName("UnspecifiedControlGroup")] UnspecifiedControlGroup = 0,
+        [pbr::OriginalName("InvalidControlGroupAction")] InvalidControlGroupAction = 0,
         /// <summary>
         /// Equivalent to number hotkey. Replaces current selection with control group.
         /// </summary>
@@ -2049,7 +2049,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[9]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2166,7 +2166,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[10]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2283,7 +2283,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[11]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2372,7 +2372,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[12]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2399,9 +2399,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.ActionSelectIdleWorker.Types.Type type_ = 0;
+    private global::SC2APIProtocol.ActionSelectIdleWorker.Types.Type type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionSelectIdleWorker.Types.Type Type {
+    public global::SC2APIProtocol.ActionSelectIdleWorker.Types.Type Type {
       get { return type_; }
       set {
         type_ = value;
@@ -2473,7 +2473,7 @@ namespace ProxyStarcraft.Proto
             input.SkipLastField();
             break;
           case 8: {
-            type_ = (global::ProxyStarcraft.Proto.ActionSelectIdleWorker.Types.Type) input.ReadEnum();
+            type_ = (global::SC2APIProtocol.ActionSelectIdleWorker.Types.Type) input.ReadEnum();
             break;
           }
         }
@@ -2485,7 +2485,7 @@ namespace ProxyStarcraft.Proto
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum Type {
-        [pbr::OriginalName("UnspecifiedType")] UnspecifiedType = 0,
+        [pbr::OriginalName("InvalidType")] InvalidType = 0,
         /// <summary>
         /// Equivalent to click with no modifiers. Replaces selection with single idle worker.
         /// </summary>
@@ -2516,7 +2516,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[13]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2544,9 +2544,9 @@ namespace ProxyStarcraft.Proto
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::ProxyStarcraft.Proto.ActionMultiPanel.Types.Type type_ = 0;
+    private global::SC2APIProtocol.ActionMultiPanel.Types.Type type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ProxyStarcraft.Proto.ActionMultiPanel.Types.Type Type {
+    public global::SC2APIProtocol.ActionMultiPanel.Types.Type Type {
       get { return type_; }
       set {
         type_ = value;
@@ -2641,7 +2641,7 @@ namespace ProxyStarcraft.Proto
             input.SkipLastField();
             break;
           case 8: {
-            type_ = (global::ProxyStarcraft.Proto.ActionMultiPanel.Types.Type) input.ReadEnum();
+            type_ = (global::SC2APIProtocol.ActionMultiPanel.Types.Type) input.ReadEnum();
             break;
           }
           case 16: {
@@ -2657,7 +2657,7 @@ namespace ProxyStarcraft.Proto
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum Type {
-        [pbr::OriginalName("UnspecifiedType")] UnspecifiedType = 0,
+        [pbr::OriginalName("InvalidType")] InvalidType = 0,
         /// <summary>
         /// Click on icon
         /// </summary>
@@ -2688,7 +2688,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[14]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2805,7 +2805,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[15]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2922,7 +2922,7 @@ namespace ProxyStarcraft.Proto
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.UiReflection.Descriptor.MessageTypes[16]; }
+      get { return global::SC2APIProtocol.UiReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
