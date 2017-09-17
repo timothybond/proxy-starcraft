@@ -1,6 +1,7 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {
@@ -42,6 +43,32 @@ namespace ProxyStarcraft
             var y = this.Y - location.Y;
 
             return Math.Sqrt(x * x + y * y);
+        }
+
+        public IReadOnlyList<Location> AdjacentLocations(Size2DI mapSize)
+        {
+            var results = new List<Location>();
+
+            var xVals = new List<int> { this.X - 1, this.X, this.X + 1 };
+            xVals.Remove(-1);
+            xVals.Remove(mapSize.X);
+
+            var yVals = new List<int> { this.Y - 1, this.Y, this.Y + 1 };
+            yVals.Remove(-1);
+            yVals.Remove(mapSize.Y);
+
+            foreach (var x in xVals)
+            {
+                foreach (var y in yVals)
+                {
+                    if (x != this.X || y != this.Y)
+                    {
+                        results.Add(new Location { X = x, Y = y });
+                    }
+                }
+            }
+
+            return results;
         }
     }
 }

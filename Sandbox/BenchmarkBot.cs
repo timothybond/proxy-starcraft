@@ -4,6 +4,7 @@ using System.Linq;
 
 using ProxyStarcraft;
 using ProxyStarcraft.Proto;
+using ProxyStarcraft.Basic;
 
 namespace Sandbox
 {
@@ -19,6 +20,8 @@ namespace Sandbox
         private const uint MaxWorkersPerMineralDeposit = 2;
 
         private Dictionary<ulong, List<ulong>> workersByMineralDeposit;
+
+        private IPlacementStrategy placementStrategy = new BasicPlacementStrategy();
 
         private bool first = true;
 
@@ -278,71 +281,10 @@ namespace Sandbox
             return workersByMineralDeposit.Where(pair => pair.Value.Count < MaxWorkersPerMineralDeposit).Select(pair => pair.Key).ToList();
         }
         
-        private static BuildCommand GetBuildCommand(TerranUnit unit, TerranBuildingType building, GameState gameState)
+        private BuildCommand GetBuildCommand(TerranUnit unit, TerranBuildingType building, GameState gameState)
         {
-            // We're going to make some dumb assumptions here:
-            // 1. We'd like to build this building very near where this unit currently is
-            // 2. As long as we don't block anything, it doesn't matter where it goes
-            var size = gameState.Translator.GetBuildingSize(building);
-
-            var locations = new HashSet<Location> { new Location { X = (int)Math.Round(unit.Raw.Pos.X), Y = (int)Math.Round(unit.Raw.Pos.Y) } };
-            var pastLocations = new HashSet<Location>();
-            var nextLocations = new HashSet<Location>();
-
-            // I think this is basically a breadth-first search of map locations
-            while (locations.Count > 0)
-            {
-                foreach (var location in locations)
-                {
-                    if (gameState.MapData.CanBuild(size, location.X, location.Y))
-                    {
-                        return unit.Build(building, location.X, location.Y);
-                    }
-
-                    var adjacentLocations = AdjacentLocations(location, gameState.MapData.Size);
-
-                    foreach (var adjacentLocation in adjacentLocations)
-                    {
-                        if (!pastLocations.Contains(adjacentLocation) && !locations.Contains(adjacentLocation) && gameState.MapData.CanTraverse(adjacentLocation))
-                        {
-                            nextLocations.Add(adjacentLocation);
-                        }
-                    }
-
-                    pastLocations.Add(location);
-                }
-
-                locations = nextLocations;
-                nextLocations = new HashSet<Location>();
-            }
-
-            throw new InvalidOperationException("Cannot find placement location anywhere on map.");
-        }
-        
-        private static List<Location> AdjacentLocations(Location location, Size2DI mapSize)
-        {
-            var results = new List<Location>();
-
-            var xVals = new List<int> { location.X - 1, location.X, location.X + 1 };
-            xVals.Remove(-1);
-            xVals.Remove(mapSize.X);
-
-            var yVals = new List<int> { location.Y - 1, location.Y, location.Y + 1 };
-            yVals.Remove(-1);
-            yVals.Remove(mapSize.Y);
-
-            foreach (var x in xVals)
-            {
-                foreach (var y in yVals)
-                {
-                    if (x != location.X || y != location.Y)
-                    {
-                        results.Add(new Location { X = x, Y = y });
-                    }
-                }
-            }
-
-            return results;
+            var buildLocation = this.placementStrategy.GetPlacement(building, gameState);
+            return unit.Build(building, buildLocation.X, buildLocation.Y);
         }
     }
 }
