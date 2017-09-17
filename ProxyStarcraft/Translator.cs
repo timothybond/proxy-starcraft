@@ -67,8 +67,12 @@ namespace ProxyStarcraft
             { TerranBuildingType.Starport, 3 },
             { TerranBuildingType.Armory, 3 },
             { TerranBuildingType.FusionCore, 3 }, // ?
-            { TerranBuildingType.TechLab, 2 },
-            { TerranBuildingType.Reactor, 2 },
+            { TerranBuildingType.BarracksTechLab, 2 },
+            { TerranBuildingType.BarracksReactor, 2 },
+            { TerranBuildingType.FactoryTechLab, 2 },
+            { TerranBuildingType.FactoryReactor, 2 },
+            { TerranBuildingType.StarportTechLab, 2 },
+            { TerranBuildingType.StarportReactor, 2 },
             { TerranBuildingType.PlanetaryFortress, 5 },
             { TerranBuildingType.OrbitalCommand, 5 }
         };
@@ -78,39 +82,39 @@ namespace ProxyStarcraft
             { ProtossBuildingType.Nexus, 5 },
             { ProtossBuildingType.Assimilator, 3 },
             { ProtossBuildingType.Pylon, 2 }, // ?
-            { ProtossBuildingType.Gateway, 0 },
-            { ProtossBuildingType.Forge, 0 },
-            { ProtossBuildingType.CyberneticsCore, 0 },
-            { ProtossBuildingType.PhotonCannon, 0 },
-            { ProtossBuildingType.RoboticsFacility, 0 },
-            { ProtossBuildingType.WarpGate, 0 },
-            { ProtossBuildingType.Stargate, 0 },
-            { ProtossBuildingType.TwilightCouncil, 0 },
-            { ProtossBuildingType.RoboticsBay, 0 },
-            { ProtossBuildingType.FleetBeacon, 0 },
-            { ProtossBuildingType.TemplarArchive, 0 },
-            { ProtossBuildingType.DarkShrine, 0 }
+            { ProtossBuildingType.Gateway, 3 }, // ?
+            { ProtossBuildingType.Forge, 3 }, // ?
+            { ProtossBuildingType.CyberneticsCore, 3 }, // ?
+            { ProtossBuildingType.PhotonCannon, 2 }, // ?
+            { ProtossBuildingType.RoboticsFacility, 3 }, // ?
+            { ProtossBuildingType.WarpGate, 3 }, // ?
+            { ProtossBuildingType.Stargate, 3 }, // ?
+            { ProtossBuildingType.TwilightCouncil, 3 }, // ?
+            { ProtossBuildingType.RoboticsBay, 3 }, // ?
+            { ProtossBuildingType.FleetBeacon, 3 }, // ?
+            { ProtossBuildingType.TemplarArchive, 3 }, // ?
+            { ProtossBuildingType.DarkShrine, 2 } // ?
         };
 
         private Dictionary<ZergBuildingType, int> zergBuildingSizes = new Dictionary<ZergBuildingType, int>
         {
             { ZergBuildingType.Hatchery, 5 },
             { ZergBuildingType.Extractor, 3 },
-            { ZergBuildingType.SpawningPool, 0 },
-            { ZergBuildingType.EvolutionChamber, 0 },
-            { ZergBuildingType.RoachWarren, 0 },
-            { ZergBuildingType.BanelingNest, 0 },
-            { ZergBuildingType.SpineCrawler, 0 },
-            { ZergBuildingType.SporeCrawler, 0 },
+            { ZergBuildingType.SpawningPool, 3 }, // ?
+            { ZergBuildingType.EvolutionChamber, 3 }, // ?
+            { ZergBuildingType.RoachWarren, 3 }, // ?
+            { ZergBuildingType.BanelingNest, 3 }, // ?
+            { ZergBuildingType.SpineCrawler, 2 }, // ?
+            { ZergBuildingType.SporeCrawler, 2 }, // ?
             { ZergBuildingType.Lair, 5 },
-            { ZergBuildingType.HydraliskDen, 0 },
-            { ZergBuildingType.LurkerDen, 0 },
-            { ZergBuildingType.InfestationPit, 0 },
-            { ZergBuildingType.Spire, 0 },
-            { ZergBuildingType.NydusNetwork, 0 },
+            { ZergBuildingType.HydraliskDen, 3 }, // ?
+            { ZergBuildingType.LurkerDen, 3 }, // ?
+            { ZergBuildingType.InfestationPit, 3 }, // ?
+            { ZergBuildingType.Spire, 2 }, // ?
+            { ZergBuildingType.NydusNetwork, 2 }, // ?
             { ZergBuildingType.Hive, 5 },
-            { ZergBuildingType.GreaterSpire, 0 },
-            { ZergBuildingType.UltraliskCavern, 0 },
+            { ZergBuildingType.GreaterSpire, 3 }, // ?
+            { ZergBuildingType.UltraliskCavern, 3 }, // ?
             { ZergBuildingType.CreepTumor, 1 }
         };
 
