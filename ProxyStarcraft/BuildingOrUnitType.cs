@@ -58,6 +58,46 @@ namespace ProxyStarcraft
             throw new ArgumentException("UnitType was 'Unspecified'.");
         }
 
+        public static explicit operator UnitType(BuildingOrUnitType buildingOrUnit)
+        {
+            if (buildingOrUnit.TerranUnit != TerranUnitType.Unspecified)
+            {
+                return new UnitType(buildingOrUnit.TerranUnit);
+            }
+
+            if (buildingOrUnit.ProtossUnit != ProtossUnitType.Unspecified)
+            {
+                return new UnitType(buildingOrUnit.ProtossUnit);
+            }
+
+            if (buildingOrUnit.ZergUnit != ZergUnitType.Unspecified)
+            {
+                return new UnitType(buildingOrUnit.ZergUnit);
+            }
+
+            throw new InvalidOperationException("Attempted to convert a BuildingOrUnitType to a UnitType, but no UnitType was specified.");
+        }
+
+        public static explicit operator BuildingType(BuildingOrUnitType buildingOrUnit)
+        {
+            if (buildingOrUnit.TerranBuilding != TerranBuildingType.Unspecified)
+            {
+                return new BuildingType(buildingOrUnit.TerranBuilding);
+            }
+
+            if (buildingOrUnit.ProtossBuilding != ProtossBuildingType.Unspecified)
+            {
+                return new BuildingType(buildingOrUnit.ProtossBuilding);
+            }
+
+            if (buildingOrUnit.ZergBuilding != ZergBuildingType.Unspecified)
+            {
+                return new BuildingType(buildingOrUnit.ZergBuilding);
+            }
+
+            throw new InvalidOperationException("Attempted to convert a BuildingOrUnitType to a BuildingType, but no BuildingType was specified.");
+        }
+
         public BuildingOrUnitType(TerranBuildingType building)
         {
             if (building == TerranBuildingType.Unspecified)
@@ -130,6 +170,16 @@ namespace ProxyStarcraft
 
         public ZergUnitType ZergUnit { get; private set; }
 
+        public bool IsBuildingType =>
+            this.TerranBuilding != TerranBuildingType.Unspecified ||
+            this.ProtossBuilding != ProtossBuildingType.Unspecified ||
+            this.ZergBuilding != ZergBuildingType.Unspecified;
+
+        public bool IsUnitType =>
+            this.TerranUnit != TerranUnitType.Unspecified ||
+            this.ProtossUnit != ProtossUnitType.Unspecified ||
+            this.ZergUnit != ZergUnitType.Unspecified;
+
         public override string ToString()
         {
             if (this.TerranUnit != TerranUnitType.Unspecified)
@@ -158,6 +208,21 @@ namespace ProxyStarcraft
             }
 
             return "Unspecified";
+        }
+
+        public static bool operator == (BuildingOrUnitType first, BuildingOrUnitType second)
+        {
+            return first.TerranUnit == second.TerranUnit &&
+                   first.TerranBuilding == second.TerranBuilding &&
+                   first.ProtossUnit == second.ProtossUnit &&
+                   first.ProtossBuilding == second.ProtossBuilding &&
+                   first.ZergUnit == second.ZergUnit &&
+                   first.ZergBuilding == second.ZergBuilding;
+        }
+
+        public static bool operator !=(BuildingOrUnitType first, BuildingOrUnitType second)
+        {
+            return !(first == second);
         }
     }
 }
