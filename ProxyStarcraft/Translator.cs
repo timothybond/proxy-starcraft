@@ -307,8 +307,12 @@ namespace ProxyStarcraft
             zergUnitTypesById.Add(unitTypesByName["BanelingBurrowed"].UnitId, ZergUnitType.Baneling);
             zergUnitTypesById.Add(unitTypesByName["Roach"].UnitId, ZergUnitType.Roach);
             zergUnitTypesById.Add(unitTypesByName["RoachBurrowed"].UnitId, ZergUnitType.Roach);
+            zergUnitTypesById.Add(unitTypesByName["Ravager"].UnitId, ZergUnitType.Ravager);
+            zergUnitTypesById.Add(unitTypesByName["RavagerBurrowed"].UnitId, ZergUnitType.Ravager);
             zergUnitTypesById.Add(unitTypesByName["Hydralisk"].UnitId, ZergUnitType.Hydralisk);
             zergUnitTypesById.Add(unitTypesByName["HydraliskBurrowed"].UnitId, ZergUnitType.Hydralisk);
+            zergUnitTypesById.Add(unitTypesByName["Lurker"].UnitId, ZergUnitType.Lurker);
+            zergUnitTypesById.Add(unitTypesByName["LurkerBurrowed"].UnitId, ZergUnitType.Lurker);
             zergUnitTypesById.Add(unitTypesByName["Infestor"].UnitId, ZergUnitType.Infestor);
             zergUnitTypesById.Add(unitTypesByName["InfestorBurrowed"].UnitId, ZergUnitType.Infestor);
             zergUnitTypesById.Add(unitTypesByName["InfestedTerran"].UnitId, ZergUnitType.InfestedTerran);
