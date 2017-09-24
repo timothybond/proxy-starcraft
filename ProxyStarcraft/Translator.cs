@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace ProxyStarcraft
 {
+    // TODO: Move into the Client library? Probably would require some refactoring,
+    // but I think that would be the best place for it in the long run.
+
     /// <summary>
     /// Convenience class for mapping between various IDs from the service
     /// and friendlier ways of referring to units/structures/abilities.

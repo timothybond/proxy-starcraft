@@ -31,6 +31,8 @@
 
         public float Y => this.Raw.Pos.Y;
 
+        public bool IsFinishedBuilding => this.Raw.BuildProgress == 1.0f;
+
         public bool IsBuilding(BuildingOrUnitType buildingOrUnitType)
         {
             return translator.IsBuilding(this.Raw, buildingOrUnitType);
