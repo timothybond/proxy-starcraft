@@ -50,5 +50,29 @@ namespace ProxyStarcraft
         public ProtossBuildingType ProtossBuilding { get; private set; }
 
         public ZergBuildingType ZergBuilding { get; private set; }
+
+        public static bool operator ==(BuildingType first, BuildingType second)
+        {
+            // TODO: Express this better, possibly getting rid of the == operator
+            // (might be better to just change the way the 'union type' is implemented)
+            if (Equals(first, null) && Equals(second, null))
+            {
+                return true;
+            }
+
+            if (Equals(first, null) || Equals(second, null))
+            {
+                return false;
+            }
+
+            return first.TerranBuilding == second.TerranBuilding &&
+                   first.ProtossBuilding == second.ProtossBuilding &&
+                   first.ZergBuilding == second.ZergBuilding;
+        }
+
+        public static bool operator !=(BuildingType first, BuildingType second)
+        {
+            return !(first == second);
+        }
     }
 }

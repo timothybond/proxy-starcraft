@@ -120,6 +120,16 @@ namespace ProxyStarcraft
             { ZergBuildingType.CreepTumor, 1 }
         };
 
+        private List<string> buildingUpgradeNames = new List<string>
+        {
+            "Morph OrbitalCommand",
+            "Morph PlanetaryFortress",
+            "Morph Lair",
+            "Morph Hive",
+            "Morph LurkerDen",
+            "Morph GreaterSpire",
+        };
+
         public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes)
         {
             this.abilities = abilities;
@@ -140,7 +150,7 @@ namespace ProxyStarcraft
             rallyUnitsHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Units")).AbilityId;
 
             var buildAndTrainAbilities = hotkeyedAbilities
-                .Where(ability => ability.FriendlyName.Contains("Build") || ability.FriendlyName.Contains("Train"));
+                .Where(ability => ability.FriendlyName.Contains("Build") || ability.FriendlyName.Contains("Train") || buildingUpgradeNames.Contains(ability.FriendlyName));
 
             scvHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather SCV")).AbilityId;
             muleHarvest = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Harvest Gather Mule")).AbilityId;
@@ -150,13 +160,8 @@ namespace ProxyStarcraft
             mineralFieldTypes = unitTypes.Values.Where(u => u.Name.Contains("MineralField")).Select(u => u.UnitId).ToList();
             vespeneGeyserTypes = unitTypes.Values.Where(u => u.Name.Contains("Vespene")).Select(u => u.UnitId).ToList();
 
-            var abilitiesByName = new Dictionary<string, AbilityData>();
+            var abilitiesByName = buildAndTrainAbilities.ToDictionary(a => a.FriendlyName);
             
-            foreach (var ability in buildAndTrainAbilities)
-            {
-                abilitiesByName.Add(ability.FriendlyName, ability);
-            }
-
             createTerranUnitActions = new Dictionary<TerranUnitType, uint>
             {
                 { TerranUnitType.SCV, abilitiesByName["Train SCV"].AbilityId },
@@ -231,8 +236,16 @@ namespace ProxyStarcraft
                 { TerranBuildingType.Starport, abilitiesByName["Build Starport"].AbilityId },
                 { TerranBuildingType.Armory, abilitiesByName["Build Armory"].AbilityId },
                 { TerranBuildingType.FusionCore, abilitiesByName["Build FusionCore"].AbilityId },
+                { TerranBuildingType.BarracksTechLab, abilitiesByName["Build TechLab Barracks"].AbilityId },
+                { TerranBuildingType.BarracksReactor, abilitiesByName["Build Reactor Barracks"].AbilityId },
+                { TerranBuildingType.FactoryTechLab, abilitiesByName["Build TechLab Factory"].AbilityId },
+                { TerranBuildingType.FactoryReactor, abilitiesByName["Build Reactor Factory"].AbilityId },
+                { TerranBuildingType.StarportTechLab, abilitiesByName["Build TechLab Starport"].AbilityId },
+                { TerranBuildingType.StarportReactor, abilitiesByName["Build Reactor Starport"].AbilityId },
+                { TerranBuildingType.PlanetaryFortress, abilitiesByName["Morph PlanetaryFortress"].AbilityId },
+                { TerranBuildingType.OrbitalCommand, abilitiesByName["Morph OrbitalCommand"].AbilityId }
             };
-
+            
             buildProtossBuildingActions = new Dictionary<ProtossBuildingType, uint>
             {
                 { ProtossBuildingType.Nexus, abilitiesByName["Build Nexus"].AbilityId },
@@ -261,13 +274,17 @@ namespace ProxyStarcraft
                 { ZergBuildingType.BanelingNest, abilitiesByName["Build BanelingNest"].AbilityId },
                 { ZergBuildingType.SpineCrawler, abilitiesByName["Build SpineCrawler"].AbilityId },
                 { ZergBuildingType.SporeCrawler, abilitiesByName["Build SporeCrawler"].AbilityId },
+                { ZergBuildingType.Lair, abilitiesByName["Morph Lair"].AbilityId },
                 { ZergBuildingType.HydraliskDen, abilitiesByName["Build HydraliskDen"].AbilityId },
+                { ZergBuildingType.LurkerDen, abilitiesByName["Morph LurkerDen"].AbilityId },
                 { ZergBuildingType.InfestationPit, abilitiesByName["Build InfestationPit"].AbilityId },
                 { ZergBuildingType.Spire, abilitiesByName["Build Spire"].AbilityId },
                 { ZergBuildingType.NydusNetwork, abilitiesByName["Build NydusNetwork"].AbilityId },
+                { ZergBuildingType.Hive, abilitiesByName["Morph Hive"].AbilityId },
+                { ZergBuildingType.GreaterSpire, abilitiesByName["Morph GreaterSpire"].AbilityId },
                 { ZergBuildingType.UltraliskCavern, abilitiesByName["Build UltraliskCavern"].AbilityId }
             };
-
+            
             var unitTypesByName = unitTypes.Values.Where(unitType => !string.IsNullOrEmpty(unitType.Name)).ToDictionary(unitType => unitType.Name);
 
             terranUnitTypesById = new Dictionary<uint, TerranUnitType>();
@@ -311,8 +328,8 @@ namespace ProxyStarcraft
             zergUnitTypesById.Add(unitTypesByName["RavagerBurrowed"].UnitId, ZergUnitType.Ravager);
             zergUnitTypesById.Add(unitTypesByName["Hydralisk"].UnitId, ZergUnitType.Hydralisk);
             zergUnitTypesById.Add(unitTypesByName["HydraliskBurrowed"].UnitId, ZergUnitType.Hydralisk);
-            zergUnitTypesById.Add(unitTypesByName["Lurker"].UnitId, ZergUnitType.Lurker);
-            zergUnitTypesById.Add(unitTypesByName["LurkerBurrowed"].UnitId, ZergUnitType.Lurker);
+            zergUnitTypesById.Add(unitTypesByName["LurkerMP"].UnitId, ZergUnitType.Lurker);
+            zergUnitTypesById.Add(unitTypesByName["LurkerMPBurrowed"].UnitId, ZergUnitType.Lurker);
             zergUnitTypesById.Add(unitTypesByName["Infestor"].UnitId, ZergUnitType.Infestor);
             zergUnitTypesById.Add(unitTypesByName["InfestorBurrowed"].UnitId, ZergUnitType.Infestor);
             zergUnitTypesById.Add(unitTypesByName["InfestedTerran"].UnitId, ZergUnitType.InfestedTerran);
@@ -658,11 +675,28 @@ namespace ProxyStarcraft
 
             var minerals = rawUnitType.MineralCost;
             var vespene = rawUnitType.VespeneCost;
+
+            // Exception: upgrades list the full cost of everything (apparently)
+            // TODO: Maybe don't hardcode these numerical values
+            if (buildingOrUnit == TerranBuildingType.OrbitalCommand || buildingOrUnit == TerranBuildingType.PlanetaryFortress)
+            {
+                minerals = minerals - 400;
+            }
+            else if (buildingOrUnit == ZergBuildingType.Lair)
+            {
+                minerals = minerals - 400;
+            }
+            else if (buildingOrUnit == ZergBuildingType.Hive)
+            {
+                minerals = minerals - 500;
+                vespene = vespene - 100;
+            }
+
             var supply = rawUnitType.FoodRequired;
             var prerequisiteId = rawUnitType.TechRequirement; // TODO: handle tech_alias values, Tech Lab requirement
-            var prerequisite = GetBuildingOrUnitType(prerequisiteId);
+            var prerequisite = prerequisiteId > 0 ? GetBuildingOrUnitType(prerequisiteId) : null;
 
-            return new UnitCost(minerals, vespene, supply, prerequisite, GetBuilder(buildingOrUnit));
+            return new UnitCost(minerals, vespene, supply, GetBuilder(buildingOrUnit), prerequisite);
         }
 
         public BuildingOrUnitType GetBuilder(BuildingOrUnitType buildingOrUnit)
@@ -909,6 +943,19 @@ namespace ProxyStarcraft
             }
 
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Determines whether the requested building is actually an upgrade of another building.
+        /// </summary>
+        public bool IsUpgrade(BuildingType building)
+        {
+            return building == TerranBuildingType.PlanetaryFortress ||
+                   building == TerranBuildingType.OrbitalCommand ||
+                   building == ZergBuildingType.Lair ||
+                   building == ZergBuildingType.Hive ||
+                   building == ZergBuildingType.LurkerDen ||
+                   building == ZergBuildingType.GreaterSpire;
         }
 
         /// <summary>

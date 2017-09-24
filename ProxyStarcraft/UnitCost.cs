@@ -46,12 +46,12 @@ namespace ProxyStarcraft
                 return false;
             }
 
-            if (!gameState.Units.Any(u => u.Type == this.Builder && !u.IsBuildingSomething))
+            if (!gameState.Units.Any(u => u.Type == this.Builder && !u.IsBuildingSomething && u.Raw.BuildProgress == 1.0))
             {
                 return false;
             }
 
-            if (this.Prerequisite != null && !gameState.Units.Any(u => u.Type == this.Prerequisite))
+            if (this.Prerequisite != null && !gameState.Units.Any(u => u.Type == this.Prerequisite && u.Raw.BuildProgress == 1.0))
             {
                 return false;
             }

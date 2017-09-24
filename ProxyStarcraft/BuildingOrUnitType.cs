@@ -212,6 +212,18 @@ namespace ProxyStarcraft
 
         public static bool operator == (BuildingOrUnitType first, BuildingOrUnitType second)
         {
+            // TODO: Express this better, possibly getting rid of the == operator
+            // (might be better to just change the way the 'union type' is implemented)
+            if (Equals(first, null) && Equals(second, null))
+            {
+                return true;
+            }
+
+            if (Equals(first, null) || Equals(second, null))
+            {
+                return false;
+            }
+
             return first.TerranUnit == second.TerranUnit &&
                    first.TerranBuilding == second.TerranBuilding &&
                    first.ProtossUnit == second.ProtossUnit &&

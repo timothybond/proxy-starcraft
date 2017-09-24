@@ -105,6 +105,12 @@ namespace ProxyStarcraft.Client
             switch (command)
             {
                 case BuildCommand buildCommand:
+                    if (translator.IsUpgrade(buildCommand.Building))
+                    {
+                        unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                        break;
+                    }
+
                     var buildingSize = translator.GetBuildingSize(buildCommand);
                     var x = buildCommand.X + buildingSize.X * 0.5f;
                     var y = buildCommand.Y + buildingSize.Y * 0.5f;
