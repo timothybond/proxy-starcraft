@@ -17,7 +17,7 @@ namespace ProxyStarcraft
             this.bots = bots.ToList();
         }
 
-        public IReadOnlyList<Command> Act(GameState gameState)
+        public virtual IReadOnlyList<Command> Act(GameState gameState)
         {
             return bots.SelectMany(bot => bot.Act(gameState)).ToList();
         }
