@@ -16,5 +16,7 @@ namespace ProxyStarcraft.Map
         public Area Area { get; private set; }
 
         public Location Center { get; private set; }
+
+        public IReadOnlyList<Unit> Resources => this.resources;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace ProxyStarcraft
+﻿using ProxyStarcraft.Proto;
+
+namespace ProxyStarcraft
 {
     public abstract class Unit
     {
@@ -49,6 +51,13 @@
             return new MoveCommand(translator.Move, this, x, y);
         }
 
+        public MoveCommand Move(Location location)
+        {
+            var point = (Point2D)location;
+
+            return new MoveCommand(translator.Move, this, point.X, point.Y);
+        }
+
         public AttackCommand Attack(Unit target)
         {
             return new AttackCommand(translator.Attack, this, target);
@@ -57,6 +66,13 @@
         public AttackMoveCommand AttackMove(float x, float y)
         {
             return new AttackMoveCommand(translator.Attack, this, x, y);
+        }
+
+        public AttackMoveCommand AttackMove(Location location)
+        {
+            var point = (Point2D)location;
+
+            return new AttackMoveCommand(translator.Attack, this, point.X, point.Y);
         }
 
         public HarvestCommand Harvest(Unit target)
