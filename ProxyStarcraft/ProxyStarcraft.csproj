@@ -52,6 +52,7 @@
     <Compile Include="LocationTargetCommand.cs" />
     <Compile Include="MapArray.cs" />
     <Compile Include="Map\Area.cs" />
+    <Compile Include="Map\Deposit.cs" />
     <Compile Include="Map\Edge.cs" />
     <Compile Include="Map\Mesa.cs" />
     <Compile Include="Map\Ramp.cs" />

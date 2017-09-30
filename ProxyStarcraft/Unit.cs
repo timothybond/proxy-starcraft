@@ -21,7 +21,13 @@
         /// Determines if the unit is a mineral deposit.
         /// </summary>
         public bool IsMineralDeposit =>
-            this.Raw.Alliance == Proto.Alliance.Neutral && this.Raw.MineralContents > 0; // TODO: Figure out if there is a valid case where this fails
+            this.Raw.Alliance == Proto.Alliance.Neutral && this.RawType.HasMinerals; // TODO: Figure out if there is a valid case where this fails
+
+        /// <summary>
+        /// Determines if the unit is a vespene geyser.
+        /// </summary>
+        public bool IsVespeneGeyser =>
+            this.Raw.Alliance == Proto.Alliance.Neutral && this.RawType.HasVespene; // TODO: Figure out if there is a valid case where this fails
 
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
 
