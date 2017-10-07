@@ -70,5 +70,7 @@ namespace ProxyStarcraft
 
             return results;
         }
+
+        public static implicit operator Point2D(Location location) => new Point2D { X = location.X + 0.5f, Y = location.Y + 0.5f };
     }
 }

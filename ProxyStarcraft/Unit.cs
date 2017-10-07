@@ -1,4 +1,6 @@
-﻿namespace ProxyStarcraft
+﻿using ProxyStarcraft.Proto;
+
+namespace ProxyStarcraft
 {
     public abstract class Unit
     {
@@ -21,7 +23,13 @@
         /// Determines if the unit is a mineral deposit.
         /// </summary>
         public bool IsMineralDeposit =>
-            this.Raw.Alliance == Proto.Alliance.Neutral && this.Raw.MineralContents > 0; // TODO: Figure out if there is a valid case where this fails
+            this.Raw.Alliance == Proto.Alliance.Neutral && this.RawType.HasMinerals; // TODO: Figure out if there is a valid case where this fails
+
+        /// <summary>
+        /// Determines if the unit is a vespene geyser.
+        /// </summary>
+        public bool IsVespeneGeyser =>
+            this.Raw.Alliance == Proto.Alliance.Neutral && this.RawType.HasVespene; // TODO: Figure out if there is a valid case where this fails
 
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
 
@@ -30,6 +38,8 @@
         public float X => this.Raw.Pos.X;
 
         public float Y => this.Raw.Pos.Y;
+
+        public bool IsFinishedBuilding => this.Raw.BuildProgress == 1.0f;
 
         public bool IsBuilding(BuildingOrUnitType buildingOrUnitType)
         {
@@ -41,6 +51,13 @@
             return new MoveCommand(translator.Move, this, x, y);
         }
 
+        public MoveCommand Move(Location location)
+        {
+            var point = (Point2D)location;
+
+            return new MoveCommand(translator.Move, this, point.X, point.Y);
+        }
+
         public AttackCommand Attack(Unit target)
         {
             return new AttackCommand(translator.Attack, this, target);
@@ -49,6 +66,13 @@
         public AttackMoveCommand AttackMove(float x, float y)
         {
             return new AttackMoveCommand(translator.Attack, this, x, y);
+        }
+
+        public AttackMoveCommand AttackMove(Location location)
+        {
+            var point = (Point2D)location;
+
+            return new AttackMoveCommand(translator.Attack, this, point.X, point.Y);
         }
 
         public HarvestCommand Harvest(Unit target)

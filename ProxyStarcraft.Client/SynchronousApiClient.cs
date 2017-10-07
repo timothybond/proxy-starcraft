@@ -64,7 +64,9 @@ namespace ProxyStarcraft.Client
             
             var response = Call(new Request { Observation = new RequestObservation() });
 
-            mapData = new MapData(mapData, response.Observation.Observation.RawData.Units, translator, unitTypes);
+            var units = response.Observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
+
+            mapData = new MapData(mapData, units, translator, unitTypes);
             
             return new GameState(gameInfo, response.Observation, mapData, unitTypes, abilities, translator);
         }

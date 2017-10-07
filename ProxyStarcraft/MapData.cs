@@ -17,7 +17,7 @@ namespace ProxyStarcraft
 
         private MapArray<byte> heightGrid;
 
-        private MapArray<Proto.Unit> structuresAndDeposits;
+        private MapArray<Unit> structuresAndDeposits;
 
         private MapArray<byte> areaGrid;
 
@@ -30,6 +30,8 @@ namespace ProxyStarcraft
 
         private List<Area> areas;
 
+        private List<Deposit> deposits;
+
         public MapData(StartRaw startingData)
         {
             this.Raw = startingData;
@@ -39,16 +41,17 @@ namespace ProxyStarcraft
             placementGrid = new MapArray<byte>(startingData.PlacementGrid.Data.ToByteArray(), this.Size);
             heightGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
 
-            this.structuresAndDeposits = new MapArray<Proto.Unit>(this.Size);
+            this.structuresAndDeposits = new MapArray<Unit>(this.Size);
 
             GeneratePadding(startingData);
 
             this.areas = GetAreas();
+            this.deposits = new List<Deposit>();
 
             this.structurePadding = new MapArray<bool>(this.Size);
         }
 
-        public MapData(MapData prior, RepeatedField<Proto.Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes)
+        public MapData(MapData prior, List<Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes)
         {
             this.Raw = prior.Raw;
             this.Size = prior.Size;
@@ -59,17 +62,19 @@ namespace ProxyStarcraft
             this.areaGrid = prior.areaGrid;
             this.areas = prior.areas;
 
-            this.structuresAndDeposits = new MapArray<Proto.Unit>(this.Size);
+            this.deposits = GetDeposits(units);
+
+            this.structuresAndDeposits = new MapArray<Unit>(this.Size);
             this.structurePadding = new MapArray<bool>(this.Size);
 
             foreach (var unit in units)
             {
-                var unitType = unitTypes[unit.UnitType];
+                var unitType = unitTypes[unit.Raw.UnitType];
                 if (unitType.Attributes.Contains(Proto.Attribute.Structure))
                 {
                     var structureSize = translator.GetStructureSize(unit);
-                    var originX = (int)Math.Round(unit.Pos.X - structureSize.X * 0.5f);
-                    var originY = (int)Math.Round(unit.Pos.Y - structureSize.Y * 0.5f);
+                    var originX = (int)Math.Round(unit.X - structureSize.X * 0.5f);
+                    var originY = (int)Math.Round(unit.Y - structureSize.Y * 0.5f);
 
                     for (var x = originX; x < originX + structureSize.X; x++)
                     {
@@ -96,6 +101,8 @@ namespace ProxyStarcraft
         public MapArray<byte> AreaGrid => this.areaGrid;
 
         public IReadOnlyList<Area> Areas => this.areas;
+
+        public IReadOnlyList<Deposit> Deposits => this.deposits;
         
         public bool CanTraverse(Location location)
         {
@@ -293,6 +300,53 @@ namespace ProxyStarcraft
             }
 
             return mesas.Values.Concat<Area>(ramps.Values).ToList();
+        }
+
+        /// <summary>
+        /// Builds a list of resource deposits. Requires that the 'areas' and 'areaGrid' fields be set.
+        /// </summary>
+        private List<Deposit> GetDeposits(IReadOnlyList<Unit> units)
+        {
+            if (this.areas == null || this.areaGrid == null)
+            {
+                throw new InvalidOperationException();
+            }
+            
+            var resourcesByArea = units.Where(u => u.IsMineralDeposit || u.IsVespeneGeyser)
+                                       .GroupBy(m => areaGrid[(int)m.X, (int)m.Y]);
+
+            var deposits = new List<Deposit>();
+
+            foreach (var resourceArea in resourcesByArea)
+            {
+                var resources = resourceArea.ToList();
+
+                while (resources.Count > 0)
+                {
+                    var depositResources = new List<Unit>();
+                    var nextResource = resources[0];
+                    resources.RemoveAt(0);
+                    
+                    while (nextResource != null)
+                    {
+                        depositResources.Add(nextResource);
+                        resources.Remove(nextResource);
+
+                        nextResource = resources.FirstOrDefault(r => depositResources.Any(d => r.GetDistance(d) < 5f));
+                    }
+
+                    var area = this.areas.First(a => a.Id == areaGrid[(int)depositResources[0].X, (int)depositResources[0].Y]);
+                    var center = new Location
+                    {
+                        X = (int)(depositResources.Sum(u => u.X) / depositResources.Count),
+                        Y = (int)(depositResources.Sum(u => u.Y) / depositResources.Count)
+                    };
+
+                    deposits.Add(new Deposit(area, center, depositResources));
+                }
+            }
+
+            return deposits;
         }
 
         /// <summary>
