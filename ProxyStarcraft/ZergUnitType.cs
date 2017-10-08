@@ -4,6 +4,7 @@
     {
         Unspecified = 0,
         Larva,
+        Cocoon,
         Drone,
         Queen,
         Zergling,
