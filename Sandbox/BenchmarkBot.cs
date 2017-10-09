@@ -325,7 +325,7 @@ namespace Sandbox
         private BuildCommand GetBuildCommand(TerranUnit unit, TerranBuildingType building, GameState gameState)
         {
             var buildLocation = this.placementStrategy.GetPlacement(building, gameState);
-            return unit.Build(building, buildLocation.X, buildLocation.Y);
+            return unit.Build(building, buildLocation);
         }
     }
 }

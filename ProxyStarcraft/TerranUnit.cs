@@ -20,9 +20,9 @@ namespace ProxyStarcraft
 
         public override BuildingOrUnitType Type => this.TerranUnitType;
 
-        public BuildCommand Build(TerranBuildingType building, int x, int y)
+        public BuildCommand Build(TerranBuildingType building, IBuildLocation location)
         {
-            return base.Build(building, x, y);
+            return base.Build(building, location);
         }
     }
 }

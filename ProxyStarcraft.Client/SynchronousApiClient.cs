@@ -119,16 +119,27 @@ namespace ProxyStarcraft.Client
             switch (command)
             {
                 case BuildCommand buildCommand:
-                    if (translator.IsUpgrade(buildCommand.Building))
+                    switch (buildCommand.BuildLocation)
                     {
-                        unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
-                        break;
+                        case StandardBuildLocation standardLocation:
+                            var buildingSize = translator.GetBuildingSize(buildCommand);
+                            var x = standardLocation.Location.X + buildingSize.X * 0.5f;
+                            var y = standardLocation.Location.Y + buildingSize.Y * 0.5f;
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
+                            break;
+                        case VespeneBuildLocation vespeneLocation:
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetUnitTag = vespeneLocation.VespeneGeyser.Tag };
+                            break;
+                        case UpgradeBuildLocation upgradeLocation:
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                            break;
+                        case AddOnBuildLocation addOnLocation:
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                            break;
+                        default:
+                            throw new NotImplementedException();
                     }
 
-                    var buildingSize = translator.GetBuildingSize(buildCommand);
-                    var x = buildCommand.X + buildingSize.X * 0.5f;
-                    var y = buildCommand.Y + buildingSize.Y * 0.5f;
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
                     break;
                 case LocationTargetCommand locationTargetCommand:
                     unitCommand = new ActionRawUnitCommand

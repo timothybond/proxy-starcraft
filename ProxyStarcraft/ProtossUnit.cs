@@ -20,9 +20,9 @@ namespace ProxyStarcraft
 
         public override BuildingOrUnitType Type => this.ProtossUnitType;
 
-        public BuildCommand Build(ProtossBuildingType building, int x, int y)
+        public BuildCommand Build(ProtossBuildingType building, IBuildLocation location)
         {
-            return base.Build(building, x, y);
+            return base.Build(building, location);
         }
     }
 }

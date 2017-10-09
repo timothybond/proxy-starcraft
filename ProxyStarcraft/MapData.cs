@@ -348,6 +348,13 @@ namespace ProxyStarcraft
 
             return deposits;
         }
+        
+        public List<Deposit> GetControlledDeposits(List<Building> bases)
+        {
+            // TODO: Allow less-orthodox base placement? This assumes they will always be at the center of the minerals, basically.
+            // TODO: Stop using magic numbers for "very close to" everywhere.
+            return this.Deposits.Where(d => bases.Any(b => b.GetDistance(d.Center) < 10f)).ToList();
+        }
 
         /// <summary>
         /// Determines which areas are neighbors of other areas.
