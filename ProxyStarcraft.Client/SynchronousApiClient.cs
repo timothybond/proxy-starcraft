@@ -64,6 +64,18 @@ namespace ProxyStarcraft.Client
             
             var response = Call(new Request { Observation = new RequestObservation() });
 
+            // Sometimes this isn't giving me an Observation back (and it gives the error "Request missing command"). No idea why.
+            if (response.Observation == null)
+            {
+                int retries = 3;
+
+                while (retries > 0 && response.Observation == null)
+                {
+                    response = Call(new Request { Observation = new RequestObservation() });
+                    retries--;
+                }
+            }
+            
             var units = response.Observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
 
             mapData = new MapData(mapData, units, translator, unitTypes);
