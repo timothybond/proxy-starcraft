@@ -118,7 +118,7 @@ namespace Sandbox
 
             if (idleLarva.Any())
             {
-                if (pool?.IsFinishedBuilding == true)
+                if (pool?.IsBuilt == true)
                 {
                     BuildAllLings(gameState, idleLarva, commands);
                 }
@@ -336,10 +336,11 @@ namespace Sandbox
 
             commands.Add(GetBuildCommand(worker, building, gameState));
         }
+
         private BuildCommand GetBuildCommand(ZergUnit unit, ZergBuildingType building, GameState gameState)
         {
             var buildLocation = this.placementStrategy.GetPlacement(building, gameState); // TODO: Stop Hatcheries getting placed on mineral deposits.
-            return unit.Build(building, buildLocation.X, buildLocation.Y);
+            return unit.Build(building, buildLocation);
         }
     }
 }
