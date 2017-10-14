@@ -28,7 +28,9 @@ namespace Sandbox
         private float primaryHatcheryX;
         private float primaryHatcheryY;
         private int sleep = 0;
-        
+
+        public Race Race => Race.Zerg;
+
         public IReadOnlyList<Command> Act(GameState gameState)
         {
             var commands = new List<Command>();
