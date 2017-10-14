@@ -13,9 +13,8 @@ namespace Sandbox
 {
     class Program
     {
-        // TODO: Fix hardcoded path
+        // TODO: Fix hardcoded path - get from $USER\Documents\Starcraft II\ExecuteInfo.txt
         private const string BASE_GAME_PATH = "D:/Program Files (x86)/StarCraft II";
-
         private const string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Versions/Base58400/SC2_x64.exe"; //"/Support64/SC2Switcher_x64.exe";
         private const string GAME_EXECUTABLE_ARGS_BASE = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -displayMode 0";
         private const string GAME_EXECUTABLE_ARGS_PLAYER1 = GAME_EXECUTABLE_ARGS_BASE + " -port 5000";
@@ -195,7 +194,11 @@ namespace Sandbox
             // 2. Find a better way to spawn the game process directly, so we don't
             //    have to get a second process that this one spawns
             // 3. Check if there's already a waiting client so we can reuse it
-            using (Process gameProcess = Process.Start(GAME_EXECUTABLE_PATH, GAME_EXECUTABLE_ARGS_PLAYER1))
+            var info = new ProcessStartInfo(GAME_EXECUTABLE_PATH);
+            info.WorkingDirectory = BASE_GAME_PATH + "/Support64";
+            info.Arguments = GAME_EXECUTABLE_ARGS_PLAYER1;
+
+            using (Process gameProcess = Process.Start(info))
             {
                 using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
                 {
