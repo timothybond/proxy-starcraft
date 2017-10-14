@@ -26,7 +26,7 @@ namespace ProxyStarcraft.Proto {
             "IogBChdPYnNlcnZhdGlvbkZlYXR1cmVMYXllchIuCgdyZW5kZXJzGAEgASgL",
             "Mh0uU0MyQVBJUHJvdG9jb2wuRmVhdHVyZUxheWVycxI9Cg9taW5pbWFwX3Jl",
             "bmRlcnMYAiABKAsyJC5TQzJBUElQcm90b2NvbC5GZWF0dXJlTGF5ZXJzTWlu",
-            "aW1hcCK2BQoNRmVhdHVyZUxheWVycxItCgpoZWlnaHRfbWFwGAEgASgLMhku",
+            "aW1hcCLPBgoNRmVhdHVyZUxheWVycxItCgpoZWlnaHRfbWFwGAEgASgLMhku",
             "U0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhEjEKDnZpc2liaWxpdHlfbWFwGAIg",
             "ASgLMhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhEigKBWNyZWVwGAMgASgL",
             "MhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhEigKBXBvd2VyGAQgASgLMhku",
@@ -37,48 +37,52 @@ namespace ProxyStarcraft.Proto {
             "GAggASgLMhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhEjgKFXVuaXRfaGl0",
             "X3BvaW50c19yYXRpbxgRIAEoCzIZLlNDMkFQSVByb3RvY29sLkltYWdlRGF0",
             "YRIuCgt1bml0X2VuZXJneRgJIAEoCzIZLlNDMkFQSVByb3RvY29sLkltYWdl",
-            "RGF0YRIvCgx1bml0X3NoaWVsZHMYCiABKAsyGS5TQzJBUElQcm90b2NvbC5J",
-            "bWFnZURhdGESMgoPcGxheWVyX3JlbGF0aXZlGAsgASgLMhkuU0MyQVBJUHJv",
-            "dG9jb2wuSW1hZ2VEYXRhEjIKD3VuaXRfZGVuc2l0eV9hYRgOIAEoCzIZLlND",
-            "MkFQSVByb3RvY29sLkltYWdlRGF0YRIvCgx1bml0X2RlbnNpdHkYDyABKAsy",
-            "GS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGEiigMKFEZlYXR1cmVMYXllcnNN",
-            "aW5pbWFwEi0KCmhlaWdodF9tYXAYASABKAsyGS5TQzJBUElQcm90b2NvbC5J",
-            "bWFnZURhdGESMQoOdmlzaWJpbGl0eV9tYXAYAiABKAsyGS5TQzJBUElQcm90",
-            "b2NvbC5JbWFnZURhdGESKAoFY3JlZXAYAyABKAsyGS5TQzJBUElQcm90b2Nv",
-            "bC5JbWFnZURhdGESKQoGY2FtZXJhGAQgASgLMhkuU0MyQVBJUHJvdG9jb2wu",
-            "SW1hZ2VEYXRhEiwKCXBsYXllcl9pZBgFIAEoCzIZLlNDMkFQSVByb3RvY29s",
-            "LkltYWdlRGF0YRIyCg9wbGF5ZXJfcmVsYXRpdmUYBiABKAsyGS5TQzJBUElQ",
-            "cm90b2NvbC5JbWFnZURhdGESKwoIc2VsZWN0ZWQYByABKAsyGS5TQzJBUElQ",
-            "cm90b2NvbC5JbWFnZURhdGESLAoJdW5pdF90eXBlGAggASgLMhkuU0MyQVBJ",
-            "UHJvdG9jb2wuSW1hZ2VEYXRhImcKEU9ic2VydmF0aW9uUmVuZGVyEiYKA21h",
-            "cBgBIAEoCzIZLlNDMkFQSVByb3RvY29sLkltYWdlRGF0YRIqCgdtaW5pbWFw",
-            "GAIgASgLMhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhIrsCCg1BY3Rpb25T",
-            "cGF0aWFsEkAKDHVuaXRfY29tbWFuZBgBIAEoCzIoLlNDMkFQSVByb3RvY29s",
-            "LkFjdGlvblNwYXRpYWxVbml0Q29tbWFuZEgAEj4KC2NhbWVyYV9tb3ZlGAIg",
-            "ASgLMicuU0MyQVBJUHJvdG9jb2wuQWN0aW9uU3BhdGlhbENhbWVyYU1vdmVI",
-            "ABJPChR1bml0X3NlbGVjdGlvbl9wb2ludBgDIAEoCzIvLlNDMkFQSVByb3Rv",
-            "Y29sLkFjdGlvblNwYXRpYWxVbml0U2VsZWN0aW9uUG9pbnRIABJNChN1bml0",
-            "X3NlbGVjdGlvbl9yZWN0GAQgASgLMi4uU0MyQVBJUHJvdG9jb2wuQWN0aW9u",
-            "U3BhdGlhbFVuaXRTZWxlY3Rpb25SZWN0SABCCAoGYWN0aW9uIr4BChhBY3Rp",
-            "b25TcGF0aWFsVW5pdENvbW1hbmQSEgoKYWJpbGl0eV9pZBgBIAEoBRI1ChN0",
-            "YXJnZXRfc2NyZWVuX2Nvb3JkGAIgASgLMhYuU0MyQVBJUHJvdG9jb2wuUG9p",
-            "bnRJSAASNgoUdGFyZ2V0X21pbmltYXBfY29vcmQYAyABKAsyFi5TQzJBUElQ",
-            "cm90b2NvbC5Qb2ludElIABIVCg1xdWV1ZV9jb21tYW5kGAQgASgIQggKBnRh",
-            "cmdldCJJChdBY3Rpb25TcGF0aWFsQ2FtZXJhTW92ZRIuCg5jZW50ZXJfbWlu",
-            "aW1hcBgBIAEoCzIWLlNDMkFQSVByb3RvY29sLlBvaW50SSLrAQofQWN0aW9u",
-            "U3BhdGlhbFVuaXRTZWxlY3Rpb25Qb2ludBI2ChZzZWxlY3Rpb25fc2NyZWVu",
-            "X2Nvb3JkGAEgASgLMhYuU0MyQVBJUHJvdG9jb2wuUG9pbnRJEkIKBHR5cGUY",
-            "AiABKA4yNC5TQzJBUElQcm90b2NvbC5BY3Rpb25TcGF0aWFsVW5pdFNlbGVj",
-            "dGlvblBvaW50LlR5cGUiTAoEVHlwZRIPCgtJbnZhbGlkVHlwZRAAEgoKBlNl",
-            "bGVjdBABEgoKBlRvZ2dsZRACEgsKB0FsbFR5cGUQAxIOCgpBZGRBbGxUeXBl",
-            "EAQicwoeQWN0aW9uU3BhdGlhbFVuaXRTZWxlY3Rpb25SZWN0EjoKFnNlbGVj",
-            "dGlvbl9zY3JlZW5fY29vcmQYASADKAsyGi5TQzJBUElQcm90b2NvbC5SZWN0",
-            "YW5nbGVJEhUKDXNlbGVjdGlvbl9hZGQYAiABKAhiBnByb3RvMw=="));
+            "RGF0YRI0ChF1bml0X2VuZXJneV9yYXRpbxgSIAEoCzIZLlNDMkFQSVByb3Rv",
+            "Y29sLkltYWdlRGF0YRIvCgx1bml0X3NoaWVsZHMYCiABKAsyGS5TQzJBUElQ",
+            "cm90b2NvbC5JbWFnZURhdGESNQoSdW5pdF9zaGllbGRzX3JhdGlvGBMgASgL",
+            "MhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhEjIKD3BsYXllcl9yZWxhdGl2",
+            "ZRgLIAEoCzIZLlNDMkFQSVByb3RvY29sLkltYWdlRGF0YRIyCg91bml0X2Rl",
+            "bnNpdHlfYWEYDiABKAsyGS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGESLwoM",
+            "dW5pdF9kZW5zaXR5GA8gASgLMhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRh",
+            "EioKB2VmZmVjdHMYFCABKAsyGS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGEi",
+            "igMKFEZlYXR1cmVMYXllcnNNaW5pbWFwEi0KCmhlaWdodF9tYXAYASABKAsy",
+            "GS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGESMQoOdmlzaWJpbGl0eV9tYXAY",
+            "AiABKAsyGS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGESKAoFY3JlZXAYAyAB",
+            "KAsyGS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGESKQoGY2FtZXJhGAQgASgL",
+            "MhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhEiwKCXBsYXllcl9pZBgFIAEo",
+            "CzIZLlNDMkFQSVByb3RvY29sLkltYWdlRGF0YRIyCg9wbGF5ZXJfcmVsYXRp",
+            "dmUYBiABKAsyGS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGESKwoIc2VsZWN0",
+            "ZWQYByABKAsyGS5TQzJBUElQcm90b2NvbC5JbWFnZURhdGESLAoJdW5pdF90",
+            "eXBlGAggASgLMhkuU0MyQVBJUHJvdG9jb2wuSW1hZ2VEYXRhImcKEU9ic2Vy",
+            "dmF0aW9uUmVuZGVyEiYKA21hcBgBIAEoCzIZLlNDMkFQSVByb3RvY29sLklt",
+            "YWdlRGF0YRIqCgdtaW5pbWFwGAIgASgLMhkuU0MyQVBJUHJvdG9jb2wuSW1h",
+            "Z2VEYXRhIrsCCg1BY3Rpb25TcGF0aWFsEkAKDHVuaXRfY29tbWFuZBgBIAEo",
+            "CzIoLlNDMkFQSVByb3RvY29sLkFjdGlvblNwYXRpYWxVbml0Q29tbWFuZEgA",
+            "Ej4KC2NhbWVyYV9tb3ZlGAIgASgLMicuU0MyQVBJUHJvdG9jb2wuQWN0aW9u",
+            "U3BhdGlhbENhbWVyYU1vdmVIABJPChR1bml0X3NlbGVjdGlvbl9wb2ludBgD",
+            "IAEoCzIvLlNDMkFQSVByb3RvY29sLkFjdGlvblNwYXRpYWxVbml0U2VsZWN0",
+            "aW9uUG9pbnRIABJNChN1bml0X3NlbGVjdGlvbl9yZWN0GAQgASgLMi4uU0My",
+            "QVBJUHJvdG9jb2wuQWN0aW9uU3BhdGlhbFVuaXRTZWxlY3Rpb25SZWN0SABC",
+            "CAoGYWN0aW9uIr4BChhBY3Rpb25TcGF0aWFsVW5pdENvbW1hbmQSEgoKYWJp",
+            "bGl0eV9pZBgBIAEoBRI1ChN0YXJnZXRfc2NyZWVuX2Nvb3JkGAIgASgLMhYu",
+            "U0MyQVBJUHJvdG9jb2wuUG9pbnRJSAASNgoUdGFyZ2V0X21pbmltYXBfY29v",
+            "cmQYAyABKAsyFi5TQzJBUElQcm90b2NvbC5Qb2ludElIABIVCg1xdWV1ZV9j",
+            "b21tYW5kGAQgASgIQggKBnRhcmdldCJJChdBY3Rpb25TcGF0aWFsQ2FtZXJh",
+            "TW92ZRIuCg5jZW50ZXJfbWluaW1hcBgBIAEoCzIWLlNDMkFQSVByb3RvY29s",
+            "LlBvaW50SSLrAQofQWN0aW9uU3BhdGlhbFVuaXRTZWxlY3Rpb25Qb2ludBI2",
+            "ChZzZWxlY3Rpb25fc2NyZWVuX2Nvb3JkGAEgASgLMhYuU0MyQVBJUHJvdG9j",
+            "b2wuUG9pbnRJEkIKBHR5cGUYAiABKA4yNC5TQzJBUElQcm90b2NvbC5BY3Rp",
+            "b25TcGF0aWFsVW5pdFNlbGVjdGlvblBvaW50LlR5cGUiTAoEVHlwZRIPCgtJ",
+            "bnZhbGlkVHlwZRAAEgoKBlNlbGVjdBABEgoKBlRvZ2dsZRACEgsKB0FsbFR5",
+            "cGUQAxIOCgpBZGRBbGxUeXBlEAQicwoeQWN0aW9uU3BhdGlhbFVuaXRTZWxl",
+            "Y3Rpb25SZWN0EjoKFnNlbGVjdGlvbl9zY3JlZW5fY29vcmQYASADKAsyGi5T",
+            "QzJBUElQcm90b2NvbC5SZWN0YW5nbGVJEhUKDXNlbGVjdGlvbl9hZGQYAiAB",
+            "KAhiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ObservationFeatureLayer), global::ProxyStarcraft.Proto.ObservationFeatureLayer.Parser, new[]{ "Renders", "MinimapRenders" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.FeatureLayers), global::ProxyStarcraft.Proto.FeatureLayers.Parser, new[]{ "HeightMap", "VisibilityMap", "Creep", "Power", "PlayerId", "UnitType", "Selected", "UnitHitPoints", "UnitHitPointsRatio", "UnitEnergy", "UnitShields", "PlayerRelative", "UnitDensityAa", "UnitDensity" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.FeatureLayers), global::ProxyStarcraft.Proto.FeatureLayers.Parser, new[]{ "HeightMap", "VisibilityMap", "Creep", "Power", "PlayerId", "UnitType", "Selected", "UnitHitPoints", "UnitHitPointsRatio", "UnitEnergy", "UnitEnergyRatio", "UnitShields", "UnitShieldsRatio", "PlayerRelative", "UnitDensityAa", "UnitDensity", "Effects" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.FeatureLayersMinimap), global::ProxyStarcraft.Proto.FeatureLayersMinimap.Parser, new[]{ "HeightMap", "VisibilityMap", "Creep", "Camera", "PlayerId", "PlayerRelative", "Selected", "UnitType" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ObservationRender), global::ProxyStarcraft.Proto.ObservationRender.Parser, new[]{ "Map", "Minimap" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionSpatial), global::ProxyStarcraft.Proto.ActionSpatial.Parser, new[]{ "UnitCommand", "CameraMove", "UnitSelectionPoint", "UnitSelectionRect" }, new[]{ "Action" }, null, null),
@@ -283,10 +287,13 @@ namespace ProxyStarcraft.Proto {
       UnitHitPoints = other.unitHitPoints_ != null ? other.UnitHitPoints.Clone() : null;
       UnitHitPointsRatio = other.unitHitPointsRatio_ != null ? other.UnitHitPointsRatio.Clone() : null;
       UnitEnergy = other.unitEnergy_ != null ? other.UnitEnergy.Clone() : null;
+      UnitEnergyRatio = other.unitEnergyRatio_ != null ? other.UnitEnergyRatio.Clone() : null;
       UnitShields = other.unitShields_ != null ? other.UnitShields.Clone() : null;
+      UnitShieldsRatio = other.unitShieldsRatio_ != null ? other.UnitShieldsRatio.Clone() : null;
       PlayerRelative = other.playerRelative_ != null ? other.PlayerRelative.Clone() : null;
       UnitDensityAa = other.unitDensityAa_ != null ? other.UnitDensityAa.Clone() : null;
       UnitDensity = other.unitDensity_ != null ? other.UnitDensity.Clone() : null;
+      Effects = other.effects_ != null ? other.Effects.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -434,6 +441,20 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "unit_energy_ratio" field.</summary>
+    public const int UnitEnergyRatioFieldNumber = 18;
+    private global::ProxyStarcraft.Proto.ImageData unitEnergyRatio_;
+    /// <summary>
+    /// uint8. Ratio of current energy to max energy. [0%, 100%] encoded into [0, 255].
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ImageData UnitEnergyRatio {
+      get { return unitEnergyRatio_; }
+      set {
+        unitEnergyRatio_ = value;
+      }
+    }
+
     /// <summary>Field number for the "unit_shields" field.</summary>
     public const int UnitShieldsFieldNumber = 10;
     private global::ProxyStarcraft.Proto.ImageData unitShields_;
@@ -445,6 +466,20 @@ namespace ProxyStarcraft.Proto {
       get { return unitShields_; }
       set {
         unitShields_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unit_shields_ratio" field.</summary>
+    public const int UnitShieldsRatioFieldNumber = 19;
+    private global::ProxyStarcraft.Proto.ImageData unitShieldsRatio_;
+    /// <summary>
+    /// uint8. Ratio of current shields to max shields. [0%, 100%] encoded into [0, 255].
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ImageData UnitShieldsRatio {
+      get { return unitShieldsRatio_; }
+      set {
+        unitShieldsRatio_ = value;
       }
     }
 
@@ -490,6 +525,20 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "effects" field.</summary>
+    public const int EffectsFieldNumber = 20;
+    private global::ProxyStarcraft.Proto.ImageData effects_;
+    /// <summary>
+    /// uint8. Visuals of persistent abilities. (eg. Psistorm)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ImageData Effects {
+      get { return effects_; }
+      set {
+        effects_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as FeatureLayers);
@@ -513,10 +562,13 @@ namespace ProxyStarcraft.Proto {
       if (!object.Equals(UnitHitPoints, other.UnitHitPoints)) return false;
       if (!object.Equals(UnitHitPointsRatio, other.UnitHitPointsRatio)) return false;
       if (!object.Equals(UnitEnergy, other.UnitEnergy)) return false;
+      if (!object.Equals(UnitEnergyRatio, other.UnitEnergyRatio)) return false;
       if (!object.Equals(UnitShields, other.UnitShields)) return false;
+      if (!object.Equals(UnitShieldsRatio, other.UnitShieldsRatio)) return false;
       if (!object.Equals(PlayerRelative, other.PlayerRelative)) return false;
       if (!object.Equals(UnitDensityAa, other.UnitDensityAa)) return false;
       if (!object.Equals(UnitDensity, other.UnitDensity)) return false;
+      if (!object.Equals(Effects, other.Effects)) return false;
       return true;
     }
 
@@ -533,10 +585,13 @@ namespace ProxyStarcraft.Proto {
       if (unitHitPoints_ != null) hash ^= UnitHitPoints.GetHashCode();
       if (unitHitPointsRatio_ != null) hash ^= UnitHitPointsRatio.GetHashCode();
       if (unitEnergy_ != null) hash ^= UnitEnergy.GetHashCode();
+      if (unitEnergyRatio_ != null) hash ^= UnitEnergyRatio.GetHashCode();
       if (unitShields_ != null) hash ^= UnitShields.GetHashCode();
+      if (unitShieldsRatio_ != null) hash ^= UnitShieldsRatio.GetHashCode();
       if (playerRelative_ != null) hash ^= PlayerRelative.GetHashCode();
       if (unitDensityAa_ != null) hash ^= UnitDensityAa.GetHashCode();
       if (unitDensity_ != null) hash ^= UnitDensity.GetHashCode();
+      if (effects_ != null) hash ^= Effects.GetHashCode();
       return hash;
     }
 
@@ -603,6 +658,18 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(138, 1);
         output.WriteMessage(UnitHitPointsRatio);
       }
+      if (unitEnergyRatio_ != null) {
+        output.WriteRawTag(146, 1);
+        output.WriteMessage(UnitEnergyRatio);
+      }
+      if (unitShieldsRatio_ != null) {
+        output.WriteRawTag(154, 1);
+        output.WriteMessage(UnitShieldsRatio);
+      }
+      if (effects_ != null) {
+        output.WriteRawTag(162, 1);
+        output.WriteMessage(Effects);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -638,8 +705,14 @@ namespace ProxyStarcraft.Proto {
       if (unitEnergy_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnitEnergy);
       }
+      if (unitEnergyRatio_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnitEnergyRatio);
+      }
       if (unitShields_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnitShields);
+      }
+      if (unitShieldsRatio_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnitShieldsRatio);
       }
       if (playerRelative_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerRelative);
@@ -649,6 +722,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (unitDensity_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnitDensity);
+      }
+      if (effects_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Effects);
       }
       return size;
     }
@@ -718,11 +794,23 @@ namespace ProxyStarcraft.Proto {
         }
         UnitEnergy.MergeFrom(other.UnitEnergy);
       }
+      if (other.unitEnergyRatio_ != null) {
+        if (unitEnergyRatio_ == null) {
+          unitEnergyRatio_ = new global::ProxyStarcraft.Proto.ImageData();
+        }
+        UnitEnergyRatio.MergeFrom(other.UnitEnergyRatio);
+      }
       if (other.unitShields_ != null) {
         if (unitShields_ == null) {
           unitShields_ = new global::ProxyStarcraft.Proto.ImageData();
         }
         UnitShields.MergeFrom(other.UnitShields);
+      }
+      if (other.unitShieldsRatio_ != null) {
+        if (unitShieldsRatio_ == null) {
+          unitShieldsRatio_ = new global::ProxyStarcraft.Proto.ImageData();
+        }
+        UnitShieldsRatio.MergeFrom(other.UnitShieldsRatio);
       }
       if (other.playerRelative_ != null) {
         if (playerRelative_ == null) {
@@ -741,6 +829,12 @@ namespace ProxyStarcraft.Proto {
           unitDensity_ = new global::ProxyStarcraft.Proto.ImageData();
         }
         UnitDensity.MergeFrom(other.UnitDensity);
+      }
+      if (other.effects_ != null) {
+        if (effects_ == null) {
+          effects_ = new global::ProxyStarcraft.Proto.ImageData();
+        }
+        Effects.MergeFrom(other.Effects);
       }
     }
 
@@ -848,6 +942,27 @@ namespace ProxyStarcraft.Proto {
               unitHitPointsRatio_ = new global::ProxyStarcraft.Proto.ImageData();
             }
             input.ReadMessage(unitHitPointsRatio_);
+            break;
+          }
+          case 146: {
+            if (unitEnergyRatio_ == null) {
+              unitEnergyRatio_ = new global::ProxyStarcraft.Proto.ImageData();
+            }
+            input.ReadMessage(unitEnergyRatio_);
+            break;
+          }
+          case 154: {
+            if (unitShieldsRatio_ == null) {
+              unitShieldsRatio_ = new global::ProxyStarcraft.Proto.ImageData();
+            }
+            input.ReadMessage(unitShieldsRatio_);
+            break;
+          }
+          case 162: {
+            if (effects_ == null) {
+              effects_ = new global::ProxyStarcraft.Proto.ImageData();
+            }
+            input.ReadMessage(effects_);
             break;
           }
         }
