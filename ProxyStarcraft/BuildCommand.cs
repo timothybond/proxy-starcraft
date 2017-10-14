@@ -2,24 +2,20 @@
 {
     public class BuildCommand : Command
     {
-        private BuildCommand(Unit unit, int x, int y, uint abilityId) : base(abilityId, unit)
+        private BuildCommand(Unit unit, IBuildLocation buildLocation, uint abilityId) : base(abilityId, unit)
         {
-            this.X = x;
-            this.Y = y;
+            this.BuildLocation = buildLocation;
         }
 
         /// <summary>
-        /// Commands a unit to construct the specified building at the given location
-        /// (specified as the bottom-left square of the building).
+        /// Commands a unit to construct the specified building at the given location.
         /// </summary>
-        public BuildCommand(Unit unit, BuildingType building, int x, int y, uint abilityId) : this(unit, x, y, abilityId)
+        public BuildCommand(Unit unit, BuildingType building, IBuildLocation buildLocation, uint abilityId) : this(unit, buildLocation, abilityId)
         {
             this.Building = building;
         }
         
-        public int X { get; set; }
-
-        public int Y { get; set; }
+        public IBuildLocation BuildLocation { get; private set; }
 
         public BuildingType Building { get; private set; }
     }

@@ -4,6 +4,8 @@ namespace ProxyStarcraft
 {
     public interface IBot
     {
+        Proto.Race Race { get; }
+
         IReadOnlyList<Command> Act(GameState gameState);
     }
 }

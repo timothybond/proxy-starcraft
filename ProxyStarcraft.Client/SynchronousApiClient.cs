@@ -7,6 +7,7 @@ using ProxyStarcraft.Proto;
 using WebSocket4Net;
 using System.Linq;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ProxyStarcraft.Client
 {
@@ -18,17 +19,27 @@ namespace ProxyStarcraft.Client
     /// </summary>
     public class SynchronousApiClient : IDisposable
     {
+        // TODO: Stop hardcoding port numbers
+        private const int SHARED_PORT = 5500;
+        private const int CLIENT_BASE_PORT = 5501;
+        private const int CLIENT_GAME_PORT = 5502;
+        private const int SERVER_BASE_PORT = 5503;
+        private const int SERVER_GAME_PORT = 5504;
+
+        private const int JOIN_GAME_TIMEOUT_MS = 120000;
+
         // Unique action IDs. May change. Should get from Abilities dictionary instead.
         private const int Move = 16;
         private const int Attack = 23;
 
-        private static object socketLock = new object();
+        private object socketLock = new object();
 
         private WebSocket webSocket;
 
         private bool connected = false;
-        private bool waiting = false;
         private int connectionRetries = 4;
+
+        private AutoResetEvent receivedEvent = new AutoResetEvent(false);
 
         private Response socketResponse;
 
@@ -54,9 +65,9 @@ namespace ProxyStarcraft.Client
 
         public GameState GetGameState()
         {
-            gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }).GameInfo;
-            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Data.Units.ToDictionary(unitType => unitType.UnitId);
-            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }).Data.Abilities.ToDictionary(ability => ability.AbilityId);
+            gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }).Result.GameInfo;
+            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Result.Data.Units.ToDictionary(unitType => unitType.UnitId);
+            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }).Result.Data.Abilities.ToDictionary(ability => ability.AbilityId);
 
             translator = translator ?? new Translator(abilities, unitTypes);
 
@@ -64,11 +75,23 @@ namespace ProxyStarcraft.Client
             
             var response = Call(new Request { Observation = new RequestObservation() });
 
-            var units = response.Observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
+            // Sometimes this isn't giving me an Observation back (and it gives the error "Request missing command"). No idea why.
+            if (response.Result.Observation == null)
+            {
+                int retries = 3;
+
+                while (retries > 0 && response.Result.Observation == null)
+                {
+                    response = Call(new Request { Observation = new RequestObservation() });
+                    retries--;
+                }
+            }
+            
+            var units = response.Result.Observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
 
             mapData = new MapData(mapData, units, translator, unitTypes);
             
-            return new GameState(gameInfo, response.Observation, mapData, unitTypes, abilities, translator);
+            return new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, translator);
         }
 
         public List<uint> GetAbilities(ulong unitTag)
@@ -79,7 +102,7 @@ namespace ProxyStarcraft.Client
 
             var response = Call(queryRequest);
 
-            return response.Query.Abilities[0].Abilities.Select(a => (uint)a.AbilityId).ToList();
+            return response.Result.Query.Abilities[0].Abilities.Select(a => (uint)a.AbilityId).ToList();
         }
 
         public void SendCommands(IEnumerable<Command> commands)
@@ -92,7 +115,7 @@ namespace ProxyStarcraft.Client
             }
 
             // TODO: Check response for errors
-            var actionResponse = Call(actionRequest);
+            var actionResponse = Call(actionRequest).Result;
 
             if (actionResponse.Action != null && actionResponse.Action.Result.Any(result => result != ActionResult.Success))
             {
@@ -107,16 +130,27 @@ namespace ProxyStarcraft.Client
             switch (command)
             {
                 case BuildCommand buildCommand:
-                    if (translator.IsUpgrade(buildCommand.Building))
+                    switch (buildCommand.BuildLocation)
                     {
-                        unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
-                        break;
+                        case StandardBuildLocation standardLocation:
+                            var buildingSize = translator.GetBuildingSize(buildCommand);
+                            var x = standardLocation.Location.X + buildingSize.X * 0.5f;
+                            var y = standardLocation.Location.Y + buildingSize.Y * 0.5f;
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
+                            break;
+                        case VespeneBuildLocation vespeneLocation:
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetUnitTag = vespeneLocation.VespeneGeyser.Tag };
+                            break;
+                        case UpgradeBuildLocation upgradeLocation:
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                            break;
+                        case AddOnBuildLocation addOnLocation:
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                            break;
+                        default:
+                            throw new NotImplementedException();
                     }
 
-                    var buildingSize = translator.GetBuildingSize(buildCommand);
-                    var x = buildCommand.X + buildingSize.X * 0.5f;
-                    var y = buildCommand.Y + buildingSize.Y * 0.5f;
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
                     break;
                 case LocationTargetCommand locationTargetCommand:
                     unitCommand = new ActionRawUnitCommand
@@ -135,7 +169,7 @@ namespace ProxyStarcraft.Client
                     throw new NotImplementedException();
             }
             
-            unitCommand.UnitTags.Add((ulong)command.Unit.Tag);
+            unitCommand.UnitTags.Add(command.Unit.Tag);
             return new Proto.Action { ActionRaw = new ActionRaw { UnitCommand = unitCommand } };
         }
         
@@ -146,12 +180,12 @@ namespace ProxyStarcraft.Client
 
         public void Step(uint stepCount)
         {
-            Call(new Request { Step = new RequestStep { Count = stepCount } });
+            Call(new Request { Step = new RequestStep { Count = stepCount } }).Wait();
         }
 
         public void LeaveGame()
         {
-            Call(new Request { LeaveGame = new RequestLeaveGame() });
+            Call(new Request { LeaveGame = new RequestLeaveGame() }).Wait();
             gameInfo = null;
             unitTypes = null;
             abilities = null;
@@ -177,7 +211,7 @@ namespace ProxyStarcraft.Client
 
             var createGameResponse = Call(createGameRequest);
 
-            if (createGameResponse.Status != Status.InitGame)
+            if (createGameResponse.Result.Status != Status.InitGame)
             {
                 return false;
             }
@@ -190,9 +224,10 @@ namespace ProxyStarcraft.Client
                         Race = race,
                         Options = new InterfaceOptions { Raw = true }
                     }
-                });
+                },
+                JOIN_GAME_TIMEOUT_MS);
 
-            return joinGameResponse.Status == Status.InGame;
+            return joinGameResponse.Result.Status == Status.InGame;
         }
 
         public bool InitiateGameAgainstComputer(string map, Race race, Difficulty opponentLevel)
@@ -221,7 +256,7 @@ namespace ProxyStarcraft.Client
 
             var createGameResponse = Call(createGameRequest);
 
-            if (createGameResponse.Status != Status.InitGame)
+            if (createGameResponse.Result.Status != Status.InitGame)
             {
                 return false;
             }
@@ -234,48 +269,128 @@ namespace ProxyStarcraft.Client
                         Race = race,
                         Options = new InterfaceOptions { Raw = true }
                     }
+                },
+                JOIN_GAME_TIMEOUT_MS);
+
+            return joinGameResponse.Result.Status == Status.InGame;
+        }
+
+        public async Task<bool> InitiateGameAgainstBot(string map, Race race1, Race race2)
+        {
+            var createGameRequest = new Request
+            {
+                CreateGame = new RequestCreateGame
+                {
+                    LocalMap = new LocalMap { MapPath = map }
+                }
+            };
+
+            createGameRequest.CreateGame.PlayerSetup.Add(
+                new PlayerSetup
+                {
+                    Type = PlayerType.Participant,
+                    Race = race1
+                });
+            createGameRequest.CreateGame.PlayerSetup.Add(
+                new PlayerSetup
+                {
+                    Type = PlayerType.Participant,
+                    Race = race2
                 });
 
+            var createGameResponse = Call(createGameRequest);
+
+            if (createGameResponse.Result.Status != Status.InitGame)
+            {
+                return false;
+            }
+
+            var joinGame = new RequestJoinGame
+            {
+                Race = race1,
+                Options = new InterfaceOptions { Raw = true },
+                SharedPort = SHARED_PORT,
+                ServerPorts = new PortSet { BasePort = SERVER_BASE_PORT, GamePort = SERVER_GAME_PORT }
+            };
+
+            joinGame.ClientPorts.Add(new PortSet { BasePort = CLIENT_BASE_PORT, GamePort = CLIENT_GAME_PORT });
+
+            var joinGameResponse = await Call(
+                new Request
+                {
+                    JoinGame = joinGame
+                },
+                JOIN_GAME_TIMEOUT_MS);
+            
             return joinGameResponse.Status == Status.InGame;
         }
 
-        public Response Call(Request request)
+        public bool JoinGameAgainstBot(Race race)
         {
-            Connect();
-
-            SendRequest(request);
-
-            // TODO: Use a proper synchronization primitive for this
-            while (waiting)
+            var joinGame = new RequestJoinGame
             {
-                for (var i = 0; i < 100; i++)
-                {
-                    Thread.Sleep(5);
-                    if (!waiting)
-                    {
-                        break;
-                    }
-                }
+                Race = race,
+                Options = new InterfaceOptions { Raw = true },
+                SharedPort = SHARED_PORT,
+                ServerPorts = new PortSet { BasePort = SERVER_BASE_PORT, GamePort = SERVER_GAME_PORT }
+            };
 
-                // Most of our requests are actually idempotent, so on the off chance
-                // that we never get a response, it makes sense to just resend them.
-                // This might be something that should change if I can diagnose the root cause.
-                if (waiting)
+            joinGame.ClientPorts.Add(new PortSet { BasePort = CLIENT_BASE_PORT, GamePort = CLIENT_GAME_PORT });
+
+            var joinGameResponse = Call(
+                new Request
                 {
+                    JoinGame = joinGame
+                },
+                JOIN_GAME_TIMEOUT_MS);
+
+            return joinGameResponse.Result.Status == Status.InGame;
+        }
+
+        public async Task<Response> Call(Request request, int timeoutMs = 5000)
+        {
+            Response retval = null;
+
+            // TODO: Find a less dumb way of doing this. I feel like I'm mixing threading and tasks and they don't quite go together.
+            await Task.Run(() =>
+            {
+                Connect();
+
+                SendRequest(request);
+
+                // TODO: Use a proper synchronization primitive for this
+
+                int retries = 3;
+                
+                while (!receivedEvent.WaitOne(TimeSpan.FromMilliseconds(timeoutMs)))
+                {
+                    if (retries == 0)
+                    {
+                        throw new TimeoutException("Socket response timed out. Retries exhausted.");
+                    }
+
+                    retries -= 1;
+
+                    // Most of our requests are actually idempotent, so on the off chance
+                    // that we never get a response, it makes sense to just resend them.
+                    // This might be something that should change if I can diagnose the root cause.
                     SendRequest(request);
                 }
-            }
 
-            lock(socketLock)
-            {
-                var retval = socketResponse;
-                socketResponse = null;
-                return retval;
-            }
+                lock (socketLock)
+                {
+                    retval = socketResponse;
+                    socketResponse = null;
+                }
+            });
+
+            return retval;
         }
 
         private void SendRequest(Request request)
         {
+            //Console.WriteLine(request.ToString());
+
             using (var mem = new MemoryStream())
             {
                 using (var stream = new Google.Protobuf.CodedOutputStream(mem))
@@ -288,7 +403,6 @@ namespace ProxyStarcraft.Client
                 lock (socketLock)
                 {
                     lastRequest = request;
-                    waiting = true;
                     webSocket.Send(data, 0, data.Length);
                 }
             }
@@ -314,8 +428,10 @@ namespace ProxyStarcraft.Client
             lock (socketLock)
             {
                 socketResponse = Response.Parser.ParseFrom(e.Data);
-                waiting = false;
+                receivedEvent.Set();
             }
+
+            //Console.WriteLine(socketResponse.ToString());
         }
 
         private void OnReceivedMessage(object sender, MessageReceivedEventArgs e)
@@ -346,7 +462,9 @@ namespace ProxyStarcraft.Client
                     {
                         webSocket.Open();
 
-                        if (waiting && lastRequest != null)
+                        // This might be less of a good idea than it was when I originally did it,
+                        // since I can no longer tell if we're waiting on a response to this call.
+                        if (lastRequest != null)
                         {
                             SendRequest(lastRequest);
                         }

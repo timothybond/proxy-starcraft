@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {
@@ -14,8 +16,20 @@ namespace ProxyStarcraft
 
         public CompositeBot(IEnumerable<IBot> bots)
         {
+            if (bots == null)
+            {
+                throw new ArgumentNullException("bots");
+            }
+            
             this.bots = bots.ToList();
+
+            if (this.bots.Count == 0)
+            {
+                throw new ArgumentException("Must specify at least one bot.");
+            }
         }
+
+        public Race Race => this.bots.Select(b => b.Race).First(r => r != Race.NoRace && r != Race.Random);
 
         public virtual IReadOnlyList<Command> Act(GameState gameState)
         {

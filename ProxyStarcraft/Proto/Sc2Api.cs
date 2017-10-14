@@ -139,96 +139,97 @@ namespace ProxyStarcraft.Proto {
             "CgdhY3Rpb25zGAEgAygLMhYuU0MyQVBJUHJvdG9jb2wuQWN0aW9uIj4KDlJl",
             "c3BvbnNlQWN0aW9uEiwKBnJlc3VsdBgBIAMoDjIcLlNDMkFQSVByb3RvY29s",
             "LkFjdGlvblJlc3VsdCIcCgtSZXF1ZXN0U3RlcBINCgVjb3VudBgBIAEoDSIO",
-            "CgxSZXNwb25zZVN0ZXAiXAoLUmVxdWVzdERhdGESEgoKYWJpbGl0eV9pZBgB",
+            "CgxSZXNwb25zZVN0ZXAibwoLUmVxdWVzdERhdGESEgoKYWJpbGl0eV9pZBgB",
             "IAEoCBIUCgx1bml0X3R5cGVfaWQYAiABKAgSEgoKdXBncmFkZV9pZBgDIAEo",
-            "CBIPCgdidWZmX2lkGAQgASgIIsMBCgxSZXNwb25zZURhdGESLgoJYWJpbGl0",
-            "aWVzGAEgAygLMhsuU0MyQVBJUHJvdG9jb2wuQWJpbGl0eURhdGESKwoFdW5p",
-            "dHMYAiADKAsyHC5TQzJBUElQcm90b2NvbC5Vbml0VHlwZURhdGESLQoIdXBn",
-            "cmFkZXMYAyADKAsyGy5TQzJBUElQcm90b2NvbC5VcGdyYWRlRGF0YRInCgVi",
-            "dWZmcxgEIAMoCzIYLlNDMkFQSVByb3RvY29sLkJ1ZmZEYXRhIhMKEVJlcXVl",
-            "c3RTYXZlUmVwbGF5IiIKElJlc3BvbnNlU2F2ZVJlcGxheRIMCgRkYXRhGAEg",
-            "ASgMImIKEVJlcXVlc3RSZXBsYXlJbmZvEhUKC3JlcGxheV9wYXRoGAEgASgJ",
-            "SAASFQoLcmVwbGF5X2RhdGEYAiABKAxIABIVCg1kb3dubG9hZF9kYXRhGAMg",
-            "ASgIQggKBnJlcGxheSKfAQoPUGxheWVySW5mb0V4dHJhEi8KC3BsYXllcl9p",
-            "bmZvGAEgASgLMhouU0MyQVBJUHJvdG9jb2wuUGxheWVySW5mbxIzCg1wbGF5",
-            "ZXJfcmVzdWx0GAIgASgLMhwuU0MyQVBJUHJvdG9jb2wuUGxheWVyUmVzdWx0",
-            "EhIKCnBsYXllcl9tbXIYAyABKAUSEgoKcGxheWVyX2FwbRgEIAEoBSLVAwoS",
-            "UmVzcG9uc2VSZXBsYXlJbmZvEhAKCG1hcF9uYW1lGAEgASgJEhYKDmxvY2Fs",
-            "X21hcF9wYXRoGAIgASgJEjQKC3BsYXllcl9pbmZvGAMgAygLMh8uU0MyQVBJ",
-            "UHJvdG9jb2wuUGxheWVySW5mb0V4dHJhEhsKE2dhbWVfZHVyYXRpb25fbG9v",
-            "cHMYBCABKA0SHQoVZ2FtZV9kdXJhdGlvbl9zZWNvbmRzGAUgASgCEhQKDGdh",
-            "bWVfdmVyc2lvbhgGIAEoCRIUCgxkYXRhX3ZlcnNpb24YCyABKAkSEgoKZGF0",
-            "YV9idWlsZBgHIAEoDRISCgpiYXNlX2J1aWxkGAggASgNEjcKBWVycm9yGAkg",
-            "ASgOMiguU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VSZXBsYXlJbmZvLkVycm9y",
-            "EhUKDWVycm9yX2RldGFpbHMYCiABKAkifwoFRXJyb3ISEAoMSW52YWxpZEVy",
-            "cm9yEAASEQoNTWlzc2luZ1JlcGxheRABEhUKEUludmFsaWRSZXBsYXlQYXRo",
-            "EAISFQoRSW52YWxpZFJlcGxheURhdGEQAxIQCgxQYXJzaW5nRXJyb3IQBBIR",
-            "Cg1Eb3dubG9hZEVycm9yEAUiFgoUUmVxdWVzdEF2YWlsYWJsZU1hcHMiTQoV",
-            "UmVzcG9uc2VBdmFpbGFibGVNYXBzEhcKD2xvY2FsX21hcF9wYXRocxgBIAMo",
-            "CRIbChNiYXR0bGVuZXRfbWFwX25hbWVzGAIgAygJIjQKDlJlcXVlc3RTYXZl",
-            "TWFwEhAKCG1hcF9wYXRoGAEgASgJEhAKCG1hcF9kYXRhGAIgASgMInYKD1Jl",
-            "c3BvbnNlU2F2ZU1hcBI0CgVlcnJvchgBIAEoDjIlLlNDMkFQSVByb3RvY29s",
-            "LlJlc3BvbnNlU2F2ZU1hcC5FcnJvciItCgVFcnJvchIQCgxJbnZhbGlkRXJy",
-            "b3IQABISCg5JbnZhbGlkTWFwRGF0YRABIg0KC1JlcXVlc3RQaW5nImIKDFJl",
-            "c3BvbnNlUGluZxIUCgxnYW1lX3ZlcnNpb24YASABKAkSFAoMZGF0YV92ZXJz",
-            "aW9uGAIgASgJEhIKCmRhdGFfYnVpbGQYAyABKA0SEgoKYmFzZV9idWlsZBgE",
-            "IAEoDSI7CgxSZXF1ZXN0RGVidWcSKwoFZGVidWcYASADKAsyHC5TQzJBUElQ",
-            "cm90b2NvbC5EZWJ1Z0NvbW1hbmQiDwoNUmVzcG9uc2VEZWJ1ZyKLAQoLUGxh",
-            "eWVyU2V0dXASKAoEdHlwZRgBIAEoDjIaLlNDMkFQSVByb3RvY29sLlBsYXll",
-            "clR5cGUSIgoEcmFjZRgCIAEoDjIULlNDMkFQSVByb3RvY29sLlJhY2USLgoK",
-            "ZGlmZmljdWx0eRgDIAEoDjIaLlNDMkFQSVByb3RvY29sLkRpZmZpY3VsdHki",
-            "hQEKElNwYXRpYWxDYW1lcmFTZXR1cBINCgV3aWR0aBgBIAEoAhIrCgpyZXNv",
-            "bHV0aW9uGAIgASgLMhcuU0MyQVBJUHJvdG9jb2wuU2l6ZTJESRIzChJtaW5p",
-            "bWFwX3Jlc29sdXRpb24YAyABKAsyFy5TQzJBUElQcm90b2NvbC5TaXplMkRJ",
-            "Ip0BChBJbnRlcmZhY2VPcHRpb25zEgsKA3JhdxgBIAEoCBINCgVzY29yZRgC",
-            "IAEoCBI5Cg1mZWF0dXJlX2xheWVyGAMgASgLMiIuU0MyQVBJUHJvdG9jb2wu",
-            "U3BhdGlhbENhbWVyYVNldHVwEjIKBnJlbmRlchgEIAEoCzIiLlNDMkFQSVBy",
-            "b3RvY29sLlNwYXRpYWxDYW1lcmFTZXR1cCLSAQoKUGxheWVySW5mbxIRCglw",
-            "bGF5ZXJfaWQYASABKA0SKAoEdHlwZRgCIAEoDjIaLlNDMkFQSVByb3RvY29s",
-            "LlBsYXllclR5cGUSLAoOcmFjZV9yZXF1ZXN0ZWQYAyABKA4yFC5TQzJBUElQ",
-            "cm90b2NvbC5SYWNlEikKC3JhY2VfYWN0dWFsGAQgASgOMhQuU0MyQVBJUHJv",
-            "dG9jb2wuUmFjZRIuCgpkaWZmaWN1bHR5GAUgASgOMhouU0MyQVBJUHJvdG9j",
-            "b2wuRGlmZmljdWx0eSLvAQoMUGxheWVyQ29tbW9uEhEKCXBsYXllcl9pZBgB",
-            "IAEoDRIQCghtaW5lcmFscxgCIAEoDRIPCgd2ZXNwZW5lGAMgASgNEhAKCGZv",
-            "b2RfY2FwGAQgASgNEhEKCWZvb2RfdXNlZBgFIAEoDRIRCglmb29kX2FybXkY",
-            "BiABKA0SFAoMZm9vZF93b3JrZXJzGAcgASgNEhkKEWlkbGVfd29ya2VyX2Nv",
-            "dW50GAggASgNEhIKCmFybXlfY291bnQYCSABKA0SFwoPd2FycF9nYXRlX2Nv",
-            "dW50GAogASgNEhMKC2xhcnZhX2NvdW50GAsgASgNIrYDCgtPYnNlcnZhdGlv",
-            "bhIRCglnYW1lX2xvb3AYCSABKA0SMwoNcGxheWVyX2NvbW1vbhgBIAEoCzIc",
-            "LlNDMkFQSVByb3RvY29sLlBsYXllckNvbW1vbhIlCgZhbGVydHMYCiADKA4y",
-            "FS5TQzJBUElQcm90b2NvbC5BbGVydBIzCglhYmlsaXRpZXMYAyADKAsyIC5T",
-            "QzJBUElQcm90b2NvbC5BdmFpbGFibGVBYmlsaXR5EiQKBXNjb3JlGAQgASgL",
-            "MhUuU0MyQVBJUHJvdG9jb2wuU2NvcmUSMAoIcmF3X2RhdGEYBSABKAsyHi5T",
-            "QzJBUElQcm90b2NvbC5PYnNlcnZhdGlvblJhdxJDChJmZWF0dXJlX2xheWVy",
-            "X2RhdGEYBiABKAsyJy5TQzJBUElQcm90b2NvbC5PYnNlcnZhdGlvbkZlYXR1",
-            "cmVMYXllchI2CgtyZW5kZXJfZGF0YRgHIAEoCzIhLlNDMkFQSVByb3RvY29s",
-            "Lk9ic2VydmF0aW9uUmVuZGVyEi4KB3VpX2RhdGEYCCABKAsyHS5TQzJBUElQ",
-            "cm90b2NvbC5PYnNlcnZhdGlvblVJIoECCgZBY3Rpb24SLQoKYWN0aW9uX3Jh",
-            "dxgBIAEoCzIZLlNDMkFQSVByb3RvY29sLkFjdGlvblJhdxI7ChRhY3Rpb25f",
-            "ZmVhdHVyZV9sYXllchgCIAEoCzIdLlNDMkFQSVByb3RvY29sLkFjdGlvblNw",
-            "YXRpYWwSNAoNYWN0aW9uX3JlbmRlchgDIAEoCzIdLlNDMkFQSVByb3RvY29s",
-            "LkFjdGlvblNwYXRpYWwSKwoJYWN0aW9uX3VpGAQgASgLMhguU0MyQVBJUHJv",
-            "dG9jb2wuQWN0aW9uVUkSKAoEY2hhdBgFIAMoCzIaLlNDMkFQSVByb3RvY29s",
-            "LkFjdGlvbkNoYXQiigEKCkFjdGlvbkNoYXQSMwoHY2hhbm5lbBgBIAEoDjIi",
-            "LlNDMkFQSVByb3RvY29sLkFjdGlvbkNoYXQuQ2hhbm5lbBIPCgdtZXNzYWdl",
-            "GAIgASgJIjYKB0NoYW5uZWwSEgoOSW52YWxpZENoYW5uZWwQABINCglCcm9h",
-            "ZGNhc3QQARIICgRUZWFtEAIiYQoLQWN0aW9uRXJyb3ISEAoIdW5pdF90YWcY",
-            "ASABKAQSEgoKYWJpbGl0eV9pZBgCIAEoBBIsCgZyZXN1bHQYAyABKA4yHC5T",
-            "QzJBUElQcm90b2NvbC5BY3Rpb25SZXN1bHQiSQoMUGxheWVyUmVzdWx0EhEK",
-            "CXBsYXllcl9pZBgBIAEoDRImCgZyZXN1bHQYAiABKA4yFi5TQzJBUElQcm90",
-            "b2NvbC5SZXN1bHQqdwoGU3RhdHVzEhIKDmludmFsaWRfc3RhdHVzEAASDAoI",
-            "bGF1bmNoZWQQARINCglpbml0X2dhbWUQAhILCgdpbl9nYW1lEAMSDQoJaW5f",
-            "cmVwbGF5EAQSCQoFZW5kZWQQBRIICgRxdWl0EAYSCwoHdW5rbm93bhBjKq0B",
-            "CgpEaWZmaWN1bHR5EhUKEUludmFsaWREaWZmaWN1bHR5EAASDAoIVmVyeUVh",
-            "c3kQARIICgRFYXN5EAISCgoGTWVkaXVtEAMSDgoKTWVkaXVtSGFyZBAEEggK",
-            "BEhhcmQQBRIKCgZIYXJkZXIQBhIMCghWZXJ5SGFyZBAHEg8KC0NoZWF0Vmlz",
-            "aW9uEAgSDgoKQ2hlYXRNb25leRAJEg8KC0NoZWF0SW5zYW5lEAoqUAoKUGxh",
-            "eWVyVHlwZRIVChFJbnZhbGlkUGxheWVyVHlwZRAAEg8KC1BhcnRpY2lwYW50",
-            "EAESDAoIQ29tcHV0ZXIQAhIMCghPYnNlcnZlchADKksKBUFsZXJ0EhAKDElu",
-            "dmFsaWRBbGVydBAAEhkKFU51Y2xlYXJMYXVuY2hEZXRlY3RlZBABEhUKEU55",
-            "ZHVzV29ybURldGVjdGVkEAIqTAoGUmVzdWx0EhEKDUludmFsaWRSZXN1bHQQ",
-            "ABILCgdWaWN0b3J5EAESCgoGRGVmZWF0EAISBwoDVGllEAMSDQoJVW5kZWNp",
-            "ZGVkEARiBnByb3RvMw=="));
+            "CBIPCgdidWZmX2lkGAQgASgIEhEKCWVmZmVjdF9pZBgFIAEoCCLwAQoMUmVz",
+            "cG9uc2VEYXRhEi4KCWFiaWxpdGllcxgBIAMoCzIbLlNDMkFQSVByb3RvY29s",
+            "LkFiaWxpdHlEYXRhEisKBXVuaXRzGAIgAygLMhwuU0MyQVBJUHJvdG9jb2wu",
+            "VW5pdFR5cGVEYXRhEi0KCHVwZ3JhZGVzGAMgAygLMhsuU0MyQVBJUHJvdG9j",
+            "b2wuVXBncmFkZURhdGESJwoFYnVmZnMYBCADKAsyGC5TQzJBUElQcm90b2Nv",
+            "bC5CdWZmRGF0YRIrCgdlZmZlY3RzGAUgAygLMhouU0MyQVBJUHJvdG9jb2wu",
+            "RWZmZWN0RGF0YSITChFSZXF1ZXN0U2F2ZVJlcGxheSIiChJSZXNwb25zZVNh",
+            "dmVSZXBsYXkSDAoEZGF0YRgBIAEoDCJiChFSZXF1ZXN0UmVwbGF5SW5mbxIV",
+            "CgtyZXBsYXlfcGF0aBgBIAEoCUgAEhUKC3JlcGxheV9kYXRhGAIgASgMSAAS",
+            "FQoNZG93bmxvYWRfZGF0YRgDIAEoCEIICgZyZXBsYXkinwEKD1BsYXllcklu",
+            "Zm9FeHRyYRIvCgtwbGF5ZXJfaW5mbxgBIAEoCzIaLlNDMkFQSVByb3RvY29s",
+            "LlBsYXllckluZm8SMwoNcGxheWVyX3Jlc3VsdBgCIAEoCzIcLlNDMkFQSVBy",
+            "b3RvY29sLlBsYXllclJlc3VsdBISCgpwbGF5ZXJfbW1yGAMgASgFEhIKCnBs",
+            "YXllcl9hcG0YBCABKAUi1QMKElJlc3BvbnNlUmVwbGF5SW5mbxIQCghtYXBf",
+            "bmFtZRgBIAEoCRIWCg5sb2NhbF9tYXBfcGF0aBgCIAEoCRI0CgtwbGF5ZXJf",
+            "aW5mbxgDIAMoCzIfLlNDMkFQSVByb3RvY29sLlBsYXllckluZm9FeHRyYRIb",
+            "ChNnYW1lX2R1cmF0aW9uX2xvb3BzGAQgASgNEh0KFWdhbWVfZHVyYXRpb25f",
+            "c2Vjb25kcxgFIAEoAhIUCgxnYW1lX3ZlcnNpb24YBiABKAkSFAoMZGF0YV92",
+            "ZXJzaW9uGAsgASgJEhIKCmRhdGFfYnVpbGQYByABKA0SEgoKYmFzZV9idWls",
+            "ZBgIIAEoDRI3CgVlcnJvchgJIAEoDjIoLlNDMkFQSVByb3RvY29sLlJlc3Bv",
+            "bnNlUmVwbGF5SW5mby5FcnJvchIVCg1lcnJvcl9kZXRhaWxzGAogASgJIn8K",
+            "BUVycm9yEhAKDEludmFsaWRFcnJvchAAEhEKDU1pc3NpbmdSZXBsYXkQARIV",
+            "ChFJbnZhbGlkUmVwbGF5UGF0aBACEhUKEUludmFsaWRSZXBsYXlEYXRhEAMS",
+            "EAoMUGFyc2luZ0Vycm9yEAQSEQoNRG93bmxvYWRFcnJvchAFIhYKFFJlcXVl",
+            "c3RBdmFpbGFibGVNYXBzIk0KFVJlc3BvbnNlQXZhaWxhYmxlTWFwcxIXCg9s",
+            "b2NhbF9tYXBfcGF0aHMYASADKAkSGwoTYmF0dGxlbmV0X21hcF9uYW1lcxgC",
+            "IAMoCSI0Cg5SZXF1ZXN0U2F2ZU1hcBIQCghtYXBfcGF0aBgBIAEoCRIQCght",
+            "YXBfZGF0YRgCIAEoDCJ2Cg9SZXNwb25zZVNhdmVNYXASNAoFZXJyb3IYASAB",
+            "KA4yJS5TQzJBUElQcm90b2NvbC5SZXNwb25zZVNhdmVNYXAuRXJyb3IiLQoF",
+            "RXJyb3ISEAoMSW52YWxpZEVycm9yEAASEgoOSW52YWxpZE1hcERhdGEQASIN",
+            "CgtSZXF1ZXN0UGluZyJiCgxSZXNwb25zZVBpbmcSFAoMZ2FtZV92ZXJzaW9u",
+            "GAEgASgJEhQKDGRhdGFfdmVyc2lvbhgCIAEoCRISCgpkYXRhX2J1aWxkGAMg",
+            "ASgNEhIKCmJhc2VfYnVpbGQYBCABKA0iOwoMUmVxdWVzdERlYnVnEisKBWRl",
+            "YnVnGAEgAygLMhwuU0MyQVBJUHJvdG9jb2wuRGVidWdDb21tYW5kIg8KDVJl",
+            "c3BvbnNlRGVidWciiwEKC1BsYXllclNldHVwEigKBHR5cGUYASABKA4yGi5T",
+            "QzJBUElQcm90b2NvbC5QbGF5ZXJUeXBlEiIKBHJhY2UYAiABKA4yFC5TQzJB",
+            "UElQcm90b2NvbC5SYWNlEi4KCmRpZmZpY3VsdHkYAyABKA4yGi5TQzJBUElQ",
+            "cm90b2NvbC5EaWZmaWN1bHR5IoUBChJTcGF0aWFsQ2FtZXJhU2V0dXASDQoF",
+            "d2lkdGgYASABKAISKwoKcmVzb2x1dGlvbhgCIAEoCzIXLlNDMkFQSVByb3Rv",
+            "Y29sLlNpemUyREkSMwoSbWluaW1hcF9yZXNvbHV0aW9uGAMgASgLMhcuU0My",
+            "QVBJUHJvdG9jb2wuU2l6ZTJESSKdAQoQSW50ZXJmYWNlT3B0aW9ucxILCgNy",
+            "YXcYASABKAgSDQoFc2NvcmUYAiABKAgSOQoNZmVhdHVyZV9sYXllchgDIAEo",
+            "CzIiLlNDMkFQSVByb3RvY29sLlNwYXRpYWxDYW1lcmFTZXR1cBIyCgZyZW5k",
+            "ZXIYBCABKAsyIi5TQzJBUElQcm90b2NvbC5TcGF0aWFsQ2FtZXJhU2V0dXAi",
+            "0gEKClBsYXllckluZm8SEQoJcGxheWVyX2lkGAEgASgNEigKBHR5cGUYAiAB",
+            "KA4yGi5TQzJBUElQcm90b2NvbC5QbGF5ZXJUeXBlEiwKDnJhY2VfcmVxdWVz",
+            "dGVkGAMgASgOMhQuU0MyQVBJUHJvdG9jb2wuUmFjZRIpCgtyYWNlX2FjdHVh",
+            "bBgEIAEoDjIULlNDMkFQSVByb3RvY29sLlJhY2USLgoKZGlmZmljdWx0eRgF",
+            "IAEoDjIaLlNDMkFQSVByb3RvY29sLkRpZmZpY3VsdHki7wEKDFBsYXllckNv",
+            "bW1vbhIRCglwbGF5ZXJfaWQYASABKA0SEAoIbWluZXJhbHMYAiABKA0SDwoH",
+            "dmVzcGVuZRgDIAEoDRIQCghmb29kX2NhcBgEIAEoDRIRCglmb29kX3VzZWQY",
+            "BSABKA0SEQoJZm9vZF9hcm15GAYgASgNEhQKDGZvb2Rfd29ya2VycxgHIAEo",
+            "DRIZChFpZGxlX3dvcmtlcl9jb3VudBgIIAEoDRISCgphcm15X2NvdW50GAkg",
+            "ASgNEhcKD3dhcnBfZ2F0ZV9jb3VudBgKIAEoDRITCgtsYXJ2YV9jb3VudBgL",
+            "IAEoDSK2AwoLT2JzZXJ2YXRpb24SEQoJZ2FtZV9sb29wGAkgASgNEjMKDXBs",
+            "YXllcl9jb21tb24YASABKAsyHC5TQzJBUElQcm90b2NvbC5QbGF5ZXJDb21t",
+            "b24SJQoGYWxlcnRzGAogAygOMhUuU0MyQVBJUHJvdG9jb2wuQWxlcnQSMwoJ",
+            "YWJpbGl0aWVzGAMgAygLMiAuU0MyQVBJUHJvdG9jb2wuQXZhaWxhYmxlQWJp",
+            "bGl0eRIkCgVzY29yZRgEIAEoCzIVLlNDMkFQSVByb3RvY29sLlNjb3JlEjAK",
+            "CHJhd19kYXRhGAUgASgLMh4uU0MyQVBJUHJvdG9jb2wuT2JzZXJ2YXRpb25S",
+            "YXcSQwoSZmVhdHVyZV9sYXllcl9kYXRhGAYgASgLMicuU0MyQVBJUHJvdG9j",
+            "b2wuT2JzZXJ2YXRpb25GZWF0dXJlTGF5ZXISNgoLcmVuZGVyX2RhdGEYByAB",
+            "KAsyIS5TQzJBUElQcm90b2NvbC5PYnNlcnZhdGlvblJlbmRlchIuCgd1aV9k",
+            "YXRhGAggASgLMh0uU0MyQVBJUHJvdG9jb2wuT2JzZXJ2YXRpb25VSSKBAgoG",
+            "QWN0aW9uEi0KCmFjdGlvbl9yYXcYASABKAsyGS5TQzJBUElQcm90b2NvbC5B",
+            "Y3Rpb25SYXcSOwoUYWN0aW9uX2ZlYXR1cmVfbGF5ZXIYAiABKAsyHS5TQzJB",
+            "UElQcm90b2NvbC5BY3Rpb25TcGF0aWFsEjQKDWFjdGlvbl9yZW5kZXIYAyAB",
+            "KAsyHS5TQzJBUElQcm90b2NvbC5BY3Rpb25TcGF0aWFsEisKCWFjdGlvbl91",
+            "aRgEIAEoCzIYLlNDMkFQSVByb3RvY29sLkFjdGlvblVJEigKBGNoYXQYBSAD",
+            "KAsyGi5TQzJBUElQcm90b2NvbC5BY3Rpb25DaGF0IooBCgpBY3Rpb25DaGF0",
+            "EjMKB2NoYW5uZWwYASABKA4yIi5TQzJBUElQcm90b2NvbC5BY3Rpb25DaGF0",
+            "LkNoYW5uZWwSDwoHbWVzc2FnZRgCIAEoCSI2CgdDaGFubmVsEhIKDkludmFs",
+            "aWRDaGFubmVsEAASDQoJQnJvYWRjYXN0EAESCAoEVGVhbRACImEKC0FjdGlv",
+            "bkVycm9yEhAKCHVuaXRfdGFnGAEgASgEEhIKCmFiaWxpdHlfaWQYAiABKAQS",
+            "LAoGcmVzdWx0GAMgASgOMhwuU0MyQVBJUHJvdG9jb2wuQWN0aW9uUmVzdWx0",
+            "IkkKDFBsYXllclJlc3VsdBIRCglwbGF5ZXJfaWQYASABKA0SJgoGcmVzdWx0",
+            "GAIgASgOMhYuU0MyQVBJUHJvdG9jb2wuUmVzdWx0KncKBlN0YXR1cxISCg5p",
+            "bnZhbGlkX3N0YXR1cxAAEgwKCGxhdW5jaGVkEAESDQoJaW5pdF9nYW1lEAIS",
+            "CwoHaW5fZ2FtZRADEg0KCWluX3JlcGxheRAEEgkKBWVuZGVkEAUSCAoEcXVp",
+            "dBAGEgsKB3Vua25vd24QYyqtAQoKRGlmZmljdWx0eRIVChFJbnZhbGlkRGlm",
+            "ZmljdWx0eRAAEgwKCFZlcnlFYXN5EAESCAoERWFzeRACEgoKBk1lZGl1bRAD",
+            "Eg4KCk1lZGl1bUhhcmQQBBIICgRIYXJkEAUSCgoGSGFyZGVyEAYSDAoIVmVy",
+            "eUhhcmQQBxIPCgtDaGVhdFZpc2lvbhAIEg4KCkNoZWF0TW9uZXkQCRIPCgtD",
+            "aGVhdEluc2FuZRAKKlAKClBsYXllclR5cGUSFQoRSW52YWxpZFBsYXllclR5",
+            "cGUQABIPCgtQYXJ0aWNpcGFudBABEgwKCENvbXB1dGVyEAISDAoIT2JzZXJ2",
+            "ZXIQAypLCgVBbGVydBIQCgxJbnZhbGlkQWxlcnQQABIZChVOdWNsZWFyTGF1",
+            "bmNoRGV0ZWN0ZWQQARIVChFOeWR1c1dvcm1EZXRlY3RlZBACKkwKBlJlc3Vs",
+            "dBIRCg1JbnZhbGlkUmVzdWx0EAASCwoHVmljdG9yeRABEgoKBkRlZmVhdBAC",
+            "EgcKA1RpZRADEg0KCVVuZGVjaWRlZBAEYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, global::ProxyStarcraft.Proto.DataReflection.Descriptor, global::ProxyStarcraft.Proto.DebugReflection.Descriptor, global::ProxyStarcraft.Proto.ErrorReflection.Descriptor, global::ProxyStarcraft.Proto.QueryReflection.Descriptor, global::ProxyStarcraft.Proto.RawReflection.Descriptor, global::ProxyStarcraft.Proto.ScoreReflection.Descriptor, global::ProxyStarcraft.Proto.SpatialReflection.Descriptor, global::ProxyStarcraft.Proto.UiReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Status), typeof(global::ProxyStarcraft.Proto.Difficulty), typeof(global::ProxyStarcraft.Proto.PlayerType), typeof(global::ProxyStarcraft.Proto.Alert), typeof(global::ProxyStarcraft.Proto.Result), }, new pbr::GeneratedClrTypeInfo[] {
@@ -261,8 +262,8 @@ namespace ProxyStarcraft.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseAction), global::ProxyStarcraft.Proto.ResponseAction.Parser, new[]{ "Result" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestStep), global::ProxyStarcraft.Proto.RequestStep.Parser, new[]{ "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseStep), global::ProxyStarcraft.Proto.ResponseStep.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestData), global::ProxyStarcraft.Proto.RequestData.Parser, new[]{ "AbilityId", "UnitTypeId", "UpgradeId", "BuffId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseData), global::ProxyStarcraft.Proto.ResponseData.Parser, new[]{ "Abilities", "Units", "Upgrades", "Buffs" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestData), global::ProxyStarcraft.Proto.RequestData.Parser, new[]{ "AbilityId", "UnitTypeId", "UpgradeId", "BuffId", "EffectId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseData), global::ProxyStarcraft.Proto.ResponseData.Parser, new[]{ "Abilities", "Units", "Upgrades", "Buffs", "Effects" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestSaveReplay), global::ProxyStarcraft.Proto.RequestSaveReplay.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseSaveReplay), global::ProxyStarcraft.Proto.ResponseSaveReplay.Parser, new[]{ "Data" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestReplayInfo), global::ProxyStarcraft.Proto.RequestReplayInfo.Parser, new[]{ "ReplayPath", "ReplayData", "DownloadData" }, new[]{ "Replay" }, null, null),
@@ -6162,6 +6163,7 @@ namespace ProxyStarcraft.Proto {
       unitTypeId_ = other.unitTypeId_;
       upgradeId_ = other.upgradeId_;
       buffId_ = other.buffId_;
+      effectId_ = other.effectId_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6213,6 +6215,17 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "effect_id" field.</summary>
+    public const int EffectIdFieldNumber = 5;
+    private bool effectId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool EffectId {
+      get { return effectId_; }
+      set {
+        effectId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as RequestData);
@@ -6230,6 +6243,7 @@ namespace ProxyStarcraft.Proto {
       if (UnitTypeId != other.UnitTypeId) return false;
       if (UpgradeId != other.UpgradeId) return false;
       if (BuffId != other.BuffId) return false;
+      if (EffectId != other.EffectId) return false;
       return true;
     }
 
@@ -6240,6 +6254,7 @@ namespace ProxyStarcraft.Proto {
       if (UnitTypeId != false) hash ^= UnitTypeId.GetHashCode();
       if (UpgradeId != false) hash ^= UpgradeId.GetHashCode();
       if (BuffId != false) hash ^= BuffId.GetHashCode();
+      if (EffectId != false) hash ^= EffectId.GetHashCode();
       return hash;
     }
 
@@ -6266,6 +6281,10 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(32);
         output.WriteBool(BuffId);
       }
+      if (EffectId != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(EffectId);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6281,6 +6300,9 @@ namespace ProxyStarcraft.Proto {
         size += 1 + 1;
       }
       if (BuffId != false) {
+        size += 1 + 1;
+      }
+      if (EffectId != false) {
         size += 1 + 1;
       }
       return size;
@@ -6302,6 +6324,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.BuffId != false) {
         BuffId = other.BuffId;
+      }
+      if (other.EffectId != false) {
+        EffectId = other.EffectId;
       }
     }
 
@@ -6327,6 +6352,10 @@ namespace ProxyStarcraft.Proto {
           }
           case 32: {
             BuffId = input.ReadBool();
+            break;
+          }
+          case 40: {
+            EffectId = input.ReadBool();
             break;
           }
         }
@@ -6363,6 +6392,7 @@ namespace ProxyStarcraft.Proto {
       units_ = other.units_.Clone();
       upgrades_ = other.upgrades_.Clone();
       buffs_ = other.buffs_.Clone();
+      effects_ = other.effects_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6410,6 +6440,16 @@ namespace ProxyStarcraft.Proto {
       get { return buffs_; }
     }
 
+    /// <summary>Field number for the "effects" field.</summary>
+    public const int EffectsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.EffectData> _repeated_effects_codec
+        = pb::FieldCodec.ForMessage(42, global::ProxyStarcraft.Proto.EffectData.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.EffectData> effects_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.EffectData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.EffectData> Effects {
+      get { return effects_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ResponseData);
@@ -6427,6 +6467,7 @@ namespace ProxyStarcraft.Proto {
       if(!units_.Equals(other.units_)) return false;
       if(!upgrades_.Equals(other.upgrades_)) return false;
       if(!buffs_.Equals(other.buffs_)) return false;
+      if(!effects_.Equals(other.effects_)) return false;
       return true;
     }
 
@@ -6437,6 +6478,7 @@ namespace ProxyStarcraft.Proto {
       hash ^= units_.GetHashCode();
       hash ^= upgrades_.GetHashCode();
       hash ^= buffs_.GetHashCode();
+      hash ^= effects_.GetHashCode();
       return hash;
     }
 
@@ -6451,6 +6493,7 @@ namespace ProxyStarcraft.Proto {
       units_.WriteTo(output, _repeated_units_codec);
       upgrades_.WriteTo(output, _repeated_upgrades_codec);
       buffs_.WriteTo(output, _repeated_buffs_codec);
+      effects_.WriteTo(output, _repeated_effects_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6460,6 +6503,7 @@ namespace ProxyStarcraft.Proto {
       size += units_.CalculateSize(_repeated_units_codec);
       size += upgrades_.CalculateSize(_repeated_upgrades_codec);
       size += buffs_.CalculateSize(_repeated_buffs_codec);
+      size += effects_.CalculateSize(_repeated_effects_codec);
       return size;
     }
 
@@ -6472,6 +6516,7 @@ namespace ProxyStarcraft.Proto {
       units_.Add(other.units_);
       upgrades_.Add(other.upgrades_);
       buffs_.Add(other.buffs_);
+      effects_.Add(other.effects_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6496,6 +6541,10 @@ namespace ProxyStarcraft.Proto {
           }
           case 34: {
             buffs_.AddEntriesFrom(input, _repeated_buffs_codec);
+            break;
+          }
+          case 42: {
+            effects_.AddEntriesFrom(input, _repeated_effects_codec);
             break;
           }
         }

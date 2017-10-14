@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 
 using ProxyStarcraft;
@@ -9,17 +8,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
-using ProxyStarcraft.Map;
 
 namespace Sandbox
 {
     class Program
     {
-        // TODO: Fix hardcoded path
+        // TODO: Fix hardcoded path - get from $USER\Documents\Starcraft II\ExecuteInfo.txt
         private const string BASE_GAME_PATH = "D:/Program Files (x86)/StarCraft II";
-
-        private const string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Support64/SC2Switcher_x64.exe";
-        private const string GAME_EXECUTABLE_ARGS = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -port 5000 -win";
+        private const string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Versions/Base58400/SC2_x64.exe"; //"/Support64/SC2Switcher_x64.exe";
+        private const string GAME_EXECUTABLE_ARGS_BASE = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -displayMode 0";
+        private const string GAME_EXECUTABLE_ARGS_PLAYER1 = GAME_EXECUTABLE_ARGS_BASE + " -port 5000";
+        private const string GAME_EXECUTABLE_ARGS_PLAYER2 = GAME_EXECUTABLE_ARGS_BASE + " -port 5001";
 
         private const string MARINE_MICRO_MAP_PATH = BASE_GAME_PATH + "/maps/Example/MarineMicro.SC2Map";
         private const string EMPTY_MAP_PATH = BASE_GAME_PATH + "/maps/Test/Empty.SC2Map";
@@ -38,20 +37,14 @@ namespace Sandbox
 
         static void Main(string[] args)
         {
-            // TODO: One or more of the following:
-            // 1. Get the process that this spawns, so we can terminate it on close
-            // 2. Find a better way to spawn the game process directly, so we don't
-            //    have to get a second process that this one spawns
-            // 3. Check if there's already a waiting client so we can reuse it
-            using (Process gameProcess = Process.Start(GAME_EXECUTABLE_PATH, GAME_EXECUTABLE_ARGS))
-            {
-                using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
-                {
-                    //RunMarineMicroGame(client);
-                    //RunEmptyMapGame(client);
-                    PlayAgainstStandardAI(client);
-                }
-            }
+            //var bot = new BenchmarkBot();
+
+            //PlayAgainstStandardAI(bot);
+
+            var bot1 = new BenchmarkBot();
+            var bot2 = new ZergRushBot();
+
+            PlayOneOnOne(bot1, bot2);
         }
         
         public static void RunMarineMicroGame(SynchronousApiClient client)
@@ -134,16 +127,103 @@ namespace Sandbox
             }
         }
 
-        public static void PlayAgainstStandardAI(SynchronousApiClient client)
+        public static void PlayOneOnOne(IBot bot1, IBot bot2)
         {
-            if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, Race.Terran, Difficulty.MediumHard))
-            {
-                return;
-            }
-            
-            var bot = new BenchmarkBot();
-            var gameState = client.GetGameState();
+            // TODO: One or more of the following:
+            // 1. Get the process that this spawns, so we can terminate it on close
+            // 2. Find a better way to spawn the game process directly, so we don't
+            //    have to get a second process that this one spawns
+            // 3. Check if there's already a waiting client so we can reuse it
 
+            // TODO: Reduce duplication
+            var info1 = new ProcessStartInfo(GAME_EXECUTABLE_PATH);
+            info1.WorkingDirectory = BASE_GAME_PATH + "/Support64";
+            info1.Arguments = GAME_EXECUTABLE_ARGS_PLAYER1;
+
+            var info2 = new ProcessStartInfo(GAME_EXECUTABLE_PATH);
+            info2.WorkingDirectory = BASE_GAME_PATH + "/Support64";
+            info2.Arguments = GAME_EXECUTABLE_ARGS_PLAYER2;
+
+            using (Process gameProcess1 = Process.Start(info1))
+            {
+                using (Process gameProcess2 = Process.Start(info2))
+                {
+                    using (var client1 = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
+                    {
+                        using (var client2 = new SynchronousApiClient("ws://127.0.0.1:5001/sc2api"))
+                        {
+                            var initiateGameSuccess = client1.InitiateGameAgainstBot(LADDER_ABYSSAL_REEF_MAP_PATH, bot1.Race, bot2.Race);
+
+                            if (!client2.JoinGameAgainstBot(bot2.Race))
+                            {
+                                return;
+                            }
+
+                            if (!initiateGameSuccess.Result)
+                            {
+                                return;
+                            }
+
+                            var gameState1 = client1.GetGameState();
+                            var gameState2 = client2.GetGameState();
+
+                            //SaveMapData(gameState1);
+
+                            while (true)
+                            {
+                                var commands1 = bot1.Act(gameState1);
+                                client1.SendCommands(commands1);
+                                client1.Step();
+                                gameState1 = client1.GetGameState();
+
+                                var commands2 = bot2.Act(gameState2);
+                                client2.SendCommands(commands2);
+                                client2.Step();
+                                gameState2 = client2.GetGameState();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void PlayAgainstStandardAI(IBot bot)
+        {
+            // TODO: One or more of the following:
+            // 1. Get the process that this spawns, so we can terminate it on close
+            // 2. Find a better way to spawn the game process directly, so we don't
+            //    have to get a second process that this one spawns
+            // 3. Check if there's already a waiting client so we can reuse it
+            var info = new ProcessStartInfo(GAME_EXECUTABLE_PATH);
+            info.WorkingDirectory = BASE_GAME_PATH + "/Support64";
+            info.Arguments = GAME_EXECUTABLE_ARGS_PLAYER1;
+
+            using (Process gameProcess = Process.Start(info))
+            {
+                using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
+                {
+                    if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, Race.Terran, Difficulty.MediumHard))
+                    {
+                        return;
+                    }
+
+                    var gameState = client.GetGameState();
+
+                    //SaveMapData(gameState);
+
+                    while (true)
+                    {
+                        var commands = bot.Act(gameState);
+                        client.SendCommands(commands);
+                        client.Step();
+                        gameState = client.GetGameState();
+                    }
+                }
+            }
+        }
+
+        private static void SaveMapData(GameState gameState)
+        {
             using (var pathingGrid = GetImage(gameState.MapData.PathingGrid))
             {
                 pathingGrid.Save("D:/Temp/pathing.bmp");
@@ -158,18 +238,10 @@ namespace Sandbox
             {
                 terrainHeight.Save("D:/Temp/terrain-height.bmp");
             }
-            
+
             using (var areasBitmap = GetImage(gameState.MapData.AreaGrid))
             {
                 areasBitmap.Save("D:/Temp/areas.bmp");
-            }
-            
-            while (true)
-            {
-                var commands = bot.Act(gameState);
-                client.SendCommands(commands);
-                client.Step();
-                gameState = client.GetGameState();
             }
         }
 

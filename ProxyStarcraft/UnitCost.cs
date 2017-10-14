@@ -46,17 +46,22 @@ namespace ProxyStarcraft
                 return false;
             }
 
-            if (!gameState.Units.Any(u => IsBuilderType(u) && !u.IsBuildingSomething && u.IsFinishedBuilding))
+            if (!gameState.Units.Any(u => IsBuilderType(u) && !u.IsBuildingSomething && u.IsBuilt))
             {
                 return false;
             }
 
-            if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsFinishedBuilding))
+            if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
             {
                 return false;
             }
 
             return true;
+        }
+
+        public Unit GetBuilder(GameState gameState)
+        {
+            return gameState.Units.FirstOrDefault(u => u.Type == this.Builder && !u.IsBuildingSomething && u.Raw.BuildProgress == 1.0);
         }
 
         private bool IsBuilderType(Unit unit)

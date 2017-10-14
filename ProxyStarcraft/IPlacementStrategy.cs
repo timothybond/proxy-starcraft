@@ -2,6 +2,6 @@
 {
     public interface IPlacementStrategy
     {
-        Location GetPlacement(BuildingType building, GameState gameState);
+        IBuildLocation GetPlacement(BuildingType building, GameState gameState);
     }
 }

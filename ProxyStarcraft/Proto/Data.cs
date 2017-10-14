@@ -55,12 +55,14 @@ namespace ProxyStarcraft.Proto {
             "AQoLVXBncmFkZURhdGESEgoKdXBncmFkZV9pZBgBIAEoDRIMCgRuYW1lGAIg",
             "ASgJEhQKDG1pbmVyYWxfY29zdBgDIAEoDRIUCgx2ZXNwZW5lX2Nvc3QYBCAB",
             "KA0SFQoNcmVzZWFyY2hfdGltZRgFIAEoAhISCgphYmlsaXR5X2lkGAYgASgN",
-            "IikKCEJ1ZmZEYXRhEg8KB2J1ZmZfaWQYASABKA0SDAoEbmFtZRgCIAEoCSq0",
-            "AQoJQXR0cmlidXRlEhQKEEludmFsaWRBdHRyaWJ1dGUQABIJCgVMaWdodBAB",
-            "EgsKB0FybW9yZWQQAhIOCgpCaW9sb2dpY2FsEAMSDgoKTWVjaGFuaWNhbBAE",
-            "EgsKB1JvYm90aWMQBRILCgdQc2lvbmljEAYSCwoHTWFzc2l2ZRAHEg0KCVN0",
-            "cnVjdHVyZRAIEgkKBUhvdmVyEAkSCgoGSGVyb2ljEAoSDAoIU3VtbW9uZWQQ",
-            "C2IGcHJvdG8z"));
+            "IikKCEJ1ZmZEYXRhEg8KB2J1ZmZfaWQYASABKA0SDAoEbmFtZRgCIAEoCSJU",
+            "CgpFZmZlY3REYXRhEhEKCWVmZmVjdF9pZBgBIAEoDRIMCgRuYW1lGAIgASgJ",
+            "EhUKDWZyaWVuZGx5X25hbWUYAyABKAkSDgoGcmFkaXVzGAQgASgCKrQBCglB",
+            "dHRyaWJ1dGUSFAoQSW52YWxpZEF0dHJpYnV0ZRAAEgkKBUxpZ2h0EAESCwoH",
+            "QXJtb3JlZBACEg4KCkJpb2xvZ2ljYWwQAxIOCgpNZWNoYW5pY2FsEAQSCwoH",
+            "Um9ib3RpYxAFEgsKB1BzaW9uaWMQBhILCgdNYXNzaXZlEAcSDQoJU3RydWN0",
+            "dXJlEAgSCQoFSG92ZXIQCRIKCgZIZXJvaWMQChIMCghTdW1tb25lZBALYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Attribute), }, new pbr::GeneratedClrTypeInfo[] {
@@ -69,7 +71,8 @@ namespace ProxyStarcraft.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Weapon), global::ProxyStarcraft.Proto.Weapon.Parser, new[]{ "Type", "Damage", "DamageBonus", "Attacks", "Range", "Speed" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.Weapon.Types.TargetType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UnitTypeData), global::ProxyStarcraft.Proto.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "FoodRequired", "FoodProvided", "AbilityId", "Race", "BuildTime", "HasVespene", "HasMinerals", "TechAlias", "UnitAlias", "TechRequirement", "RequireAttached", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UpgradeData), global::ProxyStarcraft.Proto.UpgradeData.Parser, new[]{ "UpgradeId", "Name", "MineralCost", "VespeneCost", "ResearchTime", "AbilityId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.BuffData), global::ProxyStarcraft.Proto.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.BuffData), global::ProxyStarcraft.Proto.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.EffectData), global::ProxyStarcraft.Proto.EffectData.Parser, new[]{ "EffectId", "Name", "FriendlyName", "Radius" }, null, null, null)
           }));
     }
     #endregion
@@ -262,7 +265,7 @@ namespace ProxyStarcraft.Proto {
     public const int TargetFieldNumber = 9;
     private global::ProxyStarcraft.Proto.AbilityData.Types.Target target_ = 0;
     /// <summary>
-    /// Determines if a point is optional or required.
+    /// Determines if a point is or required.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.AbilityData.Types.Target Target {
@@ -1255,7 +1258,7 @@ namespace ProxyStarcraft.Proto {
     public const int AbilityIdFieldNumber = 15;
     private uint abilityId_;
     /// <summary>
-    /// This is the ability the builds the unit
+    /// The ability that builds this unit.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint AbilityId {
@@ -1315,7 +1318,7 @@ namespace ProxyStarcraft.Proto {
         = pb::FieldCodec.ForUInt32(170);
     private readonly pbc::RepeatedField<uint> techAlias_ = new pbc::RepeatedField<uint>();
     /// <summary>
-    /// Units this is equivalent to in terms of satisfying tech requirement.
+    /// Other units that satisfy the same tech requirement.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<uint> TechAlias {
@@ -1326,7 +1329,7 @@ namespace ProxyStarcraft.Proto {
     public const int UnitAliasFieldNumber = 22;
     private uint unitAlias_;
     /// <summary>
-    /// Units that are morphed variants of the same unit.
+    /// The morphed variant of this unit.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint UnitAlias {
@@ -2184,6 +2187,210 @@ namespace ProxyStarcraft.Proto {
           }
           case 18: {
             Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class EffectData : pb::IMessage<EffectData> {
+    private static readonly pb::MessageParser<EffectData> _parser = new pb::MessageParser<EffectData>(() => new EffectData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<EffectData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.DataReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EffectData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EffectData(EffectData other) : this() {
+      effectId_ = other.effectId_;
+      name_ = other.name_;
+      friendlyName_ = other.friendlyName_;
+      radius_ = other.radius_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EffectData Clone() {
+      return new EffectData(this);
+    }
+
+    /// <summary>Field number for the "effect_id" field.</summary>
+    public const int EffectIdFieldNumber = 1;
+    private uint effectId_;
+    /// <summary>
+    /// Stable ID.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint EffectId {
+      get { return effectId_; }
+      set {
+        effectId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "friendly_name" field.</summary>
+    public const int FriendlyNameFieldNumber = 3;
+    private string friendlyName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string FriendlyName {
+      get { return friendlyName_; }
+      set {
+        friendlyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "radius" field.</summary>
+    public const int RadiusFieldNumber = 4;
+    private float radius_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Radius {
+      get { return radius_; }
+      set {
+        radius_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as EffectData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(EffectData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (EffectId != other.EffectId) return false;
+      if (Name != other.Name) return false;
+      if (FriendlyName != other.FriendlyName) return false;
+      if (Radius != other.Radius) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (EffectId != 0) hash ^= EffectId.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (FriendlyName.Length != 0) hash ^= FriendlyName.GetHashCode();
+      if (Radius != 0F) hash ^= Radius.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (EffectId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(EffectId);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (FriendlyName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(FriendlyName);
+      }
+      if (Radius != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Radius);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (EffectId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EffectId);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (FriendlyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FriendlyName);
+      }
+      if (Radius != 0F) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(EffectData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.EffectId != 0) {
+        EffectId = other.EffectId;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.FriendlyName.Length != 0) {
+        FriendlyName = other.FriendlyName;
+      }
+      if (other.Radius != 0F) {
+        Radius = other.Radius;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            EffectId = input.ReadUInt32();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            FriendlyName = input.ReadString();
+            break;
+          }
+          case 37: {
+            Radius = input.ReadFloat();
             break;
           }
         }

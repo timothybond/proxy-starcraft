@@ -15,7 +15,7 @@ namespace ProxyStarcraft
 
         public Proto.Unit Raw { get; private set; }
 
-        public Proto.UnitTypeData RawType { get; private set; }
+        public UnitTypeData RawType { get; private set; }
 
         public abstract BuildingOrUnitType Type { get; }
 
@@ -39,7 +39,26 @@ namespace ProxyStarcraft
 
         public float Y => this.Raw.Pos.Y;
 
-        public bool IsFinishedBuilding => this.Raw.BuildProgress == 1.0f;
+        public bool IsBuilt => this.Raw.BuildProgress == 1.0f;
+
+        public bool IsMainBase =>
+            this.Type == TerranBuildingType.CommandCenter ||
+            this.Type == TerranBuildingType.PlanetaryFortress ||
+            this.Type == TerranBuildingType.OrbitalCommand ||
+            this.Type == ProtossBuildingType.Nexus ||
+            this.Type == ZergBuildingType.Hatchery ||
+            this.Type == ZergBuildingType.Lair ||
+            this.Type == ZergBuildingType.Hive;
+
+        public bool IsVespeneBuilding =>
+            this.Type == TerranBuildingType.Refinery||
+            this.Type == ProtossBuildingType.Assimilator ||
+            this.Type == ZergBuildingType.Extractor;
+
+        public bool IsWorker =>
+            this.Type == TerranUnitType.SCV ||
+            this.Type == ProtossUnitType.Probe ||
+            this.Type == ZergUnitType.Drone;
 
         public bool IsBuilding(BuildingOrUnitType buildingOrUnitType)
         {
@@ -80,11 +99,11 @@ namespace ProxyStarcraft
             return new HarvestCommand(translator.GetHarvestAbility(this.Raw), this, target);
         }
 
-        public BuildCommand Build(BuildingType buildingType, int x, int y)
+        public BuildCommand Build(BuildingType buildingType, IBuildLocation location)
         {
-            return new BuildCommand(this, buildingType, x, y, translator.GetBuildAction(buildingType));
+            return new BuildCommand(this, buildingType, location, translator.GetBuildAction(buildingType));
         }
-
+        
         public TrainCommand Train(UnitType unitType)
         {
             var ability = translator.GetBuildAction(unitType);
