@@ -39,6 +39,10 @@ namespace ProxyStarcraft.Basic
                 return new AddOnBuildLocation();
             }
 
+            // Note: Extractor already accounted for, above
+            var requireCreep = building.ZergBuilding != ZergBuildingType.Unspecified &&
+                               building.ZergBuilding != ZergBuildingType.Hatchery;
+
             // We're going to make some dumb assumptions here:
             // 1. We'd like to build this building very near where a main base currently is
             // 2. As long as we don't block anything, it doesn't matter where it goes
@@ -59,7 +63,7 @@ namespace ProxyStarcraft.Basic
                     // TODO: Add extra check for Terran buildings with add-ons
                     // (Reactor/TechLab on Barracks/Factory/Starport), which
                     // have the potential to take up more size in the future.
-                    if (gameState.MapData.CanBuild(size, location.X, location.Y))
+                    if (gameState.MapData.CanBuild(size, location.X, location.Y, requireCreep: requireCreep))
                     {
                         return new StandardBuildLocation(location);
                     }
