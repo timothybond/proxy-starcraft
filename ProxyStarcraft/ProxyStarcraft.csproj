@@ -53,6 +53,7 @@
     <Compile Include="DistanceExtensions.cs" />
     <Compile Include="IBuildLocation.cs" />
     <Compile Include="IPlacementStrategy.cs" />
+    <Compile Include="LocationOffset.cs" />
     <Compile Include="LocationTargetCommand.cs" />
     <Compile Include="MapArray.cs" />
     <Compile Include="Map\Area.cs" />

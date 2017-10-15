@@ -88,11 +88,17 @@ namespace Sandbox
                 }
             }
 
+            if (commandCenter == null)
+            {
+                // Accept death as inevitable.
+                return new List<Command>();
+
+                // TODO: Surrender?
+            }
+
             Deposit closestDeposit = gameState.MapData.Deposits.OrderBy(d => commandCenter.GetDistance(d.Center)).First();
             var mineralDeposits = closestDeposit.Resources.Where(u => u.IsMineralDeposit).ToList();
-
-
-
+            
             // First update, ignore the default worker orders, which are to mass on the center mineral deposit
             // (this ends up causing problems since we have to keep track of who is harvesting what ourselves)
             if (first)
@@ -104,15 +110,7 @@ namespace Sandbox
 
                 workersByMineralDeposit = mineralDeposits.ToDictionary(m => m.Raw.Tag, m => new List<ulong>());
             }
-
-            if (commandCenter == null)
-            {
-                // Accept death as inevitable.
-                return new List<Command>();
-                
-                // TODO: Surrender?
-            }
-
+            
             // Each possible behavior is implemented as a function that adds a command to the list
             // if the situation is appropriate. We will then execute whichever command was added first.
             BuildWorker(gameState, commandCenter, commands);

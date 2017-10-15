@@ -50,39 +50,22 @@ namespace ProxyStarcraft.Basic
 
             var size = gameState.Translator.GetBuildingSize(building);
 
-            var locations = new HashSet<Location>(mainBaseLocations);
+            var hasAddOn = building == TerranBuildingType.Barracks ||
+                           building == TerranBuildingType.Factory ||
+                           building == TerranBuildingType.Starport;
+            
+            var includeResourcePadding = building == TerranBuildingType.CommandCenter ||
+                                         building == ProtossBuildingType.Nexus ||
+                                         building == ZergBuildingType.Hatchery;
 
-            var pastLocations = new HashSet<Location>();
-            var nextLocations = new HashSet<Location>();
+            var buildLocation = gameState.MapData.BreadthFirstSearch(
+                (map, loc) => map.CanBuild(size, loc, requireCreep, hasAddOn, includeResourcePadding),
+                mainBaseLocations,
+                (map, loc) => map.CanTraverse(loc));
 
-            // This is essentially a breadth-first search of map locations
-            while (locations.Count > 0)
+            if (buildLocation.HasValue)
             {
-                foreach (var location in locations)
-                {
-                    // TODO: Add extra check for Terran buildings with add-ons
-                    // (Reactor/TechLab on Barracks/Factory/Starport), which
-                    // have the potential to take up more size in the future.
-                    if (gameState.MapData.CanBuild(size, location.X, location.Y, requireCreep: requireCreep))
-                    {
-                        return new StandardBuildLocation(location);
-                    }
-
-                    var adjacentLocations = location.AdjacentLocations(gameState.MapData.Size);
-
-                    foreach (var adjacentLocation in adjacentLocations)
-                    {
-                        if (!pastLocations.Contains(adjacentLocation) && !locations.Contains(adjacentLocation) && gameState.MapData.CanTraverse(adjacentLocation))
-                        {
-                            nextLocations.Add(adjacentLocation);
-                        }
-                    }
-
-                    pastLocations.Add(location);
-                }
-
-                locations = nextLocations;
-                nextLocations = new HashSet<Location>();
+                return new StandardBuildLocation(buildLocation.Value);
             }
 
             throw new InvalidOperationException("Cannot find placement location anywhere on map.");
