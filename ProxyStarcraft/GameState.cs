@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
-using ProxyStarcraft.Proto;
 using Google.Protobuf.Collections;
+using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {

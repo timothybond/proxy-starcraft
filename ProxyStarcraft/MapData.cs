@@ -1,9 +1,8 @@
-﻿using Google.Protobuf.Collections;
-using ProxyStarcraft.Map;
-using ProxyStarcraft.Proto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProxyStarcraft.Map;
+using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {
@@ -21,9 +20,16 @@ namespace ProxyStarcraft
 
         private MapArray<byte> areaGrid;
 
+        private MapArray<byte> creepGrid;
+
         // One space of padding around each non-buildable space,
         // usable as a primitive strategy to avoid blocking things like ramps
         private MapArray<bool> padding;
+
+        /// <summary>
+        /// Three-by-three box of padding around each (initial) resource location, which blocks main base placement.
+        /// </summary>
+        private MapArray<bool> resourcePadding;
 
         // Same as above but for known buildings
         private MapArray<bool> structurePadding;
@@ -40,6 +46,7 @@ namespace ProxyStarcraft
             pathingGrid = new MapArray<byte>(startingData.PathingGrid.Data.ToByteArray(), this.Size);
             placementGrid = new MapArray<byte>(startingData.PlacementGrid.Data.ToByteArray(), this.Size);
             heightGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
+            creepGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
 
             this.structuresAndDeposits = new MapArray<Unit>(this.Size);
 
@@ -49,9 +56,10 @@ namespace ProxyStarcraft
             this.deposits = new List<Deposit>();
 
             this.structurePadding = new MapArray<bool>(this.Size);
+            this.resourcePadding = new MapArray<bool>(this.Size);
         }
 
-        public MapData(MapData prior, List<Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes)
+        public MapData(MapData prior, List<Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes, ImageData creep)
         {
             this.Raw = prior.Raw;
             this.Size = prior.Size;
@@ -61,11 +69,13 @@ namespace ProxyStarcraft
             this.padding = prior.padding;
             this.areaGrid = prior.areaGrid;
             this.areas = prior.areas;
+            this.creepGrid = new MapArray<byte>(creep.Data.ToByteArray(), this.Size);
 
             this.deposits = GetDeposits(units);
 
             this.structuresAndDeposits = new MapArray<Unit>(this.Size);
             this.structurePadding = new MapArray<bool>(this.Size);
+            this.resourcePadding = new MapArray<bool>(this.Size);
 
             foreach (var unit in units)
             {
@@ -82,6 +92,11 @@ namespace ProxyStarcraft
                         {
                             structuresAndDeposits[x, y] = unit;
                             SetAdjacentSpaces(structurePadding, x, y);
+
+                            if (unit.IsMineralDeposit || unit.IsVespeneGeyser || unit.IsVespeneBuilding)
+                            {
+                                SetAdjacentSpaces(resourcePadding, x, y, 3);
+                            }
                         }
                     }
                 }
@@ -100,6 +115,8 @@ namespace ProxyStarcraft
 
         public MapArray<byte> AreaGrid => this.areaGrid;
 
+        public MapArray<byte> CreepGrid => this.creepGrid;
+
         public IReadOnlyList<Area> Areas => this.areas;
 
         public IReadOnlyList<Deposit> Deposits => this.deposits;
@@ -113,38 +130,57 @@ namespace ProxyStarcraft
         {
             return placementGrid[location.X, location.Y] != 0;
         }
-
-        public bool CanBuild(Size2DI size, Location location)
+        
+        public bool CanBuild(Size2DI size, Location location, bool requireCreep = false, bool hasAddOn = false, bool includeResourcePadding = false, bool includePadding = true)
         {
-            return CanBuild(size, location.X, location.Y, true);
-        }
+            var offsets = new List<LocationOffset>();
 
-        public bool CanBuild(Size2DI size, int originX, int originY)
-        {
-            return CanBuild(size, originX, originY, true);
-        }
-
-        public bool CanBuild(Size2DI size, Location location, bool includePadding)
-        {
-            return CanBuild(size, location.X, location.Y, includePadding);
-        }
-
-        public bool CanBuild(Size2DI size, int originX, int originY, bool includePadding)
-        {
-            for (var x = originX; x < originX + size.X; x++)
+            for (var x = 0; x < size.X; x++)
             {
-                for (var y = originY; y < originY + size.Y; y++)
+                for (var y = 0; y < size.Y; y++)
                 {
-                    if (placementGrid[x, y] == 0 ||
-                        structuresAndDeposits[x, y] != null)
-                    {
-                        return false;
-                    }
+                    offsets.Add(new LocationOffset { X = x, Y = y });
+                }
+            }
 
-                    if (includePadding && (padding[x, y] || structurePadding[x, y]))
-                    {
-                        return false;
-                    }
+            // This assumes (as is currently true) that all add-ons are 2x2 buildings
+            // directly to the right of this one and with the same bottom Y-coordinate.
+            if (hasAddOn)
+            {
+                offsets.Add(new LocationOffset { X = size.X, Y = 0 });
+                offsets.Add(new LocationOffset { X = size.X, Y = 1 });
+                offsets.Add(new LocationOffset { X = size.X + 1, Y = 0 });
+                offsets.Add(new LocationOffset { X = size.X + 1, Y = 1 });
+            }
+
+            return CanBuild(location, offsets, requireCreep, includeResourcePadding, includePadding);
+        }
+        
+        public bool CanBuild(Location origin, IReadOnlyList<LocationOffset> offsets, bool requireCreep = false, bool includeResourcePadding = false, bool includePadding = true)
+        {
+            foreach (var offset in offsets)
+            {
+                var location = origin + offset;
+
+                if (placementGrid[location] == 0 ||
+                        structuresAndDeposits[location] != null)
+                {
+                    return false;
+                }
+
+                if (includePadding && (padding[location] || structurePadding[location]))
+                {
+                    return false;
+                }
+
+                if (includeResourcePadding && resourcePadding[location])
+                {
+                    return false;
+                }
+
+                if (requireCreep && creepGrid[location] == 0)
+                {
+                    return false;
                 }
             }
 
@@ -167,15 +203,13 @@ namespace ProxyStarcraft
             }
         }
 
-        private void SetAdjacentSpaces(MapArray<bool> targetArray, int x, int y)
+        private void SetAdjacentSpaces(MapArray<bool> targetArray, int x, int y, int size = 1)
         {
-            var xVals = new List<int> { x - 1, x, x + 1 };
-            xVals.Remove(-1);
-            xVals.Remove(Size.X);
+            var xVals = new List<int> { x - size, x, x + size };
+            xVals.RemoveAll(n => n < 0 || n >= Size.X);
 
-            var yVals = new List<int> { y - 1, y, y + 1 };
-            yVals.Remove(-1);
-            yVals.Remove(Size.Y);
+            var yVals = new List<int> { y - size, y, y + size };
+            yVals.RemoveAll(n => n < 0 || n >= Size.Y);
             
             foreach (var xVal in xVals)
             {
@@ -187,6 +221,55 @@ namespace ProxyStarcraft
         }
 
         #region Map Analyzer Code
+
+        /// <summary>
+        /// Performs a breadth-first search from the set of starting locations, for a location meeting a specified condition.
+        /// </summary>
+        /// <param name="locationCondition">The condition that we're looking for in a location.</param>
+        /// <param name="startingLocations"></param>
+        /// <param name="adjacentLocationFilter">Any filters for which adjacent locations are worth considering (e.g., if you only want to check ground-unit-traversable locations). If null, all adjacent locations are checked.</param>
+        /// <returns>The location closest to any of the starting locations that meets the condition.</returns>
+        public Location? BreadthFirstSearch(Func<MapData, Location, bool> locationCondition, IEnumerable<Location> startingLocations, Func<MapData, Location, bool> adjacentLocationFilter = null)
+        {
+            if (adjacentLocationFilter == null)
+            {
+                adjacentLocationFilter = (m, l) => true;
+            }
+
+            var locations = new HashSet<Location>(startingLocations);
+
+            var pastLocations = new HashSet<Location>();
+            var nextLocations = new HashSet<Location>();
+
+            // This is essentially a breadth-first search of map locations
+            while (locations.Count > 0)
+            {
+                foreach (var location in locations)
+                {
+                    if (locationCondition(this, location))
+                    {
+                        return location;
+                    }
+                    
+                    var adjacentLocations = location.AdjacentLocations(this.Size);
+
+                    foreach (var adjacentLocation in adjacentLocations)
+                    {
+                        if (!pastLocations.Contains(adjacentLocation) && !locations.Contains(adjacentLocation) && adjacentLocationFilter(this, adjacentLocation))
+                        {
+                            nextLocations.Add(adjacentLocation);
+                        }
+                    }
+
+                    pastLocations.Add(location);
+                }
+
+                locations = nextLocations;
+                nextLocations = new HashSet<Location>();
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Builds a list of <see cref="Area"/>s that have references to their neighbors.

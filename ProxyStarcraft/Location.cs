@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
@@ -72,5 +71,10 @@ namespace ProxyStarcraft
         }
 
         public static implicit operator Point2D(Location location) => new Point2D { X = location.X + 0.5f, Y = location.Y + 0.5f };
+
+        public static Location operator +(Location location, LocationOffset offset)
+        {
+            return new Location { X = location.X + offset.X, Y = location.Y + offset.Y };
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿using ProxyStarcraft.Proto;
-using System;
+﻿using System;
+using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {

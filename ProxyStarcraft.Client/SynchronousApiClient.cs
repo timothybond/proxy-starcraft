@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
-
+using System.Threading.Tasks;
 using ProxyStarcraft.Proto;
 using WebSocket4Net;
-using System.Linq;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace ProxyStarcraft.Client
 {
@@ -86,10 +85,12 @@ namespace ProxyStarcraft.Client
                     retries--;
                 }
             }
-            
-            var units = response.Result.Observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
 
-            mapData = new MapData(mapData, units, translator, unitTypes);
+            var observation = response.Result.Observation;
+            
+            var units = observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
+
+            mapData = new MapData(mapData, units, translator, unitTypes, observation.Observation.RawData.MapState.Creep);
             
             return new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, translator);
         }

@@ -47,11 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddOnBuildLocation.cs" />
+    <Compile Include="Basic\BasicEconomyBot.cs" />
     <Compile Include="Basic\BasicPlacementStrategy.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="DistanceExtensions.cs" />
     <Compile Include="IBuildLocation.cs" />
     <Compile Include="IPlacementStrategy.cs" />
+    <Compile Include="LocationOffset.cs" />
     <Compile Include="LocationTargetCommand.cs" />
     <Compile Include="MapArray.cs" />
     <Compile Include="Map\Area.cs" />

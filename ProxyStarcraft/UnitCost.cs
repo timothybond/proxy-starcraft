@@ -45,13 +45,21 @@ namespace ProxyStarcraft
             {
                 return false;
             }
-
-            if (!gameState.Units.Any(u => IsBuilderType(u) && !u.IsBuildingSomething && u.IsBuilt))
+            
+            if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
             {
-                return false;
+                // This is handled separately in the GetBuilder(...) logic.
+                // TODO: Find cleaner way to do this.
+                if (this.Prerequisite != TerranBuildingType.TechLab &&
+                    this.Prerequisite != TerranBuildingType.BarracksTechLab &&
+                    this.Prerequisite != TerranBuildingType.FactoryTechLab &&
+                    this.Prerequisite != TerranBuildingType.StarportTechLab)
+                {
+                    return false;
+                }
             }
 
-            if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
+            if (GetBuilder(gameState) == null)
             {
                 return false;
             }
@@ -61,7 +69,20 @@ namespace ProxyStarcraft
 
         public Unit GetBuilder(GameState gameState)
         {
-            return gameState.Units.FirstOrDefault(u => u.Type == this.Builder && !u.IsBuildingSomething && u.Raw.BuildProgress == 1.0);
+            if (this.Prerequisite == TerranBuildingType.TechLab ||
+                this.Prerequisite == TerranBuildingType.BarracksTechLab ||
+                this.Prerequisite == TerranBuildingType.FactoryTechLab ||
+                this.Prerequisite == TerranBuildingType.StarportTechLab)
+            {
+                var builder = gameState.Units.FirstOrDefault(
+                    u =>
+                    IsUnitOfType(u, this.Builder) && !u.IsBuildingSomething && u.IsBuilt &&
+                    u.Raw.AddOnTag != 0 &&
+                    IsUnitOfType(gameState.Units.Single(a => a.Tag == u.Raw.AddOnTag), TerranBuildingType.TechLab));
+                return builder;
+            }
+            
+            return gameState.Units.FirstOrDefault(u => IsUnitOfType(u, this.Builder) && !u.IsBuildingSomething && u.IsBuilt);
         }
 
         private bool IsBuilderType(Unit unit)
@@ -111,6 +132,22 @@ namespace ProxyStarcraft
 
             if (type == ZergBuildingType.Spire &&
                 unit.Type == ZergBuildingType.GreaterSpire)
+            {
+                return true;
+            }
+
+            if (type == TerranBuildingType.TechLab &&
+                (unit.Type == TerranBuildingType.BarracksTechLab ||
+                 unit.Type == TerranBuildingType.FactoryTechLab ||
+                 unit.Type == TerranBuildingType.StarportTechLab))
+            {
+                return true;
+            }
+
+            if (type == TerranBuildingType.Reactor &&
+                (unit.Type == TerranBuildingType.BarracksReactor ||
+                 unit.Type == TerranBuildingType.FactoryReactor ||
+                 unit.Type == TerranBuildingType.StarportReactor))
             {
                 return true;
             }
