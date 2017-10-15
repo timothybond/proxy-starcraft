@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="AddOnBuildLocation.cs" />
     <Compile Include="Basic\BasicPlacementStrategy.cs" />
+    <Compile Include="Basic\EconomyBot.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="DistanceExtensions.cs" />
     <Compile Include="IBuildLocation.cs" />
