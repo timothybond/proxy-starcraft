@@ -109,5 +109,7 @@ namespace ProxyStarcraft
             var ability = translator.GetBuildAction(unitType);
             return new TrainCommand(this, unitType, ability);
         }
+        
+        public override string ToString() => this.Type.ToString();
     }
 }
