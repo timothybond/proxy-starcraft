@@ -45,13 +45,21 @@ namespace ProxyStarcraft
             {
                 return false;
             }
-
-            if (!gameState.Units.Any(u => IsBuilderType(u) && !u.IsBuildingSomething && u.IsBuilt))
+            
+            if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
             {
-                return false;
+                // This is handled separately in the GetBuilder(...) logic.
+                // TODO: Find cleaner way to do this.
+                if (this.Prerequisite != TerranBuildingType.TechLab &&
+                    this.Prerequisite != TerranBuildingType.BarracksTechLab &&
+                    this.Prerequisite != TerranBuildingType.FactoryTechLab &&
+                    this.Prerequisite != TerranBuildingType.StarportTechLab)
+                {
+                    return false;
+                }
             }
 
-            if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
+            if (GetBuilder(gameState) == null)
             {
                 return false;
             }
@@ -61,7 +69,16 @@ namespace ProxyStarcraft
 
         public Unit GetBuilder(GameState gameState)
         {
-            return gameState.Units.FirstOrDefault(u => u.Type == this.Builder && !u.IsBuildingSomething && u.Raw.BuildProgress == 1.0);
+            if (this.Prerequisite == TerranBuildingType.TechLab ||
+                this.Prerequisite == TerranBuildingType.BarracksTechLab ||
+                this.Prerequisite == TerranBuildingType.FactoryTechLab ||
+                this.Prerequisite == TerranBuildingType.StarportTechLab)
+            {
+                // TODO: Verify the 'AddOnTag' part
+                return gameState.Units.FirstOrDefault(u => u.Type == this.Builder && !u.IsBuildingSomething && u.IsBuilt && u.Raw.AddOnTag != 0);
+            }
+
+            return gameState.Units.FirstOrDefault(u => u.Type == this.Builder && !u.IsBuildingSomething && u.IsBuilt);
         }
 
         private bool IsBuilderType(Unit unit)
