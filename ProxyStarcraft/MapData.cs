@@ -21,6 +21,8 @@ namespace ProxyStarcraft
 
         private MapArray<byte> areaGrid;
 
+        private MapArray<byte> creepGrid;
+
         // One space of padding around each non-buildable space,
         // usable as a primitive strategy to avoid blocking things like ramps
         private MapArray<bool> padding;
@@ -40,6 +42,7 @@ namespace ProxyStarcraft
             pathingGrid = new MapArray<byte>(startingData.PathingGrid.Data.ToByteArray(), this.Size);
             placementGrid = new MapArray<byte>(startingData.PlacementGrid.Data.ToByteArray(), this.Size);
             heightGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
+            creepGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
 
             this.structuresAndDeposits = new MapArray<Unit>(this.Size);
 
@@ -51,7 +54,7 @@ namespace ProxyStarcraft
             this.structurePadding = new MapArray<bool>(this.Size);
         }
 
-        public MapData(MapData prior, List<Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes)
+        public MapData(MapData prior, List<Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes, ImageData creep)
         {
             this.Raw = prior.Raw;
             this.Size = prior.Size;
@@ -61,6 +64,7 @@ namespace ProxyStarcraft
             this.padding = prior.padding;
             this.areaGrid = prior.areaGrid;
             this.areas = prior.areas;
+            this.creepGrid = new MapArray<byte>(creep.Data.ToByteArray(), this.Size);
 
             this.deposits = GetDeposits(units);
 
@@ -100,6 +104,8 @@ namespace ProxyStarcraft
 
         public MapArray<byte> AreaGrid => this.areaGrid;
 
+        public MapArray<byte> CreepGrid => this.creepGrid;
+
         public IReadOnlyList<Area> Areas => this.areas;
 
         public IReadOnlyList<Deposit> Deposits => this.deposits;
@@ -124,12 +130,12 @@ namespace ProxyStarcraft
             return CanBuild(size, originX, originY, true);
         }
 
-        public bool CanBuild(Size2DI size, Location location, bool includePadding)
+        public bool CanBuild(Size2DI size, Location location, bool includePadding = true, bool requireCreep = false)
         {
-            return CanBuild(size, location.X, location.Y, includePadding);
+            return CanBuild(size, location.X, location.Y, includePadding, requireCreep);
         }
-
-        public bool CanBuild(Size2DI size, int originX, int originY, bool includePadding)
+        
+        public bool CanBuild(Size2DI size, int originX, int originY, bool includePadding = true, bool requireCreep = false)
         {
             for (var x = originX; x < originX + size.X; x++)
             {
@@ -142,6 +148,11 @@ namespace ProxyStarcraft
                     }
 
                     if (includePadding && (padding[x, y] || structurePadding[x, y]))
+                    {
+                        return false;
+                    }
+
+                    if (requireCreep && creepGrid[x, y] == 0)
                     {
                         return false;
                     }
