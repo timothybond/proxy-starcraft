@@ -4,7 +4,6 @@
     {
         Unspecified = 0,
         Larva,
-        Egg,
         Cocoon,
         Drone,
         Queen,

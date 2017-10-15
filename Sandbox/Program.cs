@@ -9,34 +9,13 @@ using ProxyStarcraft.Client;
 using ProxyStarcraft.Proto;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Sandbox
 {
     class Program
     {
-        static Program()
-        {
-            var documentsFolder = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "StarCraft II");
-            var executeInfoFile = documentsFolder + "\\ExecuteInfo.txt";
-            if (!File.Exists(executeInfoFile))
-            {
-                Console.WriteLine("Could not find ExecuteInfo.txt. Using old values.");
-                return;
-            }
-            var lines = File.ReadAllLines(executeInfoFile);
-            foreach(var line in lines)
-            {
-                if (line.StartsWith("executable"))
-                {
-                    GAME_EXECUTABLE_PATH = line.Substring("executable = ".Length); // figured this was better than a magic number.
-                }
-            }
-            BASE_GAME_PATH = Path.GetFullPath(Path.Combine(GAME_EXECUTABLE_PATH, @"..\..\..\"));
-            BASE_DRIVE = Path.GetPathRoot(GAME_EXECUTABLE_PATH);
-        }
-
         private static readonly string BASE_DRIVE = "D:/";
-        
         private static readonly string BASE_GAME_PATH = BASE_DRIVE + "Program Files (x86)/StarCraft II";
         private static readonly string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Versions/Base58400/SC2_x64.exe"; //"/Support64/SC2Switcher_x64.exe";
         private const string GAME_EXECUTABLE_ARGS_BASE = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -displayMode 0";
@@ -57,6 +36,31 @@ namespace Sandbox
         private static string LADDER_ABYSSAL_REEF_MAP_PATH => BASE_GAME_PATH + "/maps/Ladder/AbyssalReefLE.SC2Map";
         
         private static bool exit = false;
+
+        static Program()
+        {
+            var executeInfoFile = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "StarCraft II", "ExecuteInfo.txt");
+
+            if (!File.Exists(executeInfoFile))
+            {
+                Console.WriteLine("Could not find ExecuteInfo.txt. Using old values.");
+                return;
+            }
+
+            var lines = File.ReadAllLines(executeInfoFile);
+            foreach (var line in lines)
+            {
+                var match = Regex.Match(line, "^executable = (.+)$");
+                if (match.Success)
+                {
+                    GAME_EXECUTABLE_PATH = match.Groups[1].Value;
+                    break;
+                }
+            }
+
+            BASE_GAME_PATH = Path.GetFullPath(Path.Combine(GAME_EXECUTABLE_PATH, @"..\..\..\"));
+            BASE_DRIVE = Path.GetPathRoot(GAME_EXECUTABLE_PATH);
+        }
 
         static void Main(string[] args)
         {
