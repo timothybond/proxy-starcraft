@@ -7,31 +7,54 @@ using System.Runtime.InteropServices;
 using ProxyStarcraft;
 using ProxyStarcraft.Client;
 using ProxyStarcraft.Proto;
-
+using System;
+using System.IO;
 
 namespace Sandbox
 {
     class Program
     {
-        // TODO: Fix hardcoded path - get from $USER\Documents\Starcraft II\ExecuteInfo.txt
-        private const string BASE_GAME_PATH = "D:/Program Files (x86)/StarCraft II";
-        private const string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Versions/Base58400/SC2_x64.exe"; //"/Support64/SC2Switcher_x64.exe";
+        static Program()
+        {
+            var documentsFolder = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "StarCraft II");
+            var executeInfoFile = documentsFolder + "\\ExecuteInfo.txt";
+            if (!File.Exists(executeInfoFile))
+            {
+                Console.WriteLine("Could not find ExecuteInfo.txt. Using old values.");
+                return;
+            }
+            var lines = File.ReadAllLines(executeInfoFile);
+            foreach(var line in lines)
+            {
+                if (line.StartsWith("executable"))
+                {
+                    GAME_EXECUTABLE_PATH = line.Substring("executable = ".Length); // figured this was better than a magic number.
+                }
+            }
+            BASE_GAME_PATH = Path.GetFullPath(Path.Combine(GAME_EXECUTABLE_PATH, @"..\..\..\"));
+            BASE_DRIVE = Path.GetPathRoot(GAME_EXECUTABLE_PATH);
+        }
+
+        private static readonly string BASE_DRIVE = "D:/";
+        
+        private static readonly string BASE_GAME_PATH = BASE_DRIVE + "Program Files (x86)/StarCraft II";
+        private static readonly string GAME_EXECUTABLE_PATH = BASE_GAME_PATH + "/Versions/Base58400/SC2_x64.exe"; //"/Support64/SC2Switcher_x64.exe";
         private const string GAME_EXECUTABLE_ARGS_BASE = "-sso=1 -launch -uid s2_enus -listen 127.0.0.1 -displayMode 0";
         private const string GAME_EXECUTABLE_ARGS_PLAYER1 = GAME_EXECUTABLE_ARGS_BASE + " -port 5000";
         private const string GAME_EXECUTABLE_ARGS_PLAYER2 = GAME_EXECUTABLE_ARGS_BASE + " -port 5001";
 
-        private const string MARINE_MICRO_MAP_PATH = BASE_GAME_PATH + "/maps/Example/MarineMicro.SC2Map";
-        private const string EMPTY_MAP_PATH = BASE_GAME_PATH + "/maps/Test/Empty.SC2Map";
+        private static string MARINE_MICRO_MAP_PATH => BASE_GAME_PATH + "/maps/Example/MarineMicro.SC2Map";
+        private static string EMPTY_MAP_PATH => BASE_GAME_PATH + "/maps/Test/Empty.SC2Map";
 
-        private const string MINIGAME_BUILD_MARINES_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/BuildMarines.SC2Map";
-        private const string MINIGAME_COLLECT_MINERALS_AND_GAS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/CollectMineralsAndGas.SC2Map";
-        private const string MINIGAME_COLLECT_MINERAL_SHARDS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/CollectMineralShards.SC2Map";
-        private const string MINIGAME_DEFEAT_ROACHES_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/DefeatRoaches.SC2Map";
-        private const string MINIGAME_DEFEAT_ZERGLINGS_AND_BANELINGS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/DefeatZerglingsAndBanelings.SC2Map";
-        private const string MINIGAME_FIND_AND_DEFEAT_ZERGLINGS_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/FindAndDefeatZerglings.SC2Map";
-        private const string MINIGAME_MOVE_TO_BEACON_MAP_PATH = BASE_GAME_PATH + "/maps/Minigames/MoveToBeacon.SC2Map";
+        private static string MINIGAME_BUILD_MARINES_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/BuildMarines.SC2Map";
+        private static string MINIGAME_COLLECT_MINERALS_AND_GAS_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/CollectMineralsAndGas.SC2Map";
+        private static string MINIGAME_COLLECT_MINERAL_SHARDS_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/CollectMineralShards.SC2Map";
+        private static string MINIGAME_DEFEAT_ROACHES_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/DefeatRoaches.SC2Map";
+        private static string MINIGAME_DEFEAT_ZERGLINGS_AND_BANELINGS_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/DefeatZerglingsAndBanelings.SC2Map";
+        private static string MINIGAME_FIND_AND_DEFEAT_ZERGLINGS_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/FindAndDefeatZerglings.SC2Map";
+        private static string MINIGAME_MOVE_TO_BEACON_MAP_PATH => BASE_GAME_PATH + "/maps/Minigames/MoveToBeacon.SC2Map";
 
-        private const string LADDER_ABYSSAL_REEF_MAP_PATH = BASE_GAME_PATH + "/maps/Ladder/AbyssalReefLE.SC2Map";
+        private static string LADDER_ABYSSAL_REEF_MAP_PATH => BASE_GAME_PATH + "/maps/Ladder/AbyssalReefLE.SC2Map";
         
         private static bool exit = false;
 
@@ -226,22 +249,22 @@ namespace Sandbox
         {
             using (var pathingGrid = GetImage(gameState.MapData.PathingGrid))
             {
-                pathingGrid.Save("D:/Temp/pathing.bmp");
+                pathingGrid.Save(BASE_DRIVE + "Temp/pathing.bmp");
             }
 
             using (var placementGrid = GetImage(gameState.MapData.PlacementGrid))
             {
-                placementGrid.Save("D:/Temp/placement.bmp");
+                placementGrid.Save(BASE_DRIVE + "Temp/placement.bmp");
             }
 
             using (var terrainHeight = GetImage(gameState.MapData.HeightGrid))
             {
-                terrainHeight.Save("D:/Temp/terrain-height.bmp");
+                terrainHeight.Save(BASE_DRIVE + "Temp/terrain-height.bmp");
             }
 
             using (var areasBitmap = GetImage(gameState.MapData.AreaGrid))
             {
-                areasBitmap.Save("D:/Temp/areas.bmp");
+                areasBitmap.Save(BASE_DRIVE + "Temp/areas.bmp");
             }
         }
 
