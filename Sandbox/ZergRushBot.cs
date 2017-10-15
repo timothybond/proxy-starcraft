@@ -123,7 +123,7 @@ namespace Sandbox
             {
                 BuildOverlord(gameState, idleLarva, commands);
                 // Could not find a larva timer in the SC2 API. 
-                if (idleLarva.Count >= 3 && !gameState.Units.Any(u => u.Type == ZergUnitType.Egg))
+                if (idleLarva.Count >= 3 && !gameState.Units.Any(u => u.Type == ZergUnitType.Cocoon))
                 {
                     BuildWorker(gameState, idleLarva, commands);
                 }
