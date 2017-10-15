@@ -137,7 +137,8 @@ namespace ProxyStarcraft.Basic
                     }
                 }
             }
-            
+
+            CheckForKilledWorkers(workers);
             SetIdleWorkersToHarvest(gameState, workers, mineralDeposits, vespeneBuildings, commands);
 
             if (first)
@@ -173,6 +174,21 @@ namespace ProxyStarcraft.Basic
                 {
                     pair.Value.Remove(unit.Tag);
                 }
+            }
+        }
+
+        private void CheckForKilledWorkers(List<Unit> workers)
+        {
+            var activeHarvesters = workersByMineralDeposit.SelectMany(w => w.Value).Concat(workersByVespeneGeyser.SelectMany(w => w.Value)).ToList();
+
+            foreach (var worker in workers)
+            {
+                activeHarvesters.Remove(worker.Tag);
+            }
+
+            foreach (var harvester in activeHarvesters)
+            {
+                RemoveWorkerFromHarvestAssignments(harvester);
             }
         }
 
