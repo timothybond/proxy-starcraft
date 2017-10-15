@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProxyStarcraft
+﻿namespace ProxyStarcraft
 {
     public class TrainCommand : NoTargetCommand
     {

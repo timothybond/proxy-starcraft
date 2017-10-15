@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
-
+using System.Threading.Tasks;
 using ProxyStarcraft.Proto;
 using WebSocket4Net;
-using System.Linq;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace ProxyStarcraft.Client
 {

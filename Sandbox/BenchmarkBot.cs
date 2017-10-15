@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
 using ProxyStarcraft;
-using ProxyStarcraft.Proto;
 using ProxyStarcraft.Basic;
 using ProxyStarcraft.Map;
+using ProxyStarcraft.Proto;
 
 namespace Sandbox
 {

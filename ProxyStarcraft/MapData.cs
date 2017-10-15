@@ -1,9 +1,8 @@
-﻿using Google.Protobuf.Collections;
-using ProxyStarcraft.Map;
-using ProxyStarcraft.Proto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProxyStarcraft.Map;
+using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft
 {
