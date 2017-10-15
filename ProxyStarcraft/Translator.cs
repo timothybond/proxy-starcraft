@@ -317,6 +317,7 @@ namespace ProxyStarcraft
             zergUnitTypesById = new Dictionary<uint, ZergUnitType>();
 
             zergUnitTypesById.Add(unitTypesByName["Larva"].UnitId, ZergUnitType.Larva);
+            zergUnitTypesById.Add(unitTypesByName["Egg"].UnitId, ZergUnitType.Egg);
             zergUnitTypesById.Add(unitTypesByName["Drone"].UnitId, ZergUnitType.Drone);
             zergUnitTypesById.Add(unitTypesByName["DroneBurrowed"].UnitId, ZergUnitType.Drone);
             zergUnitTypesById.Add(unitTypesByName["Queen"].UnitId, ZergUnitType.Queen);

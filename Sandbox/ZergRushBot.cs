@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ProxyStarcraft;
 using ProxyStarcraft.Basic;
@@ -14,7 +15,7 @@ namespace Sandbox
     public class ZergRushBot : IBot
     {
         // Every time there are this many idle soldiers, attack
-        private const uint AttackThreshold = 6;
+        private const uint AttackThreshold = 24;
 
         private const uint MaxWorkersPerMineralDeposit = 2;
 
@@ -42,7 +43,7 @@ namespace Sandbox
             var workers = new List<ZergUnit>();
             var lings = new List<ZergUnit>();
             var idleLarva = new List<ZergUnit>();
-            
+            var queens = new List<ZergUnit>();
 
             foreach (var unit in gameState.Units)
             {
@@ -82,9 +83,13 @@ namespace Sandbox
                     {
                         lings.Add(zUnit);
                     }
-                    if (zUnit.ZergUnitType == ZergUnitType.Larva)
+                    else if (zUnit.ZergUnitType == ZergUnitType.Larva)
                     {
                         idleLarva.Add(zUnit);
+                    }
+                    else if (zUnit.ZergUnitType == ZergUnitType.Queen)
+                    {
+                        queens.Add(zUnit);
                     }
                 }
             }
@@ -109,37 +114,52 @@ namespace Sandbox
                 }
 
                 workersByMineralDeposit = mineralDeposits.ToDictionary(m => m.Raw.Tag, m => new List<ulong>());
-            }
 
-            if (pool == null)
-            {
-                TryBuildPool(gameState, workers, commands);
-            }
+                first = false;
 
+                // Make sure workers don't automatically harvest minerals, since we're managing assignments ourselves
+                commands.Add(hatchery.RallyWorkers(hatchery.Raw.Pos.X, hatchery.Raw.Pos.Y));
+            }
             if (idleLarva.Any())
             {
-                if (pool?.IsBuilt == true)
-                {
-                    BuildAllLings(gameState, idleLarva, commands);
-                }
-
-                if (gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed <= 2 && 
-                    !gameState.Units.Any(u => u is ZergUnit zU && zU.ZergUnitType == ZergUnitType.Cocoon && zU.RawType.Armor >= 10)) 
-                    // HACK: Cocoons *also* signify Baneling, Ravager, Lurker, Overseer, and Broodlord, so we check for high-armor Cocoons, because Larva create the highest armor Cocoons.
-                    // if it's stupid, but it works... still stupid and a little shameful.
-                {
-                    BuildOverlord(gameState, idleLarva, commands);
-                }
+                BuildOverlord(gameState, idleLarva, commands);
                 // Could not find a larva timer in the SC2 API. 
-                if (idleLarva.Count >= 3) 
+                if (idleLarva.Count >= 3 && !gameState.Units.Any(u => u.Type == ZergUnitType.Egg))
                 {
                     BuildWorker(gameState, idleLarva, commands);
                 }
             }
+            if (pool == null)
+            {
+                TryBuildPool(gameState, workers, commands);
+            }
+            if (pool?.IsBuilt == true)
+            {
+                if (idleLarva.Any())
+                {
+                    if (pool?.IsBuilt == true)
+                    {
+                        BuildAllLings(gameState, idleLarva, commands);
+                    }
+                }
+                if (!gameState.Units.Any(u => u.Type == ZergUnitType.Queen || u.IsBuilding(ZergUnitType.Queen)))
+                {
+                    BuildQueen(gameState, hatchery, commands);
+                }
+            }
+            else
+            {
+                return commands;
+            }
+            
 
             // This bot isn't exactly aiming for the stars in terms of the tech tree, so we can get away with this. Revisit if you're shamelessly bastardizing this code.
-            BuildHatchery(gameState, workers, closestDeposit, commands);
-
+            if (gameState.Observation.PlayerCommon.Minerals >= 600) // only expand hatcheries if mineral production > zergling capacity.
+            {
+                BuildHatchery(gameState, workers, closestDeposit, commands);
+            }
+            
+            
             // TODO: Vespene is important for Zerg.
 
             commands = commands.Take(1).ToList();
@@ -155,17 +175,23 @@ namespace Sandbox
             Attack(gameState, hatchery, lings, commands);
             SetIdleWorkerToHarvest(gameState, workers, mineralDeposits, commands);
 
-            if (first)
+            if (queens.Any())
             {
-                first = false;
-
-                // Make sure workers don't automatically harvest minerals, since we're managing assignments ourselves
-                commands.Add(hatchery.RallyWorkers(hatchery.Raw.Pos.X, hatchery.Raw.Pos.Y));
+                SpawnLarvaOnSingleHatchery(queens.First(), hatchery, commands);
             }
-
+            
             return commands;
         }
 
+
+
+        private void SpawnLarvaOnSingleHatchery(ZergUnit closestQueen, ZergBuilding hatchery, List<Command> commands)
+        {
+            if (closestQueen.Raw.Energy >= 25)
+            {
+                commands.Add(new RallyTargetCommand(251, closestQueen, hatchery)); // The hackiest hack.
+            }            
+        }
 
         private void Attack(GameState gameState, ZergBuilding hatchery, List<ZergUnit> soldiers, List<Command> commands)
         {
@@ -241,9 +267,21 @@ namespace Sandbox
             commands.Add(idleLarva.First().Train(ZergUnitType.Drone));
         }
 
+        private void BuildQueen(GameState gameState, ZergBuilding hatchery, List<Command> commands)
+        {
+            if (gameState.Observation.PlayerCommon.Minerals < 150 ||
+               gameState.Observation.PlayerCommon.FoodUsed >= gameState.Observation.PlayerCommon.FoodCap - 2)
+            {
+                return;
+            }
+            commands.Add(hatchery.Train(ZergUnitType.Queen));
+        }
+
         private void BuildOverlord(GameState gameState, List<ZergUnit> idleLarva, List<Command> commands)
         {
-            if (gameState.Observation.PlayerCommon.Minerals < 100)
+            if (gameState.Observation.PlayerCommon.Minerals < 100 || 
+                gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed >= 2 ||
+                    gameState.Units.Any(u => u.IsBuilding(ZergUnitType.Overlord)))
             {
                 return;
             }
