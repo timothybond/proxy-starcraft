@@ -125,9 +125,17 @@ namespace ProxyStarcraft
             return this.Value.ToString();
         }
 
-        public static bool operator == (BuildingOrUnitType first, BuildingOrUnitType second)
+        public static bool operator ==(BuildingOrUnitType first, BuildingOrUnitType second)
         {
-            if (first.Value is TerranUnitType firstTerranUnit && second.Value is TerranUnitType secondTerranUnit)
+            if (object.Equals(first, null) && object.Equals(second, null))
+            {
+                return true;
+            }
+            else if (object.Equals(first, null) || object.Equals(second, null))
+            {
+                return false;
+            }
+            else if (first.Value is TerranUnitType firstTerranUnit && second.Value is TerranUnitType secondTerranUnit)
             {
                 return firstTerranUnit == secondTerranUnit;
             }

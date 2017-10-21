@@ -34,7 +34,15 @@ namespace ProxyStarcraft
 
         public static bool operator ==(BuildingType first, BuildingType second)
         {
-            if (first.Value is TerranBuildingType firstTerranBuilding && second.Value is TerranBuildingType secondTerranBuilding)
+            if (object.Equals(first, null) && object.Equals(second, null))
+            {
+                return true;
+            }
+            else if (object.Equals(first, null) || object.Equals(second, null))
+            {
+                return false;
+            }
+            else if (first.Value is TerranBuildingType firstTerranBuilding && second.Value is TerranBuildingType secondTerranBuilding)
             {
                 return firstTerranBuilding == secondTerranBuilding;
             }
