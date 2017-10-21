@@ -24,212 +24,137 @@ namespace ProxyStarcraft
 
         public static implicit operator BuildingOrUnitType(BuildingType building)
         {
-            if (building.TerranBuilding != TerranBuildingType.Unspecified)
+            switch (building.Value)
             {
-                return building.TerranBuilding;
+                case TerranBuildingType terranBuilding:
+                    return new BuildingOrUnitType(terranBuilding);
+                case ProtossBuildingType protossBuilding:
+                    return new BuildingOrUnitType(protossBuilding);
+                case ZergBuildingType zergBuilding:
+                    return new BuildingOrUnitType(zergBuilding);
+                default:
+                    throw new NotImplementedException();
             }
-            else if (building.ProtossBuilding != ProtossBuildingType.Unspecified)
-            {
-                return building.ProtossBuilding;
-            }
-            else if (building.ZergBuilding != ZergBuildingType.Unspecified)
-            {
-                return building.ZergBuilding;
-            }
-
-            throw new ArgumentException("BuildingType was 'Unspecified'.");
         }
 
         public static implicit operator BuildingOrUnitType(UnitType unit)
         {
-            if (unit.TerranUnit != TerranUnitType.Unspecified)
+            switch (unit.Value)
             {
-                return unit.TerranUnit;
+                case TerranUnitType terranUnit:
+                    return new BuildingOrUnitType(terranUnit);
+                case ProtossUnitType protossUnit:
+                    return new BuildingOrUnitType(protossUnit);
+                case ZergUnitType zergUnit:
+                    return new BuildingOrUnitType(zergUnit);
+                default:
+                    throw new NotImplementedException();
             }
-            else if (unit.ProtossUnit != ProtossUnitType.Unspecified)
-            {
-                return unit.ProtossUnit;
-            }
-            else if (unit.ZergUnit != ZergUnitType.Unspecified)
-            {
-                return unit.ZergUnit;
-            }
-
-            throw new ArgumentException("UnitType was 'Unspecified'.");
         }
 
         public static explicit operator UnitType(BuildingOrUnitType buildingOrUnit)
         {
-            if (buildingOrUnit.TerranUnit != TerranUnitType.Unspecified)
+            switch (buildingOrUnit.Value)
             {
-                return new UnitType(buildingOrUnit.TerranUnit);
+                case TerranUnitType terranUnit:
+                    return new UnitType(terranUnit);
+                case ProtossUnitType protossUnit:
+                    return new UnitType(protossUnit);
+                case ZergUnitType zergUnit:
+                    return new UnitType(zergUnit);
+                default:
+                    throw new InvalidOperationException($"Attempted to convert a BuildingOrUnitType to a UnitType, but was BuildingType '{buildingOrUnit}'.");
             }
-
-            if (buildingOrUnit.ProtossUnit != ProtossUnitType.Unspecified)
-            {
-                return new UnitType(buildingOrUnit.ProtossUnit);
-            }
-
-            if (buildingOrUnit.ZergUnit != ZergUnitType.Unspecified)
-            {
-                return new UnitType(buildingOrUnit.ZergUnit);
-            }
-
-            throw new InvalidOperationException("Attempted to convert a BuildingOrUnitType to a UnitType, but no UnitType was specified.");
         }
 
         public static explicit operator BuildingType(BuildingOrUnitType buildingOrUnit)
         {
-            if (buildingOrUnit.TerranBuilding != TerranBuildingType.Unspecified)
+            switch (buildingOrUnit.Value)
             {
-                return new BuildingType(buildingOrUnit.TerranBuilding);
+                case TerranBuildingType terranBuilding:
+                    return new BuildingType(terranBuilding);
+                case ProtossBuildingType protossBuilding:
+                    return new BuildingType(protossBuilding);
+                case ZergBuildingType zergBuilding:
+                    return new BuildingType(zergBuilding);
+                default:
+                    throw new InvalidOperationException($"Attempted to convert a BuildingOrUnitType to a UnitType, but was UnitType '{buildingOrUnit}'.");
             }
-
-            if (buildingOrUnit.ProtossBuilding != ProtossBuildingType.Unspecified)
-            {
-                return new BuildingType(buildingOrUnit.ProtossBuilding);
-            }
-
-            if (buildingOrUnit.ZergBuilding != ZergBuildingType.Unspecified)
-            {
-                return new BuildingType(buildingOrUnit.ZergBuilding);
-            }
-
-            throw new InvalidOperationException("Attempted to convert a BuildingOrUnitType to a BuildingType, but no BuildingType was specified.");
         }
 
         public BuildingOrUnitType(TerranBuildingType building)
         {
-            if (building == TerranBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranBuildingType - 'Unspecified'.", "building");
-            }
-
-            this.TerranBuilding = building;
+            this.Value = building;
         }
 
         public BuildingOrUnitType(ProtossBuildingType building)
         {
-            if (building == ProtossBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossBuildingType - 'Unspecified'.", "building");
-            }
-
-            this.ProtossBuilding = building;
+            this.Value = building;
         }
 
         public BuildingOrUnitType(ZergBuildingType building)
         {
-            if (building == ZergBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergBuildingType - 'Unspecified'.", "building");
-            }
-
-            this.ZergBuilding = building;
+            this.Value = building;
         }
 
         public BuildingOrUnitType(TerranUnitType unit)
         {
-            if (unit == TerranUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranUnitType - 'Unspecified'.", "building");
-            }
-
-            this.TerranUnit = unit;
+            this.Value = unit;
         }
 
         public BuildingOrUnitType(ProtossUnitType unit)
         {
-            if (unit == ProtossUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossUnitType - 'Unspecified'.", "building");
-            }
-
-            this.ProtossUnit = unit;
+            this.Value = unit;
         }
 
         public BuildingOrUnitType(ZergUnitType unit)
         {
-            if (unit == ZergUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergUnitType - 'Unspecified'.", "building");
-            }
-
-            this.ZergUnit = unit;
+            this.Value = unit;
         }
 
-        public TerranBuildingType TerranBuilding { get; private set; }
-
-        public ProtossBuildingType ProtossBuilding { get; private set; }
-
-        public ZergBuildingType ZergBuilding { get; private set; }
-
-        public TerranUnitType TerranUnit { get; private set; }
-
-        public ProtossUnitType ProtossUnit { get; private set; }
-
-        public ZergUnitType ZergUnit { get; private set; }
+        public object Value { get; private set; }
 
         public bool IsBuildingType =>
-            this.TerranBuilding != TerranBuildingType.Unspecified ||
-            this.ProtossBuilding != ProtossBuildingType.Unspecified ||
-            this.ZergBuilding != ZergBuildingType.Unspecified;
+            this.Value is TerranBuildingType || this.Value is ProtossBuildingType || this.Value is ZergBuildingType;
 
         public bool IsUnitType =>
-            this.TerranUnit != TerranUnitType.Unspecified ||
-            this.ProtossUnit != ProtossUnitType.Unspecified ||
-            this.ZergUnit != ZergUnitType.Unspecified;
+            this.Value is TerranUnitType || this.Value is ProtossUnitType || this.Value is ZergUnitType;
 
         public override string ToString()
         {
-            if (this.TerranUnit != TerranUnitType.Unspecified)
-            {
-                return this.TerranUnit.ToString();
-            }
-            else if (this.ProtossUnit != ProtossUnitType.Unspecified)
-            {
-                return this.ProtossUnit.ToString();
-            }
-            else if (this.ZergUnit != ZergUnitType.Unspecified)
-            {
-                return this.ZergUnit.ToString();
-            }
-            else if (this.TerranBuilding != TerranBuildingType.Unspecified)
-            {
-                return this.TerranBuilding.ToString();
-            }
-            else if (this.ProtossBuilding != ProtossBuildingType.Unspecified)
-            {
-                return this.ProtossBuilding.ToString();
-            }
-            else if (this.ZergBuilding != ZergBuildingType.Unspecified)
-            {
-                return this.ZergBuilding.ToString();
-            }
-
-            return "Unspecified";
+            return this.Value.ToString();
         }
 
         public static bool operator == (BuildingOrUnitType first, BuildingOrUnitType second)
         {
-            // TODO: Express this better, possibly getting rid of the == operator
-            // (might be better to just change the way the 'union type' is implemented)
-            if (Equals(first, null) && Equals(second, null))
+            if (first.Value is TerranUnitType firstTerranUnit && second.Value is TerranUnitType secondTerranUnit)
             {
-                return true;
+                return firstTerranUnit == secondTerranUnit;
             }
-
-            if (Equals(first, null) || Equals(second, null))
+            else if (first.Value is ProtossUnitType firstProtossUnit && second.Value is ProtossUnitType secondProtossUnit)
+            {
+                return firstProtossUnit == secondProtossUnit;
+            }
+            else if (first.Value is ZergUnitType firstZergUnit && second.Value is ZergUnitType secondZergUnit)
+            {
+                return firstZergUnit == secondZergUnit;
+            }
+            else if (first.Value is TerranBuildingType firstTerranBuilding && second.Value is TerranBuildingType secondTerranBuilding)
+            {
+                return firstTerranBuilding == secondTerranBuilding;
+            }
+            else if (first.Value is ProtossBuildingType firstProtossBuilding && second.Value is ProtossBuildingType secondProtossBuilding)
+            {
+                return firstProtossBuilding == secondProtossBuilding;
+            }
+            else if (first.Value is ZergBuildingType firstZergBuilding && second.Value is ZergBuildingType secondZergBuilding)
+            {
+                return firstZergBuilding == secondZergBuilding;
+            }
+            else
             {
                 return false;
             }
-
-            return first.TerranUnit == second.TerranUnit &&
-                   first.TerranBuilding == second.TerranBuilding &&
-                   first.ProtossUnit == second.ProtossUnit &&
-                   first.ProtossBuilding == second.ProtossBuilding &&
-                   first.ZergUnit == second.ZergUnit &&
-                   first.ZergBuilding == second.ZergBuilding;
         }
 
         public static bool operator !=(BuildingOrUnitType first, BuildingOrUnitType second)

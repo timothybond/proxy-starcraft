@@ -2,7 +2,7 @@
 {
     public class TrainCommand : NoTargetCommand
     {
-        public TrainCommand(Unit builder, UnitType target, uint abilityId) : base(abilityId, builder)
+        public TrainCommand(Unit builder, UnitType target) : base(builder)
         {
             this.Target = target;
         }

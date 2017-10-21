@@ -17,38 +17,44 @@ namespace ProxyStarcraft
 
         public UnitType(TerranUnitType unit)
         {
-            if (unit == TerranUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranUnitType - 'Unspecified'.", "unit");
-            }
-
-            this.TerranUnit = unit;
+            this.Value = unit;
         }
 
         public UnitType(ProtossUnitType unit)
         {
-            if (unit == ProtossUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossUnitType - 'Unspecified'.", "unit");
-            }
-
-            this.ProtossUnit = unit;
+            this.Value = unit;
         }
 
         public UnitType(ZergUnitType unit)
         {
-            if (unit == ZergUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergUnitType - 'Unspecified'.", "unit");
-            }
-
-            this.ZergUnit = unit;
+            this.Value = unit;
         }
 
-        public TerranUnitType TerranUnit { get; private set; }
+        public object Value { get; private set; }
 
-        public ProtossUnitType ProtossUnit { get; private set; }
+        public static bool operator ==(UnitType first, UnitType second)
+        {
+            if (first.Value is TerranUnitType firstTerranUnit && second.Value is TerranUnitType secondTerranUnit)
+            {
+                return firstTerranUnit == secondTerranUnit;
+            }
+            else if (first.Value is ProtossUnitType firstProtossUnit && second.Value is ProtossUnitType secondProtossUnit)
+            {
+                return firstProtossUnit == secondProtossUnit;
+            }
+            else if (first.Value is ZergUnitType firstZergUnit && second.Value is ZergUnitType secondZergUnit)
+            {
+                return firstZergUnit == secondZergUnit;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        public ZergUnitType ZergUnit { get; private set; }
+        public static bool operator !=(UnitType first, UnitType second)
+        {
+            return !(first == second);
+        }
     }
 }

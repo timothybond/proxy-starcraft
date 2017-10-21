@@ -40,8 +40,7 @@ namespace ProxyStarcraft.Basic
             }
 
             // Note: Extractor already accounted for, above
-            var requireCreep = building.ZergBuilding != ZergBuildingType.Unspecified &&
-                               building.ZergBuilding != ZergBuildingType.Hatchery;
+            var requireCreep = building.Value is ZergBuilding && building != ZergBuildingType.Hatchery;
 
             // We're going to make some dumb assumptions here:
             // 1. We'd like to build this building very near where a main base currently is

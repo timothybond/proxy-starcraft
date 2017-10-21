@@ -8,12 +8,14 @@ namespace ProxyStarcraft
         {
             var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
 
-            if (unitType.ProtossBuilding == ProtossBuildingType.Unspecified)
+            if (unitType.Value is ProtossBuildingType protossBuilding)
+            {
+                this.ProtossBuildingType = protossBuilding;
+            }
+            else
             {
                 throw new ArgumentException($"Expected a ProtossBuildingType, got '{unitType.ToString()}'.");
             }
-
-            this.ProtossBuildingType = unitType.ProtossBuilding;
         }
 
         public ProtossBuildingType ProtossBuildingType { get; private set; }

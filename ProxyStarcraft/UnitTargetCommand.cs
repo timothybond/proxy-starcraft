@@ -2,7 +2,7 @@
 {
     public abstract class UnitTargetCommand : Command
     {
-        public UnitTargetCommand(uint abilityId, Unit unit, Unit target) : base(abilityId, unit)
+        public UnitTargetCommand(Unit unit, Unit target) : base(unit)
         {
             this.Target = target;
         }

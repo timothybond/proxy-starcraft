@@ -69,47 +69,47 @@ namespace ProxyStarcraft
 
         public MoveCommand Move(float x, float y)
         {
-            return new MoveCommand(translator.Move, this, x, y);
+            return new MoveCommand(this, x, y);
         }
 
         public MoveCommand Move(Location location)
         {
             var point = (Point2D)location;
 
-            return new MoveCommand(translator.Move, this, point.X, point.Y);
+            return new MoveCommand(this, point.X, point.Y);
         }
 
         public AttackCommand Attack(Unit target)
         {
-            return new AttackCommand(translator.Attack, this, target);
+            return new AttackCommand(this, target);
         }
 
         public AttackMoveCommand AttackMove(float x, float y)
         {
-            return new AttackMoveCommand(translator.Attack, this, x, y);
+            return new AttackMoveCommand(this, x, y);
         }
 
         public AttackMoveCommand AttackMove(Location location)
         {
             var point = (Point2D)location;
 
-            return new AttackMoveCommand(translator.Attack, this, point.X, point.Y);
+            return new AttackMoveCommand(this, point.X, point.Y);
         }
 
         public HarvestCommand Harvest(Unit target)
         {
-            return new HarvestCommand(translator.GetHarvestAbility(this.Raw), this, target);
+            return new HarvestCommand(this, target);
         }
 
         public BuildCommand Build(BuildingType buildingType, IBuildLocation location)
         {
-            return new BuildCommand(this, buildingType, location, translator.GetBuildAction(buildingType));
+            return new BuildCommand(this, buildingType, location);
         }
         
         public TrainCommand Train(UnitType unitType)
         {
             var ability = translator.GetBuildAction(unitType);
-            return new TrainCommand(this, unitType, ability);
+            return new TrainCommand(this, unitType);
         }
         
         public override string ToString() => this.Type.ToString();

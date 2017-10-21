@@ -2,7 +2,6 @@
 {
     public enum TerranBuildingType
     {
-        Unspecified = 0,
         CommandCenter,
         Refinery,
         SupplyDepot,

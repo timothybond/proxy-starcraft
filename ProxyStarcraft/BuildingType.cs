@@ -17,57 +17,39 @@ namespace ProxyStarcraft
 
         public BuildingType(TerranBuildingType building)
         {
-            if (building == TerranBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranBuildingType - 'Unspecified'.", "building");
-            }
-
-            this.TerranBuilding = building;
+            this.Value = building;
         }
 
         public BuildingType(ProtossBuildingType building)
         {
-            if (building == ProtossBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossBuildingType - 'Unspecified'.", "building");
-            }
-
-            this.ProtossBuilding = building;
+            this.Value = building;
         }
 
         public BuildingType(ZergBuildingType building)
         {
-            if (building == ZergBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergBuildingType - 'Unspecified'.", "building");
-            }
-
-            this.ZergBuilding = building;
+            this.Value = building;
         }
 
-        public TerranBuildingType TerranBuilding { get; private set; }
-
-        public ProtossBuildingType ProtossBuilding { get; private set; }
-
-        public ZergBuildingType ZergBuilding { get; private set; }
+        public object Value { get; private set; }
 
         public static bool operator ==(BuildingType first, BuildingType second)
         {
-            // TODO: Express this better, possibly getting rid of the == operator
-            // (might be better to just change the way the 'union type' is implemented)
-            if (Equals(first, null) && Equals(second, null))
+            if (first.Value is TerranBuildingType firstTerranBuilding && second.Value is TerranBuildingType secondTerranBuilding)
             {
-                return true;
+                return firstTerranBuilding == secondTerranBuilding;
             }
-
-            if (Equals(first, null) || Equals(second, null))
+            else if (first.Value is ProtossBuildingType firstProtossBuilding && second.Value is ProtossBuildingType secondProtossBuilding)
+            {
+                return firstProtossBuilding == secondProtossBuilding;
+            }
+            else if (first.Value is ZergBuildingType firstZergBuilding && second.Value is ZergBuildingType secondZergBuilding)
+            {
+                return firstZergBuilding == secondZergBuilding;
+            }
+            else
             {
                 return false;
             }
-
-            return first.TerranBuilding == second.TerranBuilding &&
-                   first.ProtossBuilding == second.ProtossBuilding &&
-                   first.ZergBuilding == second.ZergBuilding;
         }
 
         public static bool operator !=(BuildingType first, BuildingType second)

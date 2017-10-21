@@ -135,6 +135,8 @@ namespace ProxyStarcraft.Client
         {
             ActionRawUnitCommand unitCommand;
 
+            var abilityId = translator.GetAbilityId(command);
+
             switch (command)
             {
                 case BuildCommand buildCommand:
@@ -144,16 +146,16 @@ namespace ProxyStarcraft.Client
                             var buildingSize = translator.GetBuildingSize(buildCommand);
                             var x = standardLocation.Location.X + buildingSize.X * 0.5f;
                             var y = standardLocation.Location.Y + buildingSize.Y * 0.5f;
-                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)abilityId, TargetWorldSpacePos = new Point2D { X = x, Y = y } };
                             break;
                         case VespeneBuildLocation vespeneLocation:
-                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId, TargetUnitTag = vespeneLocation.VespeneGeyser.Tag };
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)abilityId, TargetUnitTag = vespeneLocation.VespeneGeyser.Tag };
                             break;
                         case UpgradeBuildLocation upgradeLocation:
-                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)abilityId };
                             break;
                         case AddOnBuildLocation addOnLocation:
-                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)command.AbilityId };
+                            unitCommand = new ActionRawUnitCommand { AbilityId = (int)abilityId };
                             break;
                         default:
                             throw new NotImplementedException();
@@ -163,15 +165,15 @@ namespace ProxyStarcraft.Client
                 case LocationTargetCommand locationTargetCommand:
                     unitCommand = new ActionRawUnitCommand
                     {
-                        AbilityId = (int)locationTargetCommand.AbilityId,
+                        AbilityId = (int)abilityId,
                         TargetWorldSpacePos = new Point2D { X = locationTargetCommand.X, Y = locationTargetCommand.Y }
                     };
                     break;
                 case UnitTargetCommand unitTargetCommand:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)unitTargetCommand.AbilityId, TargetUnitTag = unitTargetCommand.Target.Tag };
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)abilityId, TargetUnitTag = unitTargetCommand.Target.Tag };
                     break;
                 case NoTargetCommand noTargetCommand:
-                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)noTargetCommand.AbilityId };
+                    unitCommand = new ActionRawUnitCommand { AbilityId = (int)abilityId };
                     break;
                 default:
                     throw new NotImplementedException();
