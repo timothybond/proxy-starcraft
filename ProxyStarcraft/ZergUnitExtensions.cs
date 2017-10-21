@@ -12,7 +12,7 @@ namespace ProxyStarcraft
             }
             if (queen.Raw.Energy >= 25 && !hatchery.IsSpawningLarva() && hatchery.IsBuilt) // WELP: Spawn Larva puts a "build"-y action on Zerg town halls. The Zerg building is not "building" anything, but shows via Build Progress.
             {
-                commands.Add(new UseTargettedAbilityCommand(251, queen, hatchery));
+                commands.Add(new UseUnitTargetAbilityCommand(251, queen, hatchery));
             }
         }
     }

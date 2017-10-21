@@ -117,6 +117,11 @@ namespace ProxyStarcraft.Client
                 actionRequest.Action.Actions.Add(BuildAction(command));
             }
 
+            if (actionRequest.Action.Actions.Count == 0)
+            {
+                return;
+            }
+
             // TODO: Check response for errors
             var actionResponse = Call(actionRequest).Result;
 

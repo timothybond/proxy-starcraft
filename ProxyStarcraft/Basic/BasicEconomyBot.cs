@@ -72,7 +72,7 @@ namespace ProxyStarcraft.Basic
 
             foreach (var deposit in deposits)
             {
-                var closestBase = mainBases.FirstOrDefault(b => b.GetDistance(deposit.Center) < 10f);
+                var closestBase = mainBases.Where(b => b.GetDistance(deposit.Center) < 10f).OrderBy(b => b.GetDistance(deposit.Center)).FirstOrDefault();
 
                 if (closestBase?.IsBuilt == true)
                 {
@@ -206,21 +206,21 @@ namespace ProxyStarcraft.Basic
         /// <summary>
         /// Ensures the bot realizes that the unit in question is no longer harvesting.
         /// </summary>
-        private void RemoveWorkerFromHarvestAssignments(ulong harvestTag)
+        private void RemoveWorkerFromHarvestAssignments(ulong harvesterTag)
         {
             foreach (var pair in workersByMineralDeposit)
             {
-                if (pair.Value.Contains(harvestTag))
+                if (pair.Value.Contains(harvesterTag))
                 {
-                    pair.Value.Remove(harvestTag);
+                    pair.Value.Remove(harvesterTag);
                 }
             }
 
             foreach (var pair in workersByVespeneGeyser)
             {
-                if (pair.Value.Contains(harvestTag))
+                if (pair.Value.Contains(harvesterTag))
                 {
-                    pair.Value.Remove(harvestTag);
+                    pair.Value.Remove(harvesterTag);
                 }
             }
         }
@@ -268,11 +268,14 @@ namespace ProxyStarcraft.Basic
             RemoveWorkerFromHarvestAssignments(tag);
             workersByVespeneGeyser[vespeneStructureTag].Add(tag);
         }
-
-        // Technically this may underbuild workers, slightly, but we want to prevent over-building Zerg drones.
+        
         private bool BuildingEnoughToFullyHarvest(int workersBeingBuilt) 
         {
-            return MineralsNeedingWorkers().Count + VespeneBuildingsNeedingWorkers().Count <= workersBeingBuilt;
+            var requiredWorkers =
+                MineralsNeedingWorkers().Select(m => MaxWorkersPerMineralDeposit - workersByMineralDeposit[m].Count).Sum() +
+                VespeneBuildingsNeedingWorkers().Select(v => MaxWorkersPerVespeneGeyser - workersByVespeneGeyser[v].Count).Sum();
+
+            return requiredWorkers <= workersBeingBuilt;
         }
 
         private bool IsFullyHarvestingMineralDeposits()
