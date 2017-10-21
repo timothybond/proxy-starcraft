@@ -20,8 +20,11 @@ namespace ProxyStarcraft
     /// </summary>
     public class Translator
     {
+        private Dictionary<uint, BuffData> buffs;
         private Dictionary<uint, AbilityData> abilities;
         private Dictionary<uint, UnitTypeData> unitTypes;
+
+        private Dictionary<BuffType, uint> buffIdsByBuffType;
 
         private Dictionary<TerranUnitType, uint> createTerranUnitActions;
         private Dictionary<ProtossUnitType, uint> createProtossUnitActions;
@@ -133,10 +136,11 @@ namespace ProxyStarcraft
             "Morph GreaterSpire",
         };
 
-        public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes)
+        public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes, Dictionary<uint, BuffData> buffs)
         {
             this.abilities = abilities;
             this.unitTypes = unitTypes;
+            this.buffs = buffs;
             
             // Somewhat-amusing trick: although there are tons of non-used abilities,
             // you can quickly narrow it down to ones that actually appear in-game
@@ -287,7 +291,12 @@ namespace ProxyStarcraft
                 { ZergBuildingType.GreaterSpire, abilitiesByName["Morph GreaterSpire"].AbilityId },
                 { ZergBuildingType.UltraliskCavern, abilitiesByName["Build UltraliskCavern"].AbilityId }
             };
-            
+
+            var buffsByName = buffs.Values.Where(buff => !string.IsNullOrEmpty(buff.Name)).ToDictionary(b => b.Name);
+
+            buffIdsByBuffType = new Dictionary<BuffType, uint>();
+            buffIdsByBuffType.Add(BuffType.SpawnLarva, buffsByName["QueenSpawnLarvaTimer"].BuffId);
+
             var unitTypesByName = unitTypes.Values.Where(unitType => !string.IsNullOrEmpty(unitType.Name)).ToDictionary(unitType => unitType.Name);
 
             terranUnitTypesById = new Dictionary<uint, TerranUnitType>();
@@ -449,6 +458,8 @@ namespace ProxyStarcraft
         }
 
         public IReadOnlyDictionary<uint, AbilityData> AbilityTypes => this.abilities;
+
+        public IReadOnlyDictionary<uint, BuffData> BuffTypes => this.buffs;
 
         public IReadOnlyDictionary<uint, UnitTypeData> UnitTypes => this.unitTypes;
         
@@ -967,6 +978,8 @@ namespace ProxyStarcraft
                    building == ZergBuildingType.LurkerDen ||
                    building == ZergBuildingType.GreaterSpire;
         }
+
+        public uint GetBuffId(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : 0; // Assumption: Buffs are not zero-indexed.
 
         /// <summary>
         /// Gets a unique identifier for the unit type (or one of the unit types if there are multiple, and it's not picky) specified.

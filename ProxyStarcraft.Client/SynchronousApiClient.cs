@@ -46,6 +46,7 @@ namespace ProxyStarcraft.Client
         private ResponseGameInfo gameInfo;
         private Dictionary<uint, UnitTypeData> unitTypes;
         private Dictionary<uint, AbilityData> abilities;
+        private Dictionary<uint, BuffData> buffs;
         private MapData mapData;
 
         private Translator translator;
@@ -67,8 +68,9 @@ namespace ProxyStarcraft.Client
             gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }).Result.GameInfo;
             unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Result.Data.Units.ToDictionary(unitType => unitType.UnitId);
             abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }).Result.Data.Abilities.ToDictionary(ability => ability.AbilityId);
+            buffs = buffs ?? Call(new Request { Data = new RequestData { BuffId = true } }).Result.Data.Buffs.ToDictionary(b => b.BuffId);
 
-            translator = translator ?? new Translator(abilities, unitTypes);
+            translator = translator ?? new Translator(abilities, unitTypes, buffs);
 
             mapData = mapData ?? new MapData(gameInfo.StartRaw);
             
@@ -92,7 +94,7 @@ namespace ProxyStarcraft.Client
 
             mapData = new MapData(mapData, units, translator, unitTypes, observation.Observation.RawData.MapState.Creep);
             
-            return new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, translator);
+            return new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, buffs, translator);
         }
 
         public List<uint> GetAbilities(ulong unitTag)
@@ -120,7 +122,7 @@ namespace ProxyStarcraft.Client
 
             if (actionResponse.Action != null && actionResponse.Action.Result.Any(result => result != ActionResult.Success))
             {
-                Debugger.Break();
+                //Debugger.Break();
             }
         }
 

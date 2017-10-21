@@ -33,6 +33,8 @@ namespace ProxyStarcraft
 
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
 
+        public bool HasBuff(BuffType buff) => this.Raw.BuffIds.Contains(translator.GetBuffId(buff));
+
         public ulong Tag => this.Raw.Tag;
 
         public float X => this.Raw.Pos.X;

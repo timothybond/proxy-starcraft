@@ -28,6 +28,8 @@ namespace ProxyStarcraft.Basic
             var mainBases = new List<Building>();
             var vespeneBuildings = new List<Building>();
             var workers = new List<Unit>();
+            var workersBeingBuilt = 0;
+            BuildingOrUnitType workerType = null;
 
             foreach (var unit in gameState.Units)
             {
@@ -36,6 +38,10 @@ namespace ProxyStarcraft.Basic
                     if (building.IsMainBase)
                     {
                         mainBases.Add(building);
+                        if (building.IsBuilding(TerranUnitType.SCV) || building.IsBuilding(ProtossUnitType.Probe))
+                        {
+                            workersBeingBuilt++;
+                        }
                     }
                     else if (building.Type == TerranBuildingType.Refinery ||
                              building.Type == ProtossBuildingType.Assimilator ||
@@ -49,7 +55,12 @@ namespace ProxyStarcraft.Basic
                 }
                 else if (unit.IsWorker)
                 {
+                    if (!unit.IsBuilt)
+                    {
+                        workersBeingBuilt++;
+                    }
                     workers.Add(unit);
+                    workerType = unit.Type;
                 }
             }
 
@@ -61,7 +72,7 @@ namespace ProxyStarcraft.Basic
 
             foreach (var deposit in deposits)
             {
-                var closestBase = mainBases.SingleOrDefault(b => b.GetDistance(deposit.Center) < 10f);
+                var closestBase = mainBases.FirstOrDefault(b => b.GetDistance(deposit.Center) < 10f);
 
                 if (closestBase?.IsBuilt == true)
                 {
@@ -115,9 +126,9 @@ namespace ProxyStarcraft.Basic
                 // TODO: Surrender?
             }
 
-            if (this.AutoBuildWorkers && (!IsFullyHarvestingMineralDeposits() || !IsFullyHarvestingVespeneGeysers()))
+            if (this.AutoBuildWorkers && (!BuildingEnoughToFullyHarvest(workersBeingBuilt)))
             {
-                var cost = gameState.Translator.GetCost(TerranUnitType.SCV);
+                var cost = gameState.Translator.GetCost(workerType);
                 if (cost.IsMet(gameState))
                 {
                     var builder = cost.GetBuilder(gameState);
@@ -125,6 +136,10 @@ namespace ProxyStarcraft.Basic
                     // TODO: Add 'BuildWorker' function?
                     if (builder is TerranBuilding commandCenter)
                     {
+                        if (commandCenter.IsBuilding(TerranUnitType.SCV))
+                        {
+
+                        }
                         commands.Add(commandCenter.Train(TerranUnitType.SCV));
                     }
                     else if (builder is ZergUnit larvae)
@@ -195,21 +210,21 @@ namespace ProxyStarcraft.Basic
         /// <summary>
         /// Ensures the bot realizes that the unit in question is no longer harvesting.
         /// </summary>
-        private void RemoveWorkerFromHarvestAssignments(ulong tag)
+        private void RemoveWorkerFromHarvestAssignments(ulong harvestTag)
         {
             foreach (var pair in workersByMineralDeposit)
             {
-                if (pair.Value.Contains(tag))
+                if (pair.Value.Contains(harvestTag))
                 {
-                    pair.Value.Remove(tag);
+                    pair.Value.Remove(harvestTag);
                 }
             }
 
             foreach (var pair in workersByVespeneGeyser)
             {
-                if (pair.Value.Contains(tag))
+                if (pair.Value.Contains(harvestTag))
                 {
-                    pair.Value.Remove(tag);
+                    pair.Value.Remove(harvestTag);
                 }
             }
         }
@@ -256,6 +271,12 @@ namespace ProxyStarcraft.Basic
         {
             RemoveWorkerFromHarvestAssignments(tag);
             workersByVespeneGeyser[vespeneStructureTag].Add(tag);
+        }
+
+        // Technically this may underbuild workers, slightly, but we want to prevent over-building Zerg drones.
+        private bool BuildingEnoughToFullyHarvest(int workersBeingBuilt) 
+        {
+            return MineralsNeedingWorkers().Count + VespeneBuildingsNeedingWorkers().Count <= workersBeingBuilt;
         }
 
         private bool IsFullyHarvestingMineralDeposits()
