@@ -2,6 +2,7 @@
 using System.Linq;
 using ProxyStarcraft;
 using ProxyStarcraft.Basic;
+using ProxyStarcraft.Commands;
 using ProxyStarcraft.Map;
 using ProxyStarcraft.Proto;
 
