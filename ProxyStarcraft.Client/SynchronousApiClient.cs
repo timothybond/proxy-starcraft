@@ -122,7 +122,7 @@ namespace ProxyStarcraft.Client
 
             if (actionResponse.Action != null && actionResponse.Action.Result.Any(result => result != ActionResult.Success))
             {
-                //Debugger.Break();
+                Debugger.Break();
             }
         }
 
