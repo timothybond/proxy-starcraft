@@ -8,12 +8,14 @@ namespace ProxyStarcraft
         {
             var unitType = translator.GetBuildingOrUnitType(unit.UnitType);
 
-            if (unitType.TerranUnit == TerranUnitType.Unspecified)
+            if (unitType.Value is TerranUnitType terranUnit)
+            {
+                this.TerranUnitType = terranUnit;
+            }
+            else
             {
                 throw new ArgumentException($"Expected a TerranUnitType, got '{unitType.ToString()}'.");
             }
-
-            this.TerranUnitType = unitType.TerranUnit;
         }
 
         public TerranUnitType TerranUnitType { get; private set; }

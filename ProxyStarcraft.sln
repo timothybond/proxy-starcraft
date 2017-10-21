@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyStarcraft.Client", "Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyStarcraft", "ProxyStarcraft\ProxyStarcraft.csproj", "{1A82EE8C-0572-4267-81BE-C4B95CFCF546}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{981B0FB6-931B-4CC1-A12C-9BDDC23F3127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyStarcraft.Tests", "ProxyStarcraft.Tests\ProxyStarcraft.Tests.csproj", "{7BCCCC83-0200-4345-949B-3B052BAE8424}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,9 +58,24 @@ Global
 		{1A82EE8C-0572-4267-81BE-C4B95CFCF546}.Release|x64.Build.0 = Release|Any CPU
 		{1A82EE8C-0572-4267-81BE-C4B95CFCF546}.Release|x86.ActiveCfg = Release|Any CPU
 		{1A82EE8C-0572-4267-81BE-C4B95CFCF546}.Release|x86.Build.0 = Release|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Debug|x64.Build.0 = Debug|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Debug|x86.Build.0 = Debug|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Release|x64.ActiveCfg = Release|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Release|x64.Build.0 = Release|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Release|x86.ActiveCfg = Release|Any CPU
+		{7BCCCC83-0200-4345-949B-3B052BAE8424}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BCCCC83-0200-4345-949B-3B052BAE8424} = {981B0FB6-931B-4CC1-A12C-9BDDC23F3127}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EB67579-3BD2-4FD2-BDEC-A63070D3CCC5}

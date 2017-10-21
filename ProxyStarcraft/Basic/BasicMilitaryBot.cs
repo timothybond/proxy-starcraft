@@ -62,8 +62,7 @@ namespace ProxyStarcraft.Basic
                 }
                 else if (unit is TerranUnit terranUnit)
                 {
-                    if (terranUnit.TerranUnitType != TerranUnitType.Unspecified &&
-                        terranUnit.TerranUnitType != TerranUnitType.SCV &&
+                    if (terranUnit.TerranUnitType != TerranUnitType.SCV &&
                         terranUnit.TerranUnitType != TerranUnitType.MULE &&
                         terranUnit.TerranUnitType != TerranUnitType.WidowMine &&
                         terranUnit.TerranUnitType != TerranUnitType.PointDefenseDrone &&
@@ -74,8 +73,7 @@ namespace ProxyStarcraft.Basic
                 }
                 else if (unit is ProtossUnit protossUnit)
                 {
-                    if (protossUnit.ProtossUnitType != ProtossUnitType.Unspecified &&
-                        protossUnit.ProtossUnitType != ProtossUnitType.Probe &&
+                    if (protossUnit.ProtossUnitType != ProtossUnitType.Probe &&
                         protossUnit.ProtossUnitType != ProtossUnitType.Observer &&
                         protossUnit.ProtossUnitType != ProtossUnitType.WarpPrism)
                     {
@@ -84,8 +82,7 @@ namespace ProxyStarcraft.Basic
                 }
                 else if (unit is ZergUnit zergUnit)
                 {
-                    if (zergUnit.ZergUnitType != ZergUnitType.Unspecified &&
-                        zergUnit.ZergUnitType != ZergUnitType.Larva &&
+                    if (zergUnit.ZergUnitType != ZergUnitType.Larva &&
                         zergUnit.ZergUnitType != ZergUnitType.Cocoon &&
                         zergUnit.ZergUnitType != ZergUnitType.Drone &&
                         zergUnit.ZergUnitType != ZergUnitType.Queen &&
