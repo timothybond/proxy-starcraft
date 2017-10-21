@@ -136,10 +136,6 @@ namespace ProxyStarcraft.Basic
                     // TODO: Add 'BuildWorker' function?
                     if (builder is TerranBuilding commandCenter)
                     {
-                        if (commandCenter.IsBuilding(TerranUnitType.SCV))
-                        {
-
-                        }
                         commands.Add(commandCenter.Train(TerranUnitType.SCV));
                     }
                     else if (builder is ZergUnit larvae)
