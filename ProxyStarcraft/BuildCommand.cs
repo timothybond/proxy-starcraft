@@ -2,7 +2,7 @@
 {
     public class BuildCommand : Command
     {
-        private BuildCommand(Unit unit, IBuildLocation buildLocation, uint abilityId) : base(abilityId, unit)
+        private BuildCommand(Unit unit, IBuildLocation buildLocation) : base(unit)
         {
             this.BuildLocation = buildLocation;
         }
@@ -10,7 +10,7 @@
         /// <summary>
         /// Commands a unit to construct the specified building at the given location.
         /// </summary>
-        public BuildCommand(Unit unit, BuildingType building, IBuildLocation buildLocation, uint abilityId) : this(unit, buildLocation, abilityId)
+        public BuildCommand(Unit unit, BuildingType building, IBuildLocation buildLocation) : this(unit, buildLocation)
         {
             this.Building = building;
         }

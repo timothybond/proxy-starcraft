@@ -2,7 +2,7 @@
 {
     public class RallyTargetCommand : UnitTargetCommand
     {
-        public RallyTargetCommand(uint abilityId, Unit unit, Unit target) : base(abilityId, unit, target)
+        public RallyTargetCommand(Unit unit, Unit target) : base(unit, target)
         {
         }
     }

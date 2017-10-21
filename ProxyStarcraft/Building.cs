@@ -14,22 +14,22 @@ namespace ProxyStarcraft
         
         public RallyLocationCommand Rally(float x, float y)
         {
-            return new RallyLocationCommand(translator.GetRallyAbility(this.Raw), this, x, y);
+            return new RallyLocationCommand(this, x, y);
         }
 
         public RallyTargetCommand Rally(Unit unit)
         {
-            return new RallyTargetCommand(translator.GetRallyAbility(this.Raw), this, unit);
+            return new RallyTargetCommand(this, unit);
         }
 
         public RallyWorkersLocationCommand RallyWorkers(float x, float y)
         {
-            return new RallyWorkersLocationCommand(translator.GetRallyWorkersAbility(this.Raw), this, x, y);
+            return new RallyWorkersLocationCommand(this, x, y);
         }
 
         public RallyWorkersTargetCommand RallyWorkers(Unit unit)
         {
-            return new RallyWorkersTargetCommand(translator.GetRallyWorkersAbility(this.Raw), this, unit);
+            return new RallyWorkersTargetCommand(this, unit);
         }
     }
 }

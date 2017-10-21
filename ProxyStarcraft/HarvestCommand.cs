@@ -2,7 +2,7 @@
 {
     public class HarvestCommand : UnitTargetCommand
     {
-        public HarvestCommand(uint abilityId, Unit unit, Unit target) : base(abilityId, unit, target)
+        public HarvestCommand(Unit unit, Unit target) : base(unit, target)
         {
         }
     }

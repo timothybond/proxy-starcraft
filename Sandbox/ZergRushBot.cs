@@ -188,7 +188,7 @@ namespace Sandbox
         {
             if (closestQueen.Raw.Energy >= 25)
             {
-                commands.Add(new RallyTargetCommand(251, closestQueen, hatchery)); // The hackiest hack.
+                //commands.Add(new RallyTargetCommand(251, closestQueen, hatchery)); // The hackiest hack.
             }            
         }
 

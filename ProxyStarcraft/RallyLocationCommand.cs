@@ -2,7 +2,7 @@
 {
     public class RallyLocationCommand : LocationTargetCommand
     {
-        public RallyLocationCommand(uint abilityId, Unit unit, float x, float y) : base(abilityId, unit, x, y)
+        public RallyLocationCommand(Unit unit, float x, float y) : base(unit, x, y)
         {
         }
     }

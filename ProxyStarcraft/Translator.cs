@@ -452,21 +452,6 @@ namespace ProxyStarcraft
 
         public IReadOnlyDictionary<uint, UnitTypeData> UnitTypes => this.unitTypes;
         
-        public uint GetAbilityId(BuildCommand buildCommand)
-        {
-            switch (buildCommand.Building.Value)
-            {
-                case TerranBuildingType terranBuilding:
-                    return buildTerranBuildingActions[terranBuilding];
-                case ProtossBuildingType protossBuilding:
-                    return buildProtossBuildingActions[protossBuilding];
-                case ZergBuildingType zergBuilding:
-                    return buildZergBuildingActions[zergBuilding];
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
         public uint GetHarvestAbility(Proto.Unit unit)
         {
             if (terranUnitTypesById.ContainsKey(unit.UnitType))
@@ -973,6 +958,34 @@ namespace ProxyStarcraft
 
             var ability = orders.AbilityId;
             return ability == GetBuildAction(target);
+        }
+
+        public uint GetAbilityId(Command command)
+        {
+            switch (command)
+            {
+                case MoveCommand moveCommand:
+                    return this.Move;
+                case AttackCommand attackCommand:
+                case AttackMoveCommand attackMoveCommand:
+                    return this.Attack;
+                case HarvestCommand harvestCommand:
+                    return GetHarvestAbility(command.Unit.Raw);
+                case BuildCommand buildCommand:
+                    return GetBuildAction(buildCommand.Building);
+                case TrainCommand trainCommand:
+                    return GetBuildAction(trainCommand.Target);
+                case RallyTargetCommand rallyTargetCommand:
+                    return GetRallyAbility(rallyTargetCommand.Unit.Raw);
+                case RallyLocationCommand rallyLocationCommand:
+                    return GetRallyAbility(rallyLocationCommand.Unit.Raw);
+                case RallyWorkersLocationCommand rallyWorkersLocationCommand:
+                    return GetRallyWorkersAbility(rallyWorkersLocationCommand.Unit.Raw);
+                case RallyWorkersTargetCommand rallyWorkersTargetCommand:
+                    return GetRallyWorkersAbility(rallyWorkersTargetCommand.Unit.Raw);
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         /// <summary>
