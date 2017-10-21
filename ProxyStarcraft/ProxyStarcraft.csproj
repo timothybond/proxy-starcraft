@@ -111,7 +111,7 @@
     <Compile Include="UnitType.cs" />
     <Compile Include="UnspecifiedUnit.cs" />
     <Compile Include="UpgradeBuildLocation.cs" />
-    <Compile Include="UseTargettedAbilityCommand.cs" />
+    <Compile Include="UseUnitTargetAbilityCommand.cs" />
     <Compile Include="VespeneBuildLocation.cs" />
     <Compile Include="ZergBuilding.cs" />
     <Compile Include="ZergBuildingExtensions.cs" />
