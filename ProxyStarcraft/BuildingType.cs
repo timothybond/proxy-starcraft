@@ -17,31 +17,16 @@ namespace ProxyStarcraft
 
         public BuildingType(TerranBuildingType building)
         {
-            if (building == TerranBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranBuildingType - 'Unspecified'.", "building");
-            }
-
             this.Value = building;
         }
 
         public BuildingType(ProtossBuildingType building)
         {
-            if (building == ProtossBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossBuildingType - 'Unspecified'.", "building");
-            }
-
             this.Value = building;
         }
 
         public BuildingType(ZergBuildingType building)
         {
-            if (building == ZergBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergBuildingType - 'Unspecified'.", "building");
-            }
-
             this.Value = building;
         }
 

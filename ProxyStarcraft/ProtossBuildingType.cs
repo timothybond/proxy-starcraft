@@ -2,7 +2,6 @@
 {
     public enum ProtossBuildingType
     {
-        Unspecified = 0,
         Nexus,
         Assimilator,
         Pylon,

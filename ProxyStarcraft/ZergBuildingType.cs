@@ -2,7 +2,6 @@
 {
     public enum ZergBuildingType
     {
-        Unspecified = 0,
         Hatchery,
         Extractor,
         SpawningPool,

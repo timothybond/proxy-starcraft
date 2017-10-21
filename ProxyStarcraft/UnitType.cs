@@ -17,31 +17,16 @@ namespace ProxyStarcraft
 
         public UnitType(TerranUnitType unit)
         {
-            if (unit == TerranUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranUnitType - 'Unspecified'.", "unit");
-            }
-
             this.Value = unit;
         }
 
         public UnitType(ProtossUnitType unit)
         {
-            if (unit == ProtossUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossUnitType - 'Unspecified'.", "unit");
-            }
-
             this.Value = unit;
         }
 
         public UnitType(ZergUnitType unit)
         {
-            if (unit == ZergUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergUnitType - 'Unspecified'.", "unit");
-            }
-
             this.Value = unit;
         }
 

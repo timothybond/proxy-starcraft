@@ -2,7 +2,6 @@
 {
     public enum TerranUnitType
     {
-        Unspecified = 0,
         SCV,
         MULE,
         Marine,

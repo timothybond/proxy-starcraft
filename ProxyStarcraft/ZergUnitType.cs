@@ -2,7 +2,6 @@
 {
     public enum ZergUnitType
     {
-        Unspecified = 0,
         Larva,
         Cocoon,
         Drone,

@@ -2,7 +2,6 @@
 {
     public enum ProtossUnitType
     {
-        Unspecified = 0,
         Probe,
         Zealot,
         Stalker,

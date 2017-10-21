@@ -84,61 +84,31 @@ namespace ProxyStarcraft
 
         public BuildingOrUnitType(TerranBuildingType building)
         {
-            if (building == TerranBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranBuildingType - 'Unspecified'.", "building");
-            }
-
             this.Value = building;
         }
 
         public BuildingOrUnitType(ProtossBuildingType building)
         {
-            if (building == ProtossBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossBuildingType - 'Unspecified'.", "building");
-            }
-
             this.Value = building;
         }
 
         public BuildingOrUnitType(ZergBuildingType building)
         {
-            if (building == ZergBuildingType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergBuildingType - 'Unspecified'.", "building");
-            }
-
             this.Value = building;
         }
 
         public BuildingOrUnitType(TerranUnitType unit)
         {
-            if (unit == TerranUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid TerranUnitType - 'Unspecified'.", "building");
-            }
-
             this.Value = unit;
         }
 
         public BuildingOrUnitType(ProtossUnitType unit)
         {
-            if (unit == ProtossUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ProtossUnitType - 'Unspecified'.", "building");
-            }
-
             this.Value = unit;
         }
 
         public BuildingOrUnitType(ZergUnitType unit)
         {
-            if (unit == ZergUnitType.Unspecified)
-            {
-                throw new ArgumentException("Invalid ZergUnitType - 'Unspecified'.", "building");
-            }
-
             this.Value = unit;
         }
 
