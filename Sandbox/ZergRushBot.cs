@@ -143,7 +143,7 @@ namespace Sandbox
             }
             foreach (var hatcheryQueenPair in queensByHatchery)
             {
-                SpawnLarvaOnSingleHatchery(hatcheryQueenPair.Value, hatcheryQueenPair.Key, commands);
+                hatcheryQueenPair.Value.SpawnLarva(hatcheryQueenPair.Key, commands);
             }
             economyBot.AutoBuildWorkers = !(gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed < 3);
 
@@ -167,11 +167,6 @@ namespace Sandbox
                 results.Add(item, closestQueen);
             }
             return results;
-        }
-
-        private void SpawnLarvaOnSingleHatchery(ZergUnit closestQueen, ZergBuilding hatchery, List<Command> commands)
-        {
-            closestQueen.SpawnLarva(hatchery, commands);
         }
 
         private void BuildQueen(GameState gameState, ZergBuilding hatchery, List<Command> commands)
