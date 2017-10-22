@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ProxyStarcraft.Proto;
 
@@ -6,7 +7,7 @@ namespace ProxyStarcraft.Basic
 {
     // TODO: Add support for multiple bases
     // TODO: Add logic for workers that get destroyed
-    public class BasicEconomyBot : IBot
+    public class BasicEconomyBot : ChainableProductionQueue, IBot
     {
         private const uint MaxWorkersPerMineralDeposit = 2;
         private const int MaxWorkersPerVespeneGeyser = 3;
@@ -19,6 +20,8 @@ namespace ProxyStarcraft.Basic
         {
             this.Race = race;
             this.placementStrategy = placementStrategy;
+            this.AutoBuildWorkers = true;
+            this.AutoBuildSupply = true;
         }
 
         private bool first = true;
@@ -102,35 +105,8 @@ namespace ProxyStarcraft.Basic
 
                 // TODO: Surrender?
             }
-
-            if (this.AutoBuildWorkers && (!IsFullyHarvestingMineralDeposits() || !IsFullyHarvestingVespeneGeysers(vespeneBuildings)))
-            {
-                var workerType = this.Race.GetWorkerType();
-                var cost = gameState.Translator.GetCost(TerranUnitType.SCV);
-                if (cost.IsMet(gameState))
-                {
-                    commands.Add(this.placementStrategy.Produce(workerType, gameState));
-                }
-            }
-
-            var supplyType = Race.GetSupplyType();
-
-            if (this.AutoBuildSupply &&
-                gameState.Observation.PlayerCommon.FoodUsed + 5 > gameState.Observation.PlayerCommon.FoodCap &&
-                gameState.Observation.PlayerCommon.FoodCap < 200 &&
-                !gameState.Units.Any(u => u.IsBuilding(supplyType)))
-            {
-                var cost = gameState.Translator.GetCost(supplyType);
-
-                if (!cost.IsMet(gameState))
-                {
-                    return new List<Command>();
-                }
-
-                return new List<Command> { this.placementStrategy.Produce(supplyType, gameState) };
-            }
-
-            CheckForKilledWorkers(workers);
+            
+            CheckForMissingWorkers(workers);
             SetIdleWorkersToHarvest(gameState, workers, mineralDeposits, vespeneBuildings, commands);
 
             if (first)
@@ -161,7 +137,7 @@ namespace ProxyStarcraft.Basic
             }
         }
 
-        private void CheckForKilledWorkers(List<Unit> workers)
+        private void CheckForMissingWorkers(List<Unit> workers)
         {
             var activeHarvesters = workersByMineralDeposit.SelectMany(w => w.Value).ToList();
 
@@ -253,6 +229,64 @@ namespace ProxyStarcraft.Basic
         private IReadOnlyList<ulong> VespeneBuildingsNeedingWorkers(IReadOnlyList<Building> vespeneBuildings)
         {
             return vespeneBuildings.Where(v => v.Raw.AssignedHarvesters < MaxWorkersPerVespeneGeyser).Select(v => v.Tag).ToList();
+        }
+
+        protected override bool IsSelfEmpty(GameState gameState)
+        {
+            return !ShouldBuildWorker(gameState) && !ShouldBuildSupply(gameState);
+        }
+
+        protected override BuildingOrUnitType PeekSelf(GameState gameState)
+        {
+            if (ShouldBuildWorker(gameState))
+            {
+                return this.Race.GetWorkerType();
+            }
+            
+            if (ShouldBuildSupply(gameState))
+            {
+                return this.Race.GetSupplyType();
+            }
+
+            throw new InvalidOperationException();
+        }
+
+        protected override BuildingOrUnitType PopSelf(GameState gameState)
+        {
+            return PeekSelf(gameState);
+        }
+
+        private bool ShouldBuildWorker(GameState gameState)
+        {
+            if (this.AutoBuildWorkers &&
+                (!IsFullyHarvestingMineralDeposits() ||
+                 !IsFullyHarvestingVespeneGeysers(GetVespeneBuildings(gameState))))
+            {
+                var workerType = this.Race.GetWorkerType();
+                var cost = gameState.Translator.GetCost(workerType);
+
+                return cost.IsMet(gameState);
+            }
+
+            return false;
+        }
+
+        private bool ShouldBuildSupply(GameState gameState)
+        {
+            var supplyType = this.Race.GetSupplyType();
+
+            return this.AutoBuildSupply &&
+                gameState.Observation.PlayerCommon.FoodUsed + 5 > gameState.Observation.PlayerCommon.FoodCap &&
+                gameState.Observation.PlayerCommon.FoodCap < 200 &&
+                !gameState.Units.Any(u => u.IsBuilding(supplyType));
+        }
+
+        private IReadOnlyList<Building> GetVespeneBuildings(GameState gameState)
+        {
+            return gameState.Units.OfType<Building>()
+                .Where(b => b.IsBuilt && (b.Type == TerranBuildingType.Refinery ||
+                            b.Type == ProtossBuildingType.Assimilator ||
+                            b.Type == ZergBuildingType.Extractor)).ToList();
         }
     }
 }
