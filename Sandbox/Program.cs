@@ -10,6 +10,7 @@ using ProxyStarcraft.Proto;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using ProxyStarcraft.Basic;
 
 namespace Sandbox
 {
@@ -64,14 +65,34 @@ namespace Sandbox
 
         static void Main(string[] args)
         {
-            //var bot = new BenchmarkBot();
+            var productionStrategy = new BasicProductionStrategy();
+            var desiredArmyBot = new DesiredArmyBot(productionStrategy);
+            desiredArmyBot.Set(TerranUnitType.Marine, 100);
+            desiredArmyBot.Set(TerranUnitType.Marauder, 50);
 
-            //PlayAgainstStandardAI(bot);
+            var militaryBot = new BasicMilitaryBot(new[] { 10, 20, 30 });
 
-            var bot1 = new BenchmarkBot();
-            var bot2 = new ZergRushBot();
+            var nextBot = new CompositeBot(new IBot[] { desiredArmyBot, militaryBot });
 
-            PlayOneOnOne(bot1, bot2);
+            var bot = new CompositeBuildOrderBot(Race.Terran, nextBot, productionStrategy);
+            bot.Add(TerranBuildingType.SupplyDepot);
+            bot.Add(TerranBuildingType.Barracks);
+            bot.Add(TerranBuildingType.Refinery);
+            bot.Add(TerranBuildingType.Refinery);
+            bot.Add(TerranBuildingType.BarracksTechLab);
+            bot.Add(TerranBuildingType.Barracks);
+            bot.Add(TerranBuildingType.Barracks);
+            bot.Add(TerranUnitType.SCV);
+            bot.Add(TerranUnitType.SCV);
+            bot.Add(TerranBuildingType.OrbitalCommand);
+            bot.Add(TerranBuildingType.SupplyDepot);
+
+            PlayAgainstStandardAI(bot);
+
+            //var bot1 = new BenchmarkBot();
+            //var bot2 = new ZergRushBot();
+
+            //PlayOneOnOne(bot1, bot2);
         }
         
         public static void RunMarineMicroGame(SynchronousApiClient client)

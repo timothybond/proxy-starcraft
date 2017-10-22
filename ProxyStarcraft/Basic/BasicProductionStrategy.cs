@@ -75,6 +75,10 @@ namespace ProxyStarcraft.Basic
             var cost = gameState.Translator.GetCost(buildingOrUnit);
             var builder = cost.GetBuilder(gameState);
 
+            gameState.Observation.PlayerCommon.Minerals -= cost.Minerals;
+            gameState.Observation.PlayerCommon.Vespene -= cost.Vespene;
+            gameState.Observation.PlayerCommon.FoodUsed += (uint)Math.Ceiling(cost.Supply);
+
             if (buildingOrUnit.IsBuildingType)
             {
                 var buildingType = (BuildingType)buildingOrUnit;
