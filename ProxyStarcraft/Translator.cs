@@ -931,7 +931,7 @@ namespace ProxyStarcraft
                    building == ZergBuildingType.GreaterSpire;
         }
 
-        public List<uint> GetBuffId(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : new List<uint>();
+        public List<uint> MatchingBuffIds(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : new List<uint>();
 
         /// <summary>
         /// Gets a unique identifier for the unit type (or one of the unit types if there are multiple, and it's not picky) specified.

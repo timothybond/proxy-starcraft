@@ -1,5 +1,6 @@
 ﻿using ProxyStarcraft.Commands;
 using ProxyStarcraft.Proto;
+using System.Linq;
 
 namespace ProxyStarcraft
 {
@@ -33,6 +34,8 @@ namespace ProxyStarcraft
             this.Raw.Alliance == Proto.Alliance.Neutral && this.RawType.HasVespene; // TODO: Figure out if there is a valid case where this fails
 
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
+
+        public bool HasBuff(BuffType buff) => this.Raw.BuffIds.Any(rawBuffId => translator.MatchingBuffIds(buff).Any(matching => matching == rawBuffId));
 
         public ulong Tag => this.Raw.Tag;
 
