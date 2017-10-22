@@ -13,9 +13,9 @@ namespace ProxyStarcraft.Basic
 
         private Dictionary<ulong, List<ulong>> workersByMineralDeposit = new Dictionary<ulong, List<ulong>>();
         
-        private IPlacementStrategy placementStrategy;
+        private IProductionStrategy placementStrategy;
 
-        public BasicEconomyBot(Race race, IPlacementStrategy placementStrategy)
+        public BasicEconomyBot(Race race, IProductionStrategy placementStrategy)
         {
             this.Race = race;
             this.placementStrategy = placementStrategy;
@@ -145,19 +145,8 @@ namespace ProxyStarcraft.Basic
                 {
                     return new List<Command>();
                 }
-                
-                var builder = cost.GetBuilder(gameState);
 
-                if (supplyType.IsBuildingType)
-                {
-                    var buildingType = (BuildingType)supplyType;
-                    var location = this.placementStrategy.GetPlacement(buildingType, gameState);
-                    return new List<Command> { builder.Build(buildingType, location) };
-                }
-                else
-                {
-                    return new List<Command> { builder.Train((UnitType)supplyType) };
-                }
+                return new List<Command> { this.placementStrategy.Produce(supplyType, gameState) };
             }
 
             CheckForKilledWorkers(workers);

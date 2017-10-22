@@ -1,11 +1,11 @@
-﻿using ProxyStarcraft.Map;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProxyStarcraft.Map;
 
 namespace ProxyStarcraft.Basic
 {
-    public class BasicPlacementStrategy : IPlacementStrategy
+    public class BasicProductionStrategy : IProductionStrategy
     {
         public IBuildLocation GetPlacement(BuildingType building, GameState gameState)
         {
@@ -70,6 +70,23 @@ namespace ProxyStarcraft.Basic
             throw new InvalidOperationException("Cannot find placement location anywhere on map.");
         }
 
+        public Command Produce(BuildingOrUnitType buildingOrUnit, GameState gameState)
+        {
+            var cost = gameState.Translator.GetCost(buildingOrUnit);
+            var builder = cost.GetBuilder(gameState);
+
+            if (buildingOrUnit.IsBuildingType)
+            {
+                var buildingType = (BuildingType)buildingOrUnit;
+                var location = this.GetPlacement(buildingType, gameState);
+                return builder.Build(buildingType, location);
+            }
+            else
+            {
+                return builder.Train((UnitType)buildingOrUnit);
+            }
+        }
+        
         private VespeneBuildLocation GetVespeneBuildingPlacement(GameState gameState)
         {
             // TODO: Just add main bases to GameState? I'm using them enough.
@@ -109,7 +126,7 @@ namespace ProxyStarcraft.Basic
 
             return null;
         }
-        
+
         private List<Location> GetMainBaseLocations(GameState gameState)
         {
             var results = new List<Location>();
