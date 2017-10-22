@@ -15,11 +15,21 @@ namespace ProxyStarcraft.Basic
 
         private Dictionary<ulong, List<ulong>> workersByVespeneGeyser = new Dictionary<ulong, List<ulong>>();
 
+        private IPlacementStrategy placementStrategy;
+
+        public BasicEconomyBot(Race race, IPlacementStrategy placementStrategy)
+        {
+            this.Race = race;
+            this.placementStrategy = placementStrategy;
+        }
+
         private bool first = true;
 
         public bool AutoBuildWorkers { get; set; }
 
-        public Race Race => Race.NoRace;
+        public bool AutoBuildSupply { get; set; }
+
+        public Race Race { get; private set; }
 
         public IReadOnlyList<Command> Act(GameState gameState)
         {
@@ -117,6 +127,7 @@ namespace ProxyStarcraft.Basic
 
             if (this.AutoBuildWorkers && (!IsFullyHarvestingMineralDeposits() || !IsFullyHarvestingVespeneGeysers()))
             {
+                var workerType = this.Race.GetWorkerType();
                 var cost = gameState.Translator.GetCost(TerranUnitType.SCV);
                 if (cost.IsMet(gameState))
                 {
@@ -135,6 +146,37 @@ namespace ProxyStarcraft.Basic
                     {
                         commands.Add(nexus.Train(ProtossUnitType.Probe));
                     }
+
+                    // Maybe not a great general solution, but it will keep this
+                    // bot from breaking if it tries to increase Supply also.
+                    gameState.Observation.PlayerCommon.Minerals -= 50;
+                    gameState.Observation.PlayerCommon.FoodUsed += 1;
+                }
+            }
+
+            if (this.AutoBuildSupply &&
+                gameState.Observation.PlayerCommon.FoodUsed + 5 > gameState.Observation.PlayerCommon.FoodCap &&
+                gameState.Observation.PlayerCommon.FoodCap < 200)
+            {
+                var supplyType = Race.GetSupplyType();
+                var cost = gameState.Translator.GetCost(supplyType);
+
+                if (!cost.IsMet(gameState))
+                {
+                    return new List<Command>();
+                }
+                
+                var builder = cost.GetBuilder(gameState);
+
+                if (supplyType.IsBuildingType)
+                {
+                    var buildingType = (BuildingType)supplyType;
+                    var location = this.placementStrategy.GetPlacement(buildingType, gameState);
+                    return new List<Command> { builder.Build(buildingType, location) };
+                }
+                else
+                {
+                    return new List<Command> { builder.Train((UnitType)supplyType) };
                 }
             }
 
