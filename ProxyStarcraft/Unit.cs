@@ -69,6 +69,69 @@ namespace ProxyStarcraft
             return translator.IsBuilding(this.Raw, buildingOrUnitType);
         }
 
+        /// <summary>
+        /// Determines if this unit is of the specified type, or possibly an upgraded form of the same thing.
+        /// </summary>
+        public bool CountsAs(BuildingOrUnitType type)
+        {
+            if (this.Type == type)
+            {
+                return true;
+            }
+
+            // Handle buildings that get upgraded to 'different types' but still count
+            // TODO: Handle this better, elsewhere
+            if (type == TerranBuildingType.CommandCenter &&
+                (this.Type == TerranBuildingType.PlanetaryFortress ||
+                 this.Type == TerranBuildingType.OrbitalCommand))
+            {
+                return true;
+            }
+
+            if (type == ZergBuildingType.Hatchery &&
+                (this.Type == ZergBuildingType.Lair ||
+                 this.Type == ZergBuildingType.Hive))
+            {
+                return true;
+            }
+
+            if (type == ZergBuildingType.Lair &&
+                this.Type == ZergBuildingType.Hive)
+            {
+                return true;
+            }
+
+            if (type == ZergBuildingType.HydraliskDen &&
+                this.Type == ZergBuildingType.LurkerDen)
+            {
+                return true;
+            }
+
+            if (type == ZergBuildingType.Spire &&
+                this.Type == ZergBuildingType.GreaterSpire)
+            {
+                return true;
+            }
+
+            if (type == TerranBuildingType.TechLab &&
+                (this.Type == TerranBuildingType.BarracksTechLab ||
+                 this.Type == TerranBuildingType.FactoryTechLab ||
+                 this.Type == TerranBuildingType.StarportTechLab))
+            {
+                return true;
+            }
+
+            if (type == TerranBuildingType.Reactor &&
+                (this.Type == TerranBuildingType.BarracksReactor ||
+                 this.Type == TerranBuildingType.FactoryReactor ||
+                 this.Type == TerranBuildingType.StarportReactor))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public MoveCommand Move(float x, float y)
         {
             return new MoveCommand(this, x, y);

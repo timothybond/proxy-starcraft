@@ -31,6 +31,26 @@ namespace ProxyStarcraft
         /// </summary>
         public bool IsMet(GameState gameState)
         {
+            if (!HasResources(gameState))
+            {
+                return false;
+            }
+
+            if (!HasPrerequisite(gameState))
+            {
+                return false;
+            }
+            
+            if (GetBuilder(gameState) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool HasResources(GameState gameState)
+        {
             if (gameState.Response.Observation.PlayerCommon.Minerals < this.Minerals)
             {
                 return false;
@@ -45,7 +65,12 @@ namespace ProxyStarcraft
             {
                 return false;
             }
-            
+
+            return true;
+        }
+
+        public bool HasPrerequisite(GameState gameState)
+        {
             if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
             {
                 // This is handled separately in the GetBuilder(...) logic.
@@ -57,11 +82,6 @@ namespace ProxyStarcraft
                 {
                     return false;
                 }
-            }
-
-            if (GetBuilder(gameState) == null)
-            {
-                return false;
             }
 
             return true;
@@ -76,83 +96,23 @@ namespace ProxyStarcraft
             {
                 var builder = gameState.Units.FirstOrDefault(
                     u =>
-                    IsUnitOfType(u, this.Builder) && !u.IsBuildingSomething && u.IsBuilt &&
+                    u.CountsAs(this.Builder) && !u.IsBuildingSomething && u.IsBuilt &&
                     u.Raw.AddOnTag != 0 &&
-                    IsUnitOfType(gameState.Units.Single(a => a.Tag == u.Raw.AddOnTag), TerranBuildingType.TechLab));
+                    gameState.Units.Single(a => a.Tag == u.Raw.AddOnTag).CountsAs(TerranBuildingType.TechLab));
                 return builder;
             }
             
-            return gameState.Units.FirstOrDefault(u => IsUnitOfType(u, this.Builder) && !u.IsBuildingSomething && u.IsBuilt);
+            return gameState.Units.FirstOrDefault(u => u.CountsAs(this.Builder) && !u.IsBuildingSomething && u.IsBuilt);
         }
 
         private bool IsBuilderType(Unit unit)
         {
-            return IsUnitOfType(unit, this.Builder);
+            return unit.CountsAs(this.Builder);
         }
 
         private bool IsPrerequisiteType(Unit unit)
         {
-            return IsUnitOfType(unit, this.Prerequisite);
-        }
-
-        private bool IsUnitOfType(Unit unit, BuildingOrUnitType type)
-        {
-            if (unit.Type == type)
-            {
-                return true;
-            }
-
-            // Handle buildings that get upgraded to 'different types' but still count
-            // TODO: Handle this better, elsewhere
-            if (type == TerranBuildingType.CommandCenter &&
-                (unit.Type == TerranBuildingType.PlanetaryFortress ||
-                 unit.Type == TerranBuildingType.OrbitalCommand))
-            {
-                return true;
-            }
-
-            if (type == ZergBuildingType.Hatchery &&
-                (unit.Type == ZergBuildingType.Lair ||
-                 unit.Type == ZergBuildingType.Hive))
-            {
-                return true;
-            }
-
-            if (type == ZergBuildingType.Lair &&
-                unit.Type == ZergBuildingType.Hive)
-            {
-                return true;
-            }
-
-            if (type == ZergBuildingType.HydraliskDen &&
-                unit.Type == ZergBuildingType.LurkerDen)
-            {
-                return true;
-            }
-
-            if (type == ZergBuildingType.Spire &&
-                unit.Type == ZergBuildingType.GreaterSpire)
-            {
-                return true;
-            }
-
-            if (type == TerranBuildingType.TechLab &&
-                (unit.Type == TerranBuildingType.BarracksTechLab ||
-                 unit.Type == TerranBuildingType.FactoryTechLab ||
-                 unit.Type == TerranBuildingType.StarportTechLab))
-            {
-                return true;
-            }
-
-            if (type == TerranBuildingType.Reactor &&
-                (unit.Type == TerranBuildingType.BarracksReactor ||
-                 unit.Type == TerranBuildingType.FactoryReactor ||
-                 unit.Type == TerranBuildingType.StarportReactor))
-            {
-                return true;
-            }
-
-            return false;
+            return unit.CountsAs(this.Prerequisite);
         }
     }
 }

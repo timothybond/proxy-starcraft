@@ -16,11 +16,11 @@ namespace Sandbox
     {
         // Every time there are this many idle soldiers, attack
         private const int AttackThreshold = 16;
-
+        
         private BasicEconomyBot economyBot;
         private BasicMilitaryBot militaryBot = new BasicMilitaryBot(AttackThreshold);
-        private IPlacementStrategy placementStrategy = new BasicPlacementStrategy();
-
+        private IProductionStrategy placementStrategy = new BasicProductionStrategy();
+        
         private float primaryHatcheryX = -1.0f;
         private float primaryHatcheryY = -1.0f;
         private int sleep = 0;
