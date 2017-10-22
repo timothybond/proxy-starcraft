@@ -51,10 +51,11 @@
     <Compile Include="Basic\BasicMilitaryBot.cs" />
     <Compile Include="BuffType.cs" />
     <Compile Include="Basic\BasicProductionStrategy.cs" />
-    <Compile Include="Basic\BuildOrderBot.cs" />
-    <Compile Include="Basic\CompositeBuildOrderBot.cs" />
-    <Compile Include="Basic\DesiredArmyBot.cs" />
+    <Compile Include="Basic\BuildOrder.cs" />
+    <Compile Include="Basic\CompositeProductionQueueBot.cs" />
+    <Compile Include="Basic\DesiredArmyQueue.cs" />
     <Compile Include="Building.cs" />
+    <Compile Include="ChainableProductionQueue.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\AttackMoveCommand.cs" />
     <Compile Include="Commands\BuildCommand.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="DistanceExtensions.cs" />
     <Compile Include="IBuildLocation.cs" />
     <Compile Include="IChainableBot.cs" />
+    <Compile Include="IProductionQueue.cs" />
     <Compile Include="IProductionStrategy.cs" />
     <Compile Include="LocationOffset.cs" />
     <Compile Include="MapArray.cs" />

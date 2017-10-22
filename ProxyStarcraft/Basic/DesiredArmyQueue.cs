@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft.Basic
 {
-    public class DesiredArmyBot : IBot
+    public class DesiredArmyQueue : IProductionQueue
     {
         private Dictionary<TerranUnitType, int> desiredUnits = new Dictionary<TerranUnitType, int>();
-
-        public DesiredArmyBot(IProductionStrategy productionStrategy)
-        {
-            this.ProductionStrategy = productionStrategy;
-        }
-
-        public Race Race => Race.Terran;
-
-        public IProductionStrategy ProductionStrategy { get; private set; }
-
+        
         public void Set(TerranUnitType unitType, int desired)
         {
             if (this.desiredUnits.ContainsKey(unitType))
@@ -30,10 +20,15 @@ namespace ProxyStarcraft.Basic
             }
         }
 
-        public IReadOnlyList<Command> Act(GameState gameState)
+        public bool IsEmpty(GameState gameState)
         {
-            // Whenever possible, build a new unit of an unsatisfied type, starting with the type furthest from its goal (as a ratio).
-            // TODO: Count units being trained currently.
+            var unitsByType = gameState.Units.OfType<TerranUnit>().GroupBy(t => t.TerranUnitType).ToDictionary(group => group.Key, g => g.Count());
+
+            return desiredUnits.All(pair => unitsByType.ContainsKey(pair.Key) && unitsByType[pair.Key] >= pair.Value);
+        }
+
+        public BuildingOrUnitType Peek(GameState gameState)
+        {
             var unitsByType = gameState.Units.OfType<TerranUnit>().GroupBy(t => t.TerranUnitType).ToDictionary(group => group.Key, g => g.Count());
 
             var nextUnitPriorities = this.desiredUnits.OrderBy(
@@ -49,21 +44,20 @@ namespace ProxyStarcraft.Basic
                 var nextUnitType = nextUnitPriorities[0];
 
                 var cost = gameState.Translator.GetCost(nextUnitType);
-                if (cost.IsMet(gameState))
+                if (cost.IsMet(gameState) || !cost.HasResources(gameState))
                 {
-                    return new List<Command> { ProductionStrategy.Produce(nextUnitType, gameState) };
+                    return nextUnitType;
                 }
-                else if (cost.HasResources(gameState))
+                else
                 {
                     // We couldn't build this unit, but not for lack of resources, so we should expand production.
-                    Command buildProducerOrPrerequisite;
+                    BuildingOrUnitType producerOrPrerequisite;
 
                     if (!cost.HasPrerequisite(gameState))
                     {
-                        buildProducerOrPrerequisite = BuildOrBuildPrerequisite(cost.Prerequisite, gameState);
-                        
+                        producerOrPrerequisite = UnitOrPrerequisite(cost.Prerequisite, gameState);
                     }
-                    else 
+                    else
                     {
                         // At the moment the only checks are resources, prerequisite, and builder, so the builder must be missing.
                         // There is a special case where a Tech Lab prerequisite is used to enforce 'builder must have tech lab',
@@ -74,7 +68,7 @@ namespace ProxyStarcraft.Basic
                             cost.Prerequisite == TerranBuildingType.StarportTechLab)
                         {
                             var techLabType = cost.Prerequisite;
-                            
+
                             if (techLabType == TerranBuildingType.TechLab)
                             {
                                 if (cost.Builder == TerranBuildingType.Barracks)
@@ -95,36 +89,36 @@ namespace ProxyStarcraft.Basic
                                 }
                             }
 
-                            buildProducerOrPrerequisite = BuildOrBuildPrerequisite(techLabType, gameState);
+                            producerOrPrerequisite = UnitOrPrerequisite(techLabType, gameState);
                         }
                         else
                         {
-                            buildProducerOrPrerequisite = BuildOrBuildPrerequisite(cost.Builder, gameState);
+                            producerOrPrerequisite = UnitOrPrerequisite(cost.Builder, gameState);
                         }
                     }
 
-                    return buildProducerOrPrerequisite != null ? new List<Command> { buildProducerOrPrerequisite } : new List<Command>();
+                    return producerOrPrerequisite;
                 }
             }
-            
-            return new List<Command>();
+
+            throw new InvalidOperationException();
         }
 
-        private Command BuildOrBuildPrerequisite(BuildingOrUnitType buildingOrUnit, GameState gameState)
+        public BuildingOrUnitType Pop(GameState gameState)
+        {
+            return Peek(gameState);
+        }
+        
+        private BuildingOrUnitType UnitOrPrerequisite(BuildingOrUnitType buildingOrUnit, GameState gameState)
         {
             var cost = gameState.Translator.GetCost(buildingOrUnit);
 
             if (!cost.HasPrerequisite(gameState))
             {
-                return BuildOrBuildPrerequisite(cost.Prerequisite, gameState);
+                return UnitOrPrerequisite(cost.Prerequisite, gameState);
             }
 
-            if (cost.IsMet(gameState))
-            {
-                return this.ProductionStrategy.Produce(buildingOrUnit, gameState);
-            }
-
-            return null;
+            return buildingOrUnit;
         }
     }
 }

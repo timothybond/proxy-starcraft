@@ -66,37 +66,37 @@ namespace Sandbox
         static void Main(string[] args)
         {
             var productionStrategy = new BasicProductionStrategy();
-            var desiredArmyBot = new DesiredArmyBot(productionStrategy);
+            var desiredArmyBot = new DesiredArmyQueue();
             desiredArmyBot.Set(TerranUnitType.Marine, 100);
             desiredArmyBot.Set(TerranUnitType.Marauder, 50);
 
             var militaryBot = new BasicMilitaryBot(new[] { 10, 20, 30 });
-
-            var nextBot = new CompositeBot(new IBot[] { desiredArmyBot, militaryBot });
-
-            var bot = new CompositeBuildOrderBot(Race.Terran, nextBot, productionStrategy);
-            bot.Add(TerranBuildingType.SupplyDepot);
-            bot.Add(TerranBuildingType.Barracks);
-            bot.Add(TerranBuildingType.Refinery);
-            bot.Add(TerranBuildingType.Refinery);
-            bot.Add(TerranBuildingType.BarracksTechLab);
-            bot.Add(TerranBuildingType.Barracks);
-            bot.Add(TerranBuildingType.Barracks);
-            bot.Add(TerranUnitType.SCV);
-            bot.Add(TerranUnitType.SCV);
-            bot.Add(TerranBuildingType.OrbitalCommand);
-            bot.Add(TerranBuildingType.SupplyDepot);
+            
+            var productionQueueBot = new CompositeProductionQueueBot(Race.Terran, desiredArmyBot, productionStrategy);
+            productionQueueBot.Add(TerranBuildingType.SupplyDepot);
+            productionQueueBot.Add(TerranBuildingType.Barracks);
+            productionQueueBot.Add(TerranBuildingType.Refinery);
+            productionQueueBot.Add(TerranBuildingType.Refinery);
+            productionQueueBot.Add(TerranBuildingType.BarracksTechLab);
+            productionQueueBot.Add(TerranBuildingType.Barracks);
+            productionQueueBot.Add(TerranBuildingType.Barracks);
+            productionQueueBot.Add(TerranUnitType.SCV);
+            productionQueueBot.Add(TerranUnitType.SCV);
+            productionQueueBot.Add(TerranBuildingType.OrbitalCommand);
+            productionQueueBot.Add(TerranBuildingType.SupplyDepot);
 
             //var bot = new CompositeBot(new IBot[] { new ZergRushBot(), new SpawnLarvaBot(), militaryBot});
 
-            PlayAgainstStandardAI(bot);
+            var bot = new CompositeBot(new IBot[] { productionQueueBot, militaryBot });
+
+            PlayAgainstStandardAI(productionQueueBot);
 
             //var bot1 = new BenchmarkBot();
             //var bot2 = new ZergRushBot();
 
             //PlayOneOnOne(bot1, bot2);
         }
-        
+
         public static void RunMarineMicroGame(SynchronousApiClient client)
         {
             if (!client.InitiateSinglePlayerGame(MARINE_MICRO_MAP_PATH, Race.Terran))
