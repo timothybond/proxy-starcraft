@@ -80,7 +80,7 @@ namespace ProxyStarcraft.Client
             {
                 int retries = 3;
 
-                while (retries > 0 && response.Result.Observation == null)
+                while (retries > 0 && response.Result?.Observation == null)
                 {
                     response = Call(new Request { Observation = new RequestObservation() });
                     retries--;
