@@ -12,9 +12,7 @@ namespace ProxyStarcraft.Basic
         private const int MaxWorkersPerVespeneGeyser = 3;
 
         private Dictionary<ulong, List<ulong>> workersByMineralDeposit = new Dictionary<ulong, List<ulong>>();
-
-        private Dictionary<ulong, List<ulong>> workersByVespeneGeyser = new Dictionary<ulong, List<ulong>>();
-
+        
         private IPlacementStrategy placementStrategy;
 
         public BasicEconomyBot(Race race, IPlacementStrategy placementStrategy)
@@ -96,27 +94,7 @@ namespace ProxyStarcraft.Basic
                     workersByMineralDeposit.Add(mineralDeposit.Tag, new List<ulong>());
                 }
             }
-
-            foreach (var vespeneBuilding in vespeneBuildings)
-            {
-                if (!workersByVespeneGeyser.ContainsKey(vespeneBuilding.Tag))
-                {
-                    workersByVespeneGeyser.Add(vespeneBuilding.Tag, new List<ulong>());
-                }
-
-                if (workersByVespeneGeyser[vespeneBuilding.Tag].Count == 0)
-                {
-                    // SCVs start off harvesting from the Refinery they have just built, so this should catch them
-                    var existingWorkers = workers.Where(w => w.Raw.Orders.Count > 0 && w.Raw.Orders[0].TargetUnitTag == vespeneBuilding.Tag)
-                                                 .Select(w => w.Tag).ToList();
-                    
-                    foreach (var existingWorker in existingWorkers)
-                    {
-                        AssignWorkerToVespene(existingWorker, vespeneBuilding.Tag);
-                    }
-                }
-            }
-
+            
             if (mainBases.Count == 0)
             {
                 // Accept death as inevitable.
@@ -125,7 +103,7 @@ namespace ProxyStarcraft.Basic
                 // TODO: Surrender?
             }
 
-            if (this.AutoBuildWorkers && (!IsFullyHarvestingMineralDeposits() || !IsFullyHarvestingVespeneGeysers()))
+            if (this.AutoBuildWorkers && (!IsFullyHarvestingMineralDeposits() || !IsFullyHarvestingVespeneGeysers(vespeneBuildings)))
             {
                 var workerType = this.Race.GetWorkerType();
                 var cost = gameState.Translator.GetCost(TerranUnitType.SCV);
@@ -154,11 +132,13 @@ namespace ProxyStarcraft.Basic
                 }
             }
 
+            var supplyType = Race.GetSupplyType();
+
             if (this.AutoBuildSupply &&
                 gameState.Observation.PlayerCommon.FoodUsed + 5 > gameState.Observation.PlayerCommon.FoodCap &&
-                gameState.Observation.PlayerCommon.FoodCap < 200)
+                gameState.Observation.PlayerCommon.FoodCap < 200 &&
+                !gameState.Units.Any(u => u.IsBuilding(supplyType)))
             {
-                var supplyType = Race.GetSupplyType();
                 var cost = gameState.Translator.GetCost(supplyType);
 
                 if (!cost.IsMet(gameState))
@@ -209,25 +189,19 @@ namespace ProxyStarcraft.Basic
                     pair.Value.Remove(unit.Tag);
                 }
             }
-
-            foreach (var pair in workersByVespeneGeyser)
-            {
-                if (pair.Value.Contains(unit.Tag))
-                {
-                    pair.Value.Remove(unit.Tag);
-                }
-            }
         }
 
         private void CheckForKilledWorkers(List<Unit> workers)
         {
-            var activeHarvesters = workersByMineralDeposit.SelectMany(w => w.Value).Concat(workersByVespeneGeyser.SelectMany(w => w.Value)).ToList();
+            var activeHarvesters = workersByMineralDeposit.SelectMany(w => w.Value).ToList();
 
             foreach (var worker in workers)
             {
                 activeHarvesters.Remove(worker.Tag);
             }
 
+            // Note that this also includes workers inside of Vespene buildings,
+            // although that doesn't have any meaningful effect on this function.
             foreach (var harvester in activeHarvesters)
             {
                 RemoveWorkerFromHarvestAssignments(harvester);
@@ -240,14 +214,6 @@ namespace ProxyStarcraft.Basic
         private void RemoveWorkerFromHarvestAssignments(ulong tag)
         {
             foreach (var pair in workersByMineralDeposit)
-            {
-                if (pair.Value.Contains(tag))
-                {
-                    pair.Value.Remove(tag);
-                }
-            }
-
-            foreach (var pair in workersByVespeneGeyser)
             {
                 if (pair.Value.Contains(tag))
                 {
@@ -277,9 +243,9 @@ namespace ProxyStarcraft.Basic
                 idleWorkers.Remove(lastIdleWorker);
             }
 
-            while (!IsFullyHarvestingVespeneGeysers() && idleWorkers.Count > 0)
+            while (!IsFullyHarvestingVespeneGeysers(vespeneBuildings) && idleWorkers.Count > 0)
             {
-                var vespeneBuilding = VespeneBuildingsNeedingWorkers().First();
+                var vespeneBuilding = VespeneBuildingsNeedingWorkers(vespeneBuildings).First();
                 var lastIdleWorker = idleWorkers.Last();
 
                 commands.Add(lastIdleWorker.Harvest(vespeneBuildingsByTag[vespeneBuilding]));
@@ -297,7 +263,6 @@ namespace ProxyStarcraft.Basic
         private void AssignWorkerToVespene(ulong tag, ulong vespeneStructureTag)
         {
             RemoveWorkerFromHarvestAssignments(tag);
-            workersByVespeneGeyser[vespeneStructureTag].Add(tag);
         }
 
         private bool IsFullyHarvestingMineralDeposits()
@@ -305,9 +270,9 @@ namespace ProxyStarcraft.Basic
             return MineralsNeedingWorkers().Count == 0;
         }
 
-        private bool IsFullyHarvestingVespeneGeysers()
+        private bool IsFullyHarvestingVespeneGeysers(IReadOnlyList<Building> vespeneBuildings)
         {
-            return VespeneBuildingsNeedingWorkers().Count == 0;
+            return VespeneBuildingsNeedingWorkers(vespeneBuildings).Count == 0;
         }
 
         private IReadOnlyList<ulong> MineralsNeedingWorkers()
@@ -315,9 +280,9 @@ namespace ProxyStarcraft.Basic
             return workersByMineralDeposit.Where(pair => pair.Value.Count < MaxWorkersPerMineralDeposit).Select(pair => pair.Key).ToList();
         }
 
-        private IReadOnlyList<ulong> VespeneBuildingsNeedingWorkers()
+        private IReadOnlyList<ulong> VespeneBuildingsNeedingWorkers(IReadOnlyList<Building> vespeneBuildings)
         {
-            return workersByVespeneGeyser.Where(pair => pair.Value.Count < MaxWorkersPerVespeneGeyser).Select(pair => pair.Key).ToList();
+            return vespeneBuildings.Where(v => v.Raw.AssignedHarvesters < MaxWorkersPerVespeneGeyser).Select(v => v.Tag).ToList();
         }
     }
 }
