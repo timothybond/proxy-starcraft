@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ProxyStarcraft.Commands;
 using ProxyStarcraft.Proto;
 using WebSocket4Net;
 

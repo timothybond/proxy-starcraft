@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProxyStarcraft.Commands;
 using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft

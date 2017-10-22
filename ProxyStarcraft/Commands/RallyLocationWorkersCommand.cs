@@ -1,4 +1,4 @@
-﻿namespace ProxyStarcraft
+﻿namespace ProxyStarcraft.Commands
 {
     public class RallyWorkersLocationCommand : LocationTargetCommand
     {
