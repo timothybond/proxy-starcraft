@@ -165,6 +165,10 @@ namespace Sandbox
                 var closestQueen = (ZergUnit)item.GetClosest(queens);
                 queens.Remove(closestQueen);
                 results.Add(item, closestQueen);
+                if (!queens.Any())
+                {
+                    return results;
+                }
             }
             return results;
         }

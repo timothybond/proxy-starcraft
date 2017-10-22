@@ -24,7 +24,9 @@ namespace ProxyStarcraft
         private Dictionary<uint, AbilityData> abilities;
         private Dictionary<uint, UnitTypeData> unitTypes;
 
-        private Dictionary<BuffType, uint> buffIdsByBuffType;
+        private Dictionary<BuffType, List<uint>> buffIdsByBuffType;
+        private Dictionary<SpecialAbilityType, uint> specialAbilityDictionary;
+
 
         private Dictionary<TerranUnitType, uint> createTerranUnitActions;
         private Dictionary<ProtossUnitType, uint> createProtossUnitActions;
@@ -292,10 +294,23 @@ namespace ProxyStarcraft
                 { ZergBuildingType.UltraliskCavern, abilitiesByName["Build UltraliskCavern"].AbilityId }
             };
 
+            specialAbilityDictionary = new Dictionary<SpecialAbilityType, uint>();
+            specialAbilityDictionary.Add(SpecialAbilityType.SpawnLarva, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "SpawnLarva")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.CreepTumor, hotkeyedAbilities.Single(a => string.Equals(a.ButtonName, "CreepTumor")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.Transfusion, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "Transfusion")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.PrismaticAlignment, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "VoidRaySwarmDamageBoost")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.PrismaticAlignmentCancel, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "VoidRaySwarmDamageBoostCancel")).AbilityId);
+
             var buffsByName = buffs.Values.Where(buff => !string.IsNullOrEmpty(buff.Name)).ToDictionary(b => b.Name);
 
-            buffIdsByBuffType = new Dictionary<BuffType, uint>();
-            buffIdsByBuffType.Add(BuffType.SpawnLarva, buffsByName["QueenSpawnLarvaTimer"].BuffId);
+            buffIdsByBuffType = new Dictionary<BuffType, List<uint>>();
+            buffIdsByBuffType.Add(BuffType.SpawnLarva, new List<uint> { buffsByName["QueenSpawnLarvaTimer"].BuffId });
+            buffIdsByBuffType.Add(BuffType.CarryingMinerals, new List<uint> { buffsByName["CarryMineralFieldMinerals"].BuffId, buffsByName["CarryHighYieldMineralFieldMinerals"].BuffId});
+            buffIdsByBuffType.Add(BuffType.CarryingGas, new List<uint> { buffsByName["CarryHarvestableVespeneGeyserGas"].BuffId, buffsByName["CarryHarvestableVespeneGeyserGasProtoss"].BuffId, buffsByName["CarryHarvestableVespeneGeyserGasZerg"].BuffId });
+            // Double check these once a bot is capable of making a unit that would cast this. Every buff below this comment. Check Resources.BuffNameList for the full list 'o names.
+            buffIdsByBuffType.Add(BuffType.BlindingCloud, new List<uint> { buffsByName["BlindingCloud"].BuffId });
+            buffIdsByBuffType.Add(BuffType.CloakField, new List<uint> { buffsByName["OracleCloakFieldEffect"].BuffId, buffsByName["CloakingFieldTargeted"].BuffId }); 
+            buffIdsByBuffType.Add(BuffType.SelfCloak, new List<uint> { buffsByName["GhostCloak"].BuffId, buffsByName["BansheeCloak"].BuffId, buffsByName["CloakUnit"].BuffId });
 
             var unitTypesByName = unitTypes.Values.Where(unitType => !string.IsNullOrEmpty(unitType.Name)).ToDictionary(unitType => unitType.Name);
 
@@ -915,7 +930,7 @@ namespace ProxyStarcraft
                    building == ZergBuildingType.GreaterSpire;
         }
 
-        public uint GetBuffId(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : 0; // Assumption: Buffs are not zero-indexed.
+        public List<uint> GetBuffId(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : new List<uint>();
 
         /// <summary>
         /// Gets a unique identifier for the unit type (or one of the unit types if there are multiple, and it's not picky) specified.
@@ -996,6 +1011,8 @@ namespace ProxyStarcraft
                     return GetRallyWorkersAbility(rallyWorkersLocationCommand.Unit.Raw);
                 case RallyWorkersTargetCommand rallyWorkersTargetCommand:
                     return GetRallyWorkersAbility(rallyWorkersTargetCommand.Unit.Raw);
+                case UseUnitTargetSpecialAbilityCommand useUnitTargetAbilityCommand:
+                    return GetSpecialAbilityId(useUnitTargetAbilityCommand.Ability);
                 default:
                     throw new NotImplementedException();
             }
@@ -1048,6 +1065,8 @@ namespace ProxyStarcraft
 
             throw new ArgumentException("Unit was not a CommandCenter/Nexus/Hatchery or equivalent.");
         }
+
+        public uint GetSpecialAbilityId(SpecialAbilityType abilityType) => specialAbilityDictionary[abilityType];
 
         public BuildingOrUnitType GetBuildingOrUnitType(uint unitTypeId)
         {
@@ -1112,5 +1131,7 @@ namespace ProxyStarcraft
                 return new UnspecifiedUnit(unit, this);
             }
         }
+
+
     }
 }

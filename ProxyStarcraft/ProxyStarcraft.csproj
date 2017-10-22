@@ -64,6 +64,11 @@
     <Compile Include="Map\Mesa.cs" />
     <Compile Include="Map\Ramp.cs" />
     <Compile Include="NoTargetCommand.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ProtossBuilding.cs" />
     <Compile Include="ProtossUnit.cs" />
     <Compile Include="RallyTargetCommand.cs" />
@@ -97,6 +102,7 @@
     <Compile Include="Proto\Ui.cs" />
     <Compile Include="RallyLocationCommand.cs" />
     <Compile Include="RallyLocationWorkersCommand.cs" />
+    <Compile Include="SpecialAbilityType.cs" />
     <Compile Include="StandardBuildLocation.cs" />
     <Compile Include="TerranBuilding.cs" />
     <Compile Include="TerranBuildingType.cs" />
@@ -111,7 +117,7 @@
     <Compile Include="UnitType.cs" />
     <Compile Include="UnspecifiedUnit.cs" />
     <Compile Include="UpgradeBuildLocation.cs" />
-    <Compile Include="UseUnitTargetAbilityCommand.cs" />
+    <Compile Include="UseUnitTargetSpecialAbilityCommand.cs" />
     <Compile Include="VespeneBuildLocation.cs" />
     <Compile Include="ZergBuilding.cs" />
     <Compile Include="ZergBuildingExtensions.cs" />
@@ -126,6 +132,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Proto\ProxyStarcraft.Proto.csproj" />
+    <None Include="Resources\Buff Name List.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

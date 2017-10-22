@@ -1,4 +1,5 @@
 ﻿using ProxyStarcraft.Proto;
+using System.Linq;
 
 namespace ProxyStarcraft
 {
@@ -33,7 +34,7 @@ namespace ProxyStarcraft
 
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
 
-        public bool HasBuff(BuffType buff) => this.Raw.BuffIds.Contains(translator.GetBuffId(buff));
+        public bool HasBuff(BuffType buff) => this.Raw.BuffIds.Any(rbList => translator.GetBuffId(buff).Any(bList => bList == rbList));
 
         public ulong Tag => this.Raw.Tag;
 

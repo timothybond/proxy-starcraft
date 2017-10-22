@@ -8,7 +8,7 @@ namespace ProxyStarcraft
         {
             if (queen.Raw.Energy >= 25 && !hatchery.IsSpawningLarva() && hatchery.IsBuilt)
             {
-                commands.Add(new UseUnitTargetAbilityCommand(251, queen, hatchery));
+                commands.Add(new UseUnitTargetSpecialAbilityCommand(queen, hatchery, SpecialAbilityType.SpawnLarva));
             }
         }
     }
