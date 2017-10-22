@@ -21,8 +21,13 @@ namespace ProxyStarcraft
     /// </summary>
     public class Translator
     {
+        private Dictionary<uint, BuffData> buffs;
         private Dictionary<uint, AbilityData> abilities;
         private Dictionary<uint, UnitTypeData> unitTypes;
+
+        private Dictionary<BuffType, List<uint>> buffIdsByBuffType;
+        private Dictionary<SpecialAbilityType, uint> specialAbilityDictionary;
+
 
         private Dictionary<TerranUnitType, uint> createTerranUnitActions;
         private Dictionary<ProtossUnitType, uint> createProtossUnitActions;
@@ -134,10 +139,11 @@ namespace ProxyStarcraft
             "Morph GreaterSpire",
         };
 
-        public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes)
+        public Translator(Dictionary<uint, AbilityData> abilities, Dictionary<uint, UnitTypeData> unitTypes, Dictionary<uint, BuffData> buffs)
         {
             this.abilities = abilities;
             this.unitTypes = unitTypes;
+            this.buffs = buffs;
             
             // Somewhat-amusing trick: although there are tons of non-used abilities,
             // you can quickly narrow it down to ones that actually appear in-game
@@ -288,7 +294,25 @@ namespace ProxyStarcraft
                 { ZergBuildingType.GreaterSpire, abilitiesByName["Morph GreaterSpire"].AbilityId },
                 { ZergBuildingType.UltraliskCavern, abilitiesByName["Build UltraliskCavern"].AbilityId }
             };
-            
+
+            specialAbilityDictionary = new Dictionary<SpecialAbilityType, uint>();
+            specialAbilityDictionary.Add(SpecialAbilityType.SpawnLarva, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "SpawnLarva")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.CreepTumor, hotkeyedAbilities.Single(a => string.Equals(a.FriendlyName, "Build CreepTumor Queen")).AbilityId); // There's also a "Build CreepTumor Tumor"
+            specialAbilityDictionary.Add(SpecialAbilityType.Transfusion, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "Transfusion")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.PrismaticAlignment, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "VoidRaySwarmDamageBoost")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.PrismaticAlignmentCancel, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "VoidRaySwarmDamageBoostCancel")).AbilityId);
+
+            var buffsByName = buffs.Values.Where(buff => !string.IsNullOrEmpty(buff.Name)).ToDictionary(b => b.Name);
+
+            buffIdsByBuffType = new Dictionary<BuffType, List<uint>>();
+            buffIdsByBuffType.Add(BuffType.SpawnLarva, new List<uint> { buffsByName["QueenSpawnLarvaTimer"].BuffId });
+            buffIdsByBuffType.Add(BuffType.CarryingMinerals, new List<uint> { buffsByName["CarryMineralFieldMinerals"].BuffId, buffsByName["CarryHighYieldMineralFieldMinerals"].BuffId});
+            buffIdsByBuffType.Add(BuffType.CarryingGas, new List<uint> { buffsByName["CarryHarvestableVespeneGeyserGas"].BuffId, buffsByName["CarryHarvestableVespeneGeyserGasProtoss"].BuffId, buffsByName["CarryHarvestableVespeneGeyserGasZerg"].BuffId });
+            // Double check these once a bot is capable of making a unit that would cast this. Every buff below this comment. Check Resources.BuffNameList for the full list 'o names.
+            buffIdsByBuffType.Add(BuffType.BlindingCloud, new List<uint> { buffsByName["BlindingCloud"].BuffId });
+            buffIdsByBuffType.Add(BuffType.CloakField, new List<uint> { buffsByName["OracleCloakFieldEffect"].BuffId, buffsByName["CloakingFieldTargeted"].BuffId }); 
+            buffIdsByBuffType.Add(BuffType.SelfCloak, new List<uint> { buffsByName["GhostCloak"].BuffId, buffsByName["BansheeCloak"].BuffId, buffsByName["CloakUnit"].BuffId });
+
             var unitTypesByName = unitTypes.Values.Where(unitType => !string.IsNullOrEmpty(unitType.Name)).ToDictionary(unitType => unitType.Name);
 
             terranUnitTypesById = new Dictionary<uint, TerranUnitType>();
@@ -450,6 +474,8 @@ namespace ProxyStarcraft
         }
 
         public IReadOnlyDictionary<uint, AbilityData> AbilityTypes => this.abilities;
+
+        public IReadOnlyDictionary<uint, BuffData> BuffTypes => this.buffs;
 
         public IReadOnlyDictionary<uint, UnitTypeData> UnitTypes => this.unitTypes;
         
@@ -905,6 +931,8 @@ namespace ProxyStarcraft
                    building == ZergBuildingType.GreaterSpire;
         }
 
+        public List<uint> MatchingBuffIds(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : new List<uint>();
+
         /// <summary>
         /// Gets a unique identifier for the unit type (or one of the unit types if there are multiple, and it's not picky) specified.
         /// </summary>
@@ -984,6 +1012,8 @@ namespace ProxyStarcraft
                     return GetRallyWorkersAbility(rallyWorkersLocationCommand.Unit.Raw);
                 case RallyWorkersTargetCommand rallyWorkersTargetCommand:
                     return GetRallyWorkersAbility(rallyWorkersTargetCommand.Unit.Raw);
+                case UseUnitTargetSpecialAbilityCommand useUnitTargetAbilityCommand:
+                    return GetSpecialAbilityId(useUnitTargetAbilityCommand.Ability);
                 default:
                     throw new NotImplementedException();
             }
@@ -1036,6 +1066,8 @@ namespace ProxyStarcraft
 
             throw new ArgumentException("Unit was not a CommandCenter/Nexus/Hatchery or equivalent.");
         }
+
+        public uint GetSpecialAbilityId(SpecialAbilityType abilityType) => specialAbilityDictionary[abilityType];
 
         public BuildingOrUnitType GetBuildingOrUnitType(uint unitTypeId)
         {
@@ -1100,5 +1132,7 @@ namespace ProxyStarcraft
                 return new UnspecifiedUnit(unit, this);
             }
         }
+
+
     }
 }

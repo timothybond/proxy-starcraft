@@ -49,6 +49,7 @@
     <Compile Include="AddOnBuildLocation.cs" />
     <Compile Include="Basic\BasicEconomyBot.cs" />
     <Compile Include="Basic\BasicMilitaryBot.cs" />
+    <Compile Include="BuffType.cs" />
     <Compile Include="Basic\BasicProductionStrategy.cs" />
     <Compile Include="Basic\BuildOrder.cs" />
     <Compile Include="Basic\CompositeProductionQueueBot.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Proto\Score.cs" />
     <Compile Include="Proto\Spatial.cs" />
     <Compile Include="Proto\Ui.cs" />
+    <Compile Include="SpecialAbilityType.cs" />
     <Compile Include="StandardBuildLocation.cs" />
     <Compile Include="TerranBuilding.cs" />
     <Compile Include="TerranBuildingType.cs" />
@@ -117,10 +119,13 @@
     <Compile Include="UnitType.cs" />
     <Compile Include="UnspecifiedUnit.cs" />
     <Compile Include="UpgradeBuildLocation.cs" />
+    <Compile Include="Commands\UseUnitTargetSpecialAbilityCommand.cs" />
     <Compile Include="VespeneBuildLocation.cs" />
     <Compile Include="ZergBuilding.cs" />
+    <Compile Include="ZergBuildingExtensions.cs" />
     <Compile Include="ZergBuildingType.cs" />
     <Compile Include="ZergUnit.cs" />
+    <Compile Include="ZergUnitExtensions.cs" />
     <Compile Include="ZergUnitType.cs" />
   </ItemGroup>
   <ItemGroup>
