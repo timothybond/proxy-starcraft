@@ -17,13 +17,18 @@ namespace Sandbox
         // Every time there are this many idle soldiers, attack
         private const int AttackThreshold = 16;
 
-        private BasicEconomyBot economyBot = new BasicEconomyBot() { AutoBuildWorkers = true };
+        private BasicEconomyBot economyBot;
         private BasicMilitaryBot militaryBot = new BasicMilitaryBot(AttackThreshold);
         private IPlacementStrategy placementStrategy = new BasicPlacementStrategy();
 
         private float primaryHatcheryX = -1.0f;
         private float primaryHatcheryY = -1.0f;
         private int sleep = 0;
+
+        public ZergRushBot()
+        {
+            economyBot = new BasicEconomyBot(this.Race, this.placementStrategy) { AutoBuildWorkers = true };
+        }
 
         public Race Race => Race.Zerg;
 

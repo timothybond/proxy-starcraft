@@ -297,7 +297,7 @@ namespace ProxyStarcraft
 
             specialAbilityDictionary = new Dictionary<SpecialAbilityType, uint>();
             specialAbilityDictionary.Add(SpecialAbilityType.SpawnLarva, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "SpawnLarva")).AbilityId);
-            specialAbilityDictionary.Add(SpecialAbilityType.CreepTumor, hotkeyedAbilities.Single(a => string.Equals(a.ButtonName, "CreepTumor")).AbilityId);
+            specialAbilityDictionary.Add(SpecialAbilityType.CreepTumor, hotkeyedAbilities.Single(a => string.Equals(a.FriendlyName, "Build CreepTumor Queen")).AbilityId); // There's also a "Build CreepTumor Tumor"
             specialAbilityDictionary.Add(SpecialAbilityType.Transfusion, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "Transfusion")).AbilityId);
             specialAbilityDictionary.Add(SpecialAbilityType.PrismaticAlignment, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "VoidRaySwarmDamageBoost")).AbilityId);
             specialAbilityDictionary.Add(SpecialAbilityType.PrismaticAlignmentCancel, hotkeyedAbilities.Single(a => string.Equals(a.LinkName, "VoidRaySwarmDamageBoostCancel")).AbilityId);

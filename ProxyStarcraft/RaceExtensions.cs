@@ -5,7 +5,7 @@ namespace ProxyStarcraft
 {
     public static class RaceExtensions
     {
-        public static UnitType GetWorker(this Race race)
+        public static UnitType GetWorkerType(this Race race)
         {
             switch (race)
             {
@@ -15,6 +15,21 @@ namespace ProxyStarcraft
                     return ProtossUnitType.Probe;
                 case Race.Zerg:
                     return ZergUnitType.Drone;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public static BuildingOrUnitType GetSupplyType(this Race race)
+        {
+            switch (race)
+            {
+                case Race.Terran:
+                    return TerranBuildingType.SupplyDepot;
+                case Race.Protoss:
+                    return ProtossBuildingType.Pylon;
+                case Race.Zerg:
+                    return ZergUnitType.Overlord;
                 default:
                     throw new NotImplementedException();
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ProxyStarcraft.Commands;
+using System.Collections.Generic;
 
 namespace ProxyStarcraft
 {
