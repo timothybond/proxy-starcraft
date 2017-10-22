@@ -132,8 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Proto\ProxyStarcraft.Proto.csproj" />
-    <Content Include="Resources\Buff Name List.txt" />
-    <Content Include="Resources\Special Ability List.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
