@@ -109,26 +109,7 @@ namespace ProxyStarcraft.Basic
                 var cost = gameState.Translator.GetCost(TerranUnitType.SCV);
                 if (cost.IsMet(gameState))
                 {
-                    var builder = cost.GetBuilder(gameState);
-
-                    // TODO: Add 'BuildWorker' function?
-                    if (builder is TerranBuilding commandCenter)
-                    {
-                        commands.Add(commandCenter.Train(TerranUnitType.SCV));
-                    }
-                    else if (builder is ZergUnit larvae)
-                    {
-                        commands.Add(larvae.Train(ZergUnitType.Drone));
-                    }
-                    else if (builder is ProtossBuilding nexus)
-                    {
-                        commands.Add(nexus.Train(ProtossUnitType.Probe));
-                    }
-
-                    // Maybe not a great general solution, but it will keep this
-                    // bot from breaking if it tries to increase Supply also.
-                    gameState.Observation.PlayerCommon.Minerals -= 50;
-                    gameState.Observation.PlayerCommon.FoodUsed += 1;
+                    commands.Add(this.placementStrategy.Produce(workerType, gameState));
                 }
             }
 
