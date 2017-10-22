@@ -15,18 +15,20 @@ namespace Sandbox
     public class ZergRushBot : IBot
     {
         // Every time there are this many idle soldiers, attack
-        private const uint AttackThreshold = 24;
-
-        private const uint MaxWorkersPerMineralDeposit = 2;
-
-        private Dictionary<ulong, List<ulong>> workersByMineralDeposit;
-
+        private const int AttackThreshold = 16;
+        
+        private BasicEconomyBot economyBot;
+        private BasicMilitaryBot militaryBot = new BasicMilitaryBot(AttackThreshold);
         private IProductionStrategy placementStrategy = new BasicProductionStrategy();
-
-        private bool first = true; // shamelessly borrowing some setup from BenchmarkBot
-        private float primaryHatcheryX;
-        private float primaryHatcheryY;
+        
+        private float primaryHatcheryX = -1.0f;
+        private float primaryHatcheryY = -1.0f;
         private int sleep = 0;
+
+        public ZergRushBot()
+        {
+            economyBot = new BasicEconomyBot(this.Race, this.placementStrategy) { AutoBuildWorkers = true };
+        }
 
         public Race Race => Race.Zerg;
 
@@ -44,6 +46,7 @@ namespace Sandbox
             var lings = new List<ZergUnit>();
             var idleLarva = new List<ZergUnit>();
             var queens = new List<ZergUnit>();
+            var secondaryHatcheries = new List<ZergBuilding>();
 
             foreach (var unit in gameState.Units)
             {
@@ -59,13 +62,13 @@ namespace Sandbox
                         }
                         else
                         {
-                            if (first)
+                            if (primaryHatcheryX == -1.0f && primaryHatcheryY == -1.0f)
                             {
                                 hatchery = zergBuilding;
                                 primaryHatcheryX = hatchery.X;
                                 primaryHatcheryY = hatchery.Y;
                             }
-                            // we proooobably don't care about secondary hatcheries, but if we did they'd go here.
+                            secondaryHatcheries.Add(zergBuilding);
                         }
                     }
                     if (zergBuilding.ZergBuildingType == ZergBuildingType.SpawningPool)
@@ -100,34 +103,13 @@ namespace Sandbox
 
                 // TODO: Surrender?
             }
-            Deposit closestDeposit = gameState.MapData.Deposits.OrderBy(d => hatchery.GetDistance(d.Center)).First();
-
-            var mineralDeposits = closestDeposit.Resources.Where(u => u.IsMineralDeposit).ToList();
-
-            // First update, ignore the default worker orders, which are to mass on the center mineral deposit
-            // (this ends up causing problems since we have to keep track of who is harvesting what ourselves)
-            if (first)
-            {
-                foreach (var worker in workers)
-                {
-                    worker.Raw.Orders.Clear();
-                }
-
-                workersByMineralDeposit = mineralDeposits.ToDictionary(m => m.Raw.Tag, m => new List<ulong>());
-
-                first = false;
-
-                // Make sure workers don't automatically harvest minerals, since we're managing assignments ourselves
-                commands.Add(hatchery.RallyWorkers(hatchery.Raw.Pos.X, hatchery.Raw.Pos.Y));
-            }
+            var hatcheries = secondaryHatcheries.ToList();
+            hatcheries.Add(hatchery);
+            var queensByHatchery = this.ClosestQueenByHatchery(hatcheries, queens.ToList());
+            
             if (idleLarva.Any())
             {
                 BuildOverlord(gameState, idleLarva, commands);
-                // Could not find a larva timer in the SC2 API. 
-                if (idleLarva.Count >= 3 && !gameState.Units.Any(u => u.Type == ZergUnitType.Cocoon))
-                {
-                    BuildWorker(gameState, idleLarva, commands);
-                }
             }
             if (pool == null)
             {
@@ -142,24 +124,19 @@ namespace Sandbox
                         BuildAllLings(gameState, idleLarva, commands);
                     }
                 }
-                if (!gameState.Units.Any(u => u.Type == ZergUnitType.Queen || u.IsBuilding(ZergUnitType.Queen)))
+                if (hatcheries.Count() > queens.Count() && !gameState.Units.Any(u => u.IsBuilding(ZergUnitType.Queen)))
                 {
                     BuildQueen(gameState, hatchery, commands);
                 }
             }
-            else
-            {
-                return commands;
-            }
-            
 
             // This bot isn't exactly aiming for the stars in terms of the tech tree, so we can get away with this. Revisit if you're shamelessly bastardizing this code.
-            if (gameState.Observation.PlayerCommon.Minerals >= 600) // only expand hatcheries if mineral production > zergling capacity.
+            // only expand hatcheries if mineral production >> zergling production. Also only build one because we don't expand.
+            if (gameState.Observation.PlayerCommon.Minerals >= 1500) 
             {
-                BuildHatchery(gameState, workers, closestDeposit, commands);
+                BuildHatchery(gameState, workers, commands);
             }
-            
-            
+                        
             // TODO: Vespene is important for Zerg.
 
             commands = commands.Take(1).ToList();
@@ -168,109 +145,44 @@ namespace Sandbox
             if (commands.Count == 1)
             {
                 sleep = 1;
-                RemoveWorkerFromHarvestAssignments(commands[0].Unit);
+                economyBot.RemoveWorkerFromHarvestAssignments(commands[0].Unit);
             }
-
-            // No matter what else happens, we can always attack, and we should always set idle workers to harvest minerals
-            Attack(gameState, hatchery, lings, commands);
-            SetIdleWorkerToHarvest(gameState, workers, mineralDeposits, commands);
-
-            if (queens.Any())
+            foreach (var hatcheryQueenPair in queensByHatchery)
             {
-                SpawnLarvaOnSingleHatchery(queens.First(), hatchery, commands);
+                hatcheryQueenPair.Value.SpawnLarva(hatcheryQueenPair.Key, commands);
             }
-            
+            economyBot.AutoBuildWorkers = !(gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed < 3);
+
+            commands.AddRange(militaryBot.Act(gameState));
+            commands.AddRange(economyBot.Act(gameState));
+
             return commands;
         }
 
-
-
-        private void SpawnLarvaOnSingleHatchery(ZergUnit closestQueen, ZergBuilding hatchery, List<Command> commands)
+        private Dictionary<ZergBuilding, ZergUnit> ClosestQueenByHatchery(List<ZergBuilding> hatcheries, List<ZergUnit> queens)
         {
-            if (closestQueen.Raw.Energy >= 25)
+            var results = new Dictionary<ZergBuilding, ZergUnit>();
+            if (!queens.Any())
             {
-                //commands.Add(new RallyTargetCommand(251, closestQueen, hatchery)); // The hackiest hack.
-            }            
-        }
-
-        private void Attack(GameState gameState, ZergBuilding hatchery, List<ZergUnit> soldiers, List<Command> commands)
-        {
-            // Initially, await X idle soldiers and send them toward the enemy's starting location.
-            // Once they're there and have no further orders, send them to attack any sighted enemy unit/structure.
-            // Once we run out of those, send them to scout every resource deposit until we find more.
-            var enemyStartLocation = gameState.MapData.Raw.StartLocations.OrderByDescending(point => hatchery.GetDistance(point)).First();
-
-            var idleSoldiers = soldiers.Where(s => s.Raw.Orders.Count == 0).ToList();
-
-            if (!soldiers.Any(s => s.GetDistance(enemyStartLocation) < 5f) ||
-                gameState.EnemyUnits.Any(e => e.GetDistance(enemyStartLocation) < 10f))
-            {
-                if (idleSoldiers.Count >= AttackThreshold)
-                {
-                    foreach (var soldier in idleSoldiers)
-                    {
-                        commands.Add(soldier.AttackMove(enemyStartLocation.X, enemyStartLocation.Y));
-                    }
-                }
-
-                return;
+                return results;
             }
-
-            if (gameState.EnemyUnits.Count > 0)
+            foreach (var item in hatcheries)
             {
-                foreach (var soldier in idleSoldiers)
+                var closestQueen = (ZergUnit)item.GetClosest(queens);
+                queens.Remove(closestQueen);
+                results.Add(item, closestQueen);
+                if (!queens.Any())
                 {
-                    commands.Add(soldier.AttackMove(gameState.EnemyUnits[0].X, gameState.EnemyUnits[0].Y));
-                }
-
-                return;
-            }
-
-            var unscoutedLocations = gameState.MapData.Deposits.Select(d => d.Center).ToList();
-
-            foreach (var location in unscoutedLocations)
-            {
-                if (soldiers.Any(s => s.GetDistance(location) < 5f ||
-                                 s.Raw.Orders.Any(o => o.TargetWorldSpacePos.GetDistance(location) < 5f)))
-                {
-                    continue;
-                }
-
-                if (idleSoldiers.Count == 0)
-                {
-                    break;
-                }
-
-                commands.Add(idleSoldiers[0].AttackMove(location));
-                idleSoldiers.RemoveAt(0);
-            }
-        }
-
-        private void RemoveWorkerFromHarvestAssignments(ProxyStarcraft.Unit unit)
-        {
-            foreach (var pair in workersByMineralDeposit)
-            {
-                if (pair.Value.Contains(unit.Tag))
-                {
-                    pair.Value.Remove(unit.Tag);
+                    return results;
                 }
             }
-        }
-
-        private void BuildWorker(GameState gameState, List<ZergUnit> idleLarva, List<Command> commands)
-        {
-            if (gameState.Observation.PlayerCommon.Minerals < 50 ||
-               gameState.Observation.PlayerCommon.FoodUsed >= gameState.Observation.PlayerCommon.FoodCap)
-            {
-                return;
-            }
-            commands.Add(idleLarva.First().Train(ZergUnitType.Drone));
+            return results;
         }
 
         private void BuildQueen(GameState gameState, ZergBuilding hatchery, List<Command> commands)
         {
             if (gameState.Observation.PlayerCommon.Minerals < 150 ||
-               gameState.Observation.PlayerCommon.FoodUsed >= gameState.Observation.PlayerCommon.FoodCap - 2)
+               gameState.Observation.PlayerCommon.FoodUsed > gameState.Observation.PlayerCommon.FoodCap - 2)
             {
                 return;
             }
@@ -280,7 +192,7 @@ namespace Sandbox
         private void BuildOverlord(GameState gameState, List<ZergUnit> idleLarva, List<Command> commands)
         {
             if (gameState.Observation.PlayerCommon.Minerals < 100 || 
-                gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed >= 2 ||
+                gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed >= 3 ||
                     gameState.Units.Any(u => u.IsBuilding(ZergUnitType.Overlord)))
             {
                 return;
@@ -303,36 +215,6 @@ namespace Sandbox
             }
         }
 
-        private void SetIdleWorkerToHarvest(
-            GameState gameState,
-            List<ZergUnit> workers,
-            List<ProxyStarcraft.Unit> minerals,
-            List<Command> commands)
-        {
-            var idleWorkers = workers.Where(w => w.Raw.Orders.Count == 0).ToList();
-            var mineralsByTag = minerals.ToDictionary(m => m.Raw.Tag);
-
-            while (!IsFullyHarvestingMineralDeposits() && idleWorkers.Count > 0)
-            {
-                var mineralDeposit = MineralsNeedingWorkers().First();
-                var lastIdleWorker = idleWorkers.Last();
-
-                commands.Add(lastIdleWorker.Harvest(mineralsByTag[mineralDeposit]));
-                workersByMineralDeposit[mineralDeposit].Add(lastIdleWorker.Raw.Tag);
-                idleWorkers.Remove(lastIdleWorker);
-            }
-        }
-
-        private bool IsFullyHarvestingMineralDeposits()
-        {
-            return MineralsNeedingWorkers().Count == 0;
-        }
-
-        private IReadOnlyList<ulong> MineralsNeedingWorkers()
-        {
-            return workersByMineralDeposit.Where(pair => pair.Value.Count < MaxWorkersPerMineralDeposit).Select(pair => pair.Key).ToList();
-        }
-
         private void TryBuildPool(GameState gameState, List<ZergUnit> workers, List<Command> commands)
         {
             if (gameState.Observation.PlayerCommon.Minerals > 200)
@@ -341,7 +223,7 @@ namespace Sandbox
             }
         }
 
-        private void BuildHatchery(GameState gameState, List<ZergUnit> workers, Deposit mainBaseDeposit, List<Command> commands)
+        private void BuildHatchery(GameState gameState, List<ZergUnit> workers, List<Command> commands)
         {
             Build(gameState, workers, ZergBuildingType.Hatchery, 400, 0, commands, true);
         }

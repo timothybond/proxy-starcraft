@@ -219,14 +219,13 @@ namespace Sandbox
 
                             while (true)
                             {
-                                var commands1 = bot1.Act(gameState1);
-                                client1.SendCommands(commands1);
-                                client1.Step();
-                                gameState1 = client1.GetGameState();
+                                client1.SendCommands(bot1.Act(gameState1));
+                                client2.SendCommands(bot2.Act(gameState2));
 
-                                var commands2 = bot2.Act(gameState2);
-                                client2.SendCommands(commands2);
+                                client1.Step();
                                 client2.Step();
+
+                                gameState1 = client1.GetGameState();
                                 gameState2 = client2.GetGameState();
                             }
                         }

@@ -16,6 +16,7 @@ namespace ProxyStarcraft
             MapData mapData,
             Dictionary<uint, UnitTypeData> unitTypes,
             Dictionary<uint, AbilityData> abilities,
+            Dictionary<uint, BuffData> buffs,
             Translator translator)
         {
             this.GameInfo = gameInfo;
@@ -24,6 +25,7 @@ namespace ProxyStarcraft
             this.UnitTypes = unitTypes;
             this.Abilities = abilities;
             this.Translator = translator;
+            this.Buffs = buffs;
 
             var unitsByAlliance = this.Response.Observation.RawData.Units.GroupBy(u => u.Alliance);
             
@@ -95,9 +97,17 @@ namespace ProxyStarcraft
         public IReadOnlyDictionary<uint, AbilityData> Abilities { get; private set; }
 
         /// <summary>
+        /// All of the defined Buffs (which is everything from "Spawning Larva" to.. uh.. other buffs).
+        /// This includes a lot of things you don't care about.
+        /// Most useful information is better reached via the Translator.
+        /// </summary>
+        public IReadOnlyDictionary<uint, BuffData> Buffs { get; private set; }
+
+        /// <summary>
         /// Helper object that handles converting between a lot of the protobufs/unique ids and friendlier enumerations.
         /// </summary>
         public Translator Translator { get; private set; }
+
 
         /// <summary>
         /// Units controlled by this player.

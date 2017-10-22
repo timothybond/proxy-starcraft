@@ -106,24 +106,12 @@ namespace ProxyStarcraft.Basic
             if (this.AutoBuildWorkers && (!IsFullyHarvestingMineralDeposits() || !IsFullyHarvestingVespeneGeysers(vespeneBuildings)))
             {
                 var workerType = this.Race.GetWorkerType();
-                var cost = gameState.Translator.GetCost(TerranUnitType.SCV);
+                var cost = gameState.Translator.GetCost(workerType);
                 if (cost.IsMet(gameState))
                 {
                     var builder = cost.GetBuilder(gameState);
 
-                    // TODO: Add 'BuildWorker' function?
-                    if (builder is TerranBuilding commandCenter)
-                    {
-                        commands.Add(commandCenter.Train(TerranUnitType.SCV));
-                    }
-                    else if (builder is ZergUnit larvae)
-                    {
-                        commands.Add(larvae.Train(ZergUnitType.Drone));
-                    }
-                    else if (builder is ProtossBuilding nexus)
-                    {
-                        commands.Add(nexus.Train(ProtossUnitType.Probe));
-                    }
+                    commands.Add(builder.Train(workerType));
 
                     // Maybe not a great general solution, but it will keep this
                     // bot from breaking if it tries to increase Supply also.
