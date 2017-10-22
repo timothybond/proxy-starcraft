@@ -104,6 +104,7 @@
     <Compile Include="Proto\Score.cs" />
     <Compile Include="Proto\Spatial.cs" />
     <Compile Include="Proto\Ui.cs" />
+    <Compile Include="SpawnLarvaBot.cs" />
     <Compile Include="SpecialAbilityType.cs" />
     <Compile Include="StandardBuildLocation.cs" />
     <Compile Include="TerranBuilding.cs" />

@@ -14,11 +14,9 @@ namespace Sandbox
     /// </summary>
     public class ZergRushBot : IBot
     {
-        // Every time there are this many idle soldiers, attack
-        private const int AttackThreshold = 16;
-        
+
         private BasicEconomyBot economyBot;
-        private BasicMilitaryBot militaryBot = new BasicMilitaryBot(AttackThreshold);
+        
         private IProductionStrategy placementStrategy = new BasicProductionStrategy();
         
         private float primaryHatcheryX = -1.0f;
@@ -105,8 +103,7 @@ namespace Sandbox
             }
             var hatcheries = secondaryHatcheries.ToList();
             hatcheries.Add(hatchery);
-            var queensByHatchery = this.ClosestQueenByHatchery(hatcheries, queens.ToList());
-            
+                        
             if (idleLarva.Any())
             {
                 BuildOverlord(gameState, idleLarva, commands);
@@ -147,36 +144,12 @@ namespace Sandbox
                 sleep = 1;
                 economyBot.RemoveWorkerFromHarvestAssignments(commands[0].Unit);
             }
-            foreach (var hatcheryQueenPair in queensByHatchery)
-            {
-                hatcheryQueenPair.Value.SpawnLarva(hatcheryQueenPair.Key, commands);
-            }
+
             economyBot.AutoBuildWorkers = !(gameState.Observation.PlayerCommon.FoodCap - gameState.Observation.PlayerCommon.FoodUsed < 3);
 
-            commands.AddRange(militaryBot.Act(gameState));
             commands.AddRange(economyBot.Act(gameState));
 
             return commands;
-        }
-
-        private Dictionary<ZergBuilding, ZergUnit> ClosestQueenByHatchery(List<ZergBuilding> hatcheries, List<ZergUnit> queens)
-        {
-            var results = new Dictionary<ZergBuilding, ZergUnit>();
-            if (!queens.Any())
-            {
-                return results;
-            }
-            foreach (var item in hatcheries)
-            {
-                var closestQueen = (ZergUnit)item.GetClosest(queens);
-                queens.Remove(closestQueen);
-                results.Add(item, closestQueen);
-                if (!queens.Any())
-                {
-                    return results;
-                }
-            }
-            return results;
         }
 
         private void BuildQueen(GameState gameState, ZergBuilding hatchery, List<Command> commands)
@@ -259,8 +232,7 @@ namespace Sandbox
 
         private BuildCommand GetBuildCommand(ZergUnit unit, ZergBuildingType building, GameState gameState)
         {
-            var buildLocation = this.placementStrategy.GetPlacement(building, gameState); // TODO: Stop Hatcheries getting placed on mineral deposits.
-            return unit.Build(building, buildLocation);
+            return unit.Build(building, this.placementStrategy.GetPlacement(building, gameState));
         }
     }
 }

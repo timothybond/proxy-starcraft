@@ -87,6 +87,8 @@ namespace Sandbox
             bot.Add(TerranBuildingType.OrbitalCommand);
             bot.Add(TerranBuildingType.SupplyDepot);
 
+            //var bot = new CompositeBot(new IBot[] { new ZergRushBot(), new SpawnLarvaBot(), militaryBot});
+
             PlayAgainstStandardAI(bot);
 
             //var bot1 = new BenchmarkBot();
@@ -249,7 +251,7 @@ namespace Sandbox
             {
                 using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
                 {
-                    if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, Race.Terran, Difficulty.MediumHard))
+                    if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, bot.Race, Difficulty.MediumHard))
                     {
                         return;
                     }
