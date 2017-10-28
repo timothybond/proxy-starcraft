@@ -65,7 +65,7 @@ namespace Sandbox
 
         static void Main(string[] args)
         {
-            var productionStrategy = new BasicProductionStrategy();
+            var productionStrategy = new BasicProductionStrategy(new ClosestExpansionStrategy());
             var desiredArmyBot = new DesiredArmyQueue();
             desiredArmyBot.Set(TerranUnitType.Marine, 100);
             desiredArmyBot.Set(TerranUnitType.Marauder, 50);
@@ -82,8 +82,8 @@ namespace Sandbox
             productionQueueBot.Add(TerranBuildingType.Barracks);
             productionQueueBot.Add(TerranUnitType.SCV);
             productionQueueBot.Add(TerranUnitType.SCV);
-            productionQueueBot.Add(TerranBuildingType.OrbitalCommand);
             productionQueueBot.Add(TerranBuildingType.SupplyDepot);
+            productionQueueBot.Add(TerranBuildingType.CommandCenter);
 
             var bot = new CompositeBot(new IBot[] { productionQueueBot, militaryBot });
 
