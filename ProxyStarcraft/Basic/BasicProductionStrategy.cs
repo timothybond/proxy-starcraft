@@ -128,7 +128,7 @@ namespace ProxyStarcraft.Basic
             throw new InvalidOperationException();
         }
 
-        private VespeneBuildLocation GetVespeneBuildingPlacement(List<Deposit> deposits, List<Building> bases, List<Unit> vespeneBuildings, bool baseMustBeBuilt)
+        private VespeneBuildLocation GetVespeneBuildingPlacement(IReadOnlyList<Deposit> deposits, IReadOnlyList<Building> bases, IReadOnlyList<Unit> vespeneBuildings, bool baseMustBeBuilt)
         {
             // Better to build where there's a finished base than an in-progress one.
             foreach (var deposit in deposits)
