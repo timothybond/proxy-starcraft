@@ -21,7 +21,7 @@ namespace Sandbox
 
         private Dictionary<ulong, List<ulong>> workersByMineralDeposit;
 
-        private IProductionStrategy placementStrategy = new BasicProductionStrategy();
+        private IProductionStrategy placementStrategy = new BasicProductionStrategy(new ClosestExpansionStrategy());
 
         private bool first = true;
 

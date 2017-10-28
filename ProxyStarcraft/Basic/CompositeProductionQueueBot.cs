@@ -22,11 +22,11 @@ namespace ProxyStarcraft.Basic
             buildOrder.Next = economyBot;
         }
 
-        public CompositeProductionQueueBot(Race race) : this(race, new BasicProductionStrategy())
+        public CompositeProductionQueueBot(Race race) : this(race, new BasicProductionStrategy(new ClosestExpansionStrategy()))
         {
         }
 
-        public CompositeProductionQueueBot(Race race, IProductionQueue nextQueue) : this(race, nextQueue, new BasicProductionStrategy())
+        public CompositeProductionQueueBot(Race race, IProductionQueue nextQueue) : this(race, nextQueue, new BasicProductionStrategy(new ClosestExpansionStrategy()))
         {
         }
 

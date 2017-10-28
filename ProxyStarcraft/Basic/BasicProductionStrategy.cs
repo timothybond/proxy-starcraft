@@ -7,6 +7,13 @@ namespace ProxyStarcraft.Basic
 {
     public class BasicProductionStrategy : IProductionStrategy
     {
+        private IExpansionStrategy expansionStrategy;
+
+        public BasicProductionStrategy(IExpansionStrategy expansionStrategy)
+        {
+            this.expansionStrategy = expansionStrategy;
+        }
+
         public IBuildLocation GetPlacement(BuildingType building, GameState gameState)
         {
             // Obviously different rules apply to Vespene Geysers
@@ -39,27 +46,38 @@ namespace ProxyStarcraft.Basic
                 return new AddOnBuildLocation();
             }
 
-            // Note: Extractor already accounted for, above
-            var requireCreep = building.Value is ZergBuilding && building != ZergBuildingType.Hatchery;
+            
+
+            // Note: Extractor and Hatchery already accounted for, above
+            var requireCreep = building.Value is ZergBuilding;
 
             // We're going to make some dumb assumptions here:
             // 1. We'd like to build this building very near where a main base currently is
             // 2. As long as we don't block anything, it doesn't matter where it goes
-            var mainBaseLocations = GetMainBaseLocations(gameState);
+            //
+            // Exception for main bases (see below)
+            var startingLocations = GetMainBaseLocations(gameState);
 
             var size = gameState.Translator.GetBuildingSize(building);
 
             var hasAddOn = building == TerranBuildingType.Barracks ||
                            building == TerranBuildingType.Factory ||
                            building == TerranBuildingType.Starport;
-            
-            var includeResourcePadding = building == TerranBuildingType.CommandCenter ||
-                                         building == ProtossBuildingType.Nexus ||
-                                         building == ZergBuildingType.Hatchery;
+
+            var includeResourcePadding = false;
+
+            if (building == TerranBuildingType.CommandCenter ||
+                building == ProtossBuildingType.Nexus ||
+                building == ZergBuildingType.Hatchery)
+            {
+                includeResourcePadding = true;
+                var deposit = expansionStrategy.GetNextExpansion(gameState);
+                startingLocations = new List<Location> { deposit.Center };
+            }
 
             var buildLocation = gameState.MapData.BreadthFirstSearch(
                 (map, loc) => map.CanBuild(size, loc, requireCreep, hasAddOn, includeResourcePadding),
-                mainBaseLocations,
+                startingLocations,
                 (map, loc) => map.CanTraverse(loc));
 
             if (buildLocation.HasValue)
