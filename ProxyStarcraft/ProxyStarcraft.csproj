@@ -50,6 +50,8 @@
     <Compile Include="Basic\BasicEconomyBot.cs" />
     <Compile Include="Basic\BasicMilitaryBot.cs" />
     <Compile Include="Basic\ClosestExpansionStrategy.cs" />
+    <Compile Include="Basic\DesiredTerranArmyQueue.cs" />
+    <Compile Include="Basic\DesiredZergArmyQueue.cs" />
     <Compile Include="BuffType.cs" />
     <Compile Include="Basic\BasicProductionStrategy.cs" />
     <Compile Include="Basic\BuildOrder.cs" />
