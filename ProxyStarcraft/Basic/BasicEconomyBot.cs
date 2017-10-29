@@ -97,6 +97,11 @@ namespace ProxyStarcraft.Basic
                     workersByMineralDeposit.Add(mineralDeposit.Tag, new List<ulong>());
                 }
             }
+
+            foreach (var absentMineralDeposit in workersByMineralDeposit.Keys.Where(k => !mineralDeposits.Any(m => m.Tag == k)).ToList())
+            {
+                workersByMineralDeposit.Remove(absentMineralDeposit);
+            }
             
             if (mainBases.Count == 0)
             {
