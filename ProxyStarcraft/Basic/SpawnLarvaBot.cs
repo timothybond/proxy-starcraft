@@ -2,7 +2,7 @@
 using ProxyStarcraft.Proto;
 using System.Linq;
 
-namespace ProxyStarcraft
+namespace ProxyStarcraft.Basic
 {
     /// <summary>
     /// A bot to handle Queens' <see cref="SpecialAbilityType.SpawnLarva"/> micro.
