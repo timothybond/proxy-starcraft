@@ -8,6 +8,8 @@ namespace ProxyStarcraft.Basic
     {
         Func<T, BuildingOrUnitType> buildingOrUnitTypeConverter;
 
+        protected Dictionary<T, int> desiredUnits = new Dictionary<T, int>();
+
         protected DesiredArmyQueue()
         {
             if (!typeof(T).IsEnum) // enums cannot be used directly as constraints.
@@ -25,8 +27,7 @@ namespace ProxyStarcraft.Basic
             }
             this.buildingOrUnitTypeConverter = (t) => (BuildingOrUnitType)convertMethods.First().Invoke(null, new object[] { (object)t }); 
         }
-
-        protected Dictionary<T, int> desiredUnits = new Dictionary<T, int>();
+        
         public void Set(T unitType, int desired)
         {
             if (this.desiredUnits.ContainsKey(unitType))
@@ -38,8 +39,6 @@ namespace ProxyStarcraft.Basic
                 this.desiredUnits.Add(unitType, desired);
             }
         }
-
-        protected abstract Dictionary<T, int> GetUnitsByType(GameState gameState);
 
         public virtual bool IsEmpty(GameState gameState)
         {
@@ -129,7 +128,9 @@ namespace ProxyStarcraft.Basic
         {
             return Peek(gameState);
         }
-        
+
+        protected abstract Dictionary<T, int> GetUnitsByType(GameState gameState);
+
         private BuildingOrUnitType UnitOrPrerequisite(BuildingOrUnitType buildingOrUnit, GameState gameState)
         {
             var cost = gameState.Translator.GetCost(buildingOrUnit);
