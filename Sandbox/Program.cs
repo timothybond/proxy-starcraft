@@ -71,7 +71,7 @@ namespace Sandbox
             desiredArmyBot.Set(TerranUnitType.Marauder, 50);
 
             var militaryBot = new BasicMilitaryBot(new[] { 10, 20, 30 });
-            
+
             var productionQueueBot = new CompositeProductionQueueBot(Race.Terran, desiredArmyBot, productionStrategy);
             productionQueueBot.Add(TerranBuildingType.SupplyDepot);
             productionQueueBot.Add(TerranBuildingType.Barracks);
@@ -87,7 +87,7 @@ namespace Sandbox
 
             var bot = new CompositeBot(new IBot[] { productionQueueBot, militaryBot });
 
-            PlayAgainstStandardAI(productionQueueBot);
+            PlayAgainstStandardAI(bot);
 
             //var bot1 = new BenchmarkBot();
             //var bot2 = new ZergRushBot();
