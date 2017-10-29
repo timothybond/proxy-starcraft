@@ -4,11 +4,31 @@ using System.Linq;
 
 namespace ProxyStarcraft.Basic
 {
-    public class DesiredArmyQueue : IProductionQueue
+    public abstract class DesiredArmyQueue<T> : IProductionQueue where T : struct, IConvertible
     {
-        private Dictionary<TerranUnitType, int> desiredUnits = new Dictionary<TerranUnitType, int>();
+        Func<T, BuildingOrUnitType> buildingOrUnitTypeConverter;
+
+        protected Dictionary<T, int> desiredUnits = new Dictionary<T, int>();
+
+        protected DesiredArmyQueue()
+        {
+            if (!typeof(T).IsEnum) // enums cannot be used directly as constraints.
+            {
+                throw new ArgumentException($"Attempted to use {typeof(T).Name}. Can't do that.");
+            }
+
+            var convertMethods = typeof(BuildingOrUnitType)
+                .GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)
+                .Where(method => method.Name == "op_Implicit" && method.GetParameters().Any(para => para.ParameterType == typeof(T)));
+
+            if (convertMethods == null || !convertMethods.Any())
+            {
+                throw new ArgumentException($"Enum {typeof(T).Name} does not convert to BuildingOrUnitType");
+            }
+            this.buildingOrUnitTypeConverter = (t) => (BuildingOrUnitType)convertMethods.First().Invoke(null, new object[] { (object)t }); 
+        }
         
-        public void Set(TerranUnitType unitType, int desired)
+        public void Set(T unitType, int desired)
         {
             if (this.desiredUnits.ContainsKey(unitType))
             {
@@ -20,16 +40,16 @@ namespace ProxyStarcraft.Basic
             }
         }
 
-        public bool IsEmpty(GameState gameState)
+        public virtual bool IsEmpty(GameState gameState)
         {
-            var unitsByType = gameState.Units.OfType<TerranUnit>().GroupBy(t => t.TerranUnitType).ToDictionary(group => group.Key, g => g.Count());
+            var unitsByType = GetUnitsByType(gameState);
 
             return desiredUnits.All(pair => unitsByType.ContainsKey(pair.Key) && unitsByType[pair.Key] >= pair.Value);
         }
 
         public BuildingOrUnitType Peek(GameState gameState)
         {
-            var unitsByType = gameState.Units.OfType<TerranUnit>().GroupBy(t => t.TerranUnitType).ToDictionary(group => group.Key, g => g.Count());
+            var unitsByType = GetUnitsByType(gameState);
 
             var nextUnitPriorities = this.desiredUnits.OrderBy(
                 pair =>
@@ -41,7 +61,7 @@ namespace ProxyStarcraft.Basic
 
             if (nextUnitPriorities.Count > 0)
             {
-                var nextUnitType = nextUnitPriorities[0];
+                var nextUnitType = buildingOrUnitTypeConverter(nextUnitPriorities[0]);
 
                 var cost = gameState.Translator.GetCost(nextUnitType);
                 if (cost.IsMet(gameState) || !cost.HasResources(gameState))
@@ -111,7 +131,9 @@ namespace ProxyStarcraft.Basic
         {
             return Peek(gameState);
         }
-        
+
+        protected abstract Dictionary<T, int> GetUnitsByType(GameState gameState);
+
         private BuildingOrUnitType UnitOrPrerequisite(BuildingOrUnitType buildingOrUnit, GameState gameState)
         {
             var cost = gameState.Translator.GetCost(buildingOrUnit);
