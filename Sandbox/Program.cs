@@ -66,7 +66,7 @@ namespace Sandbox
         static void Main(string[] args)
         {
             var productionStrategy = new BasicProductionStrategy(new ClosestExpansionStrategy());
-            var desiredArmyBot = new DesiredArmyQueue();
+            var desiredArmyBot = new DesiredTerranArmyQueue();
             desiredArmyBot.Set(TerranUnitType.Marine, 100);
             desiredArmyBot.Set(TerranUnitType.Marauder, 50);
 
