@@ -55,6 +55,15 @@ namespace ProxyStarcraft.Basic
 
                     if (!cost.HasPrerequisite(gameState))
                     {
+                        // The prerequisite could hypothetically be in progress already
+                        foreach (var unit in gameState.Units)
+                        {
+                            if (unit.CountsAs(cost.Prerequisite) || unit.IsBuilding(cost.Prerequisite))
+                            {
+                                return nextUnitType;
+                            }
+                        }
+                        
                         producerOrPrerequisite = UnitOrPrerequisite(cost.Prerequisite, gameState);
                     }
                     else
