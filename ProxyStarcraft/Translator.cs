@@ -156,8 +156,8 @@ namespace ProxyStarcraft
             rally = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Building")).AbilityId;
             rallyWorkersCommandCenter = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally CommandCenter")).AbilityId;
             rallyWorkersNexus = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Nexus")).AbilityId;
-            rallyWorkersHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Workers")).AbilityId;
-            rallyUnitsHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Units")).AbilityId;
+            rallyUnitsHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Workers")).AbilityId;
+            rallyWorkersHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Units")).AbilityId;
 
             var buildAndTrainAbilities = hotkeyedAbilities
                 .Where(ability => ability.FriendlyName.Contains("Build") || ability.FriendlyName.Contains("Train") || buildingUpgradeNames.Contains(ability.FriendlyName));
@@ -955,6 +955,51 @@ namespace ProxyStarcraft
             }
 
             throw new NotImplementedException();
+        }
+
+        public bool IsUsingASpecialAbility(Unit unit)
+        {
+            var orders = unit.Raw.Orders.FirstOrDefault();
+
+            if (orders == null)
+            {
+                return false;
+            }
+
+            var order = orders.AbilityId;
+            
+            return this.specialAbilityDictionary.ContainsValue(order);
+        }
+
+        public SpecialAbilityType? CurrentlyCasting(Unit unit)
+        {
+            var orders = unit.Raw.Orders.FirstOrDefault();
+
+            if (orders == null)
+            {
+                return null; // idle unit
+            }
+
+            var order = orders.AbilityId;
+
+            foreach (var specialAbility in specialAbilityDictionary)
+            {
+                if (specialAbility.Value == order)
+                {
+                    return specialAbility.Key;
+                }
+            }
+            return null; // unit not performing a Special Ability.
+        }
+
+        public bool IsCasting(Unit unit, SpecialAbilityType abilityType)
+        {
+            var castOrDefault = CurrentlyCasting(unit);
+            if (castOrDefault == null)
+            {
+                return false;
+            }
+            return castOrDefault.Value == abilityType;
         }
 
         public bool IsBuildingSomething(Proto.Unit unit)

@@ -66,6 +66,11 @@ namespace ProxyStarcraft
                 return false;
             }
 
+            if ((Builder == ZergUnitType.Larva || Prerequisite == ZergUnitType.Larva) && gameState.Units.All(z => z.Type != ZergUnitType.Larva) )
+            {
+                return false;
+            }
+
             return true;
         }
 

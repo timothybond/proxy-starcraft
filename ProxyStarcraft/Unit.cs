@@ -36,6 +36,15 @@ namespace ProxyStarcraft
         public bool IsBuildingSomething => translator.IsBuildingSomething(this.Raw);
 
         public bool HasBuff(BuffType buff) => this.Raw.BuffIds.Any(rawBuffId => translator.MatchingBuffIds(buff).Any(matching => matching == rawBuffId));
+        
+        /// <summary>
+        /// Sets a <seealso cref="BuffType"/> for a unit's game state (so that other computation within the same frame doesn't attempt to do something else with the unit)
+        /// </summary>
+        /// <param name="buff"></param>
+        /// <remarks>This will technically add a bunch of buffs that an entity "can't" have, but are effectively all identical. 
+        /// (e.g. "Banshee Cloak", "Ghost Cloak", "Dark Templar Cloak", and "Mothership Field Cloak")
+        /// </remarks>
+        public void SetBuff(BuffType buff) => this.Raw.BuffIds.AddRange(translator.MatchingBuffIds(buff));
 
         public ulong Tag => this.Raw.Tag;
 
@@ -68,6 +77,8 @@ namespace ProxyStarcraft
         {
             return translator.IsBuilding(this.Raw, buildingOrUnitType);
         }
+
+        public bool IsCasting(SpecialAbilityType specialAbilityType) => translator.IsCasting(this, specialAbilityType);
 
         /// <summary>
         /// Determines if this unit is of the specified type, or possibly an upgraded form of the same thing.

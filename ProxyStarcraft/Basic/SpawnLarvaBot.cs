@@ -9,6 +9,12 @@ namespace ProxyStarcraft.Basic
     /// </summary>
     public class SpawnLarvaBot : IBot
     {
+        private float withinRadius;
+        public SpawnLarvaBot(float excludeOutsideOfRadius = 99999f)
+        {
+            this.withinRadius = excludeOutsideOfRadius;
+        }
+
         public Race Race => Race.Zerg;
 
         public IReadOnlyList<Command> Act(GameState gameState)
@@ -48,6 +54,10 @@ namespace ProxyStarcraft.Basic
             foreach (var item in hatcheries)
             {
                 var closestQueen = (ZergUnit)item.GetClosest(queens);
+                if (closestQueen.GetDistance(item) > withinRadius)
+                {
+                    continue;
+                }
                 queens.Remove(closestQueen);
                 results.Add(item, closestQueen);
                 if (!queens.Any())
