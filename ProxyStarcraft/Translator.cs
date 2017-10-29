@@ -989,6 +989,68 @@ namespace ProxyStarcraft
             return ability == GetBuildAction(target);
         }
 
+        public BuildingOrUnitType CurrentlyBuilding(Unit unit)
+        {
+            var orders = unit.Raw.Orders.FirstOrDefault();
+
+            if (orders == null)
+            {
+                return null;
+            }
+
+            var ability = orders.AbilityId;
+
+            foreach (var terranUnitPair in createTerranUnitActions)
+            {
+                if (terranUnitPair.Value == ability)
+                {
+                    return terranUnitPair.Key;
+                }
+            }
+
+            foreach (var protossUnitPair in createProtossUnitActions)
+            {
+                if (protossUnitPair.Value == ability)
+                {
+                    return protossUnitPair.Key;
+                }
+            }
+
+            foreach (var zergUnitPair in createZergUnitActions)
+            {
+                if (zergUnitPair.Value == ability)
+                {
+                    return zergUnitPair.Key;
+                }
+            }
+
+            foreach (var terranBuildingPair in buildTerranBuildingActions)
+            {
+                if (terranBuildingPair.Value == ability)
+                {
+                    return terranBuildingPair.Key;
+                }
+            }
+
+            foreach (var protossBuildingPair in buildProtossBuildingActions)
+            {
+                if (protossBuildingPair.Value == ability)
+                {
+                    return protossBuildingPair.Key;
+                }
+            }
+
+            foreach (var zergBuildingPair in buildZergBuildingActions)
+            {
+                if (zergBuildingPair.Value == ability)
+                {
+                    return zergBuildingPair.Key;
+                }
+            }
+
+            return null;
+        }
+        
         public uint GetAbilityId(Command command)
         {
             switch (command)
