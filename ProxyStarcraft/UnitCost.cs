@@ -7,13 +7,14 @@ namespace ProxyStarcraft
     /// </summary>
     public class UnitCost
     {
-        public UnitCost(uint minerals, uint vespene, float supply, BuildingOrUnitType builder, BuildingOrUnitType prerequisite)
+        public UnitCost(uint minerals, uint vespene, float supply, BuildingOrUnitType builder, BuildingOrUnitType prerequisite, bool requiresTechLab = false)
         {
             this.Minerals = minerals;
             this.Vespene = vespene;
             this.Supply = supply;
             this.Builder = builder;
             this.Prerequisite = prerequisite;
+            this.RequiresTechLab = requiresTechLab;
         }
 
         public uint Minerals { get; private set; }
@@ -25,6 +26,8 @@ namespace ProxyStarcraft
         public BuildingOrUnitType Builder { get; private set; }
 
         public BuildingOrUnitType Prerequisite { get; private set; }
+
+        public bool RequiresTechLab { get; private set; }
 
         /// <summary>
         /// Determines whether the cost/requirements are currently met and therefore the unit in question can be built.
@@ -73,15 +76,7 @@ namespace ProxyStarcraft
         {
             if (this.Prerequisite != null && !gameState.Units.Any(u => IsPrerequisiteType(u) && u.IsBuilt))
             {
-                // This is handled separately in the GetBuilder(...) logic.
-                // TODO: Find cleaner way to do this.
-                if (this.Prerequisite != TerranBuildingType.TechLab &&
-                    this.Prerequisite != TerranBuildingType.BarracksTechLab &&
-                    this.Prerequisite != TerranBuildingType.FactoryTechLab &&
-                    this.Prerequisite != TerranBuildingType.StarportTechLab)
-                {
-                    return false;
-                }
+                return false;
             }
 
             return true;
@@ -89,10 +84,7 @@ namespace ProxyStarcraft
 
         public Unit GetBuilder(GameState gameState)
         {
-            if (this.Prerequisite == TerranBuildingType.TechLab ||
-                this.Prerequisite == TerranBuildingType.BarracksTechLab ||
-                this.Prerequisite == TerranBuildingType.FactoryTechLab ||
-                this.Prerequisite == TerranBuildingType.StarportTechLab)
+            if (this.RequiresTechLab)
             {
                 var builder = gameState.Units.FirstOrDefault(
                     u =>

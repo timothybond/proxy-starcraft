@@ -71,31 +71,25 @@ namespace ProxyStarcraft.Basic
                         // At the moment the only checks are resources, prerequisite, and builder, so the builder must be missing.
                         // There is a special case where a Tech Lab prerequisite is used to enforce 'builder must have tech lab',
                         // so we might be in the position of either building an add-on or building a new instance of the building.
-                        if (cost.Prerequisite == TerranBuildingType.TechLab ||
-                            cost.Prerequisite == TerranBuildingType.BarracksTechLab ||
-                            cost.Prerequisite == TerranBuildingType.FactoryTechLab ||
-                            cost.Prerequisite == TerranBuildingType.StarportTechLab)
+                        if (cost.RequiresTechLab)
                         {
-                            var techLabType = cost.Prerequisite;
-
-                            if (techLabType == TerranBuildingType.TechLab)
+                            BuildingType techLabType;
+                            
+                            if (cost.Builder == TerranBuildingType.Barracks)
                             {
-                                if (cost.Builder == TerranBuildingType.Barracks)
-                                {
-                                    techLabType = TerranBuildingType.BarracksTechLab;
-                                }
-                                else if (cost.Builder == TerranBuildingType.Factory)
-                                {
-                                    techLabType = TerranBuildingType.FactoryTechLab;
-                                }
-                                else if (cost.Builder == TerranBuildingType.Starport)
-                                {
-                                    techLabType = TerranBuildingType.StarportTechLab;
-                                }
-                                else
-                                {
-                                    throw new NotImplementedException();
-                                }
+                                techLabType = TerranBuildingType.BarracksTechLab;
+                            }
+                            else if (cost.Builder == TerranBuildingType.Factory)
+                            {
+                                techLabType = TerranBuildingType.FactoryTechLab;
+                            }
+                            else if (cost.Builder == TerranBuildingType.Starport)
+                            {
+                                techLabType = TerranBuildingType.StarportTechLab;
+                            }
+                            else
+                            {
+                                throw new NotImplementedException();
                             }
 
                             producerOrPrerequisite = UnitOrPrerequisite(techLabType, gameState);
