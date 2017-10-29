@@ -11,6 +11,9 @@ namespace ProxyStarcraft
         // I believe this uses 0 for 'not buildable' and 255 for 'buildable'.
         private MapArray<byte> placementGrid;
 
+        // Keep a copy of the original so we don't have to worry about cleaning off buildings, etc.
+        private MapArray<byte> placementGridOriginal;
+
         // Strangely, this appears to be 0 for 'can move to/through' and 255 for 'can't move to/through'
         private MapArray<byte> pathingGrid;
 
@@ -43,8 +46,9 @@ namespace ProxyStarcraft
             this.Raw = startingData;
             this.Size = startingData.MapSize;
 
+            placementGridOriginal = new MapArray<byte>(startingData.PlacementGrid.Data.ToByteArray(), this.Size);
+            placementGrid = new MapArray<byte>(placementGridOriginal);
             pathingGrid = new MapArray<byte>(startingData.PathingGrid.Data.ToByteArray(), this.Size);
-            placementGrid = new MapArray<byte>(startingData.PlacementGrid.Data.ToByteArray(), this.Size);
             heightGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
             creepGrid = new MapArray<byte>(startingData.TerrainHeight.Data.ToByteArray(), this.Size);
 
@@ -63,7 +67,8 @@ namespace ProxyStarcraft
         {
             this.Raw = prior.Raw;
             this.Size = prior.Size;
-            this.placementGrid = prior.placementGrid;
+            this.placementGridOriginal = prior.placementGridOriginal;
+            this.placementGrid = new MapArray<byte>(this.placementGridOriginal);
             this.pathingGrid = prior.pathingGrid;
             this.heightGrid = prior.heightGrid;
             this.padding = prior.padding;
@@ -85,19 +90,61 @@ namespace ProxyStarcraft
                     var structureSize = translator.GetStructureSize(unit);
                     var originX = (int)Math.Round(unit.X - structureSize.X * 0.5f);
                     var originY = (int)Math.Round(unit.Y - structureSize.Y * 0.5f);
+                    var origin = new Location { X = originX, Y = originY };
 
-                    for (var x = originX; x < originX + structureSize.X; x++)
+                    BuildingType buildingType = (unit.Type?.IsBuildingType ?? false) ? (BuildingType)unit.Type : null;
+
+                    StoreBuildingLocation(origin, structureSize, unit, buildingType);
+                }
+
+                // Check unit orders to find planned buildings
+                if (unit.IsWorker)
+                {
+                    var currentlyBuilding = translator.CurrentlyBuilding(unit);
+
+                    if (currentlyBuilding != null &&
+                        currentlyBuilding.IsBuildingType &&
+                        currentlyBuilding != TerranBuildingType.Refinery &&
+                        currentlyBuilding != ProtossBuildingType.Assimilator &&
+                        currentlyBuilding != ZergBuildingType.Extractor)
                     {
-                        for (var y = originY; y < originY + structureSize.Y; y++)
-                        {
-                            structuresAndDeposits[x, y] = unit;
-                            SetAdjacentSpaces(structurePadding, x, y);
+                        var building = (BuildingType)currentlyBuilding;
+                        var buildingSize = translator.GetBuildingSize(building);
+                        var targetX = (int)Math.Round(unit.Raw.Orders[0].TargetWorldSpacePos.X - (buildingSize.X * 0.5f));
+                        var targetY = (int)Math.Round(unit.Raw.Orders[0].TargetWorldSpacePos.Y - (buildingSize.Y * 0.5f));
 
-                            if (unit.IsMineralDeposit || unit.IsVespeneGeyser || unit.IsVespeneBuilding)
-                            {
-                                SetAdjacentSpaces(resourcePadding, x, y, 3);
-                            }
-                        }
+                        var targetLocation = new Location { X = targetX, Y = targetY };
+
+                        StoreBuildingLocation(targetLocation, buildingSize, null, building);
+                    }
+                }
+            }
+        }
+
+        // Note: includes natural structures, which is why the argument type is 'Unit'.
+        // Also the 'structure' arg can be optional for unbuilt structures, so a separate type is required.
+        private void StoreBuildingLocation(Location origin, Size2DI size, Unit structure, BuildingType type)
+        {
+            for (var x = origin.X; x < origin.X + size.X; x++)
+            {
+                for (var y = origin.Y; y < origin.Y + size.Y; y++)
+                {
+                    structuresAndDeposits[x, y] = structure;
+                    SetAdjacentSpaces(structurePadding, x, y);
+
+                    if (structure != null && 
+                        (structure.IsMineralDeposit || structure.IsVespeneGeyser || structure.IsVespeneBuilding))
+                    {
+                        SetAdjacentSpaces(resourcePadding, x, y, 3);
+                    }
+
+                    // Reserve space for Tech Labs
+                    if (type == TerranBuildingType.Barracks ||
+                        type == TerranBuildingType.Factory ||
+                        type == TerranBuildingType.Starport)
+                    {
+                        // Note: I'm not sure if this will come up, but this could theoretically go off the edge of the map
+                        StoreBuildingLocation(new Location { X = origin.X + 3, Y = origin.Y }, new Size2DI { X = 2, Y = 2 }, null, TerranBuildingType.TechLab);
                     }
                 }
             }
@@ -432,7 +479,7 @@ namespace ProxyStarcraft
             return deposits;
         }
         
-        public List<Deposit> GetControlledDeposits(List<Building> bases)
+        public IReadOnlyList<Deposit> GetControlledDeposits(List<Building> bases)
         {
             // TODO: Allow less-orthodox base placement? This assumes they will always be at the center of the minerals, basically.
             // TODO: Stop using magic numbers for "very close to" everywhere.

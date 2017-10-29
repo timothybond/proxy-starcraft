@@ -65,13 +65,13 @@ namespace Sandbox
 
         static void Main(string[] args)
         {
-            var productionStrategy = new BasicProductionStrategy();
+            var productionStrategy = new BasicProductionStrategy(new ClosestExpansionStrategy());
             var desiredArmyBot = new DesiredArmyQueue();
             desiredArmyBot.Set(TerranUnitType.Marine, 100);
             desiredArmyBot.Set(TerranUnitType.Marauder, 50);
 
             var militaryBot = new BasicMilitaryBot(new[] { 10, 20, 30 });
-            
+
             var productionQueueBot = new CompositeProductionQueueBot(Race.Terran, desiredArmyBot, productionStrategy);
             productionQueueBot.Add(TerranBuildingType.SupplyDepot);
             productionQueueBot.Add(TerranBuildingType.Barracks);
@@ -82,14 +82,14 @@ namespace Sandbox
             productionQueueBot.Add(TerranBuildingType.Barracks);
             productionQueueBot.Add(TerranUnitType.SCV);
             productionQueueBot.Add(TerranUnitType.SCV);
-            productionQueueBot.Add(TerranBuildingType.OrbitalCommand);
             productionQueueBot.Add(TerranBuildingType.SupplyDepot);
+            productionQueueBot.Add(TerranBuildingType.CommandCenter);
 
             //var bot = new CompositeBot(new IBot[] { new ZergRushBot(), new SpawnLarvaBot(), militaryBot});
 
             var bot = new CompositeBot(new IBot[] { productionQueueBot, militaryBot });
 
-            PlayAgainstStandardAI(productionQueueBot);
+            PlayAgainstStandardAI(bot);
 
             //var bot1 = new BenchmarkBot();
             //var bot2 = new ZergRushBot();

@@ -14,10 +14,9 @@ namespace Sandbox
     /// </summary>
     public class ZergRushBot : IBot
     {
-
         private BasicEconomyBot economyBot;
-        
-        private IProductionStrategy placementStrategy = new BasicProductionStrategy();
+
+        private IProductionStrategy placementStrategy = new BasicProductionStrategy(new ClosestExpansionStrategy());
         
         private float primaryHatcheryX = -1.0f;
         private float primaryHatcheryY = -1.0f;
