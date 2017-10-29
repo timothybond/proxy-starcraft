@@ -674,11 +674,49 @@ namespace ProxyStarcraft
                 vespene = vespene - 100;
             }
 
+            var requiresTechLab =
+                buildingOrUnit == TerranUnitType.Marauder ||
+                buildingOrUnit == TerranUnitType.Ghost ||
+                buildingOrUnit == TerranUnitType.SiegeTank ||
+                buildingOrUnit == TerranUnitType.Thor ||
+                buildingOrUnit == TerranUnitType.Raven ||
+                buildingOrUnit == TerranUnitType.Banshee ||
+                buildingOrUnit == TerranUnitType.Battlecruiser;
+
             var supply = rawUnitType.FoodRequired;
             var prerequisiteId = rawUnitType.TechRequirement; // TODO: handle tech_alias values, Tech Lab requirement
-            var prerequisite = prerequisiteId > 0 ? GetBuildingOrUnitType(prerequisiteId) : null;
+            var prerequisite = prerequisiteId > 0 ? GetBuildingOrUnitType(prerequisiteId) : GetOtherPrerequisite(buildingOrUnit);
 
-            return new UnitCost(minerals, vespene, supply, GetBuilder(buildingOrUnit), prerequisite);
+            if (prerequisite == TerranBuildingType.TechLab ||
+                prerequisite == TerranBuildingType.BarracksTechLab ||
+                prerequisite == TerranBuildingType.FactoryTechLab ||
+                prerequisite == TerranBuildingType.StarportTechLab)
+            {
+                requiresTechLab = true;
+                prerequisite = null;
+            }
+
+            return new UnitCost(minerals, vespene, supply, GetBuilder(buildingOrUnit), prerequisite, requiresTechLab);
+        }
+
+        private BuildingOrUnitType GetOtherPrerequisite(BuildingOrUnitType buildingOrUnit)
+        {
+            if (buildingOrUnit == TerranUnitType.Ghost)
+            {
+                return TerranBuildingType.GhostAcademy;
+            }
+            else if (buildingOrUnit == TerranUnitType.Thor)
+            {
+                return TerranBuildingType.Armory;
+            }
+            else if (buildingOrUnit == TerranUnitType.Battlecruiser)
+            {
+                return TerranBuildingType.FusionCore;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public BuildingOrUnitType GetBuilder(BuildingOrUnitType buildingOrUnit)
