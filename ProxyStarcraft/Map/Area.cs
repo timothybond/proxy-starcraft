@@ -7,6 +7,8 @@ namespace ProxyStarcraft.Map
     /// </summary>
     public abstract class Area
     {
+        private List<Deposit> deposits = new List<Deposit>();
+
         protected Area(int id, IEnumerable<Location> locations, Location center)
         {
             this.Id = id;
@@ -41,5 +43,21 @@ namespace ProxyStarcraft.Map
         /// Whether it is possible to build in this Area.
         /// </summary>
         public abstract bool CanBuild { get; }
+
+        /// <summary>
+        /// Resource deposits contained in this area.
+        /// </summary>
+        public IReadOnlyList<Deposit> Deposits
+        {
+            get
+            {
+                return this.deposits;
+            }
+        }
+
+        public void AddDeposit(Deposit deposit)
+        {
+            this.deposits.Add(deposit);
+        }
     }
 }
