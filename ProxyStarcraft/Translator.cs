@@ -156,6 +156,8 @@ namespace ProxyStarcraft
             rally = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Building")).AbilityId;
             rallyWorkersCommandCenter = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally CommandCenter")).AbilityId;
             rallyWorkersNexus = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Nexus")).AbilityId;
+
+            // TODO: Probably at some point, fix these - they were backwards in the API when this was written.
             rallyUnitsHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Workers")).AbilityId;
             rallyWorkersHatchery = hotkeyedAbilities.Single(ability => string.Equals(ability.FriendlyName, "Rally Hatchery Units")).AbilityId;
 

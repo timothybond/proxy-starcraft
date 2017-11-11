@@ -84,9 +84,7 @@ namespace Sandbox
             productionQueueBot.Add(TerranUnitType.SCV);
             productionQueueBot.Add(TerranBuildingType.SupplyDepot);
             productionQueueBot.Add(TerranBuildingType.CommandCenter);
-
-            //var bot = new CompositeBot(new IBot[] { new ZergRushBot(), new SpawnLarvaBot(), militaryBot});
-
+            
             var bot = new CompositeBot(new IBot[] { productionQueueBot, militaryBot });
 
             PlayAgainstStandardAI(bot);
