@@ -41,6 +41,12 @@ namespace ProxyStarcraft
 
         private List<Deposit> deposits;
 
+        // TODO: Avoid using nullable type for this
+        private Location? playerStartLocation;
+
+        // TODO: Avoid using nullable type for this
+        private Location? enemyStartLocation;
+
         public MapData(StartRaw startingData)
         {
             this.Raw = startingData;
@@ -61,10 +67,17 @@ namespace ProxyStarcraft
 
             this.structurePadding = new MapArray<bool>(this.Size);
             this.resourcePadding = new MapArray<bool>(this.Size);
+
+            // Not gonna work for anything but 1-on-1 games, but it seems like
+            // it doesn't give this player's location, just the enemy's.
+            var enemyStart = startingData.StartLocations.Single();
+            this.enemyStartLocation = new Location { X = (int)enemyStart.X, Y = (int)enemyStart.Y };
         }
 
         public MapData(MapData prior, List<Unit> units, Translator translator, Dictionary<uint, UnitTypeData> unitTypes, ImageData creep)
         {
+            this.playerStartLocation = prior.playerStartLocation;
+            this.enemyStartLocation = prior.enemyStartLocation;
             this.Raw = prior.Raw;
             this.Size = prior.Size;
             this.placementGridOriginal = prior.placementGridOriginal;
@@ -119,6 +132,12 @@ namespace ProxyStarcraft
                     }
                 }
             }
+
+            if (!this.playerStartLocation.HasValue)
+            {
+                var mainBase = units.Single(u => u.Raw.Alliance == Alliance.Self && u.IsMainBase);
+                this.playerStartLocation = new Location { X = (int)mainBase.X, Y = (int)mainBase.Y };
+            }
         }
 
         // Note: includes natural structures, which is why the argument type is 'Unit'.
@@ -153,6 +172,10 @@ namespace ProxyStarcraft
         public StartRaw Raw { get; private set; }
 
         public Size2DI Size { get; private set; }
+
+        public Location PlayerStartLocation => this.playerStartLocation.Value;
+
+        public Location EnemyStartLocation => this.enemyStartLocation.Value;
 
         public MapArray<byte> PlacementGrid => new MapArray<byte>(this.placementGrid);
 
