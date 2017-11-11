@@ -68,30 +68,17 @@ namespace ProxyStarcraft.Client
 
         public GameState GetGameState()
         {
-            gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }).Result.GameInfo;
-            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }).Result.Data.Units.ToDictionary(unitType => unitType.UnitId);
-            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }).Result.Data.Abilities.ToDictionary(ability => ability.AbilityId);
-            buffs = buffs ?? Call(new Request { Data = new RequestData { BuffId = true } }).Result.Data.Buffs.ToDictionary(b => b.BuffId);
+            gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }, r => r?.GameInfo != null).Result.GameInfo;
+            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }, r => r?.Data?.Units != null).Result.Data.Units.ToDictionary(unitType => unitType.UnitId);
+            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }, r => r?.Data?.Abilities != null).Result.Data.Abilities.ToDictionary(ability => ability.AbilityId);
+            buffs = buffs ?? Call(new Request { Data = new RequestData { BuffId = true } }, r => r?.Data?.Buffs != null).Result.Data.Buffs.ToDictionary(b => b.BuffId);
 
             translator = translator ?? new Translator(abilities, unitTypes, buffs);
 
             mapData = mapData ?? new MapData(gameInfo.StartRaw);
             
-            var response = Call(new Request { Observation = new RequestObservation() });
-
-            // Sometimes this isn't giving me an Observation back (and it gives the error "Request missing command"). No idea why.
-            if (response.Result?.Observation == null)
-            {
-                int retries = 3;
-
-                while (retries > 0 && response.Result?.Observation == null)
-                {
-                    Log("Received null observation. Retrying.");
-                    response = Call(new Request { Observation = new RequestObservation() });
-                    retries--;
-                }
-            }
-
+            var response = Call(new Request { Observation = new RequestObservation() }, r => r?.Observation != null);
+            
             var observation = response.Result.Observation;
             
             var units = observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
@@ -108,7 +95,7 @@ namespace ProxyStarcraft.Client
 
             queryRequest.Query.Abilities.Add(new RequestQueryAvailableAbilities { UnitTag = unitTag });
 
-            var response = Call(queryRequest);
+            var response = Call(queryRequest, r => r?.Query?.Abilities != null);
 
             return response.Result.Query.Abilities[0].Abilities.Select(a => (uint)a.AbilityId).ToList();
         }
@@ -240,7 +227,7 @@ namespace ProxyStarcraft.Client
                         Options = new InterfaceOptions { Raw = true }
                     }
                 },
-                JOIN_GAME_TIMEOUT_MS);
+                timeoutMs: JOIN_GAME_TIMEOUT_MS);
 
             return joinGameResponse.Result.Status == Status.InGame;
         }
@@ -285,7 +272,7 @@ namespace ProxyStarcraft.Client
                         Options = new InterfaceOptions { Raw = true }
                     }
                 },
-                JOIN_GAME_TIMEOUT_MS);
+                timeoutMs: JOIN_GAME_TIMEOUT_MS);
 
             return joinGameResponse.Result.Status == Status.InGame;
         }
@@ -335,7 +322,7 @@ namespace ProxyStarcraft.Client
                 {
                     JoinGame = joinGame
                 },
-                JOIN_GAME_TIMEOUT_MS);
+                timeoutMs: JOIN_GAME_TIMEOUT_MS);
             
             return joinGameResponse.Status == Status.InGame;
         }
@@ -357,47 +344,66 @@ namespace ProxyStarcraft.Client
                 {
                     JoinGame = joinGame
                 },
-                JOIN_GAME_TIMEOUT_MS);
+                timeoutMs: JOIN_GAME_TIMEOUT_MS);
 
             return joinGameResponse.Result.Status == Status.InGame;
         }
-
-        public async Task<Response> Call(Request request, int timeoutMs = 500)
+        
+        public async Task<Response> Call(Request request, Predicate<Response> responseValidation = null, int timeoutMs = 500)
         {
             Response retval = null;
+            
+            responseValidation = responseValidation ?? (r => true);
 
             // TODO: Find a less dumb way of doing this. I feel like I'm mixing threading and tasks and they don't quite go together.
             await Task.Run(() =>
             {
                 Connect();
 
-                SendRequest(request);
+                int invalidResponseRetries = 3;
 
-                // TODO: Use a proper synchronization primitive for this
-
-                int retries = 3;
-                
-                while (!receivedEvent.WaitOne(TimeSpan.FromMilliseconds(timeoutMs)))
+                while (retval == null)
                 {
-                    if (retries == 0)
-                    {
-                        throw new TimeoutException("Socket response timed out. Retries exhausted.");
-                    }
-
-                    Log("Retrying failed request.");
-
-                    retries -= 1;
-
-                    // Most of our requests are actually idempotent, so on the off chance
-                    // that we never get a response, it makes sense to just resend them.
-                    // This might be something that should change if I can diagnose the root cause.
                     SendRequest(request);
-                }
+                
+                    int timeoutRetries = 3;
+                
+                    while (!receivedEvent.WaitOne(TimeSpan.FromMilliseconds(timeoutMs)))
+                    {
+                        if (timeoutRetries == 0)
+                        {
+                            throw new TimeoutException("Socket response timed out. Retries exhausted.");
+                        }
 
-                lock (socketLock)
-                {
-                    retval = socketResponse;
-                    socketResponse = null;
+                        Log("Retrying failed request.");
+
+                        timeoutRetries -= 1;
+
+                        // Most of our requests are actually idempotent, so on the off chance
+                        // that we never get a response, it makes sense to just resend them.
+                        // This might be something that should change if I can diagnose the root cause.
+                        SendRequest(request);
+                    }
+                
+                    lock (socketLock)
+                    {
+                        if (responseValidation(socketResponse))
+                        { 
+                            retval = socketResponse;
+                            socketResponse = null;
+                        }
+                        else
+                        {
+                            if (timeoutRetries == 0)
+                            {
+                                throw new Exception("Could not get valid response within retry limit.");
+                            }
+
+                            Log("Response invalid, retrying.");
+                            timeoutRetries -= 1;
+                            retval = null;
+                        }
+                    }
                 }
             });
 
