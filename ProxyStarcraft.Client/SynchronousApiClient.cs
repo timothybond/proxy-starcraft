@@ -69,9 +69,9 @@ namespace ProxyStarcraft.Client
         public GameState GetGameState()
         {
             gameInfo = gameInfo ?? Call(new Request { GameInfo = new RequestGameInfo() }, r => r?.GameInfo != null).Result.GameInfo;
-            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }, r => r?.Data?.Units != null).Result.Data.Units.ToDictionary(unitType => unitType.UnitId);
-            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }, r => r?.Data?.Abilities != null).Result.Data.Abilities.ToDictionary(ability => ability.AbilityId);
-            buffs = buffs ?? Call(new Request { Data = new RequestData { BuffId = true } }, r => r?.Data?.Buffs != null).Result.Data.Buffs.ToDictionary(b => b.BuffId);
+            unitTypes = unitTypes ?? Call(new Request { Data = new RequestData { UnitTypeId = true } }, r => (r?.Data?.Units).NotNullOrEmpty()).Result.Data.Units.ToDictionary(unitType => unitType.UnitId);
+            abilities = abilities ?? Call(new Request { Data = new RequestData { AbilityId = true } }, r => (r?.Data?.Abilities).NotNullOrEmpty()).Result.Data.Abilities.ToDictionary(ability => ability.AbilityId);
+            buffs = buffs ?? Call(new Request { Data = new RequestData { BuffId = true } }, r => (r?.Data?.Buffs).NotNullOrEmpty()).Result.Data.Buffs.ToDictionary(b => b.BuffId);
 
             translator = translator ?? new Translator(abilities, unitTypes, buffs);
 

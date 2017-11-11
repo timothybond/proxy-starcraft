@@ -73,6 +73,7 @@
     <Compile Include="Commands\TrainCommand.cs" />
     <Compile Include="Commands\UnitTargetCommand.cs" />
     <Compile Include="DistanceExtensions.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IBuildLocation.cs" />
     <Compile Include="IChainableBot.cs" />
     <Compile Include="IExpansionStrategy.cs" />
