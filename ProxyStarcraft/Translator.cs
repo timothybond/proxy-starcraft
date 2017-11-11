@@ -973,6 +973,17 @@ namespace ProxyStarcraft
 
         public List<uint> MatchingBuffIds(BuffType buff) => buffIdsByBuffType.ContainsKey(buff) ? buffIdsByBuffType[buff] : new List<uint>();
 
+        public bool UnitHasBuff(Unit unit, BuffType buff) => unit.Raw.BuffIds.Any(rawBuffId => this.MatchingBuffIds(buff).Any(matching => matching == rawBuffId));
+
+        /// <summary>
+        /// Sets a <seealso cref="BuffType"/> for a unit's game state (so that other computation within the same frame doesn't attempt to do something else with the unit)
+        /// </summary>
+        /// <param name="buff"></param>
+        /// <remarks>This will technically add a bunch of buffs that an entity "can't" have, but are effectively all identical. 
+        /// (e.g. "Banshee Cloak", "Ghost Cloak", "Dark Templar Cloak", and "Mothership Field Cloak")
+        /// </remarks>
+        public void ApplyBuffType(Unit unit, BuffType buff) => unit.Raw.BuffIds.AddRange(this.MatchingBuffIds(buff));
+
         /// <summary>
         /// Gets a unique identifier for the unit type (or one of the unit types if there are multiple, and it's not picky) specified.
         /// </summary>
