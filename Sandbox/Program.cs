@@ -290,6 +290,11 @@ namespace Sandbox
             {
                 areasBitmap.Save(BASE_DRIVE + "Temp/areas.bmp");
             }
+
+            using (var neighborBitmap = GetImage(gameState.MapData.NeighborGrid))
+            {
+                neighborBitmap.Save(BASE_DRIVE + "Temp/neighbors.bmp");
+            }
         }
 
         private static Bitmap GetImage(MapArray<byte> data)
