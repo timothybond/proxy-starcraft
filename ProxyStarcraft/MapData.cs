@@ -23,6 +23,8 @@ namespace ProxyStarcraft
 
         private MapArray<byte> areaGrid;
 
+        private MapArray<byte> neighborGrid;
+
         private MapArray<byte> creepGrid;
 
         // One space of padding around each non-buildable space,
@@ -63,6 +65,8 @@ namespace ProxyStarcraft
             GeneratePadding(startingData);
 
             this.areas = GetAreas();
+            this.neighborGrid = GetNeighborGrid();
+            
             this.deposits = new List<Deposit>();
 
             this.structurePadding = new MapArray<bool>(this.Size);
@@ -86,6 +90,7 @@ namespace ProxyStarcraft
             this.heightGrid = prior.heightGrid;
             this.padding = prior.padding;
             this.areaGrid = prior.areaGrid;
+            this.neighborGrid = prior.neighborGrid;
             this.areas = prior.areas;
             this.creepGrid = new MapArray<byte>(creep.Data.ToByteArray(), this.Size);
 
@@ -184,6 +189,8 @@ namespace ProxyStarcraft
         public MapArray<byte> HeightGrid => new MapArray<byte>(this.heightGrid);
 
         public MapArray<byte> AreaGrid => this.areaGrid;
+
+        public MapArray<byte> NeighborGrid => this.neighborGrid;
 
         public MapArray<byte> CreepGrid => this.creepGrid;
 
@@ -639,6 +646,32 @@ namespace ProxyStarcraft
             }
 
             return areas;
+        }
+        
+        private MapArray<byte> GetNeighborGrid()
+        {
+            var grid = new MapArray<byte>(this.Size);
+
+            for (int x = 0; x < this.Size.X; x++)
+            {
+                for (int y = 0; y < this.Size.Y; y++)
+                {
+                    var location = new Location { X = x, Y = y };
+                    var area = this.areaGrid[location];
+                    if (area != 0)
+                    {
+                        foreach (var adjacent in AdjacentLocations(location))
+                        {
+                            if (this.areaGrid[adjacent] != area && this.areaGrid[adjacent] != 0)
+                            {
+                                grid[location] = this.areaGrid[adjacent];
+                            }
+                        }
+                    }
+                }
+            }
+
+            return grid;
         }
 
         private void AddAdjacentLocations(Location location, HashSet<Location> locations, MapArray<byte> areas)
