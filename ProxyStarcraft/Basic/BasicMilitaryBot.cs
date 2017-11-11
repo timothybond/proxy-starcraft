@@ -112,7 +112,7 @@ namespace ProxyStarcraft.Basic
             var commands = new List<Command>();
 
             var waveSize = this.waveSizes[this.currentWave];
-            var enemyStartLocation = gameState.MapData.Raw.StartLocations.OrderByDescending(point => mainBase.GetDistance(point)).First();
+            var enemyStartLocation = gameState.MapData.EnemyStartLocation;
 
             var idleSoldiers = soldiers.Where(s => s.Raw.Orders.Count == 0).ToList();
 

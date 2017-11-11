@@ -54,6 +54,8 @@ namespace ProxyStarcraft.Client
 
         private Request lastRequest;
 
+        private GameState lastGameState;
+
         public SynchronousApiClient(String address)
         {
             webSocket = new WebSocket(address);
@@ -84,6 +86,7 @@ namespace ProxyStarcraft.Client
 
                 while (retries > 0 && response.Result?.Observation == null)
                 {
+                    Log("Received null observation. Retrying.");
                     response = Call(new Request { Observation = new RequestObservation() });
                     retries--;
                 }
@@ -95,7 +98,8 @@ namespace ProxyStarcraft.Client
 
             mapData = new MapData(mapData, units, translator, unitTypes, observation.Observation.RawData.MapState.Creep);
             
-            return new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, buffs, translator);
+            lastGameState = new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, buffs, translator);
+            return lastGameState;
         }
 
         public List<uint> GetAbilities(ulong unitTag)
@@ -358,7 +362,7 @@ namespace ProxyStarcraft.Client
             return joinGameResponse.Result.Status == Status.InGame;
         }
 
-        public async Task<Response> Call(Request request, int timeoutMs = 5000)
+        public async Task<Response> Call(Request request, int timeoutMs = 500)
         {
             Response retval = null;
 
@@ -380,6 +384,8 @@ namespace ProxyStarcraft.Client
                         throw new TimeoutException("Socket response timed out. Retries exhausted.");
                     }
 
+                    Log("Retrying failed request.");
+
                     retries -= 1;
 
                     // Most of our requests are actually idempotent, so on the off chance
@@ -400,8 +406,6 @@ namespace ProxyStarcraft.Client
 
         private void SendRequest(Request request)
         {
-            //Console.WriteLine(request.ToString());
-
             using (var mem = new MemoryStream())
             {
                 using (var stream = new Google.Protobuf.CodedOutputStream(mem))
@@ -434,6 +438,19 @@ namespace ProxyStarcraft.Client
             }
         }
 
+        private void Log(string message)
+        {
+            if (lastGameState == null)
+            {
+                Console.WriteLine(message);
+            }
+            else
+            {
+                var elapsed = TimeSpan.FromSeconds(Math.Floor(lastGameState.Observation.GameLoop / 22.4));
+                Console.WriteLine($"[{elapsed}] {message}");
+            }
+        }
+
         private void OnReceivedData(object sender, WebSocket4Net.DataReceivedEventArgs e)
         {
             lock (socketLock)
@@ -441,8 +458,6 @@ namespace ProxyStarcraft.Client
                 socketResponse = Response.Parser.ParseFrom(e.Data);
                 receivedEvent.Set();
             }
-
-            //Console.WriteLine(socketResponse.ToString());
         }
 
         private void OnReceivedMessage(object sender, MessageReceivedEventArgs e)

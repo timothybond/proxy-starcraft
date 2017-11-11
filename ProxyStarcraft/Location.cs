@@ -36,6 +36,29 @@ namespace ProxyStarcraft
             return closest;
         }
 
+        public Location GetFurthest(IReadOnlyList<Location> locations)
+        {
+            if (locations.Count == 0)
+            {
+                throw new ArgumentException("Cannot supply an empty list of locations.", "locations");
+            }
+
+            Location furthest = locations[0];
+            var furthestDistance = DistanceTo(furthest);
+
+            for (var i = 1; i < locations.Count; i++)
+            {
+                var distance = DistanceTo(locations[i]);
+                if (distance > furthestDistance)
+                {
+                    furthest = locations[i];
+                    furthestDistance = distance;
+                }
+            }
+
+            return furthest;
+        }
+
         public double DistanceTo(Location location)
         {
             var x = this.X - location.X;

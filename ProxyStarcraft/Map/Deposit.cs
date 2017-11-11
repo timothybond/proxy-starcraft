@@ -6,6 +6,8 @@ namespace ProxyStarcraft.Map
     {
         private List<Unit> resources;
 
+        private Area area;
+
         public Deposit(Area area, Location center, IEnumerable<Unit> resources)
         {
             this.resources = new List<Unit>(resources);
@@ -13,7 +15,18 @@ namespace ProxyStarcraft.Map
             this.Center = center;
         }
 
-        public Area Area { get; private set; }
+        public Area Area
+        {
+            get
+            {
+                return this.area;
+            }
+            set
+            {
+                this.area = value;
+                this.area.AddDeposit(this);
+            }
+        }
 
         public Location Center { get; private set; }
 

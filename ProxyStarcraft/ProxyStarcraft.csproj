@@ -125,6 +125,7 @@
     <Compile Include="UnspecifiedUnit.cs" />
     <Compile Include="UpgradeBuildLocation.cs" />
     <Compile Include="Commands\UseUnitTargetSpecialAbilityCommand.cs" />
+    <Compile Include="Vector.cs" />
     <Compile Include="VespeneBuildLocation.cs" />
     <Compile Include="ZergBuilding.cs" />
     <Compile Include="ZergBuildingExtensions.cs" />
