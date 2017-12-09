@@ -26,5 +26,25 @@ namespace ProxyStarcraft
 
         public static explicit operator LocationOffset(Vector vector) =>
             new LocationOffset { X = (int)Math.Round(vector.X), Y = (int)Math.Round(vector.Y) };
+
+        public static LocationOffset operator +(LocationOffset offset, LocationOffset other)
+        {
+            return new LocationOffset { X = offset.X + other.X, Y = offset.Y + other.Y };
+        }
+
+        public static LocationOffset operator -(LocationOffset offset, LocationOffset other)
+        {
+            return new LocationOffset { X = offset.X - other.X, Y = offset.Y - other.Y };
+        }
+
+        public static LocationOffset operator *(LocationOffset offset, int ratio)
+        {
+            return new LocationOffset { X = offset.X * ratio, Y = offset.Y * ratio };
+        }
+
+        public static LocationOffset operator /(LocationOffset offset, int ratio)
+        {
+            return new LocationOffset { X = offset.X / ratio, Y = offset.Y / ratio };
+        }
     }
 }

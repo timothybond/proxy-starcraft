@@ -99,5 +99,10 @@ namespace ProxyStarcraft
         {
             return new Location { X = location.X + offset.X, Y = location.Y + offset.Y };
         }
+
+        public static LocationOffset operator -(Location location, Location other)
+        {
+            return new LocationOffset { X = location.X - other.X, Y = location.Y - other.Y };
+        }
     }
 }
