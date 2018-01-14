@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ProxyStarcraft.Proto;
 
 namespace ProxyStarcraft.Basic
@@ -104,6 +102,11 @@ namespace ProxyStarcraft.Basic
             return Attack(gameState, mainBase, soldiers);
         }
 
+        public void Register(IGameClient client)
+        {
+            client.AddMapAnalyzer(new BasicMapAnalyzer());
+        }
+
         private List<Command> Attack(GameState gameState, Building mainBase, List<Unit> soldiers)
         {
             // Initially, await X idle soldiers and send them toward the enemy's starting location.
@@ -112,7 +115,7 @@ namespace ProxyStarcraft.Basic
             var commands = new List<Command>();
 
             var waveSize = this.waveSizes[this.currentWave];
-            var enemyStartLocation = gameState.MapData.EnemyStartLocation;
+            var enemyStartLocation = gameState.Map.EnemyStartLocation;
 
             var idleSoldiers = soldiers.Where(s => s.Raw.Orders.Count == 0).ToList();
 
@@ -145,7 +148,7 @@ namespace ProxyStarcraft.Basic
                 return commands;
             }
 
-            var unscoutedLocations = gameState.MapData.Deposits.Select(d => d.Center).ToList();
+            var unscoutedLocations = gameState.GetMapData<BasicMapData>().Deposits.Select(d => d.Center).ToList();
 
             foreach (var location in unscoutedLocations)
             {

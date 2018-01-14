@@ -1,17 +1,17 @@
 ﻿using System.Linq;
-using ProxyStarcraft.Map;
+using ProxyStarcraft.Maps;
 
 namespace ProxyStarcraft.Basic
 {
     /// <summary>
-    /// Expansion strategy that returns the closest unoccupied deposit to one of the currently-owned deposits.
+    /// Expansion strategy that returns the closest unoccupied deposit to one of the currently-owned deposits. Relies on BasicMapAnalyzer.
     /// </summary>
     public class ClosestExpansionStrategy : IExpansionStrategy
     {
         public Deposit GetNextExpansion(GameState gameState)
         {
             var availableDeposits =
-                gameState.MapData.Deposits
+                gameState.GetMapData<BasicMapData>().Deposits
                     .Where(d => !gameState.AllUnits.Any(u => u.IsMainBase && u.GetDistance(d.Center) < 10f))
                     .ToList();
 

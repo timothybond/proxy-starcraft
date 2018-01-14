@@ -198,8 +198,12 @@ namespace Sandbox
                 {
                     using (var client1 = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
                     {
+                        bot1.Register(client1);
+
                         using (var client2 = new SynchronousApiClient("ws://127.0.0.1:5001/sc2api"))
                         {
+                            bot2.Register(client2);
+
                             var initiateGameSuccess = client1.InitiateGameAgainstBot(LADDER_ABYSSAL_REEF_MAP_PATH, bot1.Race, bot2.Race);
 
                             if (!client2.JoinGameAgainstBot(bot2.Race))
@@ -249,6 +253,8 @@ namespace Sandbox
             {
                 using (var client = new SynchronousApiClient("ws://127.0.0.1:5000/sc2api"))
                 {
+                    bot.Register(client);
+
                     if (!client.InitiateGameAgainstComputer(LADDER_ABYSSAL_REEF_MAP_PATH, bot.Race, Difficulty.MediumHard))
                     {
                         return;
@@ -271,29 +277,19 @@ namespace Sandbox
 
         private static void SaveMapData(GameState gameState)
         {
-            using (var pathingGrid = GetImage(gameState.MapData.PathingGrid))
+            using (var pathingGrid = GetImage(gameState.Map.PathingGrid))
             {
                 pathingGrid.Save(BASE_DRIVE + "Temp/pathing.bmp");
             }
 
-            using (var placementGrid = GetImage(gameState.MapData.PlacementGrid))
+            using (var placementGrid = GetImage(gameState.Map.PlacementGrid))
             {
                 placementGrid.Save(BASE_DRIVE + "Temp/placement.bmp");
             }
 
-            using (var terrainHeight = GetImage(gameState.MapData.HeightGrid))
+            using (var terrainHeight = GetImage(gameState.Map.HeightGrid))
             {
                 terrainHeight.Save(BASE_DRIVE + "Temp/terrain-height.bmp");
-            }
-
-            using (var areasBitmap = GetImage(gameState.MapData.AreaGrid))
-            {
-                areasBitmap.Save(BASE_DRIVE + "Temp/areas.bmp");
-            }
-
-            using (var neighborBitmap = GetImage(gameState.MapData.NeighborGrid))
-            {
-                neighborBitmap.Save(BASE_DRIVE + "Temp/neighbors.bmp");
             }
         }
 

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProxyStarcraft.Map;
+using ProxyStarcraft.Maps;
 
 namespace ProxyStarcraft.Basic
 {
+    /// <summary>
+    /// A simple strategy for where to put buildings. Relies on BasicMapAnalyzer.
+    /// </summary>
     public class BasicProductionStrategy : IProductionStrategy
     {
         private IExpansionStrategy expansionStrategy;
@@ -75,7 +78,7 @@ namespace ProxyStarcraft.Basic
                 startingLocations = new List<Location> { deposit.Center };
             }
 
-            var buildLocation = gameState.MapData.BreadthFirstSearch(
+            var buildLocation = gameState.Map.BreadthFirstSearch(
                 (map, loc) => map.CanBuild(size, loc, requireCreep, hasAddOn, includeResourcePadding),
                 startingLocations,
                 (map, loc) => map.CanTraverse(loc));
@@ -114,7 +117,7 @@ namespace ProxyStarcraft.Basic
             // TODO: Just add main bases to GameState? I'm using them enough.
             var bases = gameState.Units.Where(u => u.IsMainBase).Cast<Building>().ToList();
             var vespeneBuildings = gameState.Units.Where(u => u.IsVespeneBuilding).ToList();
-            var deposits = gameState.MapData.GetControlledDeposits(bases);
+            var deposits = gameState.GetMapData<BasicMapData>().GetControlledDeposits(bases);
 
             // I don't know if Vespene Geysers still exist on the map once there's a building on them.
 

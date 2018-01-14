@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Google.Protobuf.Collections;
 using ProxyStarcraft.Proto;
@@ -10,22 +11,26 @@ namespace ProxyStarcraft
     /// </summary>
     public class GameState
     {
+        private Dictionary<Type, object> mapData;
+
         public GameState(
             ResponseGameInfo gameInfo,
             ResponseObservation observation,
-            MapData mapData,
+            Map map,
             Dictionary<uint, UnitTypeData> unitTypes,
             Dictionary<uint, AbilityData> abilities,
             Dictionary<uint, BuffData> buffs,
-            Translator translator)
+            Translator translator,
+            params object[] mapData)
         {
             this.GameInfo = gameInfo;
             this.Response = observation;
-            this.MapData = mapData;
+            this.Map = map;
             this.UnitTypes = unitTypes;
             this.Abilities = abilities;
             this.Translator = translator;
             this.Buffs = buffs;
+            this.mapData = mapData.ToDictionary(m => m.GetType());
 
             var unitsByAlliance = this.Response.Observation.RawData.Units.GroupBy(u => u.Alliance);
             
@@ -81,7 +86,7 @@ namespace ProxyStarcraft
         /// <summary>
         /// Static and dynamic information about the map, including known structures.
         /// </summary>
-        public MapData MapData { get; private set; }
+        public Map Map { get; private set; }
 
         /// <summary>
         /// All of the defined unit types. This includes a lot of things you don't care about.
@@ -137,6 +142,11 @@ namespace ProxyStarcraft
         public RepeatedField<Proto.Unit> RawUnits
         {
             get { return this.Observation.RawData.Units; }
+        }
+
+        public T GetMapData<T>()
+        {
+            return (T)this.mapData[typeof(T)];
         }
     }
 }

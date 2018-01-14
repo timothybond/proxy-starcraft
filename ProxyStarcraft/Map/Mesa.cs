@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProxyStarcraft.Map
+namespace ProxyStarcraft.Maps
 {
     /// <summary>
     /// An <see cref="Area"/> of uniform height that can be built on.

@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="AddOnBuildLocation.cs" />
     <Compile Include="Basic\BasicEconomyBot.cs" />
+    <Compile Include="Basic\BasicMapAnalyzer.cs" />
     <Compile Include="Basic\BasicMilitaryBot.cs" />
+    <Compile Include="Basic\BasicMapData.cs" />
     <Compile Include="Basic\ClosestExpansionStrategy.cs" />
     <Compile Include="Basic\DesiredTerranArmyQueue.cs" />
     <Compile Include="Basic\DesiredZergArmyQueue.cs" />
@@ -77,6 +79,8 @@
     <Compile Include="IBuildLocation.cs" />
     <Compile Include="IChainableBot.cs" />
     <Compile Include="IExpansionStrategy.cs" />
+    <Compile Include="IGameClient.cs" />
+    <Compile Include="IMapAnalyzer.cs" />
     <Compile Include="IProductionQueue.cs" />
     <Compile Include="IProductionStrategy.cs" />
     <Compile Include="LocationOffset.cs" />
@@ -97,7 +101,7 @@
     <Compile Include="GameState.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="MapData.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtossBuildingType.cs" />
     <Compile Include="ProtossUnitType.cs" />

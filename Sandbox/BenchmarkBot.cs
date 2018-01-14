@@ -2,7 +2,7 @@
 using System.Linq;
 using ProxyStarcraft;
 using ProxyStarcraft.Basic;
-using ProxyStarcraft.Map;
+using ProxyStarcraft.Maps;
 using ProxyStarcraft.Proto;
 using ProxyStarcraft.Commands;
 
@@ -97,7 +97,7 @@ namespace Sandbox
                 // TODO: Surrender?
             }
 
-            Deposit closestDeposit = gameState.MapData.Deposits.OrderBy(d => commandCenter.GetDistance(d.Center)).First();
+            Deposit closestDeposit = gameState.GetMapData<BasicMapData>().Deposits.OrderBy(d => commandCenter.GetDistance(d.Center)).First();
             var mineralDeposits = closestDeposit.Resources.Where(u => u.IsMineralDeposit).ToList();
             
             // First update, ignore the default worker orders, which are to mass on the center mineral deposit
@@ -141,6 +141,11 @@ namespace Sandbox
             }
             
             return commands;
+        }
+        
+        public void Register(IGameClient client)
+        {
+            client.AddMapAnalyzer(new BasicMapAnalyzer());
         }
 
         private void RemoveWorkerFromHarvestAssignments(ProxyStarcraft.Unit unit)
@@ -196,7 +201,7 @@ namespace Sandbox
             // Initially, await X idle soldiers and send them toward the enemy's starting location.
             // Once they're there and have no further orders, send them to attack any sighted enemy unit/structure.
             // Once we run out of those, send them to scout every resource deposit until we find more.
-            var enemyStartLocation = gameState.MapData.Raw.StartLocations.OrderByDescending(point => commandCenter.GetDistance(point)).First();
+            var enemyStartLocation = gameState.Map.Raw.StartLocations.OrderByDescending(point => commandCenter.GetDistance(point)).First();
 
             var idleSoldiers = soldiers.Where(s => s.Raw.Orders.Count == 0).ToList();
 
@@ -224,7 +229,7 @@ namespace Sandbox
                 return;
             }
 
-            var unscoutedLocations = gameState.MapData.Deposits.Select(d => d.Center).ToList();
+            var unscoutedLocations = gameState.GetMapData<BasicMapData>().Deposits.Select(d => d.Center).ToList();
 
             foreach (var location in unscoutedLocations)
             {

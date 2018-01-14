@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProxyStarcraft.Map
+namespace ProxyStarcraft.Maps
 {
     /// <summary>
     /// Represents a contiguous portion of the map that is somehow logically distinct from other areas, including its neighbors.

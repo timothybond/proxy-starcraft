@@ -44,6 +44,10 @@ namespace ProxyStarcraft.Basic
             return commands;
         }
 
+        public void Register(IGameClient client)
+        {
+        }
+
         private Dictionary<ZergBuilding, ZergUnit> ClosestQueenByHatchery(List<ZergBuilding> hatcheries, List<ZergUnit> queens)
         {
             var results = new Dictionary<ZergBuilding, ZergUnit>();

@@ -67,7 +67,7 @@ namespace ProxyStarcraft.Basic
             // Ignore empty vespene-harvesting buildings or those from bases that were destroyed or relocated
             vespeneBuildings.RemoveAll(v => !mainBases.Any(b => b.GetDistance(v) < 20f) || v.Raw.VespeneContents == 0);
 
-            var deposits = gameState.MapData.GetControlledDeposits(mainBases);
+            var deposits = gameState.GetMapData<BasicMapData>().GetControlledDeposits(mainBases);
             var mineralDeposits = new List<Unit>();
 
             foreach (var deposit in deposits)
@@ -140,6 +140,11 @@ namespace ProxyStarcraft.Basic
                     pair.Value.Remove(unit.Tag);
                 }
             }
+        }
+
+        public void Register(IGameClient client)
+        {
+            client.AddMapAnalyzer(new BasicMapAnalyzer());
         }
 
         private void CheckForMissingWorkers(List<Unit> workers)

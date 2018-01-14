@@ -74,5 +74,9 @@ namespace Sandbox
 
             return target;
         }
+
+        public void Register(IGameClient client)
+        {
+        }
     }
 }

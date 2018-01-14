@@ -52,7 +52,7 @@ namespace ProxyStarcraft
 
             return PopSelf(gameState);
         }
-
+        
         protected abstract BuildingOrUnitType PeekSelf(GameState gameState);
 
         protected abstract BuildingOrUnitType PopSelf(GameState gameState);

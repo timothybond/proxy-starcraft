@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProxyStarcraft.Map
+namespace ProxyStarcraft.Maps
 {
     public class Deposit
     {

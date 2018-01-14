@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ProxyStarcraft.Commands;
 using ProxyStarcraft.Proto;
 using WebSocket4Net;
+using System.Reflection;
 
 namespace ProxyStarcraft.Client
 {
@@ -17,7 +18,7 @@ namespace ProxyStarcraft.Client
     /// Probably basically harmless to use this when running the game in Single-Step mode,
     /// but maybe less so in Real-Time mode. Naturally this is not thread-safe.
     /// </summary>
-    public class SynchronousApiClient : IDisposable
+    public class SynchronousApiClient : IDisposable, IGameClient
     {
         // TODO: Stop hardcoding port numbers
         private const int SHARED_PORT = 5500;
@@ -48,13 +49,16 @@ namespace ProxyStarcraft.Client
         private Dictionary<uint, UnitTypeData> unitTypes;
         private Dictionary<uint, AbilityData> abilities;
         private Dictionary<uint, BuffData> buffs;
-        private MapData mapData;
+        private Map map;
 
         private Translator translator;
 
         private Request lastRequest;
 
         private GameState lastGameState;
+
+        private Dictionary<Type, object> mapAnalyzers = new Dictionary<Type, object>();
+        private Dictionary<Type, object> mapData = new Dictionary<Type, object>();
 
         public SynchronousApiClient(String address)
         {
@@ -75,7 +79,7 @@ namespace ProxyStarcraft.Client
 
             translator = translator ?? new Translator(abilities, unitTypes, buffs);
 
-            mapData = mapData ?? new MapData(gameInfo.StartRaw);
+            map = map ?? new Map(gameInfo.StartRaw);
             
             var response = Call(new Request { Observation = new RequestObservation() }, r => r?.Observation != null);
             
@@ -83,12 +87,20 @@ namespace ProxyStarcraft.Client
             
             var units = observation.Observation.RawData.Units.Select(u => translator.ConvertUnit(u)).ToList();
 
-            mapData = new MapData(mapData, units, translator, unitTypes, observation.Observation.RawData.MapState.Creep);
+            map = new Map(map, units, translator, unitTypes, observation.Observation.RawData.MapState.Creep);
+
+            foreach (var mapDataType in mapAnalyzers.Keys)
+            {
+                var method = typeof(SynchronousApiClient).GetMethod("InvokeAnalyzer", BindingFlags.NonPublic | BindingFlags.Instance).MakeGenericMethod(mapDataType);
+                method.Invoke(this, new object[] { map });
+            }
+
+            var mapDataArray = mapData.Values.ToArray();
             
-            lastGameState = new GameState(gameInfo, response.Result.Observation, mapData, unitTypes, abilities, buffs, translator);
+            lastGameState = new GameState(gameInfo, response.Result.Observation, map, unitTypes, abilities, buffs, translator, mapDataArray);
             return lastGameState;
         }
-
+        
         public List<uint> GetAbilities(ulong unitTag)
         {
             var queryRequest = new Request { Query = new RequestQuery { } };
@@ -348,6 +360,18 @@ namespace ProxyStarcraft.Client
 
             return joinGameResponse.Result.Status == Status.InGame;
         }
+
+        public void AddMapAnalyzer<T>(IMapAnalyzer<T> analyzer)
+        {
+            if (this.mapAnalyzers.ContainsKey(typeof(T)))
+            {
+                this.mapAnalyzers[typeof(T)] = analyzer;
+            }
+            else
+            {
+                this.mapAnalyzers.Add(typeof(T), analyzer);
+            }
+        }
         
         public async Task<Response> Call(Request request, Predicate<Response> responseValidation = null, int timeoutMs = 500)
         {
@@ -457,6 +481,23 @@ namespace ProxyStarcraft.Client
             }
         }
 
+        private void InvokeAnalyzer<T>(Map map)
+        {
+            var analyzer = (IMapAnalyzer<T>)mapAnalyzers[typeof(T)];
+
+            if (this.mapData.ContainsKey(typeof(T)))
+            {
+                var data = (T)this.mapData[typeof(T)];
+                this.mapData[typeof(T)] = analyzer.Get(data, map);
+            }
+            else
+            {
+                this.mapData.Add(typeof(T), analyzer.GetInitial(map));
+            }
+        }
+
+        #region Web Socket Handlers
+
         private void OnReceivedData(object sender, WebSocket4Net.DataReceivedEventArgs e)
         {
             lock (socketLock)
@@ -511,7 +552,9 @@ namespace ProxyStarcraft.Client
             
             throw new Exception("Unexpected socket error.", e.Exception);
         }
-        
+
+        #endregion
+
         #region IDisposable Support
         private bool disposed = false; // To detect redundant calls
 

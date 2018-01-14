@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProxyStarcraft.Map
+namespace ProxyStarcraft.Maps
 {
     /// <summary>
     /// An <see cref="Area"/> that isn't buildable but also isn't a ramp between two areas.

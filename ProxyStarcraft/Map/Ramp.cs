@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProxyStarcraft.Map
+namespace ProxyStarcraft.Maps
 {
     /// <summary>
     /// An <see cref="Area"/> that cannot be built on, and that connects two areas of distinct elevations.

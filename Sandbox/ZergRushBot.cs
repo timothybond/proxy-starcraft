@@ -3,7 +3,7 @@ using System.Linq;
 using ProxyStarcraft;
 using ProxyStarcraft.Basic;
 using ProxyStarcraft.Commands;
-using ProxyStarcraft.Map;
+using ProxyStarcraft.Maps;
 using ProxyStarcraft.Proto;
 
 namespace Sandbox
@@ -149,6 +149,11 @@ namespace Sandbox
             commands.AddRange(economyBot.Act(gameState));
 
             return commands;
+        }
+
+        public void Register(IGameClient client)
+        {
+            client.AddMapAnalyzer(new BasicMapAnalyzer());
         }
 
         private void BuildQueen(GameState gameState, ZergBuilding hatchery, List<Command> commands)

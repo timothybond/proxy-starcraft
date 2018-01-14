@@ -35,5 +35,13 @@ namespace ProxyStarcraft
         {
             return bots.SelectMany(bot => bot.Act(gameState)).ToList();
         }
+
+        public void Register(IGameClient client)
+        {
+            foreach (var bot in this.bots)
+            {
+                bot.Register(client);
+            }
+        }
     }
 }

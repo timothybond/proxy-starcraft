@@ -31,6 +31,14 @@ namespace ProxyStarcraft
             return ActHelper(gameState);
         }
 
+        public void Register(IGameClient client)
+        {
+            this.RegisterSelf(client);
+            this.nextBot.Register(client);
+        }
+
+        protected abstract void RegisterSelf(IGameClient client);
+
         protected abstract IReadOnlyList<Command> ActHelper(GameState gameState);
     }
 }
