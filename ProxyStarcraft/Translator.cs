@@ -288,7 +288,7 @@ namespace ProxyStarcraft
                 { ZergBuildingType.SporeCrawler, abilitiesByName["Build SporeCrawler"].AbilityId },
                 { ZergBuildingType.Lair, abilitiesByName["Morph Lair"].AbilityId },
                 { ZergBuildingType.HydraliskDen, abilitiesByName["Build HydraliskDen"].AbilityId },
-                { ZergBuildingType.LurkerDen, abilitiesByName["Morph LurkerDen"].AbilityId },
+                { ZergBuildingType.LurkerDen, abilitiesByName["Build LurkerDen"].AbilityId },
                 { ZergBuildingType.InfestationPit, abilitiesByName["Build InfestationPit"].AbilityId },
                 { ZergBuildingType.Spire, abilitiesByName["Build Spire"].AbilityId },
                 { ZergBuildingType.NydusNetwork, abilitiesByName["Build NydusNetwork"].AbilityId },
@@ -929,15 +929,12 @@ namespace ProxyStarcraft
                         case ZergBuildingType.SpineCrawler:
                         case ZergBuildingType.SporeCrawler:
                         case ZergBuildingType.HydraliskDen:
+                        case ZergBuildingType.LurkerDen:
                         case ZergBuildingType.InfestationPit:
                         case ZergBuildingType.Spire:
                         case ZergBuildingType.NydusNetwork:
                         case ZergBuildingType.UltraliskCavern:
                             return ZergUnitType.Drone;
-
-                        case ZergBuildingType.LurkerDen:
-                            return ZergBuildingType.HydraliskDen;
-
                         case ZergBuildingType.GreaterSpire:
                             return ZergBuildingType.Spire;
 
