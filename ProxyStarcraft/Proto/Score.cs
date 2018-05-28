@@ -739,7 +739,7 @@ namespace ProxyStarcraft.Proto {
     public const int IdleProductionTimeFieldNumber = 1;
     private float idleProductionTime_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of time any available structure able to produce a unit is not. The time stacks, as in, three idle barracks will increase idle_production_time three times quicker than just one.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float IdleProductionTime {
@@ -753,7 +753,7 @@ namespace ProxyStarcraft.Proto {
     public const int IdleWorkerTimeFieldNumber = 2;
     private float idleWorkerTime_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of time any worker is not mining. Note a worker building is not idle and three idle workers will increase this value three times quicker than just one.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float IdleWorkerTime {
@@ -767,7 +767,7 @@ namespace ProxyStarcraft.Proto {
     public const int TotalValueUnitsFieldNumber = 3;
     private float totalValueUnits_;
     /// <summary>
-    /// Note the "total_value" fields are a combination of minerals, vespene and a human designer guess. Maybe useful as a delta.
+    /// Sum of minerals and vespene spent on completed units.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float TotalValueUnits {
@@ -780,6 +780,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "total_value_structures" field.</summary>
     public const int TotalValueStructuresFieldNumber = 4;
     private float totalValueStructures_;
+    /// <summary>
+    /// Sum of minerals and vespene spent on completed structures.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float TotalValueStructures {
       get { return totalValueStructures_; }
@@ -792,8 +795,7 @@ namespace ProxyStarcraft.Proto {
     public const int KilledValueUnitsFieldNumber = 5;
     private float killedValueUnits_;
     /// <summary>
-    /// Note the "killed_value" fields are a combination of minerals, vespene and a human designer guess. Maybe useful as a delta.
-    /// The weighting of the combination and the human designer guess is different (not symmetric) with the "total_value" fields!
+    /// Sum of minerals and vespene of units, belonging to the opponent, that the player has destroyed.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float KilledValueUnits {
@@ -806,6 +808,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "killed_value_structures" field.</summary>
     public const int KilledValueStructuresFieldNumber = 6;
     private float killedValueStructures_;
+    /// <summary>
+    /// Sum of minerals and vespene of structures, belonging to the opponent, that the player has destroyed.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float KilledValueStructures {
       get { return killedValueStructures_; }
@@ -817,6 +822,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "collected_minerals" field.</summary>
     public const int CollectedMineralsFieldNumber = 7;
     private float collectedMinerals_;
+    /// <summary>
+    /// Sum of minerals collected by the player.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float CollectedMinerals {
       get { return collectedMinerals_; }
@@ -828,6 +836,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "collected_vespene" field.</summary>
     public const int CollectedVespeneFieldNumber = 8;
     private float collectedVespene_;
+    /// <summary>
+    /// Sum of vespene collected by the player.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float CollectedVespene {
       get { return collectedVespene_; }
@@ -839,6 +850,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "collection_rate_minerals" field.</summary>
     public const int CollectionRateMineralsFieldNumber = 9;
     private float collectionRateMinerals_;
+    /// <summary>
+    /// Estimated income of minerals over the next minute based on the players current income. The unit is minerals per minute.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float CollectionRateMinerals {
       get { return collectionRateMinerals_; }
@@ -850,6 +864,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "collection_rate_vespene" field.</summary>
     public const int CollectionRateVespeneFieldNumber = 10;
     private float collectionRateVespene_;
+    /// <summary>
+    /// Estimated income of vespene over the next minute based on the players current income. The unit is vespene per minute.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float CollectionRateVespene {
       get { return collectionRateVespene_; }
@@ -861,6 +878,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "spent_minerals" field.</summary>
     public const int SpentMineralsFieldNumber = 11;
     private float spentMinerals_;
+    /// <summary>
+    /// Sum of spent minerals at the moment it is spent. For example, this number is incremented by 50 the moment an scv is queued in a command center.  It is decremented by 50 if that unit is canceled.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float SpentMinerals {
       get { return spentMinerals_; }
@@ -872,6 +892,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "spent_vespene" field.</summary>
     public const int SpentVespeneFieldNumber = 12;
     private float spentVespene_;
+    /// <summary>
+    /// Sum of spent vespene at the moment it is spent. For example, this number is incremented by 50 when a reaper is queued but decremented by 50 if it is canceled.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float SpentVespene {
       get { return spentVespene_; }
@@ -883,6 +906,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "food_used" field.</summary>
     public const int FoodUsedFieldNumber = 13;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails foodUsed_;
+    /// <summary>
+    /// Sum of food, or supply, utilized in the categories above.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails FoodUsed {
       get { return foodUsed_; }
@@ -894,6 +920,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "killed_minerals" field.</summary>
     public const int KilledMineralsFieldNumber = 14;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails killedMinerals_;
+    /// <summary>
+    /// Sum of enemies catagories destroyed in minerals.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails KilledMinerals {
       get { return killedMinerals_; }
@@ -905,6 +934,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "killed_vespene" field.</summary>
     public const int KilledVespeneFieldNumber = 15;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails killedVespene_;
+    /// <summary>
+    /// Sum of enemies catagories destroyed in vespene.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails KilledVespene {
       get { return killedVespene_; }
@@ -916,6 +948,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "lost_minerals" field.</summary>
     public const int LostMineralsFieldNumber = 16;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails lostMinerals_;
+    /// <summary>
+    ///  Sum of lost minerals for the player in each category.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails LostMinerals {
       get { return lostMinerals_; }
@@ -927,6 +962,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "lost_vespene" field.</summary>
     public const int LostVespeneFieldNumber = 17;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails lostVespene_;
+    /// <summary>
+    /// Sum of lost vespene for the player in each category.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails LostVespene {
       get { return lostVespene_; }
@@ -938,6 +976,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "friendly_fire_minerals" field.</summary>
     public const int FriendlyFireMineralsFieldNumber = 18;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails friendlyFireMinerals_;
+    /// <summary>
+    /// Sum of the lost minerals via destroying the players own units/buildings.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails FriendlyFireMinerals {
       get { return friendlyFireMinerals_; }
@@ -949,6 +990,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "friendly_fire_vespene" field.</summary>
     public const int FriendlyFireVespeneFieldNumber = 19;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails friendlyFireVespene_;
+    /// <summary>
+    /// Sum of the lost vespene via destroying the players own units/buildings.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails FriendlyFireVespene {
       get { return friendlyFireVespene_; }
@@ -960,6 +1004,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "used_minerals" field.</summary>
     public const int UsedMineralsFieldNumber = 20;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails usedMinerals_;
+    /// <summary>
+    /// Sum of used minerals for the player in each category for each existing unit or upgrade. Therefore if a unit died worth 50 mierals this number will be decremented by 50.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails UsedMinerals {
       get { return usedMinerals_; }
@@ -971,6 +1018,9 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "used_vespene" field.</summary>
     public const int UsedVespeneFieldNumber = 21;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails usedVespene_;
+    /// <summary>
+    /// Sum of used vespene for the player in each category. Therefore if a unit died worth 50 vespene this number will be decremented by 50.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails UsedVespene {
       get { return usedVespene_; }
@@ -983,7 +1033,7 @@ namespace ProxyStarcraft.Proto {
     public const int TotalUsedMineralsFieldNumber = 22;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails totalUsedMinerals_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of used minerals throughout the entire game for each category. Unliked used_minerals, this value is never decremented.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails TotalUsedMinerals {
@@ -997,7 +1047,7 @@ namespace ProxyStarcraft.Proto {
     public const int TotalUsedVespeneFieldNumber = 23;
     private global::ProxyStarcraft.Proto.CategoryScoreDetails totalUsedVespene_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of used vespene throughout the entire game for each category. Unliked used_vespene, this value is never decremented.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.CategoryScoreDetails TotalUsedVespene {
@@ -1011,7 +1061,7 @@ namespace ProxyStarcraft.Proto {
     public const int TotalDamageDealtFieldNumber = 24;
     private global::ProxyStarcraft.Proto.VitalScoreDetails totalDamageDealt_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of damage dealt to the player's opponent for each category.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.VitalScoreDetails TotalDamageDealt {
@@ -1025,7 +1075,7 @@ namespace ProxyStarcraft.Proto {
     public const int TotalDamageTakenFieldNumber = 25;
     private global::ProxyStarcraft.Proto.VitalScoreDetails totalDamageTaken_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of damage taken by the player for each category.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.VitalScoreDetails TotalDamageTaken {
@@ -1039,7 +1089,7 @@ namespace ProxyStarcraft.Proto {
     public const int TotalHealedFieldNumber = 26;
     private global::ProxyStarcraft.Proto.VitalScoreDetails totalHealed_;
     /// <summary>
-    /// Interesting as a delta
+    /// Sum of health healed by the player. Note that technology can be healed (by queens) or repaired (by scvs).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.VitalScoreDetails TotalHealed {

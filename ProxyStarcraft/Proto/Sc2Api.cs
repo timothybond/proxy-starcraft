@@ -25,7 +25,7 @@ namespace ProxyStarcraft.Proto {
             "CgxzYzJhcGkucHJvdG8SDlNDMkFQSVByb3RvY29sGgxjb21tb24ucHJvdG8a",
             "CmRhdGEucHJvdG8aC2RlYnVnLnByb3RvGgtlcnJvci5wcm90bxoLcXVlcnku",
             "cHJvdG8aCXJhdy5wcm90bxoLc2NvcmUucHJvdG8aDXNwYXRpYWwucHJvdG8a",
-            "CHVpLnByb3RvIsAICgdSZXF1ZXN0EjgKC2NyZWF0ZV9nYW1lGAEgASgLMiEu",
+            "CHVpLnByb3RvIv0ICgdSZXF1ZXN0EjgKC2NyZWF0ZV9nYW1lGAEgASgLMiEu",
             "U0MyQVBJUHJvdG9jb2wuUmVxdWVzdENyZWF0ZUdhbWVIABI0Cglqb2luX2dh",
             "bWUYAiABKAsyHy5TQzJBUElQcm90b2NvbC5SZXF1ZXN0Sm9pbkdhbWVIABI6",
             "CgxyZXN0YXJ0X2dhbWUYAyABKAsyIi5TQzJBUElQcm90b2NvbC5SZXF1ZXN0",
@@ -38,203 +38,222 @@ namespace ProxyStarcraft.Proto {
             "b2wuUmVxdWVzdFF1aXRIABI0CglnYW1lX2luZm8YCSABKAsyHy5TQzJBUElQ",
             "cm90b2NvbC5SZXF1ZXN0R2FtZUluZm9IABI5CgtvYnNlcnZhdGlvbhgKIAEo",
             "CzIiLlNDMkFQSVByb3RvY29sLlJlcXVlc3RPYnNlcnZhdGlvbkgAEi8KBmFj",
-            "dGlvbhgLIAEoCzIdLlNDMkFQSVByb3RvY29sLlJlcXVlc3RBY3Rpb25IABIr",
-            "CgRzdGVwGAwgASgLMhsuU0MyQVBJUHJvdG9jb2wuUmVxdWVzdFN0ZXBIABIr",
-            "CgRkYXRhGA0gASgLMhsuU0MyQVBJUHJvdG9jb2wuUmVxdWVzdERhdGFIABIt",
-            "CgVxdWVyeRgOIAEoCzIcLlNDMkFQSVByb3RvY29sLlJlcXVlc3RRdWVyeUgA",
-            "EjgKC3NhdmVfcmVwbGF5GA8gASgLMiEuU0MyQVBJUHJvdG9jb2wuUmVxdWVz",
-            "dFNhdmVSZXBsYXlIABI4CgtyZXBsYXlfaW5mbxgQIAEoCzIhLlNDMkFQSVBy",
-            "b3RvY29sLlJlcXVlc3RSZXBsYXlJbmZvSAASPgoOYXZhaWxhYmxlX21hcHMY",
-            "ESABKAsyJC5TQzJBUElQcm90b2NvbC5SZXF1ZXN0QXZhaWxhYmxlTWFwc0gA",
-            "EjIKCHNhdmVfbWFwGBIgASgLMh4uU0MyQVBJUHJvdG9jb2wuUmVxdWVzdFNh",
-            "dmVNYXBIABIrCgRwaW5nGBMgASgLMhsuU0MyQVBJUHJvdG9jb2wuUmVxdWVz",
-            "dFBpbmdIABItCgVkZWJ1ZxgUIAEoCzIcLlNDMkFQSVByb3RvY29sLlJlcXVl",
-            "c3REZWJ1Z0gAQgkKB3JlcXVlc3QijQkKCFJlc3BvbnNlEjkKC2NyZWF0ZV9n",
-            "YW1lGAEgASgLMiIuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VDcmVhdGVHYW1l",
-            "SAASNQoJam9pbl9nYW1lGAIgASgLMiAuU0MyQVBJUHJvdG9jb2wuUmVzcG9u",
-            "c2VKb2luR2FtZUgAEjsKDHJlc3RhcnRfZ2FtZRgDIAEoCzIjLlNDMkFQSVBy",
-            "b3RvY29sLlJlc3BvbnNlUmVzdGFydEdhbWVIABI7CgxzdGFydF9yZXBsYXkY",
-            "BCABKAsyIy5TQzJBUElQcm90b2NvbC5SZXNwb25zZVN0YXJ0UmVwbGF5SAAS",
-            "NwoKbGVhdmVfZ2FtZRgFIAEoCzIhLlNDMkFQSVByb3RvY29sLlJlc3BvbnNl",
-            "TGVhdmVHYW1lSAASNwoKcXVpY2tfc2F2ZRgGIAEoCzIhLlNDMkFQSVByb3Rv",
-            "Y29sLlJlc3BvbnNlUXVpY2tTYXZlSAASNwoKcXVpY2tfbG9hZBgHIAEoCzIh",
-            "LlNDMkFQSVByb3RvY29sLlJlc3BvbnNlUXVpY2tMb2FkSAASLAoEcXVpdBgI",
-            "IAEoCzIcLlNDMkFQSVByb3RvY29sLlJlc3BvbnNlUXVpdEgAEjUKCWdhbWVf",
-            "aW5mbxgJIAEoCzIgLlNDMkFQSVByb3RvY29sLlJlc3BvbnNlR2FtZUluZm9I",
-            "ABI6CgtvYnNlcnZhdGlvbhgKIAEoCzIjLlNDMkFQSVByb3RvY29sLlJlc3Bv",
-            "bnNlT2JzZXJ2YXRpb25IABIwCgZhY3Rpb24YCyABKAsyHi5TQzJBUElQcm90",
-            "b2NvbC5SZXNwb25zZUFjdGlvbkgAEiwKBHN0ZXAYDCABKAsyHC5TQzJBUElQ",
-            "cm90b2NvbC5SZXNwb25zZVN0ZXBIABIsCgRkYXRhGA0gASgLMhwuU0MyQVBJ",
-            "UHJvdG9jb2wuUmVzcG9uc2VEYXRhSAASLgoFcXVlcnkYDiABKAsyHS5TQzJB",
-            "UElQcm90b2NvbC5SZXNwb25zZVF1ZXJ5SAASOQoLc2F2ZV9yZXBsYXkYDyAB",
-            "KAsyIi5TQzJBUElQcm90b2NvbC5SZXNwb25zZVNhdmVSZXBsYXlIABI5Cgty",
-            "ZXBsYXlfaW5mbxgQIAEoCzIiLlNDMkFQSVByb3RvY29sLlJlc3BvbnNlUmVw",
-            "bGF5SW5mb0gAEj8KDmF2YWlsYWJsZV9tYXBzGBEgASgLMiUuU0MyQVBJUHJv",
-            "dG9jb2wuUmVzcG9uc2VBdmFpbGFibGVNYXBzSAASMwoIc2F2ZV9tYXAYEiAB",
-            "KAsyHy5TQzJBUElQcm90b2NvbC5SZXNwb25zZVNhdmVNYXBIABIsCgRwaW5n",
-            "GBMgASgLMhwuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VQaW5nSAASLgoFZGVi",
-            "dWcYFCABKAsyHS5TQzJBUElQcm90b2NvbC5SZXNwb25zZURlYnVnSAASDQoF",
-            "ZXJyb3IYYiADKAkSJgoGc3RhdHVzGGMgASgOMhYuU0MyQVBJUHJvdG9jb2wu",
-            "U3RhdHVzQgoKCHJlc3BvbnNlItYBChFSZXF1ZXN0Q3JlYXRlR2FtZRItCgls",
-            "b2NhbF9tYXAYASABKAsyGC5TQzJBUElQcm90b2NvbC5Mb2NhbE1hcEgAEhwK",
-            "EmJhdHRsZW5ldF9tYXBfbmFtZRgCIAEoCUgAEjEKDHBsYXllcl9zZXR1cBgD",
-            "IAMoCzIbLlNDMkFQSVByb3RvY29sLlBsYXllclNldHVwEhMKC2Rpc2FibGVf",
-            "Zm9nGAQgASgIEhMKC3JhbmRvbV9zZWVkGAUgASgNEhAKCHJlYWx0aW1lGAYg",
-            "ASgIQgUKA01hcCIuCghMb2NhbE1hcBIQCghtYXBfcGF0aBgBIAEoCRIQCght",
-            "YXBfZGF0YRgHIAEoDCKuAgoSUmVzcG9uc2VDcmVhdGVHYW1lEjcKBWVycm9y",
-            "GAEgASgOMiguU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VDcmVhdGVHYW1lLkVy",
-            "cm9yEhUKDWVycm9yX2RldGFpbHMYAiABKAkixwEKBUVycm9yEhAKDEludmFs",
-            "aWRFcnJvchAAEg4KCk1pc3NpbmdNYXAQARISCg5JbnZhbGlkTWFwUGF0aBAC",
-            "EhIKDkludmFsaWRNYXBEYXRhEAMSEgoOSW52YWxpZE1hcE5hbWUQBBIUChBJ",
-            "bnZhbGlkTWFwSGFuZGxlEAUSFgoSTWlzc2luZ1BsYXllclNldHVwEAYSFgoS",
-            "SW52YWxpZFBsYXllclNldHVwEAcSGgoWTXVsdGlwbGF5ZXJVbnN1cHBvcnRl",
-            "ZBAIIowCCg9SZXF1ZXN0Sm9pbkdhbWUSJAoEcmFjZRgBIAEoDjIULlNDMkFQ",
-            "SVByb3RvY29sLlJhY2VIABIcChJvYnNlcnZlZF9wbGF5ZXJfaWQYAiABKA1I",
-            "ABIxCgdvcHRpb25zGAMgASgLMiAuU0MyQVBJUHJvdG9jb2wuSW50ZXJmYWNl",
-            "T3B0aW9ucxItCgxzZXJ2ZXJfcG9ydHMYBCABKAsyFy5TQzJBUElQcm90b2Nv",
-            "bC5Qb3J0U2V0Ei0KDGNsaWVudF9wb3J0cxgFIAMoCzIXLlNDMkFQSVByb3Rv",
-            "Y29sLlBvcnRTZXQSEwoLc2hhcmVkX3BvcnQYBiABKAVCDwoNcGFydGljaXBh",
-            "dGlvbiIvCgdQb3J0U2V0EhEKCWdhbWVfcG9ydBgBIAEoBRIRCgliYXNlX3Bv",
-            "cnQYAiABKAUilAMKEFJlc3BvbnNlSm9pbkdhbWUSEQoJcGxheWVyX2lkGAEg",
-            "ASgNEjUKBWVycm9yGAIgASgOMiYuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VK",
-            "b2luR2FtZS5FcnJvchIVCg1lcnJvcl9kZXRhaWxzGAMgASgJIp4CCgVFcnJv",
-            "chIQCgxJbnZhbGlkRXJyb3IQABIYChRNaXNzaW5nUGFydGljaXBhdGlvbhAB",
-            "EhsKF0ludmFsaWRPYnNlcnZlZFBsYXllcklkEAISEgoOTWlzc2luZ09wdGlv",
-            "bnMQAxIQCgxNaXNzaW5nUG9ydHMQBBIMCghHYW1lRnVsbBAFEg8KC0xhdW5j",
-            "aEVycm9yEAYSFgoSRmVhdHVyZVVuc3VwcG9ydGVkEAcSEgoOTm9TcGFjZUZv",
-            "clVzZXIQCBITCg9NYXBEb2VzTm90RXhpc3QQCRIRCg1DYW5ub3RPcGVuTWFw",
-            "EAoSEQoNQ2hlY2tzdW1FcnJvchALEhAKDE5ldHdvcmtFcnJvchAMEg4KCk90",
-            "aGVyRXJyb3IQDSIUChJSZXF1ZXN0UmVzdGFydEdhbWUikgEKE1Jlc3BvbnNl",
-            "UmVzdGFydEdhbWUSOAoFZXJyb3IYASABKA4yKS5TQzJBUElQcm90b2NvbC5S",
-            "ZXNwb25zZVJlc3RhcnRHYW1lLkVycm9yEhUKDWVycm9yX2RldGFpbHMYAiAB",
-            "KAkiKgoFRXJyb3ISEAoMSW52YWxpZEVycm9yEAASDwoLTGF1bmNoRXJyb3IQ",
-            "ASLCAQoSUmVxdWVzdFN0YXJ0UmVwbGF5EhUKC3JlcGxheV9wYXRoGAEgASgJ",
-            "SAASFQoLcmVwbGF5X2RhdGEYBSABKAxIABIQCghtYXBfZGF0YRgGIAEoDBIa",
-            "ChJvYnNlcnZlZF9wbGF5ZXJfaWQYAiABKAUSMQoHb3B0aW9ucxgDIAEoCzIg",
-            "LlNDMkFQSVByb3RvY29sLkludGVyZmFjZU9wdGlvbnMSEwoLZGlzYWJsZV9m",
-            "b2cYBCABKAhCCAoGcmVwbGF5IpkCChNSZXNwb25zZVN0YXJ0UmVwbGF5EjgK",
-            "BWVycm9yGAEgASgOMikuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VTdGFydFJl",
-            "cGxheS5FcnJvchIVCg1lcnJvcl9kZXRhaWxzGAIgASgJIrABCgVFcnJvchIQ",
-            "CgxJbnZhbGlkRXJyb3IQABIRCg1NaXNzaW5nUmVwbGF5EAESFQoRSW52YWxp",
-            "ZFJlcGxheVBhdGgQAhIVChFJbnZhbGlkUmVwbGF5RGF0YRADEhIKDkludmFs",
-            "aWRNYXBEYXRhEAQSGwoXSW52YWxpZE9ic2VydmVkUGxheWVySWQQBRISCg5N",
-            "aXNzaW5nT3B0aW9ucxAGEg8KC0xhdW5jaEVycm9yEAciEgoQUmVxdWVzdExl",
-            "YXZlR2FtZSITChFSZXNwb25zZUxlYXZlR2FtZSISChBSZXF1ZXN0UXVpY2tT",
-            "YXZlIhMKEVJlc3BvbnNlUXVpY2tTYXZlIhIKEFJlcXVlc3RRdWlja0xvYWQi",
-            "EwoRUmVzcG9uc2VRdWlja0xvYWQiDQoLUmVxdWVzdFF1aXQiDgoMUmVzcG9u",
-            "c2VRdWl0IhEKD1JlcXVlc3RHYW1lSW5mbyLgAQoQUmVzcG9uc2VHYW1lSW5m",
-            "bxIQCghtYXBfbmFtZRgBIAEoCRIRCgltb2RfbmFtZXMYBiADKAkSFgoObG9j",
-            "YWxfbWFwX3BhdGgYAiABKAkSLwoLcGxheWVyX2luZm8YAyADKAsyGi5TQzJB",
-            "UElQcm90b2NvbC5QbGF5ZXJJbmZvEisKCXN0YXJ0X3JhdxgEIAEoCzIYLlND",
-            "MkFQSVByb3RvY29sLlN0YXJ0UmF3EjEKB29wdGlvbnMYBSABKAsyIC5TQzJB",
-            "UElQcm90b2NvbC5JbnRlcmZhY2VPcHRpb25zIikKElJlcXVlc3RPYnNlcnZh",
-            "dGlvbhITCgtkaXNhYmxlX2ZvZxgBIAEoCCKFAgoTUmVzcG9uc2VPYnNlcnZh",
+            "dGlvbhgLIAEoCzIdLlNDMkFQSVByb3RvY29sLlJlcXVlc3RBY3Rpb25IABI7",
+            "CgpvYnNfYWN0aW9uGBUgASgLMiUuU0MyQVBJUHJvdG9jb2wuUmVxdWVzdE9i",
+            "c2VydmVyQWN0aW9uSAASKwoEc3RlcBgMIAEoCzIbLlNDMkFQSVByb3RvY29s",
+            "LlJlcXVlc3RTdGVwSAASKwoEZGF0YRgNIAEoCzIbLlNDMkFQSVByb3RvY29s",
+            "LlJlcXVlc3REYXRhSAASLQoFcXVlcnkYDiABKAsyHC5TQzJBUElQcm90b2Nv",
+            "bC5SZXF1ZXN0UXVlcnlIABI4CgtzYXZlX3JlcGxheRgPIAEoCzIhLlNDMkFQ",
+            "SVByb3RvY29sLlJlcXVlc3RTYXZlUmVwbGF5SAASOAoLcmVwbGF5X2luZm8Y",
+            "ECABKAsyIS5TQzJBUElQcm90b2NvbC5SZXF1ZXN0UmVwbGF5SW5mb0gAEj4K",
+            "DmF2YWlsYWJsZV9tYXBzGBEgASgLMiQuU0MyQVBJUHJvdG9jb2wuUmVxdWVz",
+            "dEF2YWlsYWJsZU1hcHNIABIyCghzYXZlX21hcBgSIAEoCzIeLlNDMkFQSVBy",
+            "b3RvY29sLlJlcXVlc3RTYXZlTWFwSAASKwoEcGluZxgTIAEoCzIbLlNDMkFQ",
+            "SVByb3RvY29sLlJlcXVlc3RQaW5nSAASLQoFZGVidWcYFCABKAsyHC5TQzJB",
+            "UElQcm90b2NvbC5SZXF1ZXN0RGVidWdIAEIJCgdyZXF1ZXN0IssJCghSZXNw",
+            "b25zZRI5CgtjcmVhdGVfZ2FtZRgBIAEoCzIiLlNDMkFQSVByb3RvY29sLlJl",
+            "c3BvbnNlQ3JlYXRlR2FtZUgAEjUKCWpvaW5fZ2FtZRgCIAEoCzIgLlNDMkFQ",
+            "SVByb3RvY29sLlJlc3BvbnNlSm9pbkdhbWVIABI7CgxyZXN0YXJ0X2dhbWUY",
+            "AyABKAsyIy5TQzJBUElQcm90b2NvbC5SZXNwb25zZVJlc3RhcnRHYW1lSAAS",
+            "OwoMc3RhcnRfcmVwbGF5GAQgASgLMiMuU0MyQVBJUHJvdG9jb2wuUmVzcG9u",
+            "c2VTdGFydFJlcGxheUgAEjcKCmxlYXZlX2dhbWUYBSABKAsyIS5TQzJBUElQ",
+            "cm90b2NvbC5SZXNwb25zZUxlYXZlR2FtZUgAEjcKCnF1aWNrX3NhdmUYBiAB",
+            "KAsyIS5TQzJBUElQcm90b2NvbC5SZXNwb25zZVF1aWNrU2F2ZUgAEjcKCnF1",
+            "aWNrX2xvYWQYByABKAsyIS5TQzJBUElQcm90b2NvbC5SZXNwb25zZVF1aWNr",
+            "TG9hZEgAEiwKBHF1aXQYCCABKAsyHC5TQzJBUElQcm90b2NvbC5SZXNwb25z",
+            "ZVF1aXRIABI1CglnYW1lX2luZm8YCSABKAsyIC5TQzJBUElQcm90b2NvbC5S",
+            "ZXNwb25zZUdhbWVJbmZvSAASOgoLb2JzZXJ2YXRpb24YCiABKAsyIy5TQzJB",
+            "UElQcm90b2NvbC5SZXNwb25zZU9ic2VydmF0aW9uSAASMAoGYWN0aW9uGAsg",
+            "ASgLMh4uU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VBY3Rpb25IABI8CgpvYnNf",
+            "YWN0aW9uGBUgASgLMiYuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VPYnNlcnZl",
+            "ckFjdGlvbkgAEiwKBHN0ZXAYDCABKAsyHC5TQzJBUElQcm90b2NvbC5SZXNw",
+            "b25zZVN0ZXBIABIsCgRkYXRhGA0gASgLMhwuU0MyQVBJUHJvdG9jb2wuUmVz",
+            "cG9uc2VEYXRhSAASLgoFcXVlcnkYDiABKAsyHS5TQzJBUElQcm90b2NvbC5S",
+            "ZXNwb25zZVF1ZXJ5SAASOQoLc2F2ZV9yZXBsYXkYDyABKAsyIi5TQzJBUElQ",
+            "cm90b2NvbC5SZXNwb25zZVNhdmVSZXBsYXlIABI5CgtyZXBsYXlfaW5mbxgQ",
+            "IAEoCzIiLlNDMkFQSVByb3RvY29sLlJlc3BvbnNlUmVwbGF5SW5mb0gAEj8K",
+            "DmF2YWlsYWJsZV9tYXBzGBEgASgLMiUuU0MyQVBJUHJvdG9jb2wuUmVzcG9u",
+            "c2VBdmFpbGFibGVNYXBzSAASMwoIc2F2ZV9tYXAYEiABKAsyHy5TQzJBUElQ",
+            "cm90b2NvbC5SZXNwb25zZVNhdmVNYXBIABIsCgRwaW5nGBMgASgLMhwuU0My",
+            "QVBJUHJvdG9jb2wuUmVzcG9uc2VQaW5nSAASLgoFZGVidWcYFCABKAsyHS5T",
+            "QzJBUElQcm90b2NvbC5SZXNwb25zZURlYnVnSAASDQoFZXJyb3IYYiADKAkS",
+            "JgoGc3RhdHVzGGMgASgOMhYuU0MyQVBJUHJvdG9jb2wuU3RhdHVzQgoKCHJl",
+            "c3BvbnNlItYBChFSZXF1ZXN0Q3JlYXRlR2FtZRItCglsb2NhbF9tYXAYASAB",
+            "KAsyGC5TQzJBUElQcm90b2NvbC5Mb2NhbE1hcEgAEhwKEmJhdHRsZW5ldF9t",
+            "YXBfbmFtZRgCIAEoCUgAEjEKDHBsYXllcl9zZXR1cBgDIAMoCzIbLlNDMkFQ",
+            "SVByb3RvY29sLlBsYXllclNldHVwEhMKC2Rpc2FibGVfZm9nGAQgASgIEhMK",
+            "C3JhbmRvbV9zZWVkGAUgASgNEhAKCHJlYWx0aW1lGAYgASgIQgUKA01hcCIu",
+            "CghMb2NhbE1hcBIQCghtYXBfcGF0aBgBIAEoCRIQCghtYXBfZGF0YRgHIAEo",
+            "DCKuAgoSUmVzcG9uc2VDcmVhdGVHYW1lEjcKBWVycm9yGAEgASgOMiguU0My",
+            "QVBJUHJvdG9jb2wuUmVzcG9uc2VDcmVhdGVHYW1lLkVycm9yEhUKDWVycm9y",
+            "X2RldGFpbHMYAiABKAkixwEKBUVycm9yEhAKDEludmFsaWRFcnJvchAAEg4K",
+            "Ck1pc3NpbmdNYXAQARISCg5JbnZhbGlkTWFwUGF0aBACEhIKDkludmFsaWRN",
+            "YXBEYXRhEAMSEgoOSW52YWxpZE1hcE5hbWUQBBIUChBJbnZhbGlkTWFwSGFu",
+            "ZGxlEAUSFgoSTWlzc2luZ1BsYXllclNldHVwEAYSFgoSSW52YWxpZFBsYXll",
+            "clNldHVwEAcSGgoWTXVsdGlwbGF5ZXJVbnN1cHBvcnRlZBAIIowCCg9SZXF1",
+            "ZXN0Sm9pbkdhbWUSJAoEcmFjZRgBIAEoDjIULlNDMkFQSVByb3RvY29sLlJh",
+            "Y2VIABIcChJvYnNlcnZlZF9wbGF5ZXJfaWQYAiABKA1IABIxCgdvcHRpb25z",
+            "GAMgASgLMiAuU0MyQVBJUHJvdG9jb2wuSW50ZXJmYWNlT3B0aW9ucxItCgxz",
+            "ZXJ2ZXJfcG9ydHMYBCABKAsyFy5TQzJBUElQcm90b2NvbC5Qb3J0U2V0Ei0K",
+            "DGNsaWVudF9wb3J0cxgFIAMoCzIXLlNDMkFQSVByb3RvY29sLlBvcnRTZXQS",
+            "EwoLc2hhcmVkX3BvcnQYBiABKAVCDwoNcGFydGljaXBhdGlvbiIvCgdQb3J0",
+            "U2V0EhEKCWdhbWVfcG9ydBgBIAEoBRIRCgliYXNlX3BvcnQYAiABKAUilAMK",
+            "EFJlc3BvbnNlSm9pbkdhbWUSEQoJcGxheWVyX2lkGAEgASgNEjUKBWVycm9y",
+            "GAIgASgOMiYuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VKb2luR2FtZS5FcnJv",
+            "chIVCg1lcnJvcl9kZXRhaWxzGAMgASgJIp4CCgVFcnJvchIQCgxJbnZhbGlk",
+            "RXJyb3IQABIYChRNaXNzaW5nUGFydGljaXBhdGlvbhABEhsKF0ludmFsaWRP",
+            "YnNlcnZlZFBsYXllcklkEAISEgoOTWlzc2luZ09wdGlvbnMQAxIQCgxNaXNz",
+            "aW5nUG9ydHMQBBIMCghHYW1lRnVsbBAFEg8KC0xhdW5jaEVycm9yEAYSFgoS",
+            "RmVhdHVyZVVuc3VwcG9ydGVkEAcSEgoOTm9TcGFjZUZvclVzZXIQCBITCg9N",
+            "YXBEb2VzTm90RXhpc3QQCRIRCg1DYW5ub3RPcGVuTWFwEAoSEQoNQ2hlY2tz",
+            "dW1FcnJvchALEhAKDE5ldHdvcmtFcnJvchAMEg4KCk90aGVyRXJyb3IQDSIU",
+            "ChJSZXF1ZXN0UmVzdGFydEdhbWUikgEKE1Jlc3BvbnNlUmVzdGFydEdhbWUS",
+            "OAoFZXJyb3IYASABKA4yKS5TQzJBUElQcm90b2NvbC5SZXNwb25zZVJlc3Rh",
+            "cnRHYW1lLkVycm9yEhUKDWVycm9yX2RldGFpbHMYAiABKAkiKgoFRXJyb3IS",
+            "EAoMSW52YWxpZEVycm9yEAASDwoLTGF1bmNoRXJyb3IQASLUAQoSUmVxdWVz",
+            "dFN0YXJ0UmVwbGF5EhUKC3JlcGxheV9wYXRoGAEgASgJSAASFQoLcmVwbGF5",
+            "X2RhdGEYBSABKAxIABIQCghtYXBfZGF0YRgGIAEoDBIaChJvYnNlcnZlZF9w",
+            "bGF5ZXJfaWQYAiABKAUSMQoHb3B0aW9ucxgDIAEoCzIgLlNDMkFQSVByb3Rv",
+            "Y29sLkludGVyZmFjZU9wdGlvbnMSEwoLZGlzYWJsZV9mb2cYBCABKAgSEAoI",
+            "cmVhbHRpbWUYByABKAhCCAoGcmVwbGF5IpkCChNSZXNwb25zZVN0YXJ0UmVw",
+            "bGF5EjgKBWVycm9yGAEgASgOMikuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VT",
+            "dGFydFJlcGxheS5FcnJvchIVCg1lcnJvcl9kZXRhaWxzGAIgASgJIrABCgVF",
+            "cnJvchIQCgxJbnZhbGlkRXJyb3IQABIRCg1NaXNzaW5nUmVwbGF5EAESFQoR",
+            "SW52YWxpZFJlcGxheVBhdGgQAhIVChFJbnZhbGlkUmVwbGF5RGF0YRADEhIK",
+            "DkludmFsaWRNYXBEYXRhEAQSGwoXSW52YWxpZE9ic2VydmVkUGxheWVySWQQ",
+            "BRISCg5NaXNzaW5nT3B0aW9ucxAGEg8KC0xhdW5jaEVycm9yEAciEgoQUmVx",
+            "dWVzdExlYXZlR2FtZSITChFSZXNwb25zZUxlYXZlR2FtZSISChBSZXF1ZXN0",
+            "UXVpY2tTYXZlIhMKEVJlc3BvbnNlUXVpY2tTYXZlIhIKEFJlcXVlc3RRdWlj",
+            "a0xvYWQiEwoRUmVzcG9uc2VRdWlja0xvYWQiDQoLUmVxdWVzdFF1aXQiDgoM",
+            "UmVzcG9uc2VRdWl0IhEKD1JlcXVlc3RHYW1lSW5mbyLgAQoQUmVzcG9uc2VH",
+            "YW1lSW5mbxIQCghtYXBfbmFtZRgBIAEoCRIRCgltb2RfbmFtZXMYBiADKAkS",
+            "FgoObG9jYWxfbWFwX3BhdGgYAiABKAkSLwoLcGxheWVyX2luZm8YAyADKAsy",
+            "Gi5TQzJBUElQcm90b2NvbC5QbGF5ZXJJbmZvEisKCXN0YXJ0X3JhdxgEIAEo",
+            "CzIYLlNDMkFQSVByb3RvY29sLlN0YXJ0UmF3EjEKB29wdGlvbnMYBSABKAsy",
+            "IC5TQzJBUElQcm90b2NvbC5JbnRlcmZhY2VPcHRpb25zIikKElJlcXVlc3RP",
+            "YnNlcnZhdGlvbhITCgtkaXNhYmxlX2ZvZxgBIAEoCCKFAgoTUmVzcG9uc2VP",
+            "YnNlcnZhdGlvbhInCgdhY3Rpb25zGAEgAygLMhYuU0MyQVBJUHJvdG9jb2wu",
+            "QWN0aW9uEjIKDWFjdGlvbl9lcnJvcnMYAiADKAsyGy5TQzJBUElQcm90b2Nv",
+            "bC5BY3Rpb25FcnJvchIwCgtvYnNlcnZhdGlvbhgDIAEoCzIbLlNDMkFQSVBy",
+            "b3RvY29sLk9ic2VydmF0aW9uEjMKDXBsYXllcl9yZXN1bHQYBCADKAsyHC5T",
+            "QzJBUElQcm90b2NvbC5QbGF5ZXJSZXN1bHQSKgoEY2hhdBgFIAMoCzIcLlND",
+            "MkFQSVByb3RvY29sLkNoYXRSZWNlaXZlZCIyCgxDaGF0UmVjZWl2ZWQSEQoJ",
+            "cGxheWVyX2lkGAEgASgNEg8KB21lc3NhZ2UYAiABKAkiOAoNUmVxdWVzdEFj",
             "dGlvbhInCgdhY3Rpb25zGAEgAygLMhYuU0MyQVBJUHJvdG9jb2wuQWN0aW9u",
-            "EjIKDWFjdGlvbl9lcnJvcnMYAiADKAsyGy5TQzJBUElQcm90b2NvbC5BY3Rp",
-            "b25FcnJvchIwCgtvYnNlcnZhdGlvbhgDIAEoCzIbLlNDMkFQSVByb3RvY29s",
-            "Lk9ic2VydmF0aW9uEjMKDXBsYXllcl9yZXN1bHQYBCADKAsyHC5TQzJBUElQ",
-            "cm90b2NvbC5QbGF5ZXJSZXN1bHQSKgoEY2hhdBgFIAMoCzIcLlNDMkFQSVBy",
-            "b3RvY29sLkNoYXRSZWNlaXZlZCIyCgxDaGF0UmVjZWl2ZWQSEQoJcGxheWVy",
-            "X2lkGAEgASgFEg8KB21lc3NhZ2UYAiABKAkiOAoNUmVxdWVzdEFjdGlvbhIn",
-            "CgdhY3Rpb25zGAEgAygLMhYuU0MyQVBJUHJvdG9jb2wuQWN0aW9uIj4KDlJl",
-            "c3BvbnNlQWN0aW9uEiwKBnJlc3VsdBgBIAMoDjIcLlNDMkFQSVByb3RvY29s",
-            "LkFjdGlvblJlc3VsdCIcCgtSZXF1ZXN0U3RlcBINCgVjb3VudBgBIAEoDSIO",
-            "CgxSZXNwb25zZVN0ZXAibwoLUmVxdWVzdERhdGESEgoKYWJpbGl0eV9pZBgB",
-            "IAEoCBIUCgx1bml0X3R5cGVfaWQYAiABKAgSEgoKdXBncmFkZV9pZBgDIAEo",
-            "CBIPCgdidWZmX2lkGAQgASgIEhEKCWVmZmVjdF9pZBgFIAEoCCLwAQoMUmVz",
-            "cG9uc2VEYXRhEi4KCWFiaWxpdGllcxgBIAMoCzIbLlNDMkFQSVByb3RvY29s",
-            "LkFiaWxpdHlEYXRhEisKBXVuaXRzGAIgAygLMhwuU0MyQVBJUHJvdG9jb2wu",
-            "VW5pdFR5cGVEYXRhEi0KCHVwZ3JhZGVzGAMgAygLMhsuU0MyQVBJUHJvdG9j",
-            "b2wuVXBncmFkZURhdGESJwoFYnVmZnMYBCADKAsyGC5TQzJBUElQcm90b2Nv",
-            "bC5CdWZmRGF0YRIrCgdlZmZlY3RzGAUgAygLMhouU0MyQVBJUHJvdG9jb2wu",
-            "RWZmZWN0RGF0YSITChFSZXF1ZXN0U2F2ZVJlcGxheSIiChJSZXNwb25zZVNh",
-            "dmVSZXBsYXkSDAoEZGF0YRgBIAEoDCJiChFSZXF1ZXN0UmVwbGF5SW5mbxIV",
-            "CgtyZXBsYXlfcGF0aBgBIAEoCUgAEhUKC3JlcGxheV9kYXRhGAIgASgMSAAS",
-            "FQoNZG93bmxvYWRfZGF0YRgDIAEoCEIICgZyZXBsYXkinwEKD1BsYXllcklu",
-            "Zm9FeHRyYRIvCgtwbGF5ZXJfaW5mbxgBIAEoCzIaLlNDMkFQSVByb3RvY29s",
-            "LlBsYXllckluZm8SMwoNcGxheWVyX3Jlc3VsdBgCIAEoCzIcLlNDMkFQSVBy",
-            "b3RvY29sLlBsYXllclJlc3VsdBISCgpwbGF5ZXJfbW1yGAMgASgFEhIKCnBs",
-            "YXllcl9hcG0YBCABKAUi1QMKElJlc3BvbnNlUmVwbGF5SW5mbxIQCghtYXBf",
-            "bmFtZRgBIAEoCRIWCg5sb2NhbF9tYXBfcGF0aBgCIAEoCRI0CgtwbGF5ZXJf",
-            "aW5mbxgDIAMoCzIfLlNDMkFQSVByb3RvY29sLlBsYXllckluZm9FeHRyYRIb",
-            "ChNnYW1lX2R1cmF0aW9uX2xvb3BzGAQgASgNEh0KFWdhbWVfZHVyYXRpb25f",
-            "c2Vjb25kcxgFIAEoAhIUCgxnYW1lX3ZlcnNpb24YBiABKAkSFAoMZGF0YV92",
-            "ZXJzaW9uGAsgASgJEhIKCmRhdGFfYnVpbGQYByABKA0SEgoKYmFzZV9idWls",
-            "ZBgIIAEoDRI3CgVlcnJvchgJIAEoDjIoLlNDMkFQSVByb3RvY29sLlJlc3Bv",
-            "bnNlUmVwbGF5SW5mby5FcnJvchIVCg1lcnJvcl9kZXRhaWxzGAogASgJIn8K",
-            "BUVycm9yEhAKDEludmFsaWRFcnJvchAAEhEKDU1pc3NpbmdSZXBsYXkQARIV",
-            "ChFJbnZhbGlkUmVwbGF5UGF0aBACEhUKEUludmFsaWRSZXBsYXlEYXRhEAMS",
-            "EAoMUGFyc2luZ0Vycm9yEAQSEQoNRG93bmxvYWRFcnJvchAFIhYKFFJlcXVl",
-            "c3RBdmFpbGFibGVNYXBzIk0KFVJlc3BvbnNlQXZhaWxhYmxlTWFwcxIXCg9s",
-            "b2NhbF9tYXBfcGF0aHMYASADKAkSGwoTYmF0dGxlbmV0X21hcF9uYW1lcxgC",
-            "IAMoCSI0Cg5SZXF1ZXN0U2F2ZU1hcBIQCghtYXBfcGF0aBgBIAEoCRIQCght",
-            "YXBfZGF0YRgCIAEoDCJ2Cg9SZXNwb25zZVNhdmVNYXASNAoFZXJyb3IYASAB",
-            "KA4yJS5TQzJBUElQcm90b2NvbC5SZXNwb25zZVNhdmVNYXAuRXJyb3IiLQoF",
-            "RXJyb3ISEAoMSW52YWxpZEVycm9yEAASEgoOSW52YWxpZE1hcERhdGEQASIN",
-            "CgtSZXF1ZXN0UGluZyJiCgxSZXNwb25zZVBpbmcSFAoMZ2FtZV92ZXJzaW9u",
-            "GAEgASgJEhQKDGRhdGFfdmVyc2lvbhgCIAEoCRISCgpkYXRhX2J1aWxkGAMg",
-            "ASgNEhIKCmJhc2VfYnVpbGQYBCABKA0iOwoMUmVxdWVzdERlYnVnEisKBWRl",
-            "YnVnGAEgAygLMhwuU0MyQVBJUHJvdG9jb2wuRGVidWdDb21tYW5kIg8KDVJl",
-            "c3BvbnNlRGVidWciiwEKC1BsYXllclNldHVwEigKBHR5cGUYASABKA4yGi5T",
-            "QzJBUElQcm90b2NvbC5QbGF5ZXJUeXBlEiIKBHJhY2UYAiABKA4yFC5TQzJB",
-            "UElQcm90b2NvbC5SYWNlEi4KCmRpZmZpY3VsdHkYAyABKA4yGi5TQzJBUElQ",
-            "cm90b2NvbC5EaWZmaWN1bHR5IoUBChJTcGF0aWFsQ2FtZXJhU2V0dXASDQoF",
-            "d2lkdGgYASABKAISKwoKcmVzb2x1dGlvbhgCIAEoCzIXLlNDMkFQSVByb3Rv",
-            "Y29sLlNpemUyREkSMwoSbWluaW1hcF9yZXNvbHV0aW9uGAMgASgLMhcuU0My",
-            "QVBJUHJvdG9jb2wuU2l6ZTJESSKdAQoQSW50ZXJmYWNlT3B0aW9ucxILCgNy",
-            "YXcYASABKAgSDQoFc2NvcmUYAiABKAgSOQoNZmVhdHVyZV9sYXllchgDIAEo",
-            "CzIiLlNDMkFQSVByb3RvY29sLlNwYXRpYWxDYW1lcmFTZXR1cBIyCgZyZW5k",
-            "ZXIYBCABKAsyIi5TQzJBUElQcm90b2NvbC5TcGF0aWFsQ2FtZXJhU2V0dXAi",
-            "0gEKClBsYXllckluZm8SEQoJcGxheWVyX2lkGAEgASgNEigKBHR5cGUYAiAB",
-            "KA4yGi5TQzJBUElQcm90b2NvbC5QbGF5ZXJUeXBlEiwKDnJhY2VfcmVxdWVz",
-            "dGVkGAMgASgOMhQuU0MyQVBJUHJvdG9jb2wuUmFjZRIpCgtyYWNlX2FjdHVh",
-            "bBgEIAEoDjIULlNDMkFQSVByb3RvY29sLlJhY2USLgoKZGlmZmljdWx0eRgF",
-            "IAEoDjIaLlNDMkFQSVByb3RvY29sLkRpZmZpY3VsdHki7wEKDFBsYXllckNv",
-            "bW1vbhIRCglwbGF5ZXJfaWQYASABKA0SEAoIbWluZXJhbHMYAiABKA0SDwoH",
-            "dmVzcGVuZRgDIAEoDRIQCghmb29kX2NhcBgEIAEoDRIRCglmb29kX3VzZWQY",
-            "BSABKA0SEQoJZm9vZF9hcm15GAYgASgNEhQKDGZvb2Rfd29ya2VycxgHIAEo",
-            "DRIZChFpZGxlX3dvcmtlcl9jb3VudBgIIAEoDRISCgphcm15X2NvdW50GAkg",
-            "ASgNEhcKD3dhcnBfZ2F0ZV9jb3VudBgKIAEoDRITCgtsYXJ2YV9jb3VudBgL",
-            "IAEoDSK2AwoLT2JzZXJ2YXRpb24SEQoJZ2FtZV9sb29wGAkgASgNEjMKDXBs",
-            "YXllcl9jb21tb24YASABKAsyHC5TQzJBUElQcm90b2NvbC5QbGF5ZXJDb21t",
-            "b24SJQoGYWxlcnRzGAogAygOMhUuU0MyQVBJUHJvdG9jb2wuQWxlcnQSMwoJ",
-            "YWJpbGl0aWVzGAMgAygLMiAuU0MyQVBJUHJvdG9jb2wuQXZhaWxhYmxlQWJp",
-            "bGl0eRIkCgVzY29yZRgEIAEoCzIVLlNDMkFQSVByb3RvY29sLlNjb3JlEjAK",
-            "CHJhd19kYXRhGAUgASgLMh4uU0MyQVBJUHJvdG9jb2wuT2JzZXJ2YXRpb25S",
-            "YXcSQwoSZmVhdHVyZV9sYXllcl9kYXRhGAYgASgLMicuU0MyQVBJUHJvdG9j",
-            "b2wuT2JzZXJ2YXRpb25GZWF0dXJlTGF5ZXISNgoLcmVuZGVyX2RhdGEYByAB",
-            "KAsyIS5TQzJBUElQcm90b2NvbC5PYnNlcnZhdGlvblJlbmRlchIuCgd1aV9k",
-            "YXRhGAggASgLMh0uU0MyQVBJUHJvdG9jb2wuT2JzZXJ2YXRpb25VSSKBAgoG",
-            "QWN0aW9uEi0KCmFjdGlvbl9yYXcYASABKAsyGS5TQzJBUElQcm90b2NvbC5B",
-            "Y3Rpb25SYXcSOwoUYWN0aW9uX2ZlYXR1cmVfbGF5ZXIYAiABKAsyHS5TQzJB",
-            "UElQcm90b2NvbC5BY3Rpb25TcGF0aWFsEjQKDWFjdGlvbl9yZW5kZXIYAyAB",
-            "KAsyHS5TQzJBUElQcm90b2NvbC5BY3Rpb25TcGF0aWFsEisKCWFjdGlvbl91",
-            "aRgEIAEoCzIYLlNDMkFQSVByb3RvY29sLkFjdGlvblVJEigKBGNoYXQYBSAD",
-            "KAsyGi5TQzJBUElQcm90b2NvbC5BY3Rpb25DaGF0IooBCgpBY3Rpb25DaGF0",
-            "EjMKB2NoYW5uZWwYASABKA4yIi5TQzJBUElQcm90b2NvbC5BY3Rpb25DaGF0",
-            "LkNoYW5uZWwSDwoHbWVzc2FnZRgCIAEoCSI2CgdDaGFubmVsEhIKDkludmFs",
-            "aWRDaGFubmVsEAASDQoJQnJvYWRjYXN0EAESCAoEVGVhbRACImEKC0FjdGlv",
-            "bkVycm9yEhAKCHVuaXRfdGFnGAEgASgEEhIKCmFiaWxpdHlfaWQYAiABKAQS",
-            "LAoGcmVzdWx0GAMgASgOMhwuU0MyQVBJUHJvdG9jb2wuQWN0aW9uUmVzdWx0",
-            "IkkKDFBsYXllclJlc3VsdBIRCglwbGF5ZXJfaWQYASABKA0SJgoGcmVzdWx0",
-            "GAIgASgOMhYuU0MyQVBJUHJvdG9jb2wuUmVzdWx0KncKBlN0YXR1cxISCg5p",
-            "bnZhbGlkX3N0YXR1cxAAEgwKCGxhdW5jaGVkEAESDQoJaW5pdF9nYW1lEAIS",
-            "CwoHaW5fZ2FtZRADEg0KCWluX3JlcGxheRAEEgkKBWVuZGVkEAUSCAoEcXVp",
-            "dBAGEgsKB3Vua25vd24QYyqtAQoKRGlmZmljdWx0eRIVChFJbnZhbGlkRGlm",
-            "ZmljdWx0eRAAEgwKCFZlcnlFYXN5EAESCAoERWFzeRACEgoKBk1lZGl1bRAD",
-            "Eg4KCk1lZGl1bUhhcmQQBBIICgRIYXJkEAUSCgoGSGFyZGVyEAYSDAoIVmVy",
-            "eUhhcmQQBxIPCgtDaGVhdFZpc2lvbhAIEg4KCkNoZWF0TW9uZXkQCRIPCgtD",
-            "aGVhdEluc2FuZRAKKlAKClBsYXllclR5cGUSFQoRSW52YWxpZFBsYXllclR5",
-            "cGUQABIPCgtQYXJ0aWNpcGFudBABEgwKCENvbXB1dGVyEAISDAoIT2JzZXJ2",
-            "ZXIQAypLCgVBbGVydBIQCgxJbnZhbGlkQWxlcnQQABIZChVOdWNsZWFyTGF1",
-            "bmNoRGV0ZWN0ZWQQARIVChFOeWR1c1dvcm1EZXRlY3RlZBACKkwKBlJlc3Vs",
-            "dBIRCg1JbnZhbGlkUmVzdWx0EAASCwoHVmljdG9yeRABEgoKBkRlZmVhdBAC",
-            "EgcKA1RpZRADEg0KCVVuZGVjaWRlZBAEYgZwcm90bzM="));
+            "Ij4KDlJlc3BvbnNlQWN0aW9uEiwKBnJlc3VsdBgBIAMoDjIcLlNDMkFQSVBy",
+            "b3RvY29sLkFjdGlvblJlc3VsdCJIChVSZXF1ZXN0T2JzZXJ2ZXJBY3Rpb24S",
+            "LwoHYWN0aW9ucxgBIAMoCzIeLlNDMkFQSVByb3RvY29sLk9ic2VydmVyQWN0",
+            "aW9uIhgKFlJlc3BvbnNlT2JzZXJ2ZXJBY3Rpb24iHAoLUmVxdWVzdFN0ZXAS",
+            "DQoFY291bnQYASABKA0iDgoMUmVzcG9uc2VTdGVwIm8KC1JlcXVlc3REYXRh",
+            "EhIKCmFiaWxpdHlfaWQYASABKAgSFAoMdW5pdF90eXBlX2lkGAIgASgIEhIK",
+            "CnVwZ3JhZGVfaWQYAyABKAgSDwoHYnVmZl9pZBgEIAEoCBIRCgllZmZlY3Rf",
+            "aWQYBSABKAgi8AEKDFJlc3BvbnNlRGF0YRIuCglhYmlsaXRpZXMYASADKAsy",
+            "Gy5TQzJBUElQcm90b2NvbC5BYmlsaXR5RGF0YRIrCgV1bml0cxgCIAMoCzIc",
+            "LlNDMkFQSVByb3RvY29sLlVuaXRUeXBlRGF0YRItCgh1cGdyYWRlcxgDIAMo",
+            "CzIbLlNDMkFQSVByb3RvY29sLlVwZ3JhZGVEYXRhEicKBWJ1ZmZzGAQgAygL",
+            "MhguU0MyQVBJUHJvdG9jb2wuQnVmZkRhdGESKwoHZWZmZWN0cxgFIAMoCzIa",
+            "LlNDMkFQSVByb3RvY29sLkVmZmVjdERhdGEiEwoRUmVxdWVzdFNhdmVSZXBs",
+            "YXkiIgoSUmVzcG9uc2VTYXZlUmVwbGF5EgwKBGRhdGEYASABKAwiYgoRUmVx",
+            "dWVzdFJlcGxheUluZm8SFQoLcmVwbGF5X3BhdGgYASABKAlIABIVCgtyZXBs",
+            "YXlfZGF0YRgCIAEoDEgAEhUKDWRvd25sb2FkX2RhdGEYAyABKAhCCAoGcmVw",
+            "bGF5Ip8BCg9QbGF5ZXJJbmZvRXh0cmESLwoLcGxheWVyX2luZm8YASABKAsy",
+            "Gi5TQzJBUElQcm90b2NvbC5QbGF5ZXJJbmZvEjMKDXBsYXllcl9yZXN1bHQY",
+            "AiABKAsyHC5TQzJBUElQcm90b2NvbC5QbGF5ZXJSZXN1bHQSEgoKcGxheWVy",
+            "X21tchgDIAEoBRISCgpwbGF5ZXJfYXBtGAQgASgFItUDChJSZXNwb25zZVJl",
+            "cGxheUluZm8SEAoIbWFwX25hbWUYASABKAkSFgoObG9jYWxfbWFwX3BhdGgY",
+            "AiABKAkSNAoLcGxheWVyX2luZm8YAyADKAsyHy5TQzJBUElQcm90b2NvbC5Q",
+            "bGF5ZXJJbmZvRXh0cmESGwoTZ2FtZV9kdXJhdGlvbl9sb29wcxgEIAEoDRId",
+            "ChVnYW1lX2R1cmF0aW9uX3NlY29uZHMYBSABKAISFAoMZ2FtZV92ZXJzaW9u",
+            "GAYgASgJEhQKDGRhdGFfdmVyc2lvbhgLIAEoCRISCgpkYXRhX2J1aWxkGAcg",
+            "ASgNEhIKCmJhc2VfYnVpbGQYCCABKA0SNwoFZXJyb3IYCSABKA4yKC5TQzJB",
+            "UElQcm90b2NvbC5SZXNwb25zZVJlcGxheUluZm8uRXJyb3ISFQoNZXJyb3Jf",
+            "ZGV0YWlscxgKIAEoCSJ/CgVFcnJvchIQCgxJbnZhbGlkRXJyb3IQABIRCg1N",
+            "aXNzaW5nUmVwbGF5EAESFQoRSW52YWxpZFJlcGxheVBhdGgQAhIVChFJbnZh",
+            "bGlkUmVwbGF5RGF0YRADEhAKDFBhcnNpbmdFcnJvchAEEhEKDURvd25sb2Fk",
+            "RXJyb3IQBSIWChRSZXF1ZXN0QXZhaWxhYmxlTWFwcyJNChVSZXNwb25zZUF2",
+            "YWlsYWJsZU1hcHMSFwoPbG9jYWxfbWFwX3BhdGhzGAEgAygJEhsKE2JhdHRs",
+            "ZW5ldF9tYXBfbmFtZXMYAiADKAkiNAoOUmVxdWVzdFNhdmVNYXASEAoIbWFw",
+            "X3BhdGgYASABKAkSEAoIbWFwX2RhdGEYAiABKAwidgoPUmVzcG9uc2VTYXZl",
+            "TWFwEjQKBWVycm9yGAEgASgOMiUuU0MyQVBJUHJvdG9jb2wuUmVzcG9uc2VT",
+            "YXZlTWFwLkVycm9yIi0KBUVycm9yEhAKDEludmFsaWRFcnJvchAAEhIKDklu",
+            "dmFsaWRNYXBEYXRhEAEiDQoLUmVxdWVzdFBpbmciYgoMUmVzcG9uc2VQaW5n",
+            "EhQKDGdhbWVfdmVyc2lvbhgBIAEoCRIUCgxkYXRhX3ZlcnNpb24YAiABKAkS",
+            "EgoKZGF0YV9idWlsZBgDIAEoDRISCgpiYXNlX2J1aWxkGAQgASgNIjsKDFJl",
+            "cXVlc3REZWJ1ZxIrCgVkZWJ1ZxgBIAMoCzIcLlNDMkFQSVByb3RvY29sLkRl",
+            "YnVnQ29tbWFuZCIPCg1SZXNwb25zZURlYnVnIosBCgtQbGF5ZXJTZXR1cBIo",
+            "CgR0eXBlGAEgASgOMhouU0MyQVBJUHJvdG9jb2wuUGxheWVyVHlwZRIiCgRy",
+            "YWNlGAIgASgOMhQuU0MyQVBJUHJvdG9jb2wuUmFjZRIuCgpkaWZmaWN1bHR5",
+            "GAMgASgOMhouU0MyQVBJUHJvdG9jb2wuRGlmZmljdWx0eSKFAQoSU3BhdGlh",
+            "bENhbWVyYVNldHVwEg0KBXdpZHRoGAEgASgCEisKCnJlc29sdXRpb24YAiAB",
+            "KAsyFy5TQzJBUElQcm90b2NvbC5TaXplMkRJEjMKEm1pbmltYXBfcmVzb2x1",
+            "dGlvbhgDIAEoCzIXLlNDMkFQSVByb3RvY29sLlNpemUyREkinQEKEEludGVy",
+            "ZmFjZU9wdGlvbnMSCwoDcmF3GAEgASgIEg0KBXNjb3JlGAIgASgIEjkKDWZl",
+            "YXR1cmVfbGF5ZXIYAyABKAsyIi5TQzJBUElQcm90b2NvbC5TcGF0aWFsQ2Ft",
+            "ZXJhU2V0dXASMgoGcmVuZGVyGAQgASgLMiIuU0MyQVBJUHJvdG9jb2wuU3Bh",
+            "dGlhbENhbWVyYVNldHVwItIBCgpQbGF5ZXJJbmZvEhEKCXBsYXllcl9pZBgB",
+            "IAEoDRIoCgR0eXBlGAIgASgOMhouU0MyQVBJUHJvdG9jb2wuUGxheWVyVHlw",
+            "ZRIsCg5yYWNlX3JlcXVlc3RlZBgDIAEoDjIULlNDMkFQSVByb3RvY29sLlJh",
+            "Y2USKQoLcmFjZV9hY3R1YWwYBCABKA4yFC5TQzJBUElQcm90b2NvbC5SYWNl",
+            "Ei4KCmRpZmZpY3VsdHkYBSABKA4yGi5TQzJBUElQcm90b2NvbC5EaWZmaWN1",
+            "bHR5Iu8BCgxQbGF5ZXJDb21tb24SEQoJcGxheWVyX2lkGAEgASgNEhAKCG1p",
+            "bmVyYWxzGAIgASgNEg8KB3Zlc3BlbmUYAyABKA0SEAoIZm9vZF9jYXAYBCAB",
+            "KA0SEQoJZm9vZF91c2VkGAUgASgNEhEKCWZvb2RfYXJteRgGIAEoDRIUCgxm",
+            "b29kX3dvcmtlcnMYByABKA0SGQoRaWRsZV93b3JrZXJfY291bnQYCCABKA0S",
+            "EgoKYXJteV9jb3VudBgJIAEoDRIXCg93YXJwX2dhdGVfY291bnQYCiABKA0S",
+            "EwoLbGFydmFfY291bnQYCyABKA0itgMKC09ic2VydmF0aW9uEhEKCWdhbWVf",
+            "bG9vcBgJIAEoDRIzCg1wbGF5ZXJfY29tbW9uGAEgASgLMhwuU0MyQVBJUHJv",
+            "dG9jb2wuUGxheWVyQ29tbW9uEiUKBmFsZXJ0cxgKIAMoDjIVLlNDMkFQSVBy",
+            "b3RvY29sLkFsZXJ0EjMKCWFiaWxpdGllcxgDIAMoCzIgLlNDMkFQSVByb3Rv",
+            "Y29sLkF2YWlsYWJsZUFiaWxpdHkSJAoFc2NvcmUYBCABKAsyFS5TQzJBUElQ",
+            "cm90b2NvbC5TY29yZRIwCghyYXdfZGF0YRgFIAEoCzIeLlNDMkFQSVByb3Rv",
+            "Y29sLk9ic2VydmF0aW9uUmF3EkMKEmZlYXR1cmVfbGF5ZXJfZGF0YRgGIAEo",
+            "CzInLlNDMkFQSVByb3RvY29sLk9ic2VydmF0aW9uRmVhdHVyZUxheWVyEjYK",
+            "C3JlbmRlcl9kYXRhGAcgASgLMiEuU0MyQVBJUHJvdG9jb2wuT2JzZXJ2YXRp",
+            "b25SZW5kZXISLgoHdWlfZGF0YRgIIAEoCzIdLlNDMkFQSVByb3RvY29sLk9i",
+            "c2VydmF0aW9uVUkiiAIKBkFjdGlvbhItCgphY3Rpb25fcmF3GAEgASgLMhku",
+            "U0MyQVBJUHJvdG9jb2wuQWN0aW9uUmF3EjsKFGFjdGlvbl9mZWF0dXJlX2xh",
+            "eWVyGAIgASgLMh0uU0MyQVBJUHJvdG9jb2wuQWN0aW9uU3BhdGlhbBI0Cg1h",
+            "Y3Rpb25fcmVuZGVyGAMgASgLMh0uU0MyQVBJUHJvdG9jb2wuQWN0aW9uU3Bh",
+            "dGlhbBIrCglhY3Rpb25fdWkYBCABKAsyGC5TQzJBUElQcm90b2NvbC5BY3Rp",
+            "b25VSRIvCgthY3Rpb25fY2hhdBgGIAEoCzIaLlNDMkFQSVByb3RvY29sLkFj",
+            "dGlvbkNoYXQiigEKCkFjdGlvbkNoYXQSMwoHY2hhbm5lbBgBIAEoDjIiLlND",
+            "MkFQSVByb3RvY29sLkFjdGlvbkNoYXQuQ2hhbm5lbBIPCgdtZXNzYWdlGAIg",
+            "ASgJIjYKB0NoYW5uZWwSEgoOSW52YWxpZENoYW5uZWwQABINCglCcm9hZGNh",
+            "c3QQARIICgRUZWFtEAIiYQoLQWN0aW9uRXJyb3ISEAoIdW5pdF90YWcYASAB",
+            "KAQSEgoKYWJpbGl0eV9pZBgCIAEoBBIsCgZyZXN1bHQYAyABKA4yHC5TQzJB",
+            "UElQcm90b2NvbC5BY3Rpb25SZXN1bHQizAIKDk9ic2VydmVyQWN0aW9uEk0K",
+            "EnBsYXllcl9wZXJzcGVjdGl2ZRgBIAEoCzIvLlNDMkFQSVByb3RvY29sLkFj",
+            "dGlvbk9ic2VydmVyUGxheWVyUGVyc3BlY3RpdmVIABI/CgtjYW1lcmFfbW92",
+            "ZRgCIAEoCzIoLlNDMkFQSVByb3RvY29sLkFjdGlvbk9ic2VydmVyQ2FtZXJh",
+            "TW92ZUgAElAKFGNhbWVyYV9mb2xsb3dfcGxheWVyGAMgASgLMjAuU0MyQVBJ",
+            "UHJvdG9jb2wuQWN0aW9uT2JzZXJ2ZXJDYW1lcmFGb2xsb3dQbGF5ZXJIABJO",
+            "ChNjYW1lcmFfZm9sbG93X3VuaXRzGAQgASgLMi8uU0MyQVBJUHJvdG9jb2wu",
+            "QWN0aW9uT2JzZXJ2ZXJDYW1lcmFGb2xsb3dVbml0c0gAQggKBmFjdGlvbiI0",
+            "Ch9BY3Rpb25PYnNlcnZlclBsYXllclBlcnNwZWN0aXZlEhEKCXBsYXllcl9p",
+            "ZBgBIAEoDSJYChhBY3Rpb25PYnNlcnZlckNhbWVyYU1vdmUSKgoJd29ybGRf",
+            "cG9zGAEgASgLMhcuU0MyQVBJUHJvdG9jb2wuUG9pbnQyRBIQCghkaXN0YW5j",
+            "ZRgCIAEoAiI1CiBBY3Rpb25PYnNlcnZlckNhbWVyYUZvbGxvd1BsYXllchIR",
+            "CglwbGF5ZXJfaWQYASABKA0iNAofQWN0aW9uT2JzZXJ2ZXJDYW1lcmFGb2xs",
+            "b3dVbml0cxIRCgl1bml0X3RhZ3MYASADKAQiSQoMUGxheWVyUmVzdWx0EhEK",
+            "CXBsYXllcl9pZBgBIAEoDRImCgZyZXN1bHQYAiABKA4yFi5TQzJBUElQcm90",
+            "b2NvbC5SZXN1bHQqdwoGU3RhdHVzEhIKDmludmFsaWRfc3RhdHVzEAASDAoI",
+            "bGF1bmNoZWQQARINCglpbml0X2dhbWUQAhILCgdpbl9nYW1lEAMSDQoJaW5f",
+            "cmVwbGF5EAQSCQoFZW5kZWQQBRIICgRxdWl0EAYSCwoHdW5rbm93bhBjKq0B",
+            "CgpEaWZmaWN1bHR5EhUKEUludmFsaWREaWZmaWN1bHR5EAASDAoIVmVyeUVh",
+            "c3kQARIICgRFYXN5EAISCgoGTWVkaXVtEAMSDgoKTWVkaXVtSGFyZBAEEggK",
+            "BEhhcmQQBRIKCgZIYXJkZXIQBhIMCghWZXJ5SGFyZBAHEg8KC0NoZWF0Vmlz",
+            "aW9uEAgSDgoKQ2hlYXRNb25leRAJEg8KC0NoZWF0SW5zYW5lEAoqUAoKUGxh",
+            "eWVyVHlwZRIVChFJbnZhbGlkUGxheWVyVHlwZRAAEg8KC1BhcnRpY2lwYW50",
+            "EAESDAoIQ29tcHV0ZXIQAhIMCghPYnNlcnZlchADKksKBUFsZXJ0EhAKDElu",
+            "dmFsaWRBbGVydBAAEhkKFU51Y2xlYXJMYXVuY2hEZXRlY3RlZBABEhUKEU55",
+            "ZHVzV29ybURldGVjdGVkEAIqTAoGUmVzdWx0EhEKDUludmFsaWRSZXN1bHQQ",
+            "ABILCgdWaWN0b3J5EAESCgoGRGVmZWF0EAISBwoDVGllEAMSDQoJVW5kZWNp",
+            "ZGVkEARiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, global::ProxyStarcraft.Proto.DataReflection.Descriptor, global::ProxyStarcraft.Proto.DebugReflection.Descriptor, global::ProxyStarcraft.Proto.ErrorReflection.Descriptor, global::ProxyStarcraft.Proto.QueryReflection.Descriptor, global::ProxyStarcraft.Proto.RawReflection.Descriptor, global::ProxyStarcraft.Proto.ScoreReflection.Descriptor, global::ProxyStarcraft.Proto.SpatialReflection.Descriptor, global::ProxyStarcraft.Proto.UiReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Status), typeof(global::ProxyStarcraft.Proto.Difficulty), typeof(global::ProxyStarcraft.Proto.PlayerType), typeof(global::ProxyStarcraft.Proto.Alert), typeof(global::ProxyStarcraft.Proto.Result), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Request), global::ProxyStarcraft.Proto.Request.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug" }, new[]{ "Request" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Response), global::ProxyStarcraft.Proto.Response.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug", "Error", "Status" }, new[]{ "Response" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Request), global::ProxyStarcraft.Proto.Request.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "ObsAction", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug" }, new[]{ "Request" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Response), global::ProxyStarcraft.Proto.Response.Parser, new[]{ "CreateGame", "JoinGame", "RestartGame", "StartReplay", "LeaveGame", "QuickSave", "QuickLoad", "Quit", "GameInfo", "Observation", "Action", "ObsAction", "Step", "Data", "Query", "SaveReplay", "ReplayInfo", "AvailableMaps", "SaveMap", "Ping", "Debug", "Error", "Status" }, new[]{ "Response" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestCreateGame), global::ProxyStarcraft.Proto.RequestCreateGame.Parser, new[]{ "LocalMap", "BattlenetMapName", "PlayerSetup", "DisableFog", "RandomSeed", "Realtime" }, new[]{ "Map" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.LocalMap), global::ProxyStarcraft.Proto.LocalMap.Parser, new[]{ "MapPath", "MapData" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseCreateGame), global::ProxyStarcraft.Proto.ResponseCreateGame.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseCreateGame.Types.Error) }, null),
@@ -243,7 +262,7 @@ namespace ProxyStarcraft.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseJoinGame), global::ProxyStarcraft.Proto.ResponseJoinGame.Parser, new[]{ "PlayerId", "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseJoinGame.Types.Error) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestRestartGame), global::ProxyStarcraft.Proto.RequestRestartGame.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseRestartGame), global::ProxyStarcraft.Proto.ResponseRestartGame.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseRestartGame.Types.Error) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestStartReplay), global::ProxyStarcraft.Proto.RequestStartReplay.Parser, new[]{ "ReplayPath", "ReplayData", "MapData", "ObservedPlayerId", "Options", "DisableFog" }, new[]{ "Replay" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestStartReplay), global::ProxyStarcraft.Proto.RequestStartReplay.Parser, new[]{ "ReplayPath", "ReplayData", "MapData", "ObservedPlayerId", "Options", "DisableFog", "Realtime" }, new[]{ "Replay" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseStartReplay), global::ProxyStarcraft.Proto.ResponseStartReplay.Parser, new[]{ "Error", "ErrorDetails" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ResponseStartReplay.Types.Error) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestLeaveGame), global::ProxyStarcraft.Proto.RequestLeaveGame.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseLeaveGame), global::ProxyStarcraft.Proto.ResponseLeaveGame.Parser, null, null, null, null),
@@ -260,6 +279,8 @@ namespace ProxyStarcraft.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ChatReceived), global::ProxyStarcraft.Proto.ChatReceived.Parser, new[]{ "PlayerId", "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestAction), global::ProxyStarcraft.Proto.RequestAction.Parser, new[]{ "Actions" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseAction), global::ProxyStarcraft.Proto.ResponseAction.Parser, new[]{ "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestObserverAction), global::ProxyStarcraft.Proto.RequestObserverAction.Parser, new[]{ "Actions" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseObserverAction), global::ProxyStarcraft.Proto.ResponseObserverAction.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestStep), global::ProxyStarcraft.Proto.RequestStep.Parser, new[]{ "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ResponseStep), global::ProxyStarcraft.Proto.ResponseStep.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.RequestData), global::ProxyStarcraft.Proto.RequestData.Parser, new[]{ "AbilityId", "UnitTypeId", "UpgradeId", "BuffId", "EffectId" }, null, null, null),
@@ -283,9 +304,14 @@ namespace ProxyStarcraft.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerInfo), global::ProxyStarcraft.Proto.PlayerInfo.Parser, new[]{ "PlayerId", "Type", "RaceRequested", "RaceActual", "Difficulty" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerCommon), global::ProxyStarcraft.Proto.PlayerCommon.Parser, new[]{ "PlayerId", "Minerals", "Vespene", "FoodCap", "FoodUsed", "FoodArmy", "FoodWorkers", "IdleWorkerCount", "ArmyCount", "WarpGateCount", "LarvaCount" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Observation), global::ProxyStarcraft.Proto.Observation.Parser, new[]{ "GameLoop", "PlayerCommon", "Alerts", "Abilities", "Score", "RawData", "FeatureLayerData", "RenderData", "UiData" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Action), global::ProxyStarcraft.Proto.Action.Parser, new[]{ "ActionRaw", "ActionFeatureLayer", "ActionRender", "ActionUi", "Chat" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Action), global::ProxyStarcraft.Proto.Action.Parser, new[]{ "ActionRaw", "ActionFeatureLayer", "ActionRender", "ActionUi", "ActionChat" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionChat), global::ProxyStarcraft.Proto.ActionChat.Parser, new[]{ "Channel", "Message" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.ActionChat.Types.Channel) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionError), global::ProxyStarcraft.Proto.ActionError.Parser, new[]{ "UnitTag", "AbilityId", "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ObserverAction), global::ProxyStarcraft.Proto.ObserverAction.Parser, new[]{ "PlayerPerspective", "CameraMove", "CameraFollowPlayer", "CameraFollowUnits" }, new[]{ "Action" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionObserverPlayerPerspective), global::ProxyStarcraft.Proto.ActionObserverPlayerPerspective.Parser, new[]{ "PlayerId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionObserverCameraMove), global::ProxyStarcraft.Proto.ActionObserverCameraMove.Parser, new[]{ "WorldPos", "Distance" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionObserverCameraFollowPlayer), global::ProxyStarcraft.Proto.ActionObserverCameraFollowPlayer.Parser, new[]{ "PlayerId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.ActionObserverCameraFollowUnits), global::ProxyStarcraft.Proto.ActionObserverCameraFollowUnits.Parser, new[]{ "UnitTags" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.PlayerResult), global::ProxyStarcraft.Proto.PlayerResult.Parser, new[]{ "PlayerId", "Result" }, null, null, null)
           }));
     }
@@ -421,6 +447,9 @@ namespace ProxyStarcraft.Proto {
         case RequestOneofCase.Action:
           Action = other.Action.Clone();
           break;
+        case RequestOneofCase.ObsAction:
+          ObsAction = other.ObsAction.Clone();
+          break;
         case RequestOneofCase.Step:
           Step = other.Step.Clone();
           break;
@@ -530,7 +559,7 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "quick_save" field.</summary>
     public const int QuickSaveFieldNumber = 6;
     /// <summary>
-    /// Not implemented. Saves game to an in-memory bookmark.
+    /// Saves game to an in-memory bookmark.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.RequestQuickSave QuickSave {
@@ -544,7 +573,7 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "quick_load" field.</summary>
     public const int QuickLoadFieldNumber = 7;
     /// <summary>
-    /// Not implemented. Loads from an in-memory bookmark.
+    /// Loads from an in-memory bookmark.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.RequestQuickLoad QuickLoad {
@@ -600,7 +629,7 @@ namespace ProxyStarcraft.Proto {
     /// <summary>Field number for the "action" field.</summary>
     public const int ActionFieldNumber = 11;
     /// <summary>
-    /// Executes an action.
+    /// Executes an action for a participant.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ProxyStarcraft.Proto.RequestAction Action {
@@ -608,6 +637,20 @@ namespace ProxyStarcraft.Proto {
       set {
         request_ = value;
         requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Action;
+      }
+    }
+
+    /// <summary>Field number for the "obs_action" field.</summary>
+    public const int ObsActionFieldNumber = 21;
+    /// <summary>
+    /// Executes an action for an observer.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.RequestObserverAction ObsAction {
+      get { return requestCase_ == RequestOneofCase.ObsAction ? (global::ProxyStarcraft.Proto.RequestObserverAction) request_ : null; }
+      set {
+        request_ = value;
+        requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.ObsAction;
       }
     }
 
@@ -752,6 +795,7 @@ namespace ProxyStarcraft.Proto {
       GameInfo = 9,
       Observation = 10,
       Action = 11,
+      ObsAction = 21,
       Step = 12,
       Data = 13,
       Query = 14,
@@ -798,6 +842,7 @@ namespace ProxyStarcraft.Proto {
       if (!object.Equals(GameInfo, other.GameInfo)) return false;
       if (!object.Equals(Observation, other.Observation)) return false;
       if (!object.Equals(Action, other.Action)) return false;
+      if (!object.Equals(ObsAction, other.ObsAction)) return false;
       if (!object.Equals(Step, other.Step)) return false;
       if (!object.Equals(Data, other.Data)) return false;
       if (!object.Equals(Query, other.Query)) return false;
@@ -825,6 +870,7 @@ namespace ProxyStarcraft.Proto {
       if (requestCase_ == RequestOneofCase.GameInfo) hash ^= GameInfo.GetHashCode();
       if (requestCase_ == RequestOneofCase.Observation) hash ^= Observation.GetHashCode();
       if (requestCase_ == RequestOneofCase.Action) hash ^= Action.GetHashCode();
+      if (requestCase_ == RequestOneofCase.ObsAction) hash ^= ObsAction.GetHashCode();
       if (requestCase_ == RequestOneofCase.Step) hash ^= Step.GetHashCode();
       if (requestCase_ == RequestOneofCase.Data) hash ^= Data.GetHashCode();
       if (requestCase_ == RequestOneofCase.Query) hash ^= Query.GetHashCode();
@@ -925,6 +971,10 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(162, 1);
         output.WriteMessage(Debug);
       }
+      if (requestCase_ == RequestOneofCase.ObsAction) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(ObsAction);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -962,6 +1012,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (requestCase_ == RequestOneofCase.Action) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Action);
+      }
+      if (requestCase_ == RequestOneofCase.ObsAction) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ObsAction);
       }
       if (requestCase_ == RequestOneofCase.Step) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Step);
@@ -1031,6 +1084,9 @@ namespace ProxyStarcraft.Proto {
           break;
         case RequestOneofCase.Action:
           Action = other.Action;
+          break;
+        case RequestOneofCase.ObsAction:
+          ObsAction = other.ObsAction;
           break;
         case RequestOneofCase.Step:
           Step = other.Step;
@@ -1251,6 +1307,15 @@ namespace ProxyStarcraft.Proto {
             Debug = subBuilder;
             break;
           }
+          case 170: {
+            global::ProxyStarcraft.Proto.RequestObserverAction subBuilder = new global::ProxyStarcraft.Proto.RequestObserverAction();
+            if (requestCase_ == RequestOneofCase.ObsAction) {
+              subBuilder.MergeFrom(ObsAction);
+            }
+            input.ReadMessage(subBuilder);
+            ObsAction = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -1316,6 +1381,9 @@ namespace ProxyStarcraft.Proto {
           break;
         case ResponseOneofCase.Action:
           Action = other.Action.Clone();
+          break;
+        case ResponseOneofCase.ObsAction:
+          ObsAction = other.ObsAction.Clone();
           break;
         case ResponseOneofCase.Step:
           Step = other.Step.Clone();
@@ -1474,6 +1542,17 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "obs_action" field.</summary>
+    public const int ObsActionFieldNumber = 21;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ResponseObserverAction ObsAction {
+      get { return responseCase_ == ResponseOneofCase.ObsAction ? (global::ProxyStarcraft.Proto.ResponseObserverAction) response_ : null; }
+      set {
+        response_ = value;
+        responseCase_ = value == null ? ResponseOneofCase.None : ResponseOneofCase.ObsAction;
+      }
+    }
+
     /// <summary>Field number for the "step" field.</summary>
     public const int StepFieldNumber = 12;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1618,6 +1697,7 @@ namespace ProxyStarcraft.Proto {
       GameInfo = 9,
       Observation = 10,
       Action = 11,
+      ObsAction = 21,
       Step = 12,
       Data = 13,
       Query = 14,
@@ -1664,6 +1744,7 @@ namespace ProxyStarcraft.Proto {
       if (!object.Equals(GameInfo, other.GameInfo)) return false;
       if (!object.Equals(Observation, other.Observation)) return false;
       if (!object.Equals(Action, other.Action)) return false;
+      if (!object.Equals(ObsAction, other.ObsAction)) return false;
       if (!object.Equals(Step, other.Step)) return false;
       if (!object.Equals(Data, other.Data)) return false;
       if (!object.Equals(Query, other.Query)) return false;
@@ -1693,6 +1774,7 @@ namespace ProxyStarcraft.Proto {
       if (responseCase_ == ResponseOneofCase.GameInfo) hash ^= GameInfo.GetHashCode();
       if (responseCase_ == ResponseOneofCase.Observation) hash ^= Observation.GetHashCode();
       if (responseCase_ == ResponseOneofCase.Action) hash ^= Action.GetHashCode();
+      if (responseCase_ == ResponseOneofCase.ObsAction) hash ^= ObsAction.GetHashCode();
       if (responseCase_ == ResponseOneofCase.Step) hash ^= Step.GetHashCode();
       if (responseCase_ == ResponseOneofCase.Data) hash ^= Data.GetHashCode();
       if (responseCase_ == ResponseOneofCase.Query) hash ^= Query.GetHashCode();
@@ -1795,6 +1877,10 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(162, 1);
         output.WriteMessage(Debug);
       }
+      if (responseCase_ == ResponseOneofCase.ObsAction) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(ObsAction);
+      }
       error_.WriteTo(output, _repeated_error_codec);
       if (Status != 0) {
         output.WriteRawTag(152, 6);
@@ -1837,6 +1923,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (responseCase_ == ResponseOneofCase.Action) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Action);
+      }
+      if (responseCase_ == ResponseOneofCase.ObsAction) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ObsAction);
       }
       if (responseCase_ == ResponseOneofCase.Step) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Step);
@@ -1914,6 +2003,9 @@ namespace ProxyStarcraft.Proto {
           break;
         case ResponseOneofCase.Action:
           Action = other.Action;
+          break;
+        case ResponseOneofCase.ObsAction:
+          ObsAction = other.ObsAction;
           break;
         case ResponseOneofCase.Step:
           Step = other.Step;
@@ -2132,6 +2224,15 @@ namespace ProxyStarcraft.Proto {
             }
             input.ReadMessage(subBuilder);
             Debug = subBuilder;
+            break;
+          }
+          case 170: {
+            global::ProxyStarcraft.Proto.ResponseObserverAction subBuilder = new global::ProxyStarcraft.Proto.ResponseObserverAction();
+            if (responseCase_ == ResponseOneofCase.ObsAction) {
+              subBuilder.MergeFrom(ObsAction);
+            }
+            input.ReadMessage(subBuilder);
+            ObsAction = subBuilder;
             break;
           }
           case 786: {
@@ -3711,6 +3812,7 @@ namespace ProxyStarcraft.Proto {
       observedPlayerId_ = other.observedPlayerId_;
       Options = other.options_ != null ? other.Options.Clone() : null;
       disableFog_ = other.disableFog_;
+      realtime_ = other.realtime_;
       switch (other.ReplayCase) {
         case ReplayOneofCase.ReplayPath:
           ReplayPath = other.ReplayPath;
@@ -3796,6 +3898,17 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "realtime" field.</summary>
+    public const int RealtimeFieldNumber = 7;
+    private bool realtime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Realtime {
+      get { return realtime_; }
+      set {
+        realtime_ = value;
+      }
+    }
+
     private object replay_;
     /// <summary>Enum of possible cases for the "replay" oneof.</summary>
     public enum ReplayOneofCase {
@@ -3834,6 +3947,7 @@ namespace ProxyStarcraft.Proto {
       if (ObservedPlayerId != other.ObservedPlayerId) return false;
       if (!object.Equals(Options, other.Options)) return false;
       if (DisableFog != other.DisableFog) return false;
+      if (Realtime != other.Realtime) return false;
       if (ReplayCase != other.ReplayCase) return false;
       return true;
     }
@@ -3847,6 +3961,7 @@ namespace ProxyStarcraft.Proto {
       if (ObservedPlayerId != 0) hash ^= ObservedPlayerId.GetHashCode();
       if (options_ != null) hash ^= Options.GetHashCode();
       if (DisableFog != false) hash ^= DisableFog.GetHashCode();
+      if (Realtime != false) hash ^= Realtime.GetHashCode();
       hash ^= (int) replayCase_;
       return hash;
     }
@@ -3882,6 +3997,10 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(50);
         output.WriteBytes(MapData);
       }
+      if (Realtime != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(Realtime);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3903,6 +4022,9 @@ namespace ProxyStarcraft.Proto {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Options);
       }
       if (DisableFog != false) {
+        size += 1 + 1;
+      }
+      if (Realtime != false) {
         size += 1 + 1;
       }
       return size;
@@ -3927,6 +4049,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.DisableFog != false) {
         DisableFog = other.DisableFog;
+      }
+      if (other.Realtime != false) {
+        Realtime = other.Realtime;
       }
       switch (other.ReplayCase) {
         case ReplayOneofCase.ReplayPath:
@@ -3972,6 +4097,10 @@ namespace ProxyStarcraft.Proto {
           }
           case 50: {
             MapData = input.ReadBytes();
+            break;
+          }
+          case 56: {
+            Realtime = input.ReadBool();
             break;
           }
         }
@@ -5588,9 +5717,9 @@ namespace ProxyStarcraft.Proto {
 
     /// <summary>Field number for the "player_id" field.</summary>
     public const int PlayerIdFieldNumber = 1;
-    private int playerId_;
+    private uint playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int PlayerId {
+    public uint PlayerId {
       get { return playerId_; }
       set {
         playerId_ = value;
@@ -5643,7 +5772,7 @@ namespace ProxyStarcraft.Proto {
     public void WriteTo(pb::CodedOutputStream output) {
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(PlayerId);
+        output.WriteUInt32(PlayerId);
       }
       if (Message.Length != 0) {
         output.WriteRawTag(18);
@@ -5655,7 +5784,7 @@ namespace ProxyStarcraft.Proto {
     public int CalculateSize() {
       int size = 0;
       if (PlayerId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
       }
       if (Message.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
@@ -5685,7 +5814,7 @@ namespace ProxyStarcraft.Proto {
             input.SkipLastField();
             break;
           case 8: {
-            PlayerId = input.ReadInt32();
+            PlayerId = input.ReadUInt32();
             break;
           }
           case 18: {
@@ -5923,6 +6052,207 @@ namespace ProxyStarcraft.Proto {
   /// <summary>
   ///-----------------------------------------------------------------------------
   /// </summary>
+  public sealed partial class RequestObserverAction : pb::IMessage<RequestObserverAction> {
+    private static readonly pb::MessageParser<RequestObserverAction> _parser = new pb::MessageParser<RequestObserverAction>(() => new RequestObserverAction());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RequestObserverAction> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[27]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestObserverAction() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestObserverAction(RequestObserverAction other) : this() {
+      actions_ = other.actions_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestObserverAction Clone() {
+      return new RequestObserverAction(this);
+    }
+
+    /// <summary>Field number for the "actions" field.</summary>
+    public const int ActionsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ObserverAction> _repeated_actions_codec
+        = pb::FieldCodec.ForMessage(10, global::ProxyStarcraft.Proto.ObserverAction.Parser);
+    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ObserverAction> actions_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ObserverAction>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ObserverAction> Actions {
+      get { return actions_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RequestObserverAction);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RequestObserverAction other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!actions_.Equals(other.actions_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= actions_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      actions_.WriteTo(output, _repeated_actions_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += actions_.CalculateSize(_repeated_actions_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RequestObserverAction other) {
+      if (other == null) {
+        return;
+      }
+      actions_.Add(other.actions_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            actions_.AddEntriesFrom(input, _repeated_actions_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ResponseObserverAction : pb::IMessage<ResponseObserverAction> {
+    private static readonly pb::MessageParser<ResponseObserverAction> _parser = new pb::MessageParser<ResponseObserverAction>(() => new ResponseObserverAction());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ResponseObserverAction> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[28]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseObserverAction() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseObserverAction(ResponseObserverAction other) : this() {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseObserverAction Clone() {
+      return new ResponseObserverAction(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ResponseObserverAction);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ResponseObserverAction other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ResponseObserverAction other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  ///-----------------------------------------------------------------------------
+  /// </summary>
   public sealed partial class RequestStep : pb::IMessage<RequestStep> {
     private static readonly pb::MessageParser<RequestStep> _parser = new pb::MessageParser<RequestStep>(() => new RequestStep());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5930,7 +6260,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[27]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6050,7 +6380,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[28]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[30]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6142,7 +6472,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[29]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[31]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6371,7 +6701,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[30]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6563,7 +6893,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[31]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[33]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6652,7 +6982,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[32]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[34]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6772,7 +7102,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[33]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6982,7 +7312,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[34]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7195,7 +7525,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[35]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[37]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7603,7 +7933,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[36]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7697,7 +8027,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[37]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7836,7 +8166,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[38]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7987,7 +8317,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[39]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8119,7 +8449,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[40]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8208,7 +8538,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[41]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[43]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8412,7 +8742,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[42]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[44]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8521,7 +8851,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[43]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[45]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8610,7 +8940,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[44]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[46]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8786,7 +9116,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[45]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[47]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8971,7 +9301,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[46]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[48]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9193,7 +9523,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[47]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[49]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9429,7 +9759,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[48]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[50]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9826,7 +10156,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[49]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[51]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10203,7 +10533,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[50]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[52]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10224,7 +10554,7 @@ namespace ProxyStarcraft.Proto {
       ActionFeatureLayer = other.actionFeatureLayer_ != null ? other.ActionFeatureLayer.Clone() : null;
       ActionRender = other.actionRender_ != null ? other.ActionRender.Clone() : null;
       ActionUi = other.actionUi_ != null ? other.ActionUi.Clone() : null;
-      chat_ = other.chat_.Clone();
+      ActionChat = other.actionChat_ != null ? other.ActionChat.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10288,17 +10618,18 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
-    /// <summary>Field number for the "chat" field.</summary>
-    public const int ChatFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::ProxyStarcraft.Proto.ActionChat> _repeated_chat_codec
-        = pb::FieldCodec.ForMessage(42, global::ProxyStarcraft.Proto.ActionChat.Parser);
-    private readonly pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionChat> chat_ = new pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionChat>();
+    /// <summary>Field number for the "action_chat" field.</summary>
+    public const int ActionChatFieldNumber = 6;
+    private global::ProxyStarcraft.Proto.ActionChat actionChat_;
     /// <summary>
     /// Chat messages as a player typing into the chat channel.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ProxyStarcraft.Proto.ActionChat> Chat {
-      get { return chat_; }
+    public global::ProxyStarcraft.Proto.ActionChat ActionChat {
+      get { return actionChat_; }
+      set {
+        actionChat_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10318,7 +10649,7 @@ namespace ProxyStarcraft.Proto {
       if (!object.Equals(ActionFeatureLayer, other.ActionFeatureLayer)) return false;
       if (!object.Equals(ActionRender, other.ActionRender)) return false;
       if (!object.Equals(ActionUi, other.ActionUi)) return false;
-      if(!chat_.Equals(other.chat_)) return false;
+      if (!object.Equals(ActionChat, other.ActionChat)) return false;
       return true;
     }
 
@@ -10329,7 +10660,7 @@ namespace ProxyStarcraft.Proto {
       if (actionFeatureLayer_ != null) hash ^= ActionFeatureLayer.GetHashCode();
       if (actionRender_ != null) hash ^= ActionRender.GetHashCode();
       if (actionUi_ != null) hash ^= ActionUi.GetHashCode();
-      hash ^= chat_.GetHashCode();
+      if (actionChat_ != null) hash ^= ActionChat.GetHashCode();
       return hash;
     }
 
@@ -10356,7 +10687,10 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(34);
         output.WriteMessage(ActionUi);
       }
-      chat_.WriteTo(output, _repeated_chat_codec);
+      if (actionChat_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ActionChat);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10374,7 +10708,9 @@ namespace ProxyStarcraft.Proto {
       if (actionUi_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ActionUi);
       }
-      size += chat_.CalculateSize(_repeated_chat_codec);
+      if (actionChat_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ActionChat);
+      }
       return size;
     }
 
@@ -10407,7 +10743,12 @@ namespace ProxyStarcraft.Proto {
         }
         ActionUi.MergeFrom(other.ActionUi);
       }
-      chat_.Add(other.chat_);
+      if (other.actionChat_ != null) {
+        if (actionChat_ == null) {
+          actionChat_ = new global::ProxyStarcraft.Proto.ActionChat();
+        }
+        ActionChat.MergeFrom(other.ActionChat);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10446,8 +10787,11 @@ namespace ProxyStarcraft.Proto {
             input.ReadMessage(actionUi_);
             break;
           }
-          case 42: {
-            chat_.AddEntriesFrom(input, _repeated_chat_codec);
+          case 50: {
+            if (actionChat_ == null) {
+              actionChat_ = new global::ProxyStarcraft.Proto.ActionChat();
+            }
+            input.ReadMessage(actionChat_);
             break;
           }
         }
@@ -10463,7 +10807,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[51]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[53]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10621,7 +10965,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[52]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[54]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10790,6 +11134,775 @@ namespace ProxyStarcraft.Proto {
 
   }
 
+  public sealed partial class ObserverAction : pb::IMessage<ObserverAction> {
+    private static readonly pb::MessageParser<ObserverAction> _parser = new pb::MessageParser<ObserverAction>(() => new ObserverAction());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ObserverAction> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[55]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ObserverAction() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ObserverAction(ObserverAction other) : this() {
+      switch (other.ActionCase) {
+        case ActionOneofCase.PlayerPerspective:
+          PlayerPerspective = other.PlayerPerspective.Clone();
+          break;
+        case ActionOneofCase.CameraMove:
+          CameraMove = other.CameraMove.Clone();
+          break;
+        case ActionOneofCase.CameraFollowPlayer:
+          CameraFollowPlayer = other.CameraFollowPlayer.Clone();
+          break;
+        case ActionOneofCase.CameraFollowUnits:
+          CameraFollowUnits = other.CameraFollowUnits.Clone();
+          break;
+      }
+
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ObserverAction Clone() {
+      return new ObserverAction(this);
+    }
+
+    /// <summary>Field number for the "player_perspective" field.</summary>
+    public const int PlayerPerspectiveFieldNumber = 1;
+    /// <summary>
+    /// Not implemented
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ActionObserverPlayerPerspective PlayerPerspective {
+      get { return actionCase_ == ActionOneofCase.PlayerPerspective ? (global::ProxyStarcraft.Proto.ActionObserverPlayerPerspective) action_ : null; }
+      set {
+        action_ = value;
+        actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.PlayerPerspective;
+      }
+    }
+
+    /// <summary>Field number for the "camera_move" field.</summary>
+    public const int CameraMoveFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ActionObserverCameraMove CameraMove {
+      get { return actionCase_ == ActionOneofCase.CameraMove ? (global::ProxyStarcraft.Proto.ActionObserverCameraMove) action_ : null; }
+      set {
+        action_ = value;
+        actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.CameraMove;
+      }
+    }
+
+    /// <summary>Field number for the "camera_follow_player" field.</summary>
+    public const int CameraFollowPlayerFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ActionObserverCameraFollowPlayer CameraFollowPlayer {
+      get { return actionCase_ == ActionOneofCase.CameraFollowPlayer ? (global::ProxyStarcraft.Proto.ActionObserverCameraFollowPlayer) action_ : null; }
+      set {
+        action_ = value;
+        actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.CameraFollowPlayer;
+      }
+    }
+
+    /// <summary>Field number for the "camera_follow_units" field.</summary>
+    public const int CameraFollowUnitsFieldNumber = 4;
+    /// <summary>
+    /// Not implemented
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.ActionObserverCameraFollowUnits CameraFollowUnits {
+      get { return actionCase_ == ActionOneofCase.CameraFollowUnits ? (global::ProxyStarcraft.Proto.ActionObserverCameraFollowUnits) action_ : null; }
+      set {
+        action_ = value;
+        actionCase_ = value == null ? ActionOneofCase.None : ActionOneofCase.CameraFollowUnits;
+      }
+    }
+
+    private object action_;
+    /// <summary>Enum of possible cases for the "action" oneof.</summary>
+    public enum ActionOneofCase {
+      None = 0,
+      PlayerPerspective = 1,
+      CameraMove = 2,
+      CameraFollowPlayer = 3,
+      CameraFollowUnits = 4,
+    }
+    private ActionOneofCase actionCase_ = ActionOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionOneofCase ActionCase {
+      get { return actionCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearAction() {
+      actionCase_ = ActionOneofCase.None;
+      action_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ObserverAction);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ObserverAction other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(PlayerPerspective, other.PlayerPerspective)) return false;
+      if (!object.Equals(CameraMove, other.CameraMove)) return false;
+      if (!object.Equals(CameraFollowPlayer, other.CameraFollowPlayer)) return false;
+      if (!object.Equals(CameraFollowUnits, other.CameraFollowUnits)) return false;
+      if (ActionCase != other.ActionCase) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (actionCase_ == ActionOneofCase.PlayerPerspective) hash ^= PlayerPerspective.GetHashCode();
+      if (actionCase_ == ActionOneofCase.CameraMove) hash ^= CameraMove.GetHashCode();
+      if (actionCase_ == ActionOneofCase.CameraFollowPlayer) hash ^= CameraFollowPlayer.GetHashCode();
+      if (actionCase_ == ActionOneofCase.CameraFollowUnits) hash ^= CameraFollowUnits.GetHashCode();
+      hash ^= (int) actionCase_;
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (actionCase_ == ActionOneofCase.PlayerPerspective) {
+        output.WriteRawTag(10);
+        output.WriteMessage(PlayerPerspective);
+      }
+      if (actionCase_ == ActionOneofCase.CameraMove) {
+        output.WriteRawTag(18);
+        output.WriteMessage(CameraMove);
+      }
+      if (actionCase_ == ActionOneofCase.CameraFollowPlayer) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CameraFollowPlayer);
+      }
+      if (actionCase_ == ActionOneofCase.CameraFollowUnits) {
+        output.WriteRawTag(34);
+        output.WriteMessage(CameraFollowUnits);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (actionCase_ == ActionOneofCase.PlayerPerspective) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerPerspective);
+      }
+      if (actionCase_ == ActionOneofCase.CameraMove) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CameraMove);
+      }
+      if (actionCase_ == ActionOneofCase.CameraFollowPlayer) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CameraFollowPlayer);
+      }
+      if (actionCase_ == ActionOneofCase.CameraFollowUnits) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CameraFollowUnits);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ObserverAction other) {
+      if (other == null) {
+        return;
+      }
+      switch (other.ActionCase) {
+        case ActionOneofCase.PlayerPerspective:
+          PlayerPerspective = other.PlayerPerspective;
+          break;
+        case ActionOneofCase.CameraMove:
+          CameraMove = other.CameraMove;
+          break;
+        case ActionOneofCase.CameraFollowPlayer:
+          CameraFollowPlayer = other.CameraFollowPlayer;
+          break;
+        case ActionOneofCase.CameraFollowUnits:
+          CameraFollowUnits = other.CameraFollowUnits;
+          break;
+      }
+
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            global::ProxyStarcraft.Proto.ActionObserverPlayerPerspective subBuilder = new global::ProxyStarcraft.Proto.ActionObserverPlayerPerspective();
+            if (actionCase_ == ActionOneofCase.PlayerPerspective) {
+              subBuilder.MergeFrom(PlayerPerspective);
+            }
+            input.ReadMessage(subBuilder);
+            PlayerPerspective = subBuilder;
+            break;
+          }
+          case 18: {
+            global::ProxyStarcraft.Proto.ActionObserverCameraMove subBuilder = new global::ProxyStarcraft.Proto.ActionObserverCameraMove();
+            if (actionCase_ == ActionOneofCase.CameraMove) {
+              subBuilder.MergeFrom(CameraMove);
+            }
+            input.ReadMessage(subBuilder);
+            CameraMove = subBuilder;
+            break;
+          }
+          case 26: {
+            global::ProxyStarcraft.Proto.ActionObserverCameraFollowPlayer subBuilder = new global::ProxyStarcraft.Proto.ActionObserverCameraFollowPlayer();
+            if (actionCase_ == ActionOneofCase.CameraFollowPlayer) {
+              subBuilder.MergeFrom(CameraFollowPlayer);
+            }
+            input.ReadMessage(subBuilder);
+            CameraFollowPlayer = subBuilder;
+            break;
+          }
+          case 34: {
+            global::ProxyStarcraft.Proto.ActionObserverCameraFollowUnits subBuilder = new global::ProxyStarcraft.Proto.ActionObserverCameraFollowUnits();
+            if (actionCase_ == ActionOneofCase.CameraFollowUnits) {
+              subBuilder.MergeFrom(CameraFollowUnits);
+            }
+            input.ReadMessage(subBuilder);
+            CameraFollowUnits = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ActionObserverPlayerPerspective : pb::IMessage<ActionObserverPlayerPerspective> {
+    private static readonly pb::MessageParser<ActionObserverPlayerPerspective> _parser = new pb::MessageParser<ActionObserverPlayerPerspective>(() => new ActionObserverPlayerPerspective());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ActionObserverPlayerPerspective> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[56]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverPlayerPerspective() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverPlayerPerspective(ActionObserverPlayerPerspective other) : this() {
+      playerId_ = other.playerId_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverPlayerPerspective Clone() {
+      return new ActionObserverPlayerPerspective(this);
+    }
+
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private uint playerId_;
+    /// <summary>
+    /// 0 to observe "Everyone"
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ActionObserverPlayerPerspective);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ActionObserverPlayerPerspective other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PlayerId != other.PlayerId) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PlayerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PlayerId);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ActionObserverPlayerPerspective other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            PlayerId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ActionObserverCameraMove : pb::IMessage<ActionObserverCameraMove> {
+    private static readonly pb::MessageParser<ActionObserverCameraMove> _parser = new pb::MessageParser<ActionObserverCameraMove>(() => new ActionObserverCameraMove());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ActionObserverCameraMove> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[57]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraMove() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraMove(ActionObserverCameraMove other) : this() {
+      WorldPos = other.worldPos_ != null ? other.WorldPos.Clone() : null;
+      distance_ = other.distance_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraMove Clone() {
+      return new ActionObserverCameraMove(this);
+    }
+
+    /// <summary>Field number for the "world_pos" field.</summary>
+    public const int WorldPosFieldNumber = 1;
+    private global::ProxyStarcraft.Proto.Point2D worldPos_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProxyStarcraft.Proto.Point2D WorldPos {
+      get { return worldPos_; }
+      set {
+        worldPos_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "distance" field.</summary>
+    public const int DistanceFieldNumber = 2;
+    private float distance_;
+    /// <summary>
+    /// Distance between camera and terrain. Larger value zooms out camera.
+    /// Defaults to standard camera distance if set to 0.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Distance {
+      get { return distance_; }
+      set {
+        distance_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ActionObserverCameraMove);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ActionObserverCameraMove other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(WorldPos, other.WorldPos)) return false;
+      if (Distance != other.Distance) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (worldPos_ != null) hash ^= WorldPos.GetHashCode();
+      if (Distance != 0F) hash ^= Distance.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (worldPos_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(WorldPos);
+      }
+      if (Distance != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Distance);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (worldPos_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(WorldPos);
+      }
+      if (Distance != 0F) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ActionObserverCameraMove other) {
+      if (other == null) {
+        return;
+      }
+      if (other.worldPos_ != null) {
+        if (worldPos_ == null) {
+          worldPos_ = new global::ProxyStarcraft.Proto.Point2D();
+        }
+        WorldPos.MergeFrom(other.WorldPos);
+      }
+      if (other.Distance != 0F) {
+        Distance = other.Distance;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            if (worldPos_ == null) {
+              worldPos_ = new global::ProxyStarcraft.Proto.Point2D();
+            }
+            input.ReadMessage(worldPos_);
+            break;
+          }
+          case 21: {
+            Distance = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ActionObserverCameraFollowPlayer : pb::IMessage<ActionObserverCameraFollowPlayer> {
+    private static readonly pb::MessageParser<ActionObserverCameraFollowPlayer> _parser = new pb::MessageParser<ActionObserverCameraFollowPlayer>(() => new ActionObserverCameraFollowPlayer());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ActionObserverCameraFollowPlayer> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[58]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraFollowPlayer() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraFollowPlayer(ActionObserverCameraFollowPlayer other) : this() {
+      playerId_ = other.playerId_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraFollowPlayer Clone() {
+      return new ActionObserverCameraFollowPlayer(this);
+    }
+
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private uint playerId_;
+    /// <summary>
+    /// Not implemented. Value must be [1, 15]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ActionObserverCameraFollowPlayer);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ActionObserverCameraFollowPlayer other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PlayerId != other.PlayerId) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PlayerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PlayerId);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ActionObserverCameraFollowPlayer other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            PlayerId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ActionObserverCameraFollowUnits : pb::IMessage<ActionObserverCameraFollowUnits> {
+    private static readonly pb::MessageParser<ActionObserverCameraFollowUnits> _parser = new pb::MessageParser<ActionObserverCameraFollowUnits>(() => new ActionObserverCameraFollowUnits());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ActionObserverCameraFollowUnits> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[59]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraFollowUnits() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraFollowUnits(ActionObserverCameraFollowUnits other) : this() {
+      unitTags_ = other.unitTags_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ActionObserverCameraFollowUnits Clone() {
+      return new ActionObserverCameraFollowUnits(this);
+    }
+
+    /// <summary>Field number for the "unit_tags" field.</summary>
+    public const int UnitTagsFieldNumber = 1;
+    private static readonly pb::FieldCodec<ulong> _repeated_unitTags_codec
+        = pb::FieldCodec.ForUInt64(10);
+    private readonly pbc::RepeatedField<ulong> unitTags_ = new pbc::RepeatedField<ulong>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<ulong> UnitTags {
+      get { return unitTags_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ActionObserverCameraFollowUnits);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ActionObserverCameraFollowUnits other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!unitTags_.Equals(other.unitTags_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= unitTags_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      unitTags_.WriteTo(output, _repeated_unitTags_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += unitTags_.CalculateSize(_repeated_unitTags_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ActionObserverCameraFollowUnits other) {
+      if (other == null) {
+        return;
+      }
+      unitTags_.Add(other.unitTags_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10:
+          case 8: {
+            unitTags_.AddEntriesFrom(input, _repeated_unitTags_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class PlayerResult : pb::IMessage<PlayerResult> {
     private static readonly pb::MessageParser<PlayerResult> _parser = new pb::MessageParser<PlayerResult>(() => new PlayerResult());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10797,7 +11910,7 @@ namespace ProxyStarcraft.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[53]; }
+      get { return global::ProxyStarcraft.Proto.Sc2ApiReflection.Descriptor.MessageTypes[60]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

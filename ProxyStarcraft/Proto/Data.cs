@@ -40,36 +40,36 @@ namespace ProxyStarcraft.Proto {
             "YWdlX2JvbnVzGAMgAygLMhsuU0MyQVBJUHJvdG9jb2wuRGFtYWdlQm9udXMS",
             "DwoHYXR0YWNrcxgEIAEoDRINCgVyYW5nZRgFIAEoAhINCgVzcGVlZBgGIAEo",
             "AiJBCgpUYXJnZXRUeXBlEhUKEUludmFsaWRUYXJnZXRUeXBlEAASCgoGR3Jv",
-            "dW5kEAESBwoDQWlyEAISBwoDQW55EAMigAQKDFVuaXRUeXBlRGF0YRIPCgd1",
+            "dW5kEAESBwoDQWlyEAISBwoDQW55EAMilQQKDFVuaXRUeXBlRGF0YRIPCgd1",
             "bml0X2lkGAEgASgNEgwKBG5hbWUYAiABKAkSEQoJYXZhaWxhYmxlGAMgASgI",
             "EhIKCmNhcmdvX3NpemUYBCABKA0SFAoMbWluZXJhbF9jb3N0GAwgASgNEhQK",
             "DHZlc3BlbmVfY29zdBgNIAEoDRIVCg1mb29kX3JlcXVpcmVkGA4gASgCEhUK",
             "DWZvb2RfcHJvdmlkZWQYEiABKAISEgoKYWJpbGl0eV9pZBgPIAEoDRIiCgRy",
             "YWNlGBAgASgOMhQuU0MyQVBJUHJvdG9jb2wuUmFjZRISCgpidWlsZF90aW1l",
             "GBEgASgCEhMKC2hhc192ZXNwZW5lGBMgASgIEhQKDGhhc19taW5lcmFscxgU",
-            "IAEoCBISCgp0ZWNoX2FsaWFzGBUgAygNEhIKCnVuaXRfYWxpYXMYFiABKA0S",
-            "GAoQdGVjaF9yZXF1aXJlbWVudBgXIAEoDRIYChByZXF1aXJlX2F0dGFjaGVk",
-            "GBggASgIEi0KCmF0dHJpYnV0ZXMYCCADKA4yGS5TQzJBUElQcm90b2NvbC5B",
-            "dHRyaWJ1dGUSFgoObW92ZW1lbnRfc3BlZWQYCSABKAISDQoFYXJtb3IYCiAB",
-            "KAISJwoHd2VhcG9ucxgLIAMoCzIWLlNDMkFQSVByb3RvY29sLldlYXBvbiKG",
-            "AQoLVXBncmFkZURhdGESEgoKdXBncmFkZV9pZBgBIAEoDRIMCgRuYW1lGAIg",
-            "ASgJEhQKDG1pbmVyYWxfY29zdBgDIAEoDRIUCgx2ZXNwZW5lX2Nvc3QYBCAB",
-            "KA0SFQoNcmVzZWFyY2hfdGltZRgFIAEoAhISCgphYmlsaXR5X2lkGAYgASgN",
-            "IikKCEJ1ZmZEYXRhEg8KB2J1ZmZfaWQYASABKA0SDAoEbmFtZRgCIAEoCSJU",
-            "CgpFZmZlY3REYXRhEhEKCWVmZmVjdF9pZBgBIAEoDRIMCgRuYW1lGAIgASgJ",
-            "EhUKDWZyaWVuZGx5X25hbWUYAyABKAkSDgoGcmFkaXVzGAQgASgCKrQBCglB",
-            "dHRyaWJ1dGUSFAoQSW52YWxpZEF0dHJpYnV0ZRAAEgkKBUxpZ2h0EAESCwoH",
-            "QXJtb3JlZBACEg4KCkJpb2xvZ2ljYWwQAxIOCgpNZWNoYW5pY2FsEAQSCwoH",
-            "Um9ib3RpYxAFEgsKB1BzaW9uaWMQBhILCgdNYXNzaXZlEAcSDQoJU3RydWN0",
-            "dXJlEAgSCQoFSG92ZXIQCRIKCgZIZXJvaWMQChIMCghTdW1tb25lZBALYgZw",
-            "cm90bzM="));
+            "IAEoCBITCgtzaWdodF9yYW5nZRgZIAEoAhISCgp0ZWNoX2FsaWFzGBUgAygN",
+            "EhIKCnVuaXRfYWxpYXMYFiABKA0SGAoQdGVjaF9yZXF1aXJlbWVudBgXIAEo",
+            "DRIYChByZXF1aXJlX2F0dGFjaGVkGBggASgIEi0KCmF0dHJpYnV0ZXMYCCAD",
+            "KA4yGS5TQzJBUElQcm90b2NvbC5BdHRyaWJ1dGUSFgoObW92ZW1lbnRfc3Bl",
+            "ZWQYCSABKAISDQoFYXJtb3IYCiABKAISJwoHd2VhcG9ucxgLIAMoCzIWLlND",
+            "MkFQSVByb3RvY29sLldlYXBvbiKGAQoLVXBncmFkZURhdGESEgoKdXBncmFk",
+            "ZV9pZBgBIAEoDRIMCgRuYW1lGAIgASgJEhQKDG1pbmVyYWxfY29zdBgDIAEo",
+            "DRIUCgx2ZXNwZW5lX2Nvc3QYBCABKA0SFQoNcmVzZWFyY2hfdGltZRgFIAEo",
+            "AhISCgphYmlsaXR5X2lkGAYgASgNIikKCEJ1ZmZEYXRhEg8KB2J1ZmZfaWQY",
+            "ASABKA0SDAoEbmFtZRgCIAEoCSJUCgpFZmZlY3REYXRhEhEKCWVmZmVjdF9p",
+            "ZBgBIAEoDRIMCgRuYW1lGAIgASgJEhUKDWZyaWVuZGx5X25hbWUYAyABKAkS",
+            "DgoGcmFkaXVzGAQgASgCKrQBCglBdHRyaWJ1dGUSFAoQSW52YWxpZEF0dHJp",
+            "YnV0ZRAAEgkKBUxpZ2h0EAESCwoHQXJtb3JlZBACEg4KCkJpb2xvZ2ljYWwQ",
+            "AxIOCgpNZWNoYW5pY2FsEAQSCwoHUm9ib3RpYxAFEgsKB1BzaW9uaWMQBhIL",
+            "CgdNYXNzaXZlEAcSDQoJU3RydWN0dXJlEAgSCQoFSG92ZXIQCRIKCgZIZXJv",
+            "aWMQChIMCghTdW1tb25lZBALYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::ProxyStarcraft.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ProxyStarcraft.Proto.Attribute), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.AbilityData), global::ProxyStarcraft.Proto.AbilityData.Parser, new[]{ "AbilityId", "LinkName", "LinkIndex", "ButtonName", "FriendlyName", "Hotkey", "RemapsToAbilityId", "Available", "Target", "AllowMinimap", "AllowAutocast", "IsBuilding", "FootprintRadius", "IsInstantPlacement", "CastRange" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.AbilityData.Types.Target) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.DamageBonus), global::ProxyStarcraft.Proto.DamageBonus.Parser, new[]{ "Attribute", "Bonus" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.Weapon), global::ProxyStarcraft.Proto.Weapon.Parser, new[]{ "Type", "Damage", "DamageBonus", "Attacks", "Range", "Speed" }, null, new[]{ typeof(global::ProxyStarcraft.Proto.Weapon.Types.TargetType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UnitTypeData), global::ProxyStarcraft.Proto.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "FoodRequired", "FoodProvided", "AbilityId", "Race", "BuildTime", "HasVespene", "HasMinerals", "TechAlias", "UnitAlias", "TechRequirement", "RequireAttached", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UnitTypeData), global::ProxyStarcraft.Proto.UnitTypeData.Parser, new[]{ "UnitId", "Name", "Available", "CargoSize", "MineralCost", "VespeneCost", "FoodRequired", "FoodProvided", "AbilityId", "Race", "BuildTime", "HasVespene", "HasMinerals", "SightRange", "TechAlias", "UnitAlias", "TechRequirement", "RequireAttached", "Attributes", "MovementSpeed", "Armor", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.UpgradeData), global::ProxyStarcraft.Proto.UpgradeData.Parser, new[]{ "UpgradeId", "Name", "MineralCost", "VespeneCost", "ResearchTime", "AbilityId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.BuffData), global::ProxyStarcraft.Proto.BuffData.Parser, new[]{ "BuffId", "Name" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProxyStarcraft.Proto.EffectData), global::ProxyStarcraft.Proto.EffectData.Parser, new[]{ "EffectId", "Name", "FriendlyName", "Radius" }, null, null, null)
@@ -1139,6 +1139,7 @@ namespace ProxyStarcraft.Proto {
       buildTime_ = other.buildTime_;
       hasVespene_ = other.hasVespene_;
       hasMinerals_ = other.hasMinerals_;
+      sightRange_ = other.sightRange_;
       techAlias_ = other.techAlias_.Clone();
       unitAlias_ = other.unitAlias_;
       techRequirement_ = other.techRequirement_;
@@ -1312,6 +1313,20 @@ namespace ProxyStarcraft.Proto {
       }
     }
 
+    /// <summary>Field number for the "sight_range" field.</summary>
+    public const int SightRangeFieldNumber = 25;
+    private float sightRange_;
+    /// <summary>
+    /// Range unit reveals vision.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SightRange {
+      get { return sightRange_; }
+      set {
+        sightRange_ = value;
+      }
+    }
+
     /// <summary>Field number for the "tech_alias" field.</summary>
     public const int TechAliasFieldNumber = 21;
     private static readonly pb::FieldCodec<uint> _repeated_techAlias_codec
@@ -1438,6 +1453,7 @@ namespace ProxyStarcraft.Proto {
       if (BuildTime != other.BuildTime) return false;
       if (HasVespene != other.HasVespene) return false;
       if (HasMinerals != other.HasMinerals) return false;
+      if (SightRange != other.SightRange) return false;
       if(!techAlias_.Equals(other.techAlias_)) return false;
       if (UnitAlias != other.UnitAlias) return false;
       if (TechRequirement != other.TechRequirement) return false;
@@ -1465,6 +1481,7 @@ namespace ProxyStarcraft.Proto {
       if (BuildTime != 0F) hash ^= BuildTime.GetHashCode();
       if (HasVespene != false) hash ^= HasVespene.GetHashCode();
       if (HasMinerals != false) hash ^= HasMinerals.GetHashCode();
+      if (SightRange != 0F) hash ^= SightRange.GetHashCode();
       hash ^= techAlias_.GetHashCode();
       if (UnitAlias != 0) hash ^= UnitAlias.GetHashCode();
       if (TechRequirement != 0) hash ^= TechRequirement.GetHashCode();
@@ -1558,6 +1575,10 @@ namespace ProxyStarcraft.Proto {
         output.WriteRawTag(192, 1);
         output.WriteBool(RequireAttached);
       }
+      if (SightRange != 0F) {
+        output.WriteRawTag(205, 1);
+        output.WriteFloat(SightRange);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1601,6 +1622,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (HasMinerals != false) {
         size += 2 + 1;
+      }
+      if (SightRange != 0F) {
+        size += 2 + 4;
       }
       size += techAlias_.CalculateSize(_repeated_techAlias_codec);
       if (UnitAlias != 0) {
@@ -1666,6 +1690,9 @@ namespace ProxyStarcraft.Proto {
       }
       if (other.HasMinerals != false) {
         HasMinerals = other.HasMinerals;
+      }
+      if (other.SightRange != 0F) {
+        SightRange = other.SightRange;
       }
       techAlias_.Add(other.techAlias_);
       if (other.UnitAlias != 0) {
@@ -1779,6 +1806,10 @@ namespace ProxyStarcraft.Proto {
           }
           case 192: {
             RequireAttached = input.ReadBool();
+            break;
+          }
+          case 205: {
+            SightRange = input.ReadFloat();
             break;
           }
         }
