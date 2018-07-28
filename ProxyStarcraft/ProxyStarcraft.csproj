@@ -86,11 +86,11 @@
     <Compile Include="IProductionStrategy.cs" />
     <Compile Include="LocationOffset.cs" />
     <Compile Include="MapArray.cs" />
-    <Compile Include="Map\Area.cs" />
-    <Compile Include="Map\Deposit.cs" />
-    <Compile Include="Map\Edge.cs" />
-    <Compile Include="Map\Mesa.cs" />
-    <Compile Include="Map\Ramp.cs" />
+    <Compile Include="Maps\Area.cs" />
+    <Compile Include="Maps\Deposit.cs" />
+    <Compile Include="Maps\Edge.cs" />
+    <Compile Include="Maps\Mesa.cs" />
+    <Compile Include="Maps\Ramp.cs" />
     <Compile Include="ProtossBuilding.cs" />
     <Compile Include="ProtossUnit.cs" />
     <Compile Include="RaceExtensions.cs" />
