@@ -262,7 +262,7 @@ namespace Sandbox
 
                     var gameState = client.GetGameState();
 
-                    //SaveMapData(gameState);
+                    SaveMapData(gameState);
 
                     while (true)
                     {
@@ -291,6 +291,14 @@ namespace Sandbox
             {
                 terrainHeight.Save(BASE_DRIVE + "Temp/terrain-height.bmp");
             }
+
+            var areas = gameState.GetMapData<BasicMapData>().AreaGrid;
+            File.WriteAllBytes(BASE_DRIVE + "Temp/areas-updated.dat", areas.Data);
+
+            using (var areasImage = GetImage(areas))
+            {
+                areasImage.Save(BASE_DRIVE + "Temp/areas-updated.bmp");
+            }
         }
 
         private static Bitmap GetImage(MapArray<byte> data)
@@ -300,12 +308,31 @@ namespace Sandbox
 
         private static Bitmap GetImage(byte[] data, Size2DI mapSize)
         {
-            return new Bitmap(
+            var bitmap = new Bitmap(
                 mapSize.X,
                 mapSize.Y,
                 mapSize.X,
                 PixelFormat.Format8bppIndexed,
                 Marshal.UnsafeAddrOfPinnedArrayElement(data, 0));
+
+            // For some reason the default indexed palette has a bunch of identical transparent entries in it, but they aren't the last ones
+            var last = bitmap.Palette.Entries.Length - 1;
+
+            var palette = bitmap.Palette;
+
+            for (var i = 0; i < last; i++)
+            {
+                if (palette.Entries[i] == System.Drawing.Color.FromArgb(0, 0, 0, 0))
+                {
+                    palette.Entries[i] = bitmap.Palette.Entries[last];
+                    palette.Entries[last] = System.Drawing.Color.FromArgb(0, 0, 0, 0);
+                    last--;
+                }
+            }
+
+            bitmap.Palette = palette;
+
+            return bitmap;
         }
 
         public static ProxyStarcraft.Unit GetBuilder(BuildingOrUnitType buildingOrUnit, GameState gameState, SynchronousApiClient client)

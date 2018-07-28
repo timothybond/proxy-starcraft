@@ -54,6 +54,7 @@
     <Compile Include="Basic\ClosestExpansionStrategy.cs" />
     <Compile Include="Basic\DesiredTerranArmyQueue.cs" />
     <Compile Include="Basic\DesiredZergArmyQueue.cs" />
+    <Compile Include="Basic\Maps\BorderPath.cs" />
     <Compile Include="BuffType.cs" />
     <Compile Include="Basic\BasicProductionStrategy.cs" />
     <Compile Include="Basic\BuildOrder.cs" />
