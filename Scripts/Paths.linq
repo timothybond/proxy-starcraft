@@ -27,7 +27,7 @@ void Main()
 	var areaBytes = File.ReadAllBytes(AreaData);
 	var areas = new MapArray<byte>(areaBytes, MapSize);
 	
-	AroundVersusAcross(areas, 1000);
+	DecomposeLargeAreas(areas, 1000);
 	
 	//RisingWater(openSpace);
 	//var pathingData = new MapArray<byte>(File.ReadAllBytes(PathingData), MapSize);
@@ -47,7 +47,7 @@ void Main()
 // other, and compare to the closest direct path through the area. If the discrepency
 // is high enough, draw a line and split the area. Avoid splitting on spaces that are
 // already boundaries between two reachable areas.
-public void AroundVersusAcross(MapArray<byte> areas, int areaSizeLimit)
+public void DecomposeLargeAreas(MapArray<byte> areas, int areaSizeLimit)
 {
 	var areaCountsById = GetAreaCountsById(areas);
 	
