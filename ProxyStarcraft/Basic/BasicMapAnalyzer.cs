@@ -209,7 +209,7 @@ namespace ProxyStarcraft.Basic
                 }
             }
 
-            
+            DecomposeLargeAreas(areas, this.maxAreaSize);
 
             return areas;
         }
@@ -229,40 +229,7 @@ namespace ProxyStarcraft.Basic
             {
                 var areaToBreakUp = areaCountsById.OrderByDescending(pair => pair.Value).First().Key;
 
-                var singleArea = new MapArray<byte>(areas);
-
-                for (var x = 0; x < singleArea.Size.X; x++)
-                {
-                    for (var y = 0; y < singleArea.Size.Y; y++)
-                    {
-                        singleArea[x, y] = singleArea[x, y] == areaToBreakUp ? (byte)1 : (byte)0;
-                    }
-                }
-
-                // TODO: Extract this to a function
-                var border = new MapArray<byte>(singleArea);
-
-                var borderLocations = new List<Location>();
-
-                for (var x = 0; x < singleArea.Size.X; x++)
-                {
-                    for (var y = 0; y < singleArea.Size.Y; y++)
-                    {
-                        var location = new Location { X = x, Y = y };
-                        var adjacentLocations = location.AdjacentLocations(areas.Size, false);
-                        if (adjacentLocations.All(l => singleArea[l] != 0) &&
-                            adjacentLocations.Count == 4)
-                        {
-                            border[location] = 0;
-                        }
-                        else if (border[location] != 0)
-                        {
-                            borderLocations.Add(location);
-                        }
-                    }
-                }
-                
-                borderLocations = GetBorderPath(borderLocations, border.Size).Locations.ToList();
+                var borderLocations = GetBorderLocations(areas, areaToBreakUp);
 
                 var bestReduction = 0.0;
                 var bestStart = new Location { X = 0, Y = 0 };
@@ -270,10 +237,6 @@ namespace ProxyStarcraft.Basic
 
                 for (var i = 0; i < borderLocations.Count; i++)
                 {
-                    var bestReductionForLocation = 0.0;
-                    var bestDistanceAround = 0;
-                    var bestDistanceAcross = 0.0;
-
                     for (var j = 0; j < borderLocations.Count; j++)
                     {
                         if (i == j)
@@ -287,26 +250,21 @@ namespace ProxyStarcraft.Basic
 
                         var reduction = distanceAround - distanceAcross;
 
-                        if (reduction > bestReductionForLocation)
+                        if (reduction > bestReduction)
                         {
-                            // TODO: Handle special case where this line goes outside of the area (i.e., ignore that result)
                             var possibleBorderLocations = GetNewBorderLocations(areas, areaToBreakUp, borderLocations[i], borderLocations[j]);
 
+                            // If the line leaves the area rather than going across it only, ignore this result
                             if (possibleBorderLocations.Any(l => areas[l] != areaToBreakUp))
                             {
                                 continue;
                             }
 
-                            bestReductionForLocation = reduction;
-                            bestDistanceAround = distanceAround;
-                            bestDistanceAcross = distanceAcross;
-
-                            if (reduction > bestReduction)
-                            {
-                                bestReduction = reduction;
-                                bestStart = borderLocations[i];
-                                bestEnd = borderLocations[j];
-                            }
+                            // TODO: Consider invalidating results that touch an existing border,
+                            // or ones that break up nearby mineral deposit clusters
+                            bestReduction = reduction;
+                            bestStart = borderLocations[i];
+                            bestEnd = borderLocations[j];
                         }
                     }
                 }
@@ -363,6 +321,48 @@ namespace ProxyStarcraft.Basic
 
                 areaCountsById = GetAreaCountsById(areas);
             }
+        }
+
+        private List<Location> GetBorderLocations(MapArray<byte> areas, byte areaId)
+        {
+            var singleArea = new MapArray<byte>(areas);
+
+            for (var x = 0; x < singleArea.Size.X; x++)
+            {
+                for (var y = 0; y < singleArea.Size.Y; y++)
+                {
+                    singleArea[x, y] = singleArea[x, y] == areaId ? (byte)1 : (byte)0;
+                }
+            }
+            
+            var border = new MapArray<byte>(singleArea);
+
+            var borderLocations = new List<Location>();
+
+            for (var x = 0; x < singleArea.Size.X; x++)
+            {
+                for (var y = 0; y < singleArea.Size.Y; y++)
+                {
+                    var location = new Location { X = x, Y = y };
+                    var adjacentLocations = location.AdjacentLocations(areas.Size, false);
+
+                    // Note: it's possible we're at the edge of the map, so it would
+                    // be a border even if all adjacent spaces are in the same area
+                    if (adjacentLocations.All(l => singleArea[l] != 0) &&
+                        adjacentLocations.Count == 4)
+                    {
+                        border[location] = 0;
+                    }
+                    else if (border[location] != 0)
+                    {
+                        borderLocations.Add(location);
+                    }
+                }
+            }
+
+            borderLocations = GetBorderPath(borderLocations, border.Size).Locations.ToList();
+
+            return borderLocations;
         }
 
         private BorderPath GetBorderPath(List<Location> border, Size2DI mapSize)
@@ -809,9 +809,9 @@ namespace ProxyStarcraft.Basic
             }
         }
 
-        private Dictionary<int, int> GetAreaCountsById(MapArray<byte> areas)
+        private Dictionary<byte, int> GetAreaCountsById(MapArray<byte> areas)
         {
-            var areaCountsById = new Dictionary<int, int>();
+            var areaCountsById = new Dictionary<byte, int>();
 
             foreach (var a in areas.Data)
             {
